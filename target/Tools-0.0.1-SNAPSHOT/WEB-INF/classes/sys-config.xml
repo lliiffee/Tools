@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<config>  
+    <!-- 标签 -->  
+    <strategy-class>  
+        <!-- 折扣策略类 -->  
+        <strategy id="discountStrategy" class="com.fung.partern.calPrice.PercentateStrategy"></strategy>  
+    </strategy-class>  
+</config>
