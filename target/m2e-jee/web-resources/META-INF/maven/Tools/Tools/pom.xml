@@ -64,6 +64,11 @@
       	<artifactId>dom4j</artifactId>
       	<version>1.7-20060614</version>
       </dependency>
+      <dependency>
+      	<groupId>org.apache.httpcomponents</groupId>
+      	<artifactId>httpclient</artifactId>
+      	<version>4.3.3</version>
+      </dependency>
   </dependencies>
   
   
