@@ -1,6 +1,5 @@
 package com.fung.json;
 
-import java.util.List;
 
 public class Province {
 	

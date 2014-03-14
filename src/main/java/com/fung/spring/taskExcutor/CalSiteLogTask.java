@@ -1,6 +1,5 @@
 package com.fung.spring.taskExcutor;
 
-import org.springframework.core.task.TaskExecutor;
 
 public class CalSiteLogTask implements Runnable {
 
