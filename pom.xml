@@ -84,7 +84,7 @@
       <dependency>
       	<groupId>org.elasticsearch</groupId>
       	<artifactId>elasticsearch</artifactId>
-      	<version>0.90.12</version>
+      	<version>1.0.1</version>
       	<type>zip</type>
       </dependency>
   </dependencies>
@@ -93,7 +93,7 @@
   
   <build>
     <plugins>
-      <plugin>
+      <plugin> 
         <artifactId>maven-war-plugin</artifactId>
       </plugin>
       <plugin>
