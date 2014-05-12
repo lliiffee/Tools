@@ -33,11 +33,41 @@ System.out.println(request.getParameter("detail_desc"));
   </head>
   
   <body>
-  <label>文章主题：</label> <input type="text" /> <p>
-  <label>文章主题图片：</label> <input type="button" value="上传图片"><p>
-   <label>概述内容：</label> <textarea > </textarea><p>
-    
+  
+ 
   <form action="index.jsp">
+  
+   <fieldset>
+   
+   <section>
+      <label for="content_type">类型：</label>
+      <select id="content_type"> 
+          <option value="0">资讯</option>
+          <option value="1">产品</option>
+      </select>
+     </section>
+     
+    <section>
+      <label for="content_title">文章主题：</label>
+      <input type="text" id="content_title" name="content_title" value"" />
+     </section>
+     
+      <section>
+      <label>文章主题图片：</label>
+       <input  type="button" value="上传图片">
+     </section>
+    
+    <section>
+      <label>链接：</label>
+       <input type="text" id="content_title" name="content_title" value"" />
+     </section>
+     
+      <section>
+      <label for="content_title">概述内容：</label>
+      <textarea > </textarea>
+     </section>
+                                 
+   </fieldset>
   <label>文章内容：</label>
     <span  id="detail_area" style="height:auto;">
 		<script id="detail_desc" name="detail_desc" type="text/plain" style="width:654px;height:500px;">
@@ -46,6 +76,8 @@ System.out.println(request.getParameter("detail_desc"));
 
    </span>
      <input type="submit" value="test" />
+     
+     
  </form>
  
   </body>
