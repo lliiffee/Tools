@@ -1,7 +1,12 @@
 package com.fung.file;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 
 public class OpFile {
 
@@ -14,7 +19,12 @@ public class OpFile {
            
          //  of.deleteFolderByName("E:\\tmp\\test\\bbf_es_index", ".svn");
            
-           of.deleteFolderByName("E:\\tmp\\webmagic", ".git");
+           of.deleteFolderByName("F:\\trunk_0912", ".svn");
+          
+          System.out.println(of.getClass().getResource("").getPath()) ;
+          System.out.println(of.getClass().getResource("/").getPath()) ;
+          System.out.println(of.getClass().getClassLoader().getResource("").getPath()) ;
+          
            
 	}
 	
@@ -224,5 +234,36 @@ public class OpFile {
 				}
 			}
 		}
+		
+		
+		
+		 public   static  String read(String fileName, String encoding) { 
+		        StringBuffer fileContent  =   new  StringBuffer(); 
+		         try  { 
+		            FileInputStream fis  =   new  FileInputStream(fileName); 
+		            InputStreamReader isr  =   new  InputStreamReader(fis, encoding); 
+		            BufferedReader br  =   new  BufferedReader(isr); 
+		            String line  =   null ; 
+		             while  ((line  =  br.readLine())  !=   null ) { 
+		                fileContent.append(line); 
+		                fileContent.append(System.getProperty( " line.separator " )); 
+		            } 
+		        }  catch  (Exception e) { 
+		            e.printStackTrace(); 
+		        } 
+		         return  fileContent.toString(); 
+		    } 
+
+		     public   static   void  write(String fileContent, String fileName, String encoding) { 
+		         try  { 
+		            FileOutputStream fos  =   new  FileOutputStream(fileName); 
+		            OutputStreamWriter osw  =   new  OutputStreamWriter(fos, encoding); 
+		            osw.write(fileContent); 
+		            osw.flush(); 
+		        }  catch  (Exception e) { 
+		            e.printStackTrace(); 
+		        } 
+		    } 
+
 
 }
