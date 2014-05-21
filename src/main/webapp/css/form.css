@@ -1,0 +1,129 @@
+#note {
+	border: 1px solid red;
+}
+
+form.stylin_form1 {
+	width: 960px; /*表单整体宽度 */ margin : 20px auto; /* 在容器内居中 */
+	border: 1px solid #bbb7ae;
+	padding: .5em .5em .15em;
+	margin: 20px auto
+}
+
+.stylin_form1 h3 { /* 表单主标题 */
+	margin: 0;
+	padding: 0 0 .2em .2em;
+	font-weight: 600;
+	color: #bbb7ae;
+}
+
+.stylin_form1 fieldset { /*包含控件与标注*/
+	margin: 0;
+	padding: 0 0 .2em 0;
+	width: 100%;
+	border: 0;
+}
+/* legend 元素的位置不同寻常，所以我把它的文本包含在一个块级span 中，转而为span
+			设定样式 */
+.stylin_form1 legend {
+	width: 100%;
+	padding: .3em 0;
+	background: #bbb7ae; /*灰色条*/
+}
+
+.stylin_form1 legend span { /* 设定标题文本的样式 */
+	display: block;
+	font-size: 1em;
+	line-height: 1.1em;
+	padding: 0 0 0 .4em;
+	font-weight: 700;
+	color: #fff; /*灰色条上的反白文本*/
+}
+
+.stylin_form1 section {
+	overflow: hidden; /* 强制section 包含表单控件及标注 */
+	padding: .2em 0 .4em 0;
+	/* border-bottom:8px solid #e7e5df; 根据需要在每个section 间增加间距 */
+}
+
+.stylin_form1 section:last-child { /* 每组最后一个section 没有边框 */
+	border-bottom: 0px;
+}
+
+.stylin_form1 section label, /* 表单控件的标注 */ .stylin_form1 section h4 {
+	/* h4 是复选框和单选按钮组的标题 */
+	display: block;
+	clear: both;
+	margin: .3em .3em 0 0; /* 右外边距确保标注文本在碰到input 之前会换行 */
+	padding-bottom: .1em;
+	font-size: .8em;
+	font-family: 'Droid Sans';
+	font-weight: 400;
+	line-height: 1.1;
+}
+
+.stylin_form1 section label span, /* 星号表示必填字段 */ .stylin_form1 section h4 span
+	{
+	font-size: .75em;
+	vertical-align: text-top;
+	color: #f00;
+}
+
+.stylin_form1 section p.note { /*说明星号是必填字段的文本*/
+	font-size: .7em;
+	color: #f00;
+	margin: 0;
+	padding: 0 0 .3em 0;
+}
+
+.stylin_form1 section input,.stylin_form1 section textarea,.stylin_form1 section select
+	{
+	margin: .2em .5em .2em 0;
+	padding: .2em .4em; /* 给input 中的文本添加间距 */
+	color: #000;
+	box-shadow: 1px 1px 3px #ccc;
+	font-size: .8em;
+	/* 针对Firefox - 没有这条声明会在textarea 上使用Courier */
+	font-family: inherit;
+	outline: none; /* 去掉默认蓝色聚焦轮廓线 */
+}
+
+.stylin_form1  textarea {
+	/* border:1px solid #999; 
+	   font-size:12px;
+       font-family: Verdana, Arial, Helvetica, sans-serif;
+          padding:1px;
+       height:200px;
+       overflow:auto;
+       width:400px;;
+       text-align:left;
+       padding:5px;
+	 */
+	
+}
+/* 设定文本字段（文本、密码、日期、文本区等）的样式，并加圆角 */
+.stylin_form1 section input {
+	width: 12em; /*设定字段宽度*/
+	border: 1px solid #bbb7ae;
+	border-radius: 3px; /*圆角边框*/
+}
+
+.stylin_form1 section textarea {
+	width: 40em; /*设定字段宽度*/
+	border: 1px solid #bbb7ae;
+	border-radius: 3px; /*圆角边框*/
+	height: 15em; /* textarea 的高度 */
+	margin-top: .3em; /* 与上面label 的间距 */
+	line-height: 1.1;
+}
+
+.stylin_form1 section p { /*控件使用说明*/
+	margin: .3em .75em 0;
+	clear: both;
+	font-size: .7em;
+	line-height: 1.1;
+	color: #000;
+}
+
+.stylin_form1 section p.error {
+	color: #f00; /* 添加error 类，把说明文字设定为红色 */
+}

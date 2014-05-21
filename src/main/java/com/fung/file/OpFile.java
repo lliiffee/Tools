@@ -19,7 +19,7 @@ public class OpFile {
            
          //  of.deleteFolderByName("E:\\tmp\\test\\bbf_es_index", ".svn");
            
-           of.deleteFolderByName("F:\\trunk_0912", ".svn");
+           of.deleteFolderByName("F:\\pj_src\\shop_manage\\shop_platform", ".svn");
           
           System.out.println(of.getClass().getResource("").getPath()) ;
           System.out.println(of.getClass().getResource("/").getPath()) ;
