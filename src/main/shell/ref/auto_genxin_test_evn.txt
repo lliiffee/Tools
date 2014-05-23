@@ -1,0 +1,316 @@
+ 1 #!/bin/sh
+      2 #set -x
+      3 . /etc/profile
+      4 svn_checkout_target_dir_pre="/usr/local/tomcat_all/webapps"
+      5 org_svn_update_file_list="/tmp/svn_update_filelist_"
+      6 #cat /dev/null > $svn_update_file_list
+      7 svn_user="lanh"
+      8 svn_pwd="lh2013"
+      9 sample_build_xml_file="/home/shell/sample_build.xml"
+     10 tmp_compile_ant_log=/tmp/ant_log_
+     11 pre_internal_class=/tmp/internal_class_list_
+     12
+     13
+     14 nowtime=$(date '+%F')
+     15 updatedir=/tmp/$nowtime
+     16
+     17 help_msg(){
+     18 echo "$0: 开始版本号 结束版本号 svn_url地址 项目名 是否重启"
+     19 echo "开始版本号如果为n,则默认是该项目的最小版本号"
+     20 echo "结束版本号如果为n,则默认是该项目的最大版本号"
+     21 echo "svn_url地址：如shop:svn://192.168.0.106/bbf_new_shop/branches/Freight/"
+     22 echo "svn_url地址：如b2c: svn://192.168.0.106/ecommerce/b2b/trunk/code"
+     23 echo "svn_url地址：如soyao:svn://192.168.0.106/bbf_soyao/trunk"
+     24 echo "项目名如果是adminshop：请使用shop为项目名，你懂的！不要问为什么"
+     25 echo "是否重启：重启y,不重启n"
+     26
+     27
+     28 }
+     29
+     30 checkout_newest(){
+     31 svn co --username $svn_user --password $svn_pwd $svn_repo_url $svn_checkout_target_dir --force --no-auth-cache 2>&1 > /dev/null
+     32 }
+     33
+     34 checkout_rivision_range(){
+     35 svn co  --username $svn_user --password $svn_pwd -r $to_rivision $svn_repo_url $svn_checkout_target_dir --force --no-auth-cache 2>&1 > /dev/null
+     36 }
+     37
+     38 update_svn_to_rivision(){
+     39 svn up  --username $svn_user --password $svn_pwd -r $to_rivision $svn_repo_url $svn_checkout_target_dir --force --no-auth-cache 2>&1 > /dev/null
+     40 }
+     41
+     42 update_svn(){
+     43 svn up  --username $svn_user --password $svn_pwd  $svn_repo_url $svn_checkout_target_dir --force --no-auth-cache 2>&1 > /dev/null
+     44 }
+     45
+     46 get_now_rivision(){
+     47 now_rivision=$(svn info --username $svn_user --password $svn_pwd $svn_checkout_target_dir  --no-auth-cache | grep "Revision" | awk '{print $2}' | sed '/^$/d')
+     48 echo "本地工作空间svn版本：$now_rivision"
+     49
+     50 }
+     51
+	 52 get_max_rivision(){
+     53 max_rivision=$(svn info --username $svn_user --password $svn_pwd $svn_repo_url  --no-auth-cache  | grep "Revision" | awk '{print $2}')
+     54 echo "该仓库在svn服务端的当前最大版本号：$max_rivision"
+     55
+     56 }
+     57 get_min_rivision(){
+     58 min_rivision=$(svn status -v --username $svn_user --password $svn_pwd    $svn_checkout_target_dir  --no-auth-cache | awk '{print $2}' | egrep -v '/|\?' | sort -u | sort -n |   sed -n '1p')
+     59 echo "该仓库在svn服务端的当前最小版本号：$min_rivision"
+     60 }
+     61
+     62
+     63 check_svn_url_the_same(){
+     64 workspace_svn_url=$(svn info --username $svn_user --password $svn_pwd $svn_checkout_target_dir  --no-auth-cache | grep 'URL' | awk '{print $2}')
+     65 quxiegan_workspace_svn_url=$(echo $workspace_svn_url |  sed 's#/##g')
+     66 if [ "$(echo $svn_repo_url |  sed 's#/##g')" = "$quxiegan_workspace_svn_url" ];then
+     67 flag_svn_the_same="1"
+     68 #echo $flag_svn_the_same
+     69 else
+     70 flag_svn_the_same="0"
+     71 #echo $flag_svn_the_same
+     72 fi
+     73
+     74 }
+     75
+     76 cp_build_xml_file(){
+     77 scp $sample_build_xml_file  $svn_checkout_target_dir/build.xml
+     78 }
+     79 get_svn_update_file_list(){
+     80 if [ $from_rivision != "n" ];then
+     81 org_rivision=$from_rivision
+     82 else
+     83 org_rivision=$min_rivision
+     84 #org_rivision=$now_rivision
+     85
+     86 fi
+     87 cd $svn_checkout_target_dir_pre;
+     88 ##svn新增文件列表 ^[AM]
+     89 svn diff --username $svn_user --password $svn_pwd --summarize -r$org_rivision:$target_rivision $svn_checkout_target_dir_name | grep "^[AM]"| sed "s#$svn_checkout_target_dir_name/#\n#g" | gr        ep -v ^[AM] | grep -v doc |  sed -n '/\./p' | sort -u > $svn_update_file_list
+     90 #sed -i "s#$svn_checkout_target_dir_name/##g" $svn_update_file_list
+     91 sed -i "s/^src/$svn_checkout_target_dir_name\/WEB-INF\/classes/g"  $svn_update_file_list
+     92 sed -i "s/^WebContent/$svn_checkout_target_dir_name/g"  $svn_update_file_list
+     93 sed -i  's/.java/.class/g'  $svn_update_file_list
+     94
+     95 ###svn删除文件列表 ^D
+     96 svn diff --username $svn_user --password $svn_pwd --summarize -r$org_rivision:$target_rivision $svn_checkout_target_dir_name | grep "^D" | sed "s#$svn_checkout_target_dir_name/#\n#g" | grep         -v ^D | grep -v doc |  sed -n '/\./p' | sort -u > $svn_del_file_list
+     97 #sed -i "s#$svn_checkout_target_dir_name/##g" $svn_del_file_list
+     98 sed -i "s/^src/$svn_checkout_target_dir_name\/WEB-INF\/classes/g"  $svn_del_file_list
+     99 sed -i "s/^WebContent/$svn_checkout_target_dir_name/g"  $svn_del_file_list
+    100 sed -i  's/.java/.class/g'  $svn_del_file_list
+	 101 }
+    102
+    103 comiple_project(){
+    104 cd $svn_checkout_target_dir
+    105 ant clean
+    106 #ant
+    107
+    108 if [ -f  "$compile_ant_log" ];then
+    109 chown -R $web_ower:$web_ower $compile_ant_log
+    110 else
+    111 continue;
+    112 fi
+    113 ant  2>&1 > $compile_ant_log
+    114
+    115 }
+    116
+    117
+    118 show_comiple_log(){
+    119 if [ -f  "$compile_ant_log" ];then
+    120  ant_fail=$(cat $compile_ant_log | egrep -c 'Build failed|error|BUILD FAILED')
+    121  if [ "$ant_fail" -gt 0 ];then
+    122  echo "++++编译失败+++++++"
+    123  cat $compile_ant_log
+    124  exit
+    125  else
+    126  echo "++++编译成功!!!+++++++"
+    127  fi
+    128 else
+    129 continue;
+    130 fi
+    131
+    132
+    133 }
+    134
+    135
+    136 rsync_file_to_real_project(){
+    137  if [  -d $real_project_dir ]; then
+    138  #rm -rf $real_project_dir
+    139   echo "$real_project_dir目录存在"
+    140  else
+    141  mkdir -p $real_project_dir
+    142  fi
+    143 rsync -avg --delete --exclude=.svn $svn_checkout_target_dir/WebContent/ $real_project_dir/
+    144 #rsync -avg --delete --exclude=.svn $svn_checkout_target_dir/src/resources/ $real_project_dir/WEB-INF/classes/resources/
+    145 rsync -avg --exclude=*.java --exclude=.svn $svn_checkout_target_dir/src/ $real_project_dir/WEB-INF/classes/
+    146 }
+    147
+    148 make_realproject_update_files(){
+    149
+    150  if [  -d $updatedir ]; then
+ 151  rm -rf $updatedir/*
+    152  else
+    153  mkdir -p $updatedir
+    154  fi
+    155
+    156 cat $svn_update_file_list | while read line
+    157 do
+    158
+    159 dirname=$(dirname $line)
+    160 mkdir -p $updatedir/$dirname/
+    161 filename=$(basename $line)
+    162 scp $org_dir/$line $updatedir/$dirname/
+    163
+    164 done
+    165
+    166 }
+    167
+    168
+    169 rsync_file_to_test_env(){
+    170 rsync -avg $updatedir/$svn_checkout_target_dir_name/ 192.168.0.102:$real_project_dir/
+    171
+    172 }
+    173
+    174 restart_real_project(){
+    175 ssh -f 192.168.0.102 "/home/shell/start_$svn_checkout_target_dir_name.sh"
+    176
+    177 }
+    178
+    179 ##for 内部类的拷贝
+    180 #内部类一般是前缀一样，$符号后面不一样。所以取内部类的时候，一定要加/内部类开头部分
+    181 check_and_get_interal_class(){
+    182 find $real_project_dir -type f -name "*\$*.class"  > $interal_class_list_tmp
+    183 cat /dev/null > $internal_class_list_proj
+    184 cat $interal_class_list_tmp | while read myclass
+    185 do
+    186 my_interal_class=$(basename $myclass)
+    187 #org_class=$(echo $my_interal_class | sed 's#$1##g' )
+    188 org_class=$(echo $my_interal_class | sed 's#\$#\n#g' | sed -n 1p )
+    189 #echo "my_interal_class:$my_interal_class"
+    190 #echo "myclass:$myclass"
+    191 #echo "org_class:$org_class"
+    192 zhuanyi_class=$(echo $myclass | sed 's#\$#\\$#g')
+    193 ##echo "$zhuanyi_class"
+    194
+    195 flag_my_interal_class=$(cat  $svn_update_file_list | grep -c "/$org_class")
+    196 if [ $flag_my_interal_class -gt 0 ];then
+    197 target_class=$(dirname $(cat  $svn_update_file_list | egrep '\.class' | grep "/$org_class"))
+    198 #scp   "$zhuanyi_class" "$updatedir/$target_class"
+    199 echo "$myclass" >> $internal_class_list_proj
+    200 scp   "$myclass" $updatedir/$target_class
+ 201 fi
+    202
+    203 done
+    204 }
+    205
+    206
+    207
+    208 ######所有功能模块函数定义结束#####
+    209
+    210
+    211 ####组装需要的功能##########
+    212
+    213 if [ $# != 5 ];then
+    214 help_msg;
+    215 exit;
+    216 fi
+    217
+    218 from_rivision="$1"
+    219 to_rivision="$2"
+    220 svn_repo_url="$3"
+    221 svn_checkout_target_dir="$svn_checkout_target_dir_pre/$4"
+    222 svn_checkout_target_dir_name="$4"
+    223 real_project_dir="/usr/local/tomcat_$svn_checkout_target_dir_name/webapps/$svn_checkout_target_dir_name"
+    224 org_dir="/usr/local/tomcat_$svn_checkout_target_dir_name/webapps/"
+    225 flag_restart="$5"
+    226
+    227 svn_update_file_list="$org_svn_update_file_list$svn_checkout_target_dir_name"
+    228 delflag="_del"
+    229 svn_del_file_list="$org_svn_update_file_list$svn_checkout_target_dir_name$delflag"
+    230 cat /dev/null > $svn_update_file_list
+    231 cat /dev/null > $svn_del_file_list
+    232 compile_ant_log=$tmp_compile_ant_log$svn_checkout_target_dir_name
+    233 internal_class_list_proj=$pre_internal_class$svn_checkout_target_dir_name
+    234 pre_tmp="_tmp"
+    235 interal_class_list_tmp=$pre_internal_class$svn_checkout_target_dir_name$pre_tmp
+    236
+    237
+    238 get_max_rivision;
+    239 ##判断本地的svn_url地址跟现在传入的地址是否一致，如果不一致。则删除本地workspace
+    240 ###判断checkout目录是否存在，如果存在，比较workspace版本号now_rivision和传入的版本号to_rivision，
+    241 ###now_rivision 大于 to_rivision，删除本地的workspace，重新svn checkout
+    242 ###否则svn update
+    243
+    244 if [  -d $svn_checkout_target_dir ]; then
+    245   check_svn_url_the_same
+    246   if [ $flag_svn_the_same = 1 ];then
+    247
+    248    get_now_rivision;
+    249    if [ $to_rivision != "n" ]; then
+    250       if [ $now_rivision -gt $to_rivision ];then
+ 251        rm -rf $svn_checkout_target_dir
+    252       checkout_rivision_range
+    253       target_rivision=$to_rivision
+    254       else
+    255       update_svn_to_rivision
+    256        target_rivision=$to_rivision
+    257       fi
+    258    else
+    259    update_svn
+    260    target_rivision=$max_rivision
+    261    fi
+    262  else
+    263  rm -rf $svn_checkout_target_dir
+    264    if [ $to_rivision != "n" ]; then
+    265    checkout_rivision_range
+    266    target_rivision=$to_rivision
+    267    else
+    268    checkout_newest
+    269    target_rivision=$max_rivision
+    270    echo " $target_rivision"
+    271    fi
+    272  fi
+    273 else
+    274    if [ $to_rivision != "n" ]; then
+    275    checkout_rivision_range
+    276    target_rivision=$to_rivision
+    277    else
+    278    checkout_newest
+    279    target_rivision=$max_rivision
+    280    echo " $target_rivision"
+    281    fi
+    282 fi
+    283
+    284
+    285 get_min_rivision 2>&1 > /dev/null;
+    286 echo "----------创建编译配置文件$svn_checkout_target_dir/build.xml--------------"
+    287 cp_build_xml_file 2>&1 > /dev/null;
+    288 echo "----------生成更新列表文件$svn_update_file_list-----------------"
+    289 get_svn_update_file_list 2>&1 > /dev/null ;
+    290
+    291 compile_flag=$(cat $svn_update_file_list | egrep -c '.class$')
+    292 if [ $compile_flag -gt 0 ];then
+    293 echo "----------编译项目$4---------------------------------------------"
+    294 comiple_project 2>&1 > /dev/null ;
+    295 show_comiple_log;
+    296 else
+    297 echo "生成更新列表无java文件，无需编译"
+    298 fi
+    299
+    300 echo "----------模拟$4项目的生成环境-----------------------------------"
+ 301 rsync_file_to_real_project 2>&1 > /dev/null;
+    302 make_realproject_update_files;
+    303 check_and_get_interal_class;
+    304 echo "----------生成增量更新文件列表-----------------------------------"
+    305 cat  $svn_update_file_list
+    306 echo "----------内部类更新文件列表-----------------------------------"
+    307 cat  $internal_class_list_proj
+    308 #rsync_file_to_test_env;
+    309
+    310 #if [ $flag_restart = y ];then
+    311 #restart_real_project
+    312 #echo "项目$svn_checkout_target_dir_name已经更新，并已重启"
+    313 #else
+    314 #echo "项目$svn_checkout_target_dir_name已经更新，没有重启"
+    315 #fi
+

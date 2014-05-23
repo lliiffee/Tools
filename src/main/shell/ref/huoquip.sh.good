@@ -1,0 +1,20 @@
+#!/bin/sh
+set -x
+ip_url="http://cps.800pharm.com/ip.php"
+api_url="http://cps.800pharm.com/api.php"
+target_ipfile="/tmp/ip.txt"
+#elinks $api_url | sed 's/ //g' > $target_ipfile
+n=$(which curl)
+flag=$(echo $n | grep -c curl)
+if [ $flag -gt 0 ];then
+echo "curl aleard installed"
+else 
+
+yum -y install curl
+fi
+curl http://cps.800pharm.com/ip.php > $target_ipfile
+client_ip=$(cat $target_ipfile)
+curl -d "ip=$client_ip&pass=myippasswd" $api_url
+
+
+

@@ -1,0 +1,420 @@
+ #!/bin/sh
+      2 #set -x
+      3 right_now=$(date '+%F %T')
+      4 nowtime=$(date '+%F')
+      5 updatedir=/tmp/$nowtime
+      6
+      7
+      8 shop_update_dir="$updatedir/shop/"
+      9 shop_cwc_dir="$updatedir/shop/WEB-INF/classes/com/cwc"
+     10 shop_administrator_dir="$updatedir/shop/administrator"
+     11 shop_qiantai="root@192.168.0.102:/usr/local/tomcat_shop/webapps/shop/"
+     12 shop_houtai="root@192.168.0.9:/usr/local/tomcat_adminshop/webapps/shop/"
+     13 shop_svn_dizhi="svn://192.168.0.106/bbf_new_shop/trunk"
+     14 #shop_svn_dizhi="svn://192.168.0.106/bbf_new_shop/branches/Freight"
+     15 #shop_svn_dizhi="svn://192.168.0.106/bbf_new_shop/branches/member"
+     16 shop_www="root@192.168.0.102:/usr/local/apache/htdocs/shop/"
+     17
+     18 svn_user="lanh"
+     19 svn_pwd="lh2013"
+     20
+     21
+     22 shop_default_start_rivision=1520
+     23 shop_work_space=/usr/local/tomcat_all/webapps/shop/
+     24
+     25 ###for php####
+     26 svn_file_list="/tmp/svn_update_filelist_shop"
+     27 svn_del_file_list="/tmp/svn_update_filelist_shop_del"
+     28 shop_log=/var/www/html/shop.txt
+     29 web_ower="www"
+     30 shop_root="/usr/local/tomcat_shop/webapps/shop/"
+     31 if [  -d $shop_root ];then
+     32  continue;
+     33 else
+     34 mkdir -p $shop_root
+     35 chown -R $web_ower:$web_ower $shop_root
+     36 fi
+     37
+     38 if [ -d $updatedir ];then
+     39 chown -R $web_ower:$web_ower $updatedir
+     40 else
+     41  continue;
+     42 fi
+     43
+     44 if [  -f  "$svn_file_list" ];then
+     45 chown -R $web_ower:$web_ower $svn_file_list
+     46 else
+     47 continue;
+     48 fi
+     49
+     50
+ 51 if [  -f  "$svn_del_file_list" ];then
+     52 chown -R $web_ower:$web_ower $svn_del_file_list
+     53 else
+     54 continue;
+     55 fi
+     56
+     57
+     58 if [ -f  "$shop_log" ];then
+     59 chown -R $web_ower:$web_ower $svn_file_list
+     60 else
+     61 continue;
+     62 fi
+     63
+     64
+     65 check_ant_process(){
+     66 n_process_flag=$(ps -ef | egrep   '/usr/local/ant|auto_genxin_test_evn.sh' | grep -cv grep )
+     67 if [ $n_process_flag -gt 0 ];then
+     68 echo "兄台，，悠着点，其他童鞋正在使用该功能，请稍后点更新。。。"
+     69 echo "每次更新持续时间20秒~2分钟不等，更新期间会锁定更新进程，多点无益。切记"
+     70 exit;
+     71 else
+     72 continue;
+     73 fi
+     74 }
+     75
+     76 ####for php end#################
+     77
+     78 echo "--------当前更新时间：$right_now---------------"
+     79 check_ant_process;
+     80 if [ -d $shop_work_space ];then
+     81 shop_now_rivision=$(svn info --username $svn_user --password $svn_pwd $shop_work_space  | grep "Revision" | awk '{print $2}' | sed '/^$/d')
+     82 shop_server_rivision=$(svn info --username $svn_user --password $svn_pwd $shop_svn_dizhi |grep "Revision"|awk '{print $2}' | sed '/^$/d')
+     83    if [ $shop_server_rivision = $shop_now_rivision ];then
+     84       echo "shop本地版本和服务器版本一样，无需更新"
+     85       exit;
+     86    else
+     87     continue;
+     88    fi
+     89
+     90 shop_firststart_rivision=$shop_now_rivision
+     91
+     92 else
+     93 shop_firststart_rivision=$shop_default_start_rivision
+     94 fi
+     95
+     96
+     97
+     98 /home/shell/auto_genxin_test_evn.sh "$shop_firststart_rivision" n "$shop_svn_dizhi" shop n
+     99
+    100 ######当编译失败即退出整个更新流程########
+ 101 compile1_ant_log="/tmp/ant_log_shop"
+    102 if [ -f  "$compile1_ant_log" ];then
+    103  ant1_fail=$(cat $compile1_ant_log | egrep -c 'Build failed|error|BUILD FAILED')
+    104  if [ "$ant1_fail" -gt 0 ];then
+    105  exit
+    106  else
+    107  continue;
+    108  fi
+    109 else
+    110 continue;
+    111 fi
+    112 ###### end当编译失败即退出整个更新流程########
+    113
+    114
+    115
+    116 check_svn_del_file(){
+    117 num_del=$(cat  $svn_del_file_list | sed '/^$/d' | wc -l )
+    118 if [ $num_del -gt 0 ];then
+    119 flag_del=1
+    120 del_cmd=$(cat $svn_del_file_list | sed '/^$/d' | sed 's/^/rm -f /g' | sed 's/$/;/g' | tr -d '\r\n' | sed "s#^#cd $shop_root/../;#g")
+    121 #del_cmd_adminshop=$(cat $svn_del_file_list | sed '/^$/d' | sed 's/^/rm -f /g' | sed 's/$/;/g' | tr -d '\r\n' | sed "s#^#cd /usr/local/tomcat_adminshop/webapps/;#g")
+    122 echo "删除的shop文件命令"
+    123 echo "$del_cmd" >> /tmp/del_shop
+    124 cat /tmp/del_shop
+    125 #echo "删除的adminshop文件命令"
+    126 #echo "del_cmd_adminshop" >> /tmp/del_adminshop
+    127 #cat  /tmp/del_adminshop
+    128 else
+    129 flag_del=0
+    130 fi
+    131 }
+    132
+    133 del_shop_file(){
+    134 ssh root@192.168.0.102 "$del_cmd"
+    135 #ssh root@192.168.0.102 "$del_cmd_adminshop"
+    136 }
+    137
+    138
+    139
+    140 check_cwc_files_flag(){
+    141 files_cwc=$(find $shop_cwc_dir -type f | wc -l)
+    142 if [ $files_cwc -gt 0 ];then
+    143 flag_cwc_files=1
+    144 else
+    145 flag_cwc_files=0
+    146 fi
+    147 }
+    148
+    149
+    150 check_administrator_files_flag(){
+ 151 files_administrator=$(find $shop_administrator_dir -type f | wc -l)
+    152 if [ $files_administrator -gt 0 ];then
+    153 flag_administrator_files=1
+    154 else
+    155 flag_administrator_files=0
+    156 fi
+    157 }
+    158
+    159
+    160 cp_shop_houtai_cwc_file(){
+    161 mkdir -p $updatedir/admin_shop/shop/WEB-INF/classes/com/
+    162 #mv $updatedir/shop/WEB-INF/classes/com/cwc $updatedir/admin_shop/shop/WEB-INF/classes/com/
+    163 rsync -avg $updatedir/shop/WEB-INF/classes/com/cwc $updatedir/admin_shop/shop/WEB-INF/classes/com/
+    164
+    165
+    166 }
+    167
+    168 cp_shop_houtai_administrator_file(){
+    169 mkdir -p $updatedir/admin_shop/shop/
+    170 rsync -avg $updatedir/shop/administrator $updatedir/admin_shop/shop/
+    171 }
+    172
+    173
+    174
+    175 genxin_shop_qiantai(){
+    176 cd $updatedir
+    177 ##增加对sql的监控，druid数据库连接池sql监控
+    178 ###javamelody监控java
+    179 if [ -f $updatedir/shop/WEB-INF/web.xml  ];then
+    180 sed -i  '/<\/web-app>/d' $updatedir/shop/WEB-INF/web.xml
+    181 cat >> $updatedir/shop/WEB-INF/web.xml <<EOF
+    182 <servlet>
+    183 <servlet-name>DruidStatView</servlet-name>
+    184 <servlet-class>com.alibaba.druid.support.http.StatViewServlet</servlet-class>
+    185 </servlet>
+    186
+    187 <servlet-mapping>
+    188 <servlet-name>DruidStatView</servlet-name>
+    189 <url-pattern>/druid/*</url-pattern>
+    190 </servlet-mapping>
+    191
+    192 <filter>
+    193     <filter-name>monitoring</filter-name>
+    194     <filter-class>net.bull.javamelody.MonitoringFilter</filter-class>
+    195  </filter>
+    196  <filter-mapping>
+    197      <filter-name>monitoring</filter-name>
+    198      <url-pattern>/*</url-pattern>
+    199  </filter-mapping>
+    200 <listener>
+	 201    <listener-class>net.bull.javamelody.SessionListener</listener-class>
+    202 </listener>
+    203 </web-app>
+    204 EOF
+    205 fi
+    206 ##临时更新ES的节点配置文件
+    207 if [ -f $updatedir/shop/WEB-INF/config/spring/spring-es.xml ];then
+    208 sed -i '/192.168.1.10/d' $updatedir/shop/WEB-INF/config/spring/spring-es.xml
+    209 sed  -i '/192/d' $updatedir/shop/WEB-INF/config/spring/spring-es.xml
+    210 #sed  -i '/<list>/ a\<value>test.800pharm.com</value>' $updatedir/shop/WEB-INF/config/spring/spring-es.xml
+    211 sed  -i '/<list>/ a\<value>192.168.0.101</value>' $updatedir/shop/WEB-INF/config/spring/spring-es.xml
+    212 sed  -i 's/elasticsearch3/elasticsearch_101/g' $updatedir/shop/WEB-INF/config/spring/spring-es.xml
+    213 fi
+    214 if [ -f $updatedir/shop/WEB-INF/classes/shop_path.properties ];then
+    215 chmod 755 $updatedir/shop/WEB-INF/classes/shop_path.properties
+    216 echo "path=/usr/local/tomcat_shop/webapps/shop/" > $updatedir/shop/WEB-INF/classes/shop_path.properties
+    217 fi
+    218 ###更改日志的等级为error
+    219 if [ -f $updatedir/shop/WEB-INF/config/log4j.properties ];then
+    220 sed -i 's/DEBUG/ERROR/g' $updatedir/shop/WEB-INF/config/log4j.properties
+    221 fi
+    222 #sed -i '/192.168.1.10/d' $updatedir/shop/WEB-INF/config/spring/spring-es.xml
+    223 #sed  -i 's/192.168.1.111/test.800pharm.com/g' $updatedir/shop/WEB-INF/config/spring/spring-es.xml
+    224 #ssh root@192.168.0.102 "echo "path=/usr/local/tomcat_shop/webapps/shop/" > /usr/local/tomcat_shop/webapps/shop/WEB-INF/classes/shop_path.properties"
+    225 #rsync -avg --exclude=cwc shop/ $shop_qiantai
+    226 #rsync -avg --exclude=cwc shop/ $shop_www
+    227 rsync -avg  shop/ $shop_qiantai
+    228 rsync -avg  shop/ $shop_www
+    229
+    230 }
+    231
+    232
+    233 genxin_shop_houtai(){
+    234 cd $updatedir
+    235 #rsync -avg  admin_shop/shop/ $shop_houtai
+    236 rsync -avg  shop/ $shop_houtai
+    237 ssh root@192.168.0.9 "echo "path=/usr/local/tomcat_adminshop/webapps/shop/" > /usr/local/tomcat_adminshop/webapps/shop/WEB-INF/classes/shop_path.properties"
+    238
+    239 }
+    240
+    241 check_shop_xml(){
+    242 file_xml=$(find $shop_update_dir -type f -name "*.xml" | wc -l)
+    243 if [ $file_xml -gt 0 ];then
+    244 flag_xml=1
+    245 else
+    246 flag_xml=0
+    247 fi
+    248 }
+    249
+    250 check_shop_class(){
+	 251 file_class=$(find $shop_update_dir -type f -name "*.class" | wc -l)
+    252 if [ $file_class -gt 0 ];then
+    253 flag_class=1
+    254 else
+    255 flag_class=0
+    256 fi
+    257 }
+    258
+    259 check_adminshop_xml(){
+    260 file_xml_admin=$(find $updatedir/admin_shop/ -type f -name "*.xml" | wc -l)
+    261 if [ $file_xml_admin -gt 0 ];then
+    262 flag_xml_admin=1
+    263 else
+    264 flag_xml_admin=0
+    265 fi
+    266 }
+    267
+    268 check_adminshop_class(){
+    269 file_class_admin=$(find $updatedir/admin_shop/ -type f -name "*.class" | wc -l)
+    270 if [ $file_class_admin -gt 0 ];then
+    271 flag_class_admin=1
+    272 else
+    273 flag_class_admin=0
+    274 fi
+    275 }
+    276
+    277
+    278 check_xml_class_jar(){
+    279 file_xml_class_jar=$(find $shop_update_dir -type f -name "*class" -o -name "*xml" -o -name "*.jar" | wc -l)
+    280 if [ $file_xml_class_jar -gt 0 ];then
+    281 flag_xml_class_jar=1
+    282 else
+    283 flag_xml_class_jar=0
+    284 fi
+    285 }
+    286
+    287 restart_shop(){
+    288 ssh root@192.168.0.102 "/home/shell/start_shop.sh"
+    289
+    290 }
+    291
+    292
+    293 restart_adminshop(){
+    294 ssh root@192.168.0.9 "/home/shell/start_adminshop.sh"
+    295
+    296 }
+    297
+    298 #echo "#####构造admin_shop"
+    299 #if [  -d $shop_update_dir ]; then
+    300 #   if [  -d $shop_cwc_dir ]; then
+ 301 #   check_cwc_files_flag
+    302 #      if [ $flag_cwc_files = 1 ];then
+    303 #      cp_shop_houtai_cwc_file
+    304 #      else
+    305 #      echo "cwc 目录为空"
+    306 #      fi
+    307
+    308 #   else
+    309 #   echo "admin_shop cwc没有可以更新的文件"
+    310 #   fi
+    311
+    312 #   if [  -d $shop_administrator_dir ]; then
+    313 #   check_administrator_files_flag
+    314 #      if [ $flag_administrator_files = 1 ];then
+    315 #      cp_shop_houtai_administrator_file
+    316 #      else
+    317 #      echo "administrator 目录为空"
+    318 #      fi
+    319
+    320 #   else
+    321 #   echo "admin_shop administrator没有可以更新的文件"
+    322 #   fi
+    323
+    324
+    325 #else
+    326 #echo "shop没有可以更新的文件"
+    327 #fi
+    328
+    329
+    330 echo "##更新shop前台"
+    331 if [  -d $shop_update_dir ]; then
+    332 genxin_shop_qiantai 2>&1 > /dev/null
+    333 #check_shop_xml
+    334 #check_shop_class
+    335 check_xml_class_jar
+    336 #shop_flag=$(echo "$flag_xml$flag_class"  | grep -c '1' )
+    337 #  if [ $shop_flag -gt 0 ];then
+    338  if [ $file_xml_class_jar -gt 0 ];then
+    339   echo "重启shop......."
+    340   restart_shop
+    341   else
+    342   echo "shop前台没有xml和class文件文件，无需重启"
+    343   fi
+    344
+    345
+    346 else
+    347 echo "shop前台没有可以更新的内容"
+    348 fi
+    349
+    350
+ 351
+    352 #echo "##更新shop后台"
+    353 #if [  -d $updatedir/admin_shop/ ]; then
+    354 #genxin_shop_houtai 2>&1 > /dev/null
+    355 #check_adminshop_xml
+    356 #check_adminshop_class
+    357 #adminshop_flag=$(echo "$flag_xml_admin$flag_class_admin"  | grep -c '1' )
+    358 #  if [ $adminshop_flag -gt 0 ];then
+    359 #  echo "重启adminshop......"
+    360 #  restart_adminshop
+    361 #  else
+    362 #  echo "adminshop后台没有xml和class文件文件，无需重启"
+    363 #  fi
+    364 #else
+    365 #echo "shop后台没有可以更新的内容"
+    366 #fi
+    367
+    368 #echo "##更新shop后台"
+    369 #if [  -d $shop_update_dir ]; then
+    370 #genxin_shop_houtai 2>&1 > /dev/null
+    371 #check_shop_xml
+    372 #check_shop_class
+    373 #shop_flag=$(echo "$flag_xml$flag_class"  | grep -c '1' )
+    374 #  if [ $shop_flag -gt 0 ];then
+    375 #  echo "重启adminshop......."
+    376 #  restart_adminshop
+    377 #  else
+    378 #  echo "adminshop后台没有xml和class文件文件，无需重启"
+    379 #  fi
+    380
+    381
+    382 #else
+    383 #echo "adminshop后台没有可以更新的内容"
+    384 #fi
+    385
+    386
+    387
+    388 echo "########删除已经废去的文件.......#######"
+    389 check_svn_del_file
+    390 if [ $flag_del = 1 ];then
+    391 del_shop_file
+    392 restart_shop
+    393 #restart_adminshop
+    394 echo "shop，删除已废去的文件-成功"
+    395 else
+    396 echo "shop，adminshop没有废去的文件可删除"
+    397 fi
+    398
+    399
+    400
+    401
+    402 echo "##########备份每次增量更新的shop##########"
+    403 #ss_bak_time=$(date '+%F_%H-%M')
+    404 ss_bak_time=$(date '+%Y-%m')
+    405 bak_dir="/tmp/$ss_bak_time"
+    406 if [  -d $updatedir ]; then
+    407 continue;
+    408 else
+    409 mkdir -p $bak_dir
+    410 chown -R $web_ower:$web_ower
+    411 fi
+    412 echo "####同步到本地$bak_dir/"
+    413 rsync -avg $updatedir/ $bak_dir/  2>&1 > /dev/null
+    414 scp /var/www/html/soyao.txt $bak_dir/
+    415 scp $svn_file_list $bak_dir/
+    416 scp $svn_del_file_list $bak_dir/
+    417 echo "####同步到本地$bak_dir/成功"
+    418 #echo "### 同步到73###"
+    419 #rsync -avg $bak_dir lanh@test.800pharm.com:/home/lanh/  2>&1 > /dev/null
+    420 #echo "### 同步到73:/home/lanh/$ss_bak_time成功###"
