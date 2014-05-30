@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>test</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery-migrate.min.js"></script>
+
+
+<script src="js/masonry.pkgd.min.js"></script>
+<script src="js/imagesLoaded.js"></script>
+
+
+<style>
+.container-fluid {
+	padding: 20px;
+	margin:0 auto;
+}
+
+.box {
+	margin-bottom: 20px;
+	float: left;
+	width: 220px;
+	border: 1px solid red;
+	margin:0 auto;
+}
+
+.box img {
+	max-width: 100%;
+	margin:0 auto;
+}
+</style>
+
+<script>
+	$(function() {
+		var $container = $('#masonry');
+		$container.imagesLoaded(function() {
+			$container.masonry({
+				//columnWidth: 20,
+				itemSelector : '.box',
+				gutter : 10,
+				isAnimated : true,
+			});
+		});
+	});
+</script>
+
+</script>
+
+</head>
+<body>
+
+	<div id="masonry" class="container-fluid">
+		<div class="box">
+			<img src="http://img.800pharm.com/images/gg/base/20140512/1399885341090.jpg">
+		</div>
+		<div class="box">
+			<img src="http://img.800pharm.com/images/index/proShowPic/20140512/1399878885736.jpg">
+		</div>
+		<div class="box">
+			<img src="http://img.800pharm.com/images/gg/base/20140417/1397698083668.jpg">
+		</div>
+		<div class="box">
+			<img src="http://img.800pharm.com/images/gg/base/20140512/1399885341090.jpg">
+		</div>
+		<div class="box">
+			<img src="http://img.800pharm.com/images/index/proShowPic/20140512/1399878885736.jpg">
+		</div>
+		<div class="box">
+			<img src="http://img.800pharm.com/images/gg/base/20140417/1397698083668.jpg">
+		</div>
+		<div class="box">
+			<img src="http://img.800pharm.com/images/index/proShowPic/20140227/1393492741890.jpg">
+		</div>
+		<div class="box">
+			<img src="http://img.800pharm.com/images/index/proShowPic/20140516/1400224040489.jpg">
+		</div>
+		<div class="box">
+			<img src="http://img.800pharm.com/images/index/proShowPic/20140227/1393492741890.jpg">
+		</div>
+		<div class="box">
+			<img src="http://img.800pharm.com/images/index/proShowPic/20140516/1400224040489.jpg">
+		</div>
+	</div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

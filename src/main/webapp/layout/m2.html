@@ -1,0 +1,85 @@
+
+<!DOCTYPE html> 
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+<head> 
+<title>test</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<script src="js/jquery.min.js"></script>
+<script src="js/masonry.pkgd.min.js"></script>
+
+ <style> 
+ 	* {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body { font-family: sans-serif; }
+
+.masonry {
+  background: #EEE;
+  margin: 0 auto;
+  
+}
+
+.masonry .item {
+  width:  60px;
+  height: 60px;
+  float: left;
+  background: #D26;
+  border: 2px solid #333;
+  border-color: hsla(0, 0%, 0%, 0.5);
+  border-radius: 5px;
+}
+
+.item.w2 { width:  120px; }
+.item.w3 { width:  180px; }
+.item.w4 { width:  240px; }
+
+.item.h2 { height: 100px; }
+.item.h3 { height: 130px; }
+.item.h4 { height: 180px; }
+
+ </style>
+
+ <script>
+ 
+ $(document).ready(function(){
+	 var $container = $('#container');
+	// initialize
+	$container.masonry({
+	  columnWidth: '.item',
+	  itemSelector: '.item',
+	  gutter: 10
+	});
+ });
+
+ </script>
+ 
+</head> 
+<body> 
+ 
+<div class="masonry js-masonry"  data-masonry-options='{ "isFitWidth": true }'>
+  <div class="item w2"></div>
+  <div class="item w2 h2"></div>
+  <div class="item w2 h3"></div>
+  <div class="item w2 h2"></div>
+  <div class="item w2"></div>
+  <div class="item w2"></div>
+  <div class="item w2"></div>
+  <div class="item w2 h2"></div>
+  <div class="item w2 h3"></div>
+  <div class="item w2"></div>
+  <div class="item w2"></div>
+  <div class="item w2"></div>
+  <div class="item w2 h2"></div>
+  <div class="item w2 h3"></div>
+</div>
+
+</body> 
+</html> 
+
+
+
+
+

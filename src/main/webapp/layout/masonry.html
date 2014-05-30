@@ -1,0 +1,53 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+<title>test</title> 
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<script src="js/jquery.min.js"></script>
+<script src="js/masonry.pkgd.min.js"></script>
+
+ <style>
+  #container{
+    position:relative;
+    width:100%;
+  } 
+ 	.item { 
+ 	        width: 20%; 
+ 	        border: 1px solid red;
+ 	}
+    .item.w2 { 
+    
+    width: 40%; 
+    border: 1px solid blue;
+    }
+ </style>
+
+
+ 
+</head> 
+<body> 
+ 
+ <div id="container">
+  <div class="item"><img style="width:100%;" src="../upload/20140414105051_865_bbfm.jpg" />testttt</div>
+  <div class="item w2"><img style="width:100%;" src="../upload/20140414105051_865_bbfm.jpg" />item 2222</div>
+  <div class="item"><img style="width:100%;" src="../upload/20140414105051_865_bbfm.jpg" />item</div>
+  <div class="item w2"><img style="width:100%;" src="../upload/20140414105051_865_bbfm.jpg" />item 2222</div>
+  <div class="item"><img style="width:100%;" src="../upload/20140414105051_865_bbfm.jpg" />item</div>
+</div>
+
+ <div id="note">
+</div>
+</body> 
+ <script>
+ $(document).ready(function(){
+	 var $container = $('#container');
+	$container.masonry({
+	  columnWidth: '.item',
+	  itemSelector: '.item',
+	  gutter: 10
+	});
+ });
+
+ </script>
+</html> 
