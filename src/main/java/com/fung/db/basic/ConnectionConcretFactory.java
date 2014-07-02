@@ -20,6 +20,8 @@ public class ConnectionConcretFactory {
 	/*
 	 * oracle.jdbc.driver.OracleDriver
 	 * jdbc:oracle:thin:@localhost:1521:orcl
+	 * user
+	 * passowrd
 	 */
 	public Connection getConByBaseMethod(String className,String url,String user,String pwd) throws Exception
 	{
