@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+<meta charset="utf-8" />
+<meta content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
+<meta content="YES" name="apple-touch-fullscreen">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="telephone=no" name="format-detection">
+<link rel="stylesheet" href="css/normalize.css">
+<script src="js/modernizr-2.6.2.min.js"></script>
+<link type="text/css"  rel="stylesheet" href="css/member/member.css" />
+<title>八百方网上药店触屏版</title>
+</head>
+
+<body>
+	<div class="wrap">
+    	<div class="header">
+            <a class="back" href="javascript:window.history.go(-1);"><i></i>返回</a>
+            <span class="hd_tit">我的购物车</span>
+            <a class="cart" href="http://chat.53kf.com/webCompany.php?arg=800pharm">在线客服</a>
+        </div>
+    	<div class="myCart">
+        	<div class="cart_header">
+            	<span>您的购物车中有2家药房的产品</span>
+                <a href="">继续购物</a>
+            </div>
+            <ul class="cartList">
+            	<li>
+                	<div class="cart_hd">
+                        广州好信医药
+                    </div>
+                    <dl class="cart_list">
+                        <dd>
+                            <a href=""><img width="48" height="48" src="images/member/pd.png" /></a>
+                            <div class="pd_detail">
+                                <a href="" class="pd_name">东阿阿胶-阿胶（250克装）</a>
+                                <div class="pd_count">
+                                	<div class="pd_number"><a href="" class="minus"></a><span class="count">1</span><a href="" class="plus"></a></div>
+                                    <div class="pd_price">￥395</div>
+                                </div>
+                            </div>
+                            <a href="" class="pd_delete"></a>
+                        </dd>
+                        <dd>
+                            <a href=""><img width="48" height="48" src="images/member/pd.png" /></a>
+                            <div class="pd_detail">
+                                <a class="pd_name">东阿阿胶-阿胶（250克装）</a>
+                                <div class="pd_count">
+                                	<div class="pd_number"><a href="" class="minus"></a><span class="count">1</span><a href="" class="plus"></a></div>
+                                    <div class="pd_price">￥395</div>
+                                </div>
+                            </div>
+                            <a href="" class="pd_delete"></a>
+                        </dd>
+                    </dl>
+                    <div class="cart_ft">
+                        <span class="cart_amount">共计：<span class="cl_red">￥39</span></span>
+                        <a class="btn_orange" href="">结算</a>
+                    </div>
+                </li>
+                <li>
+                	<div class="cart_hd">
+                        广州好信医药
+                    </div>
+                    <dl class="cart_list">
+                        <dd>
+                            <img width="48" height="48" src="images/member/pd.png" />
+                            <div class="pd_detail">
+                                <p class="pd_name">东阿阿胶-阿胶（250克装）</p>
+                                <div class="pd_count">
+                                	<div class="pd_number"><a href="" class="minus"></a><span class="count">1</span><a href="" class="plus"></a></div>
+                                    <div class="pd_price">￥395</div>
+                                </div>
+                            </div>
+                            <a href="" class="pd_delete"></a>
+                        </dd>
+                        <dd>
+                            <img width="48" height="48" src="images/member/pd.png" />
+                            <div class="pd_detail">
+                                <p class="pd_name">东阿阿胶-阿胶（250克装）</p>
+                                <div class="pd_count">
+                                	<div class="pd_number"><a href="" class="minus"></a><span class="count">1</span><a href="" class="plus"></a></div>
+                                    <div class="pd_price">￥395</div>
+                                </div>
+                            </div>
+                            <a href="" class="pd_delete"></a>
+                        </dd>
+                    </dl>
+                    <div class="cart_ft">
+                        <span class="cart_amount">共计：<span class="cl_red">￥39</span></span>
+                        <a class="btn_orange" href="">结算</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="footer">
+        	<div class="ft_search">
+            	<div class="b_input">
+            		<form>
+                		<input class="main_input" type="text" placeholder="商品名称/功效/症状/厂家名" id="searchTailContent"/>
+                    	<input class="search_btn" type="button" onclick="searchTail();"/>
+                	</form>
+            	</div>
+            </div>
+            <div class="ft_nav">
+            	<a href="home.html" class="b_nav">首页</a>
+                <a href="#" class="b_nav">分类</a>
+                <a href="prodDetail.html#shop_cart" class="b_nav">购物车</a>
+                <a href="#" class="b_nav b_nav_r">药店</a>
+                <a href="#" class="b_nav">我的八百方</a>
+                <a href="javascript:;" onclick="logout();" class="b_nav">退出</a>
+                <a href="javascript:window.history.go(-1);" class="b_nav">上一页</a>
+                <a href="javascript:scroll(0,0);" class="b_nav b_nav_r">回到顶部</a>
+            </div>
+            <div class="hot_line">
+            	<a href="tel:4008855171"><span class="phone"></span>全国统一热线：400-885-5171</a>
+            </div>
+            <div class="copyright">
+            	<p><a href="http://www.800pharm.com">电脑版</a></p>
+                <p>互联网药品交易服务资格证书-国A-20140001</p>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="js/localStorage.js"></script>
+<script type="text/javascript" src="js/member/member.js"></script>
+</html>

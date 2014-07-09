@@ -1,0 +1,39 @@
+@charset "utf-8";
+/* CSS Document */
+*{margin:0;padding:0;color:#333333;font:12px Verdana,Arial,"宋体";}
+body{min-width:320px; background-color:#eeeeee; overflow-y:scroll;}
+ul{list-style:none;}
+img{border:0;}
+.wrap{margin:0 auto;background-color:#eeeeee;width:100%; min-width:320px; max-width:1024px;}
+.header{min-width:320px; height:50px; background-color:#0055a6; text-align:center;}
+.header .back{display:inline-block; float:left; margin:12px 0 0 10px; padding:0 10px 0 0; text-decoration:none;display:inline-block; background-color:#ffffff; color:#0055a6; line-height:26px;}
+.header .back i{ display:inline-block; width:10px; height:26px; background:url(../../images/common/tri.png); background-size:10px 26px;background-color:#0055a6; margin-right:5px;  float:left;}
+.header span{color:#ffffff; text-align:center; font-size:16px; line-height:50px;}
+.header .cart{display:inline-block; padding:4px 10px; margin:12px 10px 0 0; border:1px solid #ffffff; color:#ffffff; text-decoration:none; float:right;}
+.wrap .allsort{min-width:320px;}
+.allsort .as_bd dt{height:55px; line-height:55px; border-bottom:1px solid #d8d8d8; color:#666666; cursor:pointer; padding-left:60px; font-size:14px;}
+.allsort .as_bd .icon_up{display:inline-block; width:11px; height:9px; background:url(../../images/allSorts/pointer.png) no-repeat scroll 0 0; background-size:11px 18px; margin:23px 10px; float:right;}
+.allsort .as_bd .icon_down{display:inline-block; width:11px; height:9px; background:url(../../images/allSorts/pointer.png) no-repeat scroll 0 -9px; background-size:11px 18px; margin:23px 10px; float:right;}
+.allsort .as_bd dd{background-color:#d8d8d8; padding:10px 5px 15px 10px; overflow:hidden; display:none;box-shadow:0 1px 3px #D2D2D2 inset;}
+.allsort .as_bd dd a{min-width:60px; width:15%; height:30px;background-color:#ffffff;margin:5px 5px 0 0; padding:0 5px; float:left;text-align:center;line-height:29px;text-decoration:none; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; box-shadow: 1px 1px 1px #cccccc;}
+.allsort .as_bd dd a:hover{ background-color:#da1d31; color:#ffffff;}
+.allsort .as_bd .sort1{ background:url(../../images/allSorts/sort1.png) no-repeat; background-position:5px 50%; background-size:45px 45px;}
+.allsort .as_bd .sort2{ background:url(../../images/allSorts/sort2.png) no-repeat; background-position:5px 50%; background-size:45px 45px;}
+.allsort .as_bd .sort3{ background:url(../../images/allSorts/sort3.png) no-repeat; background-position:5px 50%; background-size:45px 45px;}
+.allsort .as_bd .sort4{ background:url(../../images/allSorts/sort4.png) no-repeat; background-position:5px 50%; background-size:45px 45px;}
+.allsort .as_bd .sort5{ background:url(../../images/allSorts/sort5.png) no-repeat; background-position:5px 50%; background-size:45px 45px;}
+.allsort .as_bd .sort6{ background:url(../../images/allSorts/sort6.png) no-repeat; background-position:5px 50%; background-size:45px 45px;}
+.allsort .as_bd .sort7{ background:url(../../images/allSorts/sort7.png) no-repeat; background-position:5px 50%; background-size:45px 45px;}
+.footer{width:94%; min-width:300px; max-width:1024px; margin:0 3%; margin-top:20px;padding-bottom:20px;}
+.footer .ft_search .b_input{margin:0 auto;height:35px; min-width:296px;border:2px solid #0055a6;box-shadow: 1px 1px 1px #cccccc;}
+.footer .ft_search .b_input .main_input{width:82%;min-width:241px;height:35px;border:0;float:left; font-size:14px; -webkit-appearance:none; border-radius:0px;/*解决iphone safari上的圆角问题*/ padding-left:1%;}
+.footer .ft_search .b_input .search_btn{width:17%;min-width:50px;height:35px;border:0;float:right;background:url(../../images/common/search.png) no-repeat;cursor:pointer; background-size:contain; background-position:center; background-color:#0055a6; -webkit-appearance:none; border-radius:0px;/*解决iphone safari上的圆角问题*/}
+.footer .ft_nav{height:80px;}
+.footer .ft_nav .b_nav{min-width:70px; width:23.5%; height:30px;background-color:#ffffff;margin:10px 2% 0 0;float:left;text-align:center;line-height:29px;text-decoration:none;box-shadow: 1px 1px 1px #cccccc;}
+.footer .ft_nav .b_nav_r{margin-right:0;}
+.footer .hot_line{height:32px; margin-top:10px; background:#da1d31;box-shadow: 1px 1px 1px #cccccc;}
+.footer .hot_line a{height:32px; width:300px; display:block; text-align:center; line-height:32px; text-decoration:none; color:#ffffff;
+font-weight:700; margin:0 auto;}
+.footer .hot_line a .phone{ width:17px; height:14px; background:url(../../images/common/tel.png); background-size:cover; display:inline-block; margin:9px 10px 0 0; vertical-align:top;}
+.footer .copyright p{color:#888888;text-align:center;margin-top:10px; height:25px;}
+.footer .copyright p a{color:#888888;text-decoration:none; line-height:25px; padding:1px 5px;}

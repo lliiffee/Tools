@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+<meta charset="utf-8" />
+<meta content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
+<meta content="YES" name="apple-touch-fullscreen">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="telephone=no" name="format-detection">
+<link rel="stylesheet" href="css/normalize.css">
+<script src="js/modernizr-2.6.2.min.js"></script>
+<link type="text/css"  rel="stylesheet" href="css/member/member.css" />
+<title>八百方网上药店触屏版</title>
+</head>
+
+<body>
+	<div class="wrap">
+    	<div class="header">
+            <a class="back" href="javascript:window.history.go(-1);"><i></i>返回</a>
+            <span class="hd_tit">地址管理</span>
+            <a class="cart" href="http://chat.53kf.com/webCompany.php?arg=800pharm">在线客服</a>
+        </div>
+    	<div class="myAddress">
+        	<ul class="addressList">
+            	<li>
+                	<div class="address_hd">
+                    	<p>六天为<span>13213255658</span></p>
+                        <span>广东省 广州市 海珠区 赤岗北路118号 四季天地3楼 东创投资</span>
+                    </div>
+                    <div class="address_ft">
+                    	<a class="default choice" href="">设为默认</a>
+                        <a class="revise" href=""></a>
+                        <a class="delete" href=""></a>
+                    </div>
+                </li>
+                <li>
+                	<div class="address_hd">
+                    	<p>六天为<span>13213255658</span></p>
+                        <span>广东省 广州市 海珠区 赤岗北路118号 四季天地3楼 东创投资</span>
+                    </div>
+                    <div class="address_ft">
+                    	<a class="default" href="">设为默认</a>
+                        <a class="revise" href=""></a>
+                        <a class="delete" href=""></a>
+                    </div>
+                </li>
+           	</ul>
+            <a class="addressAdd" href="">添加新地址</a>
+        </div>
+        <div class="add_Address">
+            <form>
+                <div class="inputBox">
+                    <input type="text" value="" placeholder="请输入收货人" />
+                    <input type="text" value="" placeholder="请输入手机" />
+                </div>
+                <div class="select">
+                    <a href="">请选择省份</a>
+                    <select>
+                        <option>广东省</option>
+                        <option>黑龙江省</option>
+                        <option>江苏省</option>
+                        <option>湖北省</option>
+                        <option>河南省</option>
+                    </select>
+                </div>
+                
+                <div class="textarea">
+                    <textarea placeholder="详细地址"></textarea>
+                </div>
+                <div class="b_btn">
+                	<p class="warning">收货人不能为空</p>
+                    <input class="btn_save" type="submit" value="保存地址" />
+                </div>
+            </form>
+        </div>
+        <div class="footer">
+        	<div class="ft_search">
+            	<div class="b_input">
+            		<form>
+                		<input class="main_input" type="text" placeholder="商品名称/功效/症状/厂家名" id="searchTailContent"/>
+                    	<input class="search_btn" type="button" onclick="searchTail();"/>
+                	</form>
+            	</div>
+            </div>
+            <div class="ft_nav">
+            	<a href="home.html" class="b_nav">首页</a>
+                <a href="#" class="b_nav">分类</a>
+                <a href="prodDetail.html#shop_cart" class="b_nav">购物车</a>
+                <a href="#" class="b_nav b_nav_r">药店</a>
+                <a href="#" class="b_nav">我的八百方</a>
+                <a href="javascript:;" onclick="logout();" class="b_nav">退出</a>
+                <a href="javascript:window.history.go(-1);" class="b_nav">上一页</a>
+                <a href="javascript:scroll(0,0);" class="b_nav b_nav_r">回到顶部</a>
+            </div>
+            <div class="hot_line">
+            	<a href="tel:4008855171"><span class="phone"></span>全国统一热线：400-885-5171</a>
+            </div>
+            <div class="copyright">
+            	<p><a href="http://www.800pharm.com">电脑版</a></p>
+                <p>互联网药品交易服务资格证书-国A-20140001</p>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="js/localStorage.js"></script>
+<script type="text/javascript" src="js/member/member.js"></script>
+</html>

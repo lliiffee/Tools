@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+<meta charset="utf-8" />
+<meta content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
+<meta content="YES" name="apple-touch-fullscreen">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="telephone=no" name="format-detection">
+<link rel="stylesheet" href="css/normalize.css">
+<script src="js/modernizr-2.6.2.min.js"></script>
+<link type="text/css"  rel="stylesheet" href="css/member/member.css" />
+<title>八百方网上药店触屏版</title>
+</head>
+
+<body>
+	<div class="wrap">
+    	<div class="header">
+            <a class="back" href="javascript:window.history.go(-1);"><i></i>返回</a>
+            <span class="hd_tit">我的优惠券/红包</span>
+            <a class="cart" href="http://chat.53kf.com/webCompany.php?arg=800pharm">在线客服</a>
+        </div>
+    	<div class="myWelfare">
+        	<div class="welfare_hd">
+            	<span id="myCard" class="cur">我的优惠券</span><span id="myCoupon">我的红包</span>
+            </div>
+            <div class="card">
+            	<div class="card_hd">
+                	<span class="cur">可用</span><span>不可用</span>
+                </div>
+                <ul class="cardList">
+                	<li>
+                    	<div class="value">
+                        	<span>广州好信药房</span>
+                            <p><i>￥</i>5.00</p>
+                            <span>订单满200元使用</span>
+                        </div>
+                        <div class="limit">
+                        	<div class="abort"></div>
+                        	<span>使用期限：</span>
+                            <p>2014.06.12</p>
+                            <p>2014.08.18</p>
+                            <a href="">立即使用</a>
+                        </div>
+                    </li>
+                    <li>
+                    	<div class="value">
+                        	<span>广州好信药房</span>
+                            <p><i>￥</i>50.00</p>
+                            <span>订单满200元使用</span>
+                        </div>
+                        <div class="limit">
+                        	<div class="abort"></div>
+                        	<span>使用期限：</span>
+                            <p>2014.06.12</p>
+                            <p>2014.08.18</p>
+                            <a href="">立即使用</a>
+                        </div>
+                    </li>
+                    <li>
+                    	<div class="value">
+                        	<span>广州好信药房</span>
+                            <p><i>￥</i>15.00</p>
+                            <span>订单满200元使用</span>
+                        </div>
+                        <div class="limit">
+                        	<div class="abort"></div>
+                        	<span>使用期限：</span>
+                            <p>2014.06.12</p>
+                            <p>2014.08.18</p>
+                            <a href="">立即使用</a>
+                        </div>
+                    </li>
+                    <li>
+                    	<div class="value">
+                        	<span>广州好信药房</span>
+                            <p><i>￥</i>15.00</p>
+                            <span>订单满200元使用</span>
+                        </div>
+                        <div class="limit">
+                        	<div class="abort" style="display:block"></div>
+                        	<span>使用期限：</span>
+                            <p>2014.06.12</p>
+                            <p>2014.06.18</p>
+                            <a href="">立即使用</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="coupon">
+            	<div class="coupon_hd">
+                	<span class="cur">可用</span><span>不可用</span>
+                </div>
+                <ul class="couponList">
+                	<li>
+                    	<div class="value">
+                        	<span>八百方商城通用 无限制使用</span>
+                            <p><i>￥</i>5.00</p>
+                            <span>券号：asd4d5c2s821asd3</span>
+                        </div>
+                        <div class="limit">
+                        	<div class="abort"></div>
+                        	<span>使用期限：</span>
+                            <p>2014.06.12</p>
+                            <p>2014.08.18</p>
+                            <a href="">立即使用</a>
+                        </div>
+                    </li>
+                    <li>
+                    	<div class="value">
+                        	<span>八百方商城通用 无限制使用</span>
+                            <p><i>￥</i>5.00</p>
+                            <span>券号：asd4d5c2s821asd3</span>
+                        </div>
+                        <div class="limit">
+                        	<div class="abort" style="display:block"></div>
+                        	<span>使用期限：</span>
+                            <p>2014.06.12</p>
+                            <p>2014.08.18</p>
+                            <a href="">立即使用</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer">
+        	<div class="ft_search">
+            	<div class="b_input">
+            		<form>
+                		<input class="main_input" type="text" placeholder="商品名称/功效/症状/厂家名" id="searchTailContent"/>
+                    	<input class="search_btn" type="button" onclick="searchTail();"/>
+                	</form>
+            	</div>
+            </div>
+            <div class="ft_nav">
+            	<a href="home.html" class="b_nav">首页</a>
+                <a href="#" class="b_nav">分类</a>
+                <a href="prodDetail.html#shop_cart" class="b_nav">购物车</a>
+                <a href="#" class="b_nav b_nav_r">药店</a>
+                <a href="#" class="b_nav">我的八百方</a>
+                <a href="javascript:;" onclick="logout();" class="b_nav">退出</a>
+                <a href="javascript:window.history.go(-1);" class="b_nav">上一页</a>
+                <a href="javascript:scroll(0,0);" class="b_nav b_nav_r">回到顶部</a>
+            </div>
+            <div class="hot_line">
+            	<a href="tel:4008855171"><span class="phone"></span>全国统一热线：400-885-5171</a>
+            </div>
+            <div class="copyright">
+            	<p><a href="http://www.800pharm.com">电脑版</a></p>
+                <p>互联网药品交易服务资格证书-国A-20140001</p>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="js/localStorage.js"></script>
+<script type="text/javascript" src="js/member/member.js"></script>
+</html>

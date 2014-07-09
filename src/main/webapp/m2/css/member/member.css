@@ -1,0 +1,265 @@
+@charset "utf-8";
+/* CSS Document */
+*{margin:0;padding:0;color:#333333;font:12px Verdana,Arial,"宋体";}
+body{min-width:320px; background-color:#eeeeee;}
+ul{list-style:none;}
+img{border:0;}
+.clear{clear:both;}
+.wrap{margin:0 auto;background-color:#eeeeee;width:100%; min-width:320px; max-width:1024px;}
+.header{min-width:320px; height:50px; background-color:#0055a6; text-align:center;}
+.header .back{display:inline-block; float:left; margin:12px 0 0 10px; padding:0 10px 0 0; text-decoration:none;display:inline-block; background-color:#ffffff; color:#0055a6; line-height:26px;}
+.header .back i{ display:inline-block; width:10px; height:26px; background:url(../../images/common/tri.png); background-size:10px 26px;background-color:#0055a6; margin-right:5px;  float:left;}
+.header .hd_tit{color:#ffffff; text-align:center; font-size:16px; line-height:50px; display:inline-block;}
+.header .cart{display:inline-block; padding:4px 10px; margin:12px 10px 0 0; border:1px solid #ffffff; color:#ffffff; text-decoration:none; float:right;}
+/*登录注册页*/
+.memberLogin{width:94%; min-width:300px; max-width:1024px; margin:0 3%; margin-top:20px; overflow:hidden;}
+.memberLogin .radiusBox{border:1px solid #cccccc; border-radius:5px; background-color:#ffffff;}
+.bbf_login .radiusBox div{height:48px; border-bottom:1px solid #cccccc;}
+.bbf_login .radiusBox div:last-child{border-bottom:0;}
+.bbf_login .radiusBox span{ line-height:48px; font-size:14px; color:#666666; margin:0 5px 0 10px;}
+.bbf_login .radiusBox input{border:0; font-size:14px; line-height:40px; height:40px; width:70%;}
+.bbf_login .b_username em{display:inline-block; width:7px;}
+.bbf_login .b_password em{display:inline-block; width:28px;}
+.bbf_login .b_btn{margin-top:25px; overflow:hidden;}
+.bbf_login .b_btn .warning{color:#da1d31; line-height:25px;}
+.bbf_login .b_btn input{width:40%; height:30px; line-height:30px; font-size:14px; padding:0; border:0; border-radius:3px; box-shadow: 1px 1px 1px #cccccc; cursor:pointer;}
+.bbf_login .b_btn .btn_login{background-color:#da1d31; color:#ffffff; float:left;}
+.bbf_login .b_btn .btn_register{float:right; background-color:#ffffff;}
+.bbf_login .b_btn .btn_longReg{background-color:#da1d31; color:#ffffff; width:100%;}
+.memberLogin .uni_login{margin-top:50px;}
+.uni_login p{ font-size:14px; color:#666666; margin-bottom:12px;}
+.uni_login .radiusBox a{display:block; height:42px; line-height:42px; padding-left:85px; text-decoration:none; border-bottom:1px solid #cccccc;}
+.uni_login .radiusBox a:last-child{border-bottom:0}
+.uni_login .qq_login{ background:url(../../images/member/qq.png) no-repeat; background-position:30px 50%;}
+.uni_login .wb_login{ background:url(../../images/member/wb.png) no-repeat; background-position:30px 50%;}
+.uni_login .ali_login{ background:url(../../images/member/zfb.png) no-repeat; background-position:12px 50%;}
+/*重置密码*/
+.passwordReset{width:94%; min-width:300px; max-width:1024px; margin:0 3%; margin-top:20px; overflow:hidden; padding-bottom:40px;}
+.passwordReset p{margin:10px 0;}
+.passwordReset .inputBox{width:97%; height:40px; padding:0 1%;}
+.passwordReset .b_btn{margin-top:25px; overflow:hidden;}
+.passwordReset .b_btn .warning{color:#da1d31; line-height:25px;}
+.passwordReset .b_btn input{width:40%; height:30px; line-height:30px; font-size:14px; padding:0; border:0; border-radius:3px; box-shadow: 1px 1px 1px #cccccc; cursor:pointer;}
+.passwordReset .b_btn .btn_sure{background-color:#da1d31; color:#ffffff; float:left;}
+.passwordReset .b_btn .btn_reset{float:right; background-color:#ffffff;}
+/*个人中心主页*/
+.memberHome{width:94%; min-width:300px; max-width:1024px; margin:0 3%; margin-top:20px; overflow:hidden;}
+.memberHome .cl_red{color:#da1d31;}
+.memberHome .cl_grey{color:#999999;}
+.memberHome .user_info{margin-bottom:30px; overflow:hidden; height:84px}
+.user_info div{float:left;}
+.user_info .info{margin-top:5px; width:48%;}
+.user_info .info .username{ font-size:14px; margin-bottom:10px;}
+.user_info .info .welfare span{color:#666666; margin-right:10px; display:inline-block; float:left;}
+.user_info .info .welfare .cl_red{color:#da1d31; margin:0 5px 0 0; display:inline; float:none;}
+.user_info .portrait{margin-right:20px; border:2px solid #cccccc; height:80px; border-radius:40px; overflow:hidden;}
+.user_info .portrait img{height:80px; width:80px; border-radius:40px;}
+.user_info input{float:right; background-color:#ffffff; border:1px solid #d3d3d3; border-radius:3px; width:40px; height:24px; margin:20px 4% 0 0;}
+.memberHome i{display:inline-block; width:10px; height:14px; background-image:url(../../images/common/right.png); float:right; margin:14px 20px;}
+.memberHome .myOrder{border:1px solid #cccccc; border-radius:5px; background-color:#ffffff;}
+.memberHome .myOrder a{display:block; height:42px; line-height:42px; padding-left:55px; text-decoration:none; border-bottom:1px solid #cccccc; font-size:14px; color:#666666;}
+.memberHome .myOrder a:last-child{border-bottom:0;}
+.myOrder .myOrder1{ background:url(../../images/member/icon1.png) no-repeat; background-position:15px 50%;}
+.myOrder .myOrder2{ background:url(../../images/member/icon2.png) no-repeat; background-position:15px 50%;}
+.myOrder .myOrder3{ background:url(../../images/member/icon3.png) no-repeat; background-position:15px 50%;}
+.myOrder .myOrder4{ background:url(../../images/member/icon4.png) no-repeat; background-position:15px 50%;}
+.myOrder span{ float:right; line-height:42px;}
+.memberHome .myManage{border:1px solid #cccccc; border-radius:5px; background-color:#ffffff; margin:10px 0;}
+.memberHome .myManage a{display:block; height:42px; line-height:42px; padding-left:55px; text-decoration:none; border-bottom:1px solid #cccccc; font-size:14px; color:#666666;}
+.memberHome .myManage a:last-child{border-bottom:0;}
+.myManage .myManage1{ background:url(../../images/member/icon5.png) no-repeat; background-position:15px 50%;}
+.myManage .myManage2{ background:url(../../images/member/icon6.png) no-repeat; background-position:15px 50%;}
+.myManage .myManage3{ background:url(../../images/member/icon7.png) no-repeat; background-position:15px 50%;}
+.myManage .myManage4{ background:url(../../images/member/icon8.png) no-repeat; background-position:15px 50%;}
+.myManage .myManage5{ background:url(../../images/member/icon9.png) no-repeat; background-position:15px 50%;}
+.myManage span{ float:right; line-height:42px;}
+.myManage b{ float:right; line-height:42px;}
+/*购物车页*/
+.myCart{width:94%; min-width:300px; max-width:1024px; margin:0 3%; margin-top:20px; overflow:hidden;}
+.myCart .cart_header{height:32px;}
+.myCart .cart_header span{line-height:32px;}
+.myCart .cart_header a{float:right; display:inline-block; padding:8px 10px; background-color:#ffffff; border:1px solid #cccccc; text-decoration:none;}
+.cartList{margin-top:15px;}
+.cartList li{ margin-bottom:10px;}
+.cartList .cart_hd{height:30px; background-color:#f6f6f6; border:1px solid #cccccc; line-height:30px; padding-left:15px; color:#666666;}
+.cartList .cart_list dd{ background-color:#ffffff; height:80px; border:1px solid #cccccc; border-top:0;}
+.cart_list dd img{float:left; border:1px solid #dddddd; margin:15px}
+.cart_list .pd_detail{margin-top:12px; float:left; width:60%;}
+.cart_list .pd_detail .pd_name{color:#666666; text-decoration:none; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; display:block;}
+.cart_list .pd_detail .pd_number{float:left; margin-top:7px; border:1px solid #aaaaaa; border-radius:3px;}
+.cart_list .pd_detail .minus{display:inline-block; width:28px; height:26px; background:url(../../images/member/minus.png) no-repeat; background-position:50% 50%; vertical-align:text-bottom;}
+.cart_list .pd_detail .plus{display:inline-block; width:28px; height:26px; background:url(../../images/member/plus.png) no-repeat; background-position:50% 50%; vertical-align:text-bottom;}
+.cart_list .pd_detail .count{display:inline-block; width:28px; height:26px; line-height:28px; border-left:1px solid #aaaaaa; border-right:1px solid #aaaaaa; vertical-align:text-bottom; text-align:center;}
+.cart_list .pd_detail .pd_price{float:left; color:#da1d31; margin-top:5px; font-size:14px; line-height:30px; margin-left:15px;}
+.cart_list .pd_delete{margin:32px 20px 0 0; float:right; display:inline-block; width:18px; height:18px; background-image:url(../../images/member/del.png);}
+.cartList .cart_ft{height:45px; background-color:#f6f6f6; border:1px solid #cccccc; border-top:0;}
+.cart_ft .cart_amount{ font-size:14px; line-height:45px; margin-left:15px;}
+.cart_amount .cl_red{color:#da1d31;font-size:14px;}
+.cart_ft .btn_orange{margin-right:20px; float:right; display:inline-block; width:80px; height:30px; margin-top:7px; line-height:30px; text-align:center; text-decoration:none; font-size:14px; box-shadow: 1px 1px 1px #cccccc; background-color:#ff6600; color:#ffffff;}
+/*收藏页*/
+.myfavorite{width:94%; min-width:300px; max-width:1024px; margin:0 3%; margin-top:20px; overflow:hidden;}
+.myfavorite li{overflow:hidden; border-bottom:1px solid #cccccc;}
+.myfavorite li img{float:left; border:1px solid #dddddd; margin: 0 15px 15px 15px;}
+.myfavorite .icon_lt{display:inline-block; height:18px; width:18px; background-image:url(../../images/member/del.png); float:left; margin-top:30px; margin-left:2%;}
+.myfavorite .pd_detail{margin-top:12px; float:left; text-decoration:none; width:90%; background:url(../../images/common/right.png) no-repeat; background-position:right;}
+.myfavorite .pd_detail p{line-height:18px;}
+.myfavorite .pd_detail .pd_name{overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
+.myfavorite .pd_detail .pd_price{color:#da1d31;}
+.myfavorite .pd_detail .pd_merchant{color:#999999;}
+.myfavorite .pd_detail .icon_rt{height:14px; width:10px; display:inline-block; position:absolute; }
+.myfavorite .pd_number{margin:20px; float:right; color:#999999}
+/*全部订单*/
+.header .myOrder_tit{cursor:pointer; position:relative; z-index:100;}
+.header .myOrder_tit .down_icon{display:inline-block; width:14px; height:9px; background-image:url(../../images/member/down.png); margin-left:10px;}
+.header .myOrder_tit .up_icon{display:inline-block; width:14px; height:9px; background-image:url(../../images/member/up.png); margin-left:10px;}
+.header .myOrder_tit .orderMenu{display:none; border:1px solid #d4d4d4; width:148px; height:163px; position:absolute; left:-25px; background-color:#ffffff; box-shadow: 1px 1px 5px #888888;}
+.myOrder_tit .orderMenu a{ display:block; height:40px; line-height:40px; text-decoration:none; font-size:14px; border-bottom:1px solid #d4d4d4; text-align:left; padding-left:25px;}
+.myOrder_tit .orderMenu a:last-child{ border-bottom:0;}
+.myOrder_tit .orderMenu a span{width:18px; height:19px; background-image:url(../../images/member/tick.png); vertical-align:text-bottom; margin-left:10px; display:none;}
+.myOrder_tit .orderMenu .cur span{display:inline-block;}
+.myOrderList{width:94%; min-width:300px; max-width:1024px; margin:0 3%; margin-top:20px; overflow:hidden;}
+.myOrderList li{ margin-bottom:10px;}
+.myOrderList .order_hd{height:30px; background-color:#f6f6f6; border:1px solid #cccccc}
+.myOrderList .order_hd .orderMerchant{ margin-left:15px; line-height:30px;}
+.myOrderList .order_hd .orderTime{ float:right; margin-right:15px; line-height:30px;}
+.myOrderList .order_list dd{ background-color:#ffffff; height:80px; border:1px solid #cccccc; border-top:0;}
+.order_list dd img{float:left; border:1px solid #dddddd; margin:15px; margin-top:0;}
+.order_list .pd_detail{margin-top:15px; float:left; width:82%;}
+.order_list .pd_detail p{margin-top:5px;}
+.order_list .pd_detail .pd_name{display:block; text-decoration:none; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
+.order_list .pd_detail .pd_price{color:#da1d31;}
+.order_list .pd_number{margin:20px; float:right; color:#999999}
+.myOrderList .order_ft{height:45px; background-color:#f6f6f6; border:1px solid #cccccc; border-top:0;}
+.order_ft .order_amount{ font-size:14px; line-height:45px; margin-left:15px;}
+.order_amount .cl_red{color:#da1d31;font-size:14px;}
+.order_amount .transp{ margin-left:5px; color:#999999;}
+.order_ft a{margin-right:15px; float:right; display:inline-block; width:80px; height:30px; margin-top:7px; line-height:30px; text-align:center; text-decoration:none; font-size:14px; box-shadow: 1px 1px 1px #cccccc;}
+.order_ft .btn_orange{background-color:#ff6600; color:#ffffff;}
+.order_ft .btn_white{background-color:#ffffff; border:1px solid #aaaaaa;}
+.order_ft .btn_none{color:#999999; box-shadow:none;}
+.orderNone{width:94%; min-width:300px; max-width:1024px; margin:0 3%; margin-top:20px; overflow:hidden;}
+.orderNone p{ text-align:center; color:#999999; font-size:14px;}
+.orderNone a{display:inline-block; text-align:center; border:1px solid #cccccc; text-decoration:none; padding:8px 20px; margin-top:30px; background-color:#ffffff; font-size:14px;}
+/*订单详情*/
+.ordreDetail{width:94%; min-width:300px; max-width:1024px; margin:0 3%; margin-top:20px; overflow:hidden;}
+.ordreDetail .orderTransp{ background-color:#ffffff; border:1px solid #e3e3e3;}
+.ordreDetail .orderTransp .transp_hd{ height:3px; background:url(../../images/member/hd.png);}
+.orderTransp .address{ padding-bottom:20px; border-bottom:1px solid #e3e3e3}
+.orderTransp .address p{margin:5px 25px 0; color:#999999;}
+.orderTransp .address .add_tit{font-size:14px; color:#666666; margin-top:10px; margin-bottom:10px;}
+.orderTransp .transport{ padding-bottom:20px;}
+.orderTransp .transport p{margin-top:10px; margin-left:25px; color:#999999;}
+.orderTransp .transport .tran_tit{color:#666666; margin-top:10px; margin-bottom:10px;}
+.ordreDetail .orderState{ height:38px; line-height:38px; font-size:14px; border:1px solid #cccccc; margin:10px 0; background-color:#ffffff; padding-left:25px; color:#666666;}
+.ordreDetail .orderState .cl_red{color:#da1d31; font-size:14px;}
+.ordreDetail .orderList .list_hd{height:30px; background-color:#f6f6f6; border:1px solid #cccccc}
+.ordreDetail .orderList .orderMerchant{ margin-left:15px; line-height:30px;}
+.ordreDetail .orderList .orderTime{ float:right; margin-right:15px; line-height:30px;}
+.ordreDetail .orderList dd{ background-color:#ffffff; height:80px; border:1px solid #cccccc; border-top:0;}
+.orderList dd img{float:left; border:1px solid #dddddd; margin:15px; margin-top:0;}
+.orderList .pd_detail{margin-top:15px; float:left; width:82%;}
+.orderList .pd_detail p{margin-top:5px;}
+.orderList .pd_detail .pd_name{overflow:hidden; white-space:nowrap; text-overflow:ellipsis; display:block; text-decoration:none;}
+.orderList .pd_number{margin:20px; float:right; color:#999999}
+.orderList .pd_price{color:#da1d31;}
+.ordreDetail .orderInfo{ border:1px solid #cccccc; border-bottom:0; margin-top:10px; background-color:#ffffff;}
+.ordreDetail .orderInfo div{ height:44px; line-height:44px; font-size:14px; border-bottom:1px solid #cccccc; color:#666666; padding-left:25px;}
+.ordreDetail .orderInfo div span{ font-size:14px;}
+.ordreDetail .order_ft{height:45px; background-color:#ffffff; border:1px solid #cccccc; margin-top:10px;}
+.ordreDetail .order_ft .order_amount{ font-size:14px; line-height:45px; margin-left:15px;}
+.ordreDetail .order_amount .cl_red{color:#da1d31;font-size:14px;}
+.ordreDetail .order_amount .transp{ margin-left:5px; color:#999999;}
+.ordreDetail .order_ft a{margin-right:15px; float:right; display:inline-block; width:80px; height:30px; margin-top:7px; line-height:30px; text-align:center; text-decoration:none; font-size:14px; box-shadow: 1px 1px 1px #cccccc;}
+.ordreDetail .order_ft .btn_orange{background-color:#ff6600; color:#ffffff;}
+.ordreDetail .order_ft .btn_white{background-color:#ffffff; border:1px solid #aaaaaa;}
+.ordreDetail .order_ft .btn_none{color:#999999; box-shadow:none;}
+/*查询物流*/
+.checkTransport{width:94%; min-width:300px; max-width:1024px; margin:0 3%; margin-top:20px; overflow:hidden;}
+.checkTransport .transport_tit{ font-size:14px; font-weight:700; margin-bottom:10px;}
+.checkTransport .transpList{ width:100%; border-collapse:collapse;}
+.transpList thead{background-color:#f5f5f5;border-bottom:1px solid #aaaaaa;}
+.transpList thead tr{height:32px; line-height:32px;}
+.transpList tbody tr{border-bottom:1px solid #aaaaaa;}
+.transpList tbody td{background-color:#ffffff; height:50px; text-align:center; color:#999999;}
+.transpList tbody .pd_name{text-align:left; padding-left:1%;}
+.transpList tbody .check a{text-decoration:none;}
+.transpList tbody .check span{display:inline-block; width:15px; height:7px; background-image:url(down2.png); margin-left:5px;}
+.transpList tbody .transp_detail{display:none; background-color:transparent; padding-bottom:40px; border-top:0; position:relative;}
+.transpList tbody .transp_detail .icon{display:inline-block; width:15px; height:13px; background-image:url(../../images/member/down3.png); position:absolute; right:9%;}
+.transpList tbody .transp_detail p{width:44%; float:left; text-align:left; padding-left:1%; margin-right:5%; margin-top:20px; display:inline-block; white-space:nowrap;}
+.transpList tbody .transp_detail .transp_info{margin:0 1%; background-color:#ffffff; height:185px; border-top:2px solid #b6b6b6; margin-top:25px; overflow:scroll;}
+.transpList tbody .transp_detail .transp_info p{width:100%;}
+/*优惠券 红包页*/
+.myWelfare{width:94%; min-width:300px; max-width:1024px; margin:0 3%; margin-top:20px; overflow:hidden;}
+.welfare_hd{margin:0 10% 30px 10%;}
+.welfare_hd span{display:inline-block; background-color:#ffffff; width:50%; height:36px; line-height:36px; text-align:center; font-weight:700; font-size:14px; color:#666666;}
+.welfare_hd .cur{background-color:#ff3232; color:#ffffff;}
+.myWelfare .card .card_hd{ border:1px solid #0056a6; border-radius:3px; width:298px; margin-bottom:20px;}
+.card .card_hd span{display:inline-block; background-color:#ffffff; width:50%; height:30px; line-height:30px; text-align:center;}
+.card .card_hd .cur{ background-color:#0056a6; color:#ffffff}
+.card .cardList li{height:150px; background-color:#ffffff; overflow:hidden; margin-bottom:10px;}
+.card .cardList .value{ width:65%; height:130px; background-color:#ff3232; float:left; padding-left:5%; padding-top:20px;}
+.card .cardList .value span{ font-size:14px; color:#ffffff;}
+.card .cardList .value p{ font-size:50px; color:#ffffff; margin:4px 0;}
+.card .cardList .value i{ font-size:30px; margin-right:5px; color:#ffffff}
+.card .cardList .limit{ width:30%; height:130px; float:left; text-align:center; padding-top:20px; position:relative;}
+.card .cardList .limit span{font-size:14px; color:#666666; margin-bottom:10px; display:inline-block; margin-left:-1px;}
+.card .cardList .limit p{font-size:14px; color:#666666; margin-top:5px;}
+.card .cardList .limit a{font-size:14px; color:#666666; text-decoration:none; margin-top:15px; margin-left:-15px; display:inline-block;}
+.card .cardList .limit .abort{display:none; position:absolute; width:100%; height:100%; z-index:1; background:url(../../images/member/abort.png) no-repeat; background-position:55% 0;}
+.myWelfare .coupon .coupon_hd{ border:1px solid #0056a6; border-radius:3px; width:298px; margin-bottom:20px;}
+.coupon .coupon_hd span{display:inline-block; background-color:#ffffff; width:50%; height:30px; line-height:30px; text-align:center;}
+.coupon .coupon_hd .cur{ background-color:#0056a6; color:#ffffff}
+.coupon .couponList li{height:150px; background-color:#ffffff; overflow:hidden; margin-bottom:10px;}
+.coupon .couponList .value{ width:65%; height:130px; background-color:#ff3232; float:left; padding-left:5%; padding-top:20px;}
+.coupon .couponList .value span{ font-size:14px; color:#ffffff;}
+.coupon .couponList .value p{ font-size:50px; color:#ffffff; margin:4px 0;}
+.coupon .couponList .value i{ font-size:30px; margin-right:5px; color:#ffffff}
+.coupon .couponList .limit{ width:30%; height:130px; float:left; text-align:center; padding-top:20px; position:relative;}
+.coupon .couponList .limit span{font-size:14px; color:#666666; margin-bottom:10px; display:inline-block; margin-left:-1px;}
+.coupon .couponList .limit p{font-size:14px; color:#666666; margin-top:5px;}
+.coupon .couponList .limit a{font-size:14px; color:#666666; text-decoration:none; margin-top:15px; margin-left:-15px; display:inline-block;}
+.coupon .couponList .limit .abort{display:none; position:absolute; width:100%; height:100%; z-index:1; background:url(../../images/member/abort.png) no-repeat; background-position:55% 0;}
+/*地址管理*/
+.myAddress{width:94%; min-width:300px; max-width:1024px; margin:0 3%; margin-top:20px; overflow:hidden;}
+.myAddress .addressList{margin-bottom:10px;}
+.myAddress .addressList li{border:1px solid #cccccc;margin-bottom:10px;}
+.myAddress .addressList .address_hd{ background-color:#ffffff; padding:15px;}
+.addressList .address_hd p{ font-size:14px; margin-bottom:10px;}
+.addressList .address_hd span{color:#666666;}
+.addressList .address_hd p span{margin-left:20px; color:#333333;}
+.myAddress .addressList .address_ft{height:38px; padding:0 15px; background-color:#f0f0f0;}
+.addressList .address_ft a{display:inline-block; line-height:38px; float:left;}
+.addressList .address_ft .default{width:55px; height:38px; background:url(../../images/member/icon11.png) no-repeat; background-position:0 50%; padding-left:25px; text-decoration:none; color:#666666;}
+.addressList .address_ft .choice{background:url(../../images/member/icon10.png) no-repeat; background-position:0 50%;}
+.addressList .address_ft .revise{ width:19px; height:38px; background:url(../../images/member/icon12.png) no-repeat; background-position:0 50%; margin-left:30px;}
+.addressList .address_ft .delete{ width:19px; height:38px; background:url(../../images/member/icon13.png) no-repeat; background-position:0 50%; margin-left:40px;}
+.myAddress .addressAdd{display:block; height:40px; line-height:40px; text-decoration:none; color:#666666; padding:0 40px; border:1px solid #cccccc; background:url(../../images/member/icon14.png) no-repeat; background-position:15px 50%; background-color:#ffffff;}
+.add_Address{width:94%; min-width:300px; max-width:1024px; margin:0 3%; margin-top:20px; overflow:hidden;}
+.add_Address .inputBox{ border:1px solid #cccccc; border-top:none;}
+.add_Address .select{border:1px solid #cccccc; margin:10px 0; height:38px; position:relative; z-index:10;}
+.add_Address .inputBox input{width:98%; height:40px; padding:0 1%; border:none; border-top:1px solid #cccccc; color:#666666;}
+.add_Address .select a{display:block; height:38px; line-height:38px; padding-left:1%; text-decoration:none; color:#666666; background:url(../../images/member/icon15.png) no-repeat; background-position:98% 50%; background-color:#ffffff;}
+.add_Address select{width:100%; height:38px; font-size:14px; line-height:38px; color:#666666; position:absolute; left:0px; top:0px; opacity:0; border:1px solid #cccccc; cursor:pointer;}
+.add_Address select option{height:20px; line-height:20px; font-size:14px;}
+.add_Address .textarea{border:1px solid #cccccc;}
+.add_Address .textarea textarea{width:98%; height:90px; border:none; resize:none; padding:1%; color:#666666;}
+.add_Address .b_btn{margin-top:25px; overflow:hidden;}
+.add_Address .b_btn .warning{color:#da1d31; line-height:25px;}
+.add_Address .b_btn .btn_save{width:100%; height:32px; line-height:32px; border:none; color:#ffffff; background-color:#da1d31;}
+/*页脚*/
+.footer{width:94%; min-width:300px; max-width:1024px; margin:0 3%; margin-top:20px;padding-bottom:20px;}
+.footer .ft_search .b_input{margin:0 auto;height:35px; min-width:296px;border:2px solid #0055a6;box-shadow: 1px 1px 1px #cccccc;}
+.footer .ft_search .b_input .main_input{width:82%;min-width:241px;height:35px;border:0;float:left; font-size:14px; -webkit-appearance:none; border-radius:0px;/*解决iphone safari上的圆角问题*/ padding-left:1%;}
+.footer .ft_search .b_input .search_btn{width:17%;min-width:51px;height:35px;border:0;float:right;background:url(../../images/common/search.png) no-repeat;cursor:pointer; background-size:contain; background-position:center; background-color:#0055a6; -webkit-appearance:none; border-radius:0px;/*解决iphone safari上的圆角问题*/}
+.footer .ft_nav{height:80px;}
+.footer .ft_nav .b_nav{min-width:70px; width:23.5%; height:30px;background-color:#ffffff;margin:10px 2% 0 0;float:left;text-align:center;line-height:29px;text-decoration:none;box-shadow: 1px 1px 1px #cccccc;}
+.footer .ft_nav .b_nav_r{margin-right:0;}
+.footer .ft_longNav{height:40px;}
+.footer .ft_longNav .b_longNav{width:100%; height:30px;background-color:#ffffff;margin:10px 0 0 0;float:left;text-align:center;line-height:29px;text-decoration:none;box-shadow: 1px 1px 1px #cccccc;}
+.footer .hot_line{height:32px; margin-top:10px; background:#da1d31;box-shadow: 1px 1px 1px #cccccc;}
+.footer .hot_line a{height:32px; width:300px; display:block; text-align:center; line-height:32px; text-decoration:none; color:#ffffff;
+font-weight:700; margin:0 auto;}
+.footer .hot_line a .phone{ width:17px; height:14px; background:url(../../images/common/tel.png); background-size:cover; display:inline-block; margin:9px 10px 0 0; vertical-align:top;}
+.footer .copyright p{color:#888888;text-align:center;margin-top:10px; height:25px;}
+.footer .copyright p a{color:#888888;text-decoration:none; line-height:25px; padding:1px 5px;}
