@@ -39,7 +39,7 @@ public class TestProd {
 		//	Thread.sleep(1000);
 		//	test("83000","267972");
 		
-		/*
+		 
 			String encoding="UTF-8";
 			  FileInputStream fis  =   null; 
 	            InputStreamReader isr  =   null; 
@@ -51,12 +51,12 @@ public class TestProd {
 	           
 			 try  { 
 
-					 fis  =   new  FileInputStream("e:\\temp\\detail2.txt"); 
+					 fis  =   new  FileInputStream("e:\\temp\\d3.txt"); 
 					
 					 isr  =   new  InputStreamReader(fis); 
 		            
-		              fos  =   new  FileOutputStream("e:\\temp\\detail_result.csv"); 
-		              fos2  =   new  FileOutputStream("e:\\temp\\detail_result2.csv"); 
+		              fos  =   new  FileOutputStream("e:\\temp\\d_result.csv"); 
+		              fos2  =   new  FileOutputStream("e:\\temp\\d_result2.csv"); 
 	 
 		              wf=new  PrintWriter(fos);
 		              wf2=new  PrintWriter(fos2);
@@ -110,9 +110,9 @@ public class TestProd {
 		        	
 		        }
     
-			 */
+			 
 		 
-		getWuliuJson();
+	//	getWuliuJson();
 
 	}
 	
