@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
+<meta content="YES" name="apple-touch-fullscreen">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="telephone=no" name="format-detection">
+<link rel="stylesheet" href="css/normalize.css">
+<script src="js/modernizr-2.6.2.min.js"></script>
+<link type="text/css"  rel="stylesheet" href="css/search/search.css" />
+<title>八百方网上药店触屏版</title>
+</head>
+
+<body>
+	<div class="wrap">
+    	<div class="header">
+            <a class="back" href="javascript:window.history.go(-1);"><i></i>返回</a>
+            <span>百家药店</span>
+            <a class="cart" href="prodDetail.html#shop_cart">购物车</a>
+        </div>
+    	<div class="merchantMap">
+        	<div class="bd_search">
+            	<div class="b_input">
+            		<form>
+                		<input class="main_input" type="text" placeholder="商品名称/功效/症状/厂家名" id="searchHeadContent"/>
+                    	<input class="search_btn" type="button" onclick="searchHead();"/>
+                	</form>
+            	</div>
+            </div>
+            <div class="mm_bd">
+            	<a href="" class="mod_merchant">
+                	<img src="images/search/merchant.png" />
+                    <p class="m_name">新兴药房</p>
+                    <p class="m_address">地址：河北省石家庄</p>
+                    <p class="m_operate">经营：处方药和非处方药、生物制药、中成药、化学制剂、抗生素制剂、中药材</p>
+                </a>
+                <a href="" class="mod_merchant">
+                	<img src="images/search/merchant.png" />
+                    <p class="m_name">新兴药房</p>
+                    <p class="m_address">地址：河北省石家庄</p>
+                    <p class="m_operate">经营：处方药和非处方药、生物制药、中成药、化学制剂、抗生素制剂、中药材</p>
+                </a>
+                <a href="" class="mod_merchant">
+                	<img src="images/search/merchant.png" />
+                    <p class="m_name">江苏先声再康药业有限公司</p>
+                    <p class="m_address">地址：河北省石家庄</p>
+                    <p class="m_operate">经营：处方药和非处方药、生物制药、中成药、化学制剂、抗生素制剂、中药材</p>
+                </a>
+                <a href="" class="mod_merchant">
+                	<img src="images/search/merchant.png" />
+                    <p class="m_name">新兴药房</p>
+                    <p class="m_address">地址：河北省石家庄</p>
+                    <p class="m_operate">经营：处方药和非处方药、生物制药、中成药、化学制剂、抗生素制剂、中药材</p>
+                </a>
+            </div>
+            <a class="mm_more" href="">查看更多</a>
+        </div>
+        <div class="footer">
+        	<div class="ft_search">
+            	<div class="b_input">
+            		<form>
+                		<input class="main_input" type="text" placeholder="商品名称/功效/症状/厂家名" id="searchTailContent"/>
+                    	<input class="search_btn" type="button" onclick="searchTail();"/>
+                	</form>
+            	</div>
+            </div>
+            <div class="ft_nav">
+            	<a href="home.html" class="b_nav">首页</a>
+                <a href="#" class="b_nav">分类</a>
+                <a href="prodDetail.html#shop_cart" class="b_nav">购物车</a>
+                <a href="#" class="b_nav b_nav_r">药店</a>
+               	<span id="noLoggedDiv">
+                	<a href="login.html" class="b_nav">登录</a>
+                	<a href="register.html" class="b_nav">注册</a>
+                </span>
+                <span id="loggedDiv" style="display:none">
+                	<a href="#" class="b_nav">我的八百方</a>
+                	<a href="javascript:;" onclick="logout();" class="b_nav">退出登录</a>
+                </span>
+                <a href="javascript:window.history.go(-1);" class="b_nav">上一页</a>
+                <a href="javascript:scroll(0,0);" class="b_nav b_nav_r">回到顶部</a>
+            </div>
+            <div class="hot_line">
+            	<a href="tel:4008855171"><span class="phone"></span>全国统一热线：400-885-5171</a>
+            </div>
+            <div class="copyright">
+            	<p><a href="http://www.800pharm.com">电脑版</a></p>
+                <p>互联网药品交易服务资格证书-国A-20140001</p>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="js/localStorage.js"></script>
+</html>

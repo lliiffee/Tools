@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
+<meta content="YES" name="apple-touch-fullscreen">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="telephone=no" name="format-detection">
+<link rel="stylesheet" href="css/normalize.css">
+<script src="js/modernizr-2.6.2.min.js"></script>
+<link type="text/css"  rel="stylesheet" href="css/search/search.css" />
+<title>八百方网上药店触屏版</title>
+</head>
+
+<body>
+	<div class="wrap">
+    	<div class="header">
+            <a class="back" href="javascript:window.history.go(-1);"><i></i>返回</a>
+            <span>百家药店</span>
+            <a class="cart" href="prodDetail.html#shop_cart">购物车</a>
+        </div>
+    	<div class="commodityList">
+        	<div class="bd_search">
+            	<div class="b_input">
+            		<form>
+                		<input class="main_input" type="text" placeholder="商品名称/功效/症状/厂家名" id="searchHeadContent"/>
+                    	<input class="search_btn" type="button" onclick="searchHead();"/>
+                	</form>
+            	</div>
+            </div>
+            <div class="ml_introduce">
+            	<img src="images/search/merchant.png" />
+                <p class="shopName">新兴药房<span>（河北省石家庄）</span></p>
+                <p class="shopCompany"> 石家庄新兴药房连锁有限公司</p>
+                <p class="shopIntro">药店简介：连锁药店百强，河北省首家合法网上药店，全国拥有5个子公司，近200家省市医保连锁药房，2003年在全省率先通过GSP认证，秉持100%专业药房的理念，信守顾客100%满意承诺，提供免费健康咨询与信息、经济合理的价格以及亲切快速的服务立志于为顾客提供最好的、最专业的医药保健服务。</p>
+            </div>
+            <div class="ml_list">
+            	<p class="list_tit">商品推荐列表</p>
+                <div class="list_type">
+                	<a href="">中西成药</a>
+                    <a href="">医疗器械</a>
+                </div>
+                <div class="pd_list">
+                	<a class="box_pd" href="">
+                    	<img width="90" height="90" src="images/search/pd.png" />
+                        <div class="pd_detail">
+                        	<p class="pd_name">九安电子血压计</p>
+                            <p class="pd_price">$119<del>$399</del></p>
+                            <p class="pd_standard">规格：KD5910</p>
+                        </div>
+                        <span class="pointer"></span>
+                    </a>
+                    <a class="box_pd" href="">
+                    	<img width="90" height="90" src="images/search/pd.png" />
+                        <div class="pd_detail">
+                        	<p class="pd_name">九安电子血压计</p>
+                            <p class="pd_price">$119<del>$399</del></p>
+                            <p class="pd_standard">规格：KD5910</p>
+                        </div>
+                        <span class="pointer"></span>
+                    </a>
+                    <a class="box_pd" href="">
+                    	<img width="90" height="90" src="images/search/pd.png" />
+                        <div class="pd_detail">
+                        	<p class="pd_name">九安电子血压计</p>
+                            <p class="pd_price">$119<del>$399</del></p>
+                            <p class="pd_standard">规格：KD5910</p>
+                        </div>
+                        <span class="pointer"></span>
+                    </a>
+                </div>
+            </div>
+            <a class="more" href="">查看更多</a>
+        </div>
+        <div class="footer">
+        	<div class="ft_search">
+            	<div class="b_input">
+            		<form>
+                		<input class="main_input" type="text" placeholder="商品名称/功效/症状/厂家名" id="searchTailContent"/>
+                    	<input class="search_btn" type="button" onclick="searchTail();"/>
+                	</form>
+            	</div>
+            </div>
+            <div class="ft_nav">
+            	<a href="home.html" class="b_nav">首页</a>
+                <a href="#" class="b_nav">分类</a>
+                <a href="prodDetail.html#shop_cart" class="b_nav">购物车</a>
+                <a href="#" class="b_nav b_nav_r">药店</a>
+               	<span id="noLoggedDiv">
+                	<a href="login.html" class="b_nav">登录</a>
+                	<a href="register.html" class="b_nav">注册</a>
+                </span>
+                <span id="loggedDiv" style="display:none">
+                	<a href="#" class="b_nav">我的八百方</a>
+                	<a href="javascript:;" onclick="logout();" class="b_nav">退出登录</a>
+                </span>
+                <a href="javascript:window.history.go(-1);" class="b_nav">上一页</a>
+                <a href="javascript:scroll(0,0);" class="b_nav b_nav_r">回到顶部</a>
+            </div>
+            <div class="hot_line">
+            	<a href="tel:4008855171"><span class="phone"></span>全国统一热线：400-885-5171</a>
+            </div>
+            <div class="copyright">
+            	<p><a href="http://www.800pharm.com">电脑版</a></p>
+                <p>互联网药品交易服务资格证书-国A-20140001</p>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="js/localStorage.js"></script>
+</html>

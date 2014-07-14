@@ -1,0 +1,78 @@
+@charset "utf-8";
+/* CSS Document */
+*{margin:0;padding:0;color:#333333;font:12px Verdana,Arial,"宋体";}
+body{min-width:320px;background-color:#eeeeee;}
+ul{list-style:none;}
+img{border:0;}
+.wrap{margin:0 auto;background-color:#eeeeee;width:320px;}
+.slidebox{height:153px;box-shadow: 1px 1px 1px #cccccc;}
+.slidebox .index_scroll{height:150px;}	
+.slidebox .index_scroll li{height:150px;float:left; position:absolute; display:none;}
+.slidebox .scrollNav{height:3px;}
+.slidebox .scrollNav li{width:64px;height:3px;float:left;}
+.slidebox .scrollNav .cur{background-color:#ea280d;}
+.logo{height:80px;text-align:center;}
+.logo a{width:300px; display:block; margin:0 auto;}
+.search{height:45px; position:relative; z-index:10;}
+.search .b_input{margin:0 auto;height:35px;width:296px;border:2px solid #0055a6;box-shadow: 1px 1px 1px #cccccc;}
+.search .b_input .main_input{width:241px;height:35px;border:0;float:left; font-size:14px; -webkit-appearance:none; border-radius:0px;/*解决iphone safari上的圆角问题*/ padding-left:5px;}
+.search .b_input .search_btn{width:50px;height:35px;border:0;float:left;background:url(../../images/common/search.png) no-repeat scroll 0px 0px;cursor:pointer;background-size:cover; -webkit-appearance:none;  border-radius:0px;/*解决iphone safari上的圆角问题*/}
+.search .autocomplete{border:1px solid #0055a7; position:absolute; left:11px; top:36px; z-index:9999; width:246px; display:none}
+.search .autocomplete li{height:30px; background-color:#ffffff; display:block;}
+.search .autocomplete li a{text-decoration:none; color:#333333; padding-left:5px; line-height:30px; display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+.search .autocomplete .closeComplete{ text-align:center; background-color:#f5f4f4}
+.search .autocomplete .closeComplete a{ display:block}
+.bbf_nav{height:180px; padding:0 10px 10px;}
+.bbf_nav .b_nav{width:75px;height:75px;text-align:center;float:left;cursor:pointer;color:#666666;text-decoration:none; margin-bottom:5px; padding-top:10px;}
+.bbf_nav .b_nav .nav_icon{margin:0 auto;width:49px;height:46px;margin-bottom:10px;display:block;}
+.bbf_nav .b_nav .nav_icon1{background:url(../../images/index/nav_icon1.png);background-size:cover;}
+.bbf_nav .b_nav .nav_icon2{background:url(../../images/index/nav_icon2.png);background-size:cover;}
+.bbf_nav .b_nav .nav_icon3{background:url(../../images/index/nav_icon3.png);background-size:cover;}
+.bbf_nav .b_nav .nav_icon4{background:url(../../images/index/nav_icon4.png);background-size:cover;}
+.bbf_nav .b_nav .nav_icon5{background:url(../../images/index/nav_icon5.png);background-size:cover;}
+.bbf_nav .b_nav .nav_icon6{background:url(../../images/index/nav_icon6.png);background-size:cover;}
+.bbf_nav .b_nav .nav_icon7{background:url(../../images/index/nav_icon7.png);background-size:cover;}
+.bbf_nav .b_nav .nav_icon8{background:url(../../images/index/nav_icon8.png);background-size:cover;}
+.special{margin:0 auto;width:300px;height:125px;background-color:#ffffff;box-shadow: 1px 1px 1px #cccccc;}
+.special .sp_tag{width:77px;height:29px;background-color:#da1d31;margin-left:10px;text-align:center;color:#ffffff;font-size:13px;line-height:29px;box-shadow: 1px 1px 1px #cccccc;}
+.special .sp_box{height:60px;margin:18px 0;}
+.special .sp_box .sp_product{ width:260px; display:block;}
+.special .sp_box .sp_product .sp_img{width:60px;float:left;padding:0 10px;}
+.special .sp_box .sp_product .sp_detail{width:180px;float:left; display:inline-block;}
+.special .sp_box .sp_product .sp_detail span{color:#888888; margin-bottom:5px; display:inline-block;}
+.special .sp_box .sp_product .sp_detail .sp_name{overflow:hidden;  height:35px; }
+.special .sp_box .sp_product .sp_detail del{color:#888888;}
+.special .sp_box .sp_product .sp_detail .cl_red{color:#da1d31;}
+.special .sp_box .sp_more{width:40px;height:50px;float:left; line-height:50px; text-align:center;text-decoration:none;}
+.mod_box{margin:0 auto;margin-top:20px;width:300px;}
+.mod_box .mod_tag{height:20px;font-size:16px;}
+.mod_box .mod_tag .red_head{display:inline-block;width:7px;height:18px;background-color:#da1d31; vertical-align:bottom}
+.mod_box .mod_ad{height:80px;margin:10px 0 5px;box-shadow: 1px 1px 1px #cccccc;}
+.mod_box .mod_ad .ad_img{width:150px;float:left;}
+.mod_box .mod_nav{height:80px;}
+.mod_box .mod_nav .b_nav{width:60px;height:30px;background-color:#ffffff;margin:10px 6px 0 0;float:left;text-align:center;line-height:29px;text-decoration:none; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; padding:0 5px;box-shadow: 1px 1px 1px #cccccc;}
+.mod_box .mod_nav .b_nav_r{margin-right:0px;}
+.mod_box .mod_ad2{height:160px;margin:10px 0 5px;box-shadow: 1px 1px 1px #cccccc;}
+.mod_box .mod_ad2 .lt_ad_img{width:150px;float:left;}
+.mod_box .mod_ad2 .rt_ad_img{width:150px;height:79px;margin-bottom:2px;background:#ffffff;float:left;text-decoration:none;}
+.mod_box .mod_ad2 .rt_ad_img img{width:65px;float:left;}	
+.mod_box .mod_ad2 .rt_ad_img .pd_name{font-size:13px;display:block;height:15px;width:80px;float:left;padding-left:5px;margin-top:15px;}
+.mod_box .mod_ad2 .rt_ad_img .pd_detail{display:block;height:30px;width:80px;float:left;margin-top:5px;padding-left:5px;color:#888888;}
+.mod_box .mod_ad3{height:130px;margin:10px 0 5px;box-shadow: 1px 1px 1px #cccccc;}
+.feedback{margin:0 auto;margin-top:20px;width:300px;}
+.feedback .fb_tit{font-size:16px;}
+.feedback .fb_box{line-height:20px;height:21px;margin-top:10px;display:block;text-decoration:none}
+.feedback .fb_box .fb_pointer{display:inline-block;background:url(../../images/common/right.png);width:10px;height:14px;float:right;vertical-align:middle; margin-top:3px;}
+.footer{width:300px;margin:0 auto;margin-top:20px;padding-bottom:20px;}
+.footer .ft_search .b_input{margin:0 auto;height:35px;width:296px;border:2px solid #0055a6;box-shadow: 1px 1px 1px #cccccc;}
+.footer .ft_search .b_input .main_input{width:241px;height:35px;border:0;float:left; font-size:14px; -webkit-appearance:none; border-radius:0px;/*解决iphone safari上的圆角问题*/ padding-left:5px;}
+.footer .ft_search .b_input .search_btn{width:50px;height:35px;border:0;float:left;background:url(../../images/common/search.png);cursor:pointer; background-size:cover; -webkit-appearance:none; border-radius:0px;/*解决iphone safari上的圆角问题*/}
+.footer .ft_nav{height:80px;}
+.footer .ft_nav .b_nav{width:70px;height:30px;background-color:#ffffff;margin:10px 6px 0 0;float:left;text-align:center;line-height:29px;text-decoration:none;box-shadow: 1px 1px 1px #cccccc;}
+.footer .ft_nav .b_nav_r{margin-right:0;}
+.footer .hot_line{height:32px; margin-top:10px; background:#da1d31;box-shadow: 1px 1px 1px #cccccc;}
+.footer .hot_line a{height:32px; width:300px; display:block; text-align:center; line-height:32px; text-decoration:none; color:#ffffff;
+font-weight:700;}
+.footer .hot_line a .phone{ width:17px; height:14px; background:url(../../images/common/tel.png); background-size:cover; display:inline-block; margin:9px 10px 0 0; vertical-align:top;}
+.footer .copyright p{color:#888888;text-align:center;margin-top:10px; height:25px;}
+.footer .copyright p a{color:#888888;text-decoration:none; line-height:25px; padding:1px 5px;}
