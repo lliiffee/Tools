@@ -12,6 +12,7 @@ public class NoVisibility {
 		{
 			while (!ready)
 			{
+				System.out.println("--");
 				Thread.yield();
 			}
 			
@@ -22,11 +23,11 @@ public class NoVisibility {
 	public static void main(String[] args){
 		
 		new ReaderThread().start();
-		try {
-			Thread.sleep(10000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+//		try {
+//			Thread.sleep(10000);
+//		} catch (InterruptedException e) {
+//			e.printStackTrace();
+//		}
 		number=42;
 		ready=true;
 	}
