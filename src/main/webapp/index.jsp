@@ -3,7 +3,7 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 
-System.out.println(request.getParameter("detail_desc"));
+//System.out.println(request.getParameter("detail_desc"));
 
 %>
 
