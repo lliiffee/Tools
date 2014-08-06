@@ -26,7 +26,7 @@ import org.dom4j.Element;
 
 public class NetXmlClient {
 
-private static final String POST = "http://localhost/shop/pay/weixinPayPackage.html";
+private static final String POST = "http://www.800pharm.com/shop/pay/weixinPayNotify_m.html";
 	
 	public static void main(String[] args){
 		sendXml();
@@ -37,7 +37,7 @@ private static final String POST = "http://localhost/shop/pay/weixinPayPackage.h
 +"<OpenId><![CDATA[oUpF8uN95-Ptaags6E_roPHg7AG0]]></OpenId>"
 +"<AppId><![CDATA[wx2421b1c4370ec43b]]></AppId>"
 +"<IsSubscribe>1</IsSubscribe>"
-+"<ProductId><![CDATA[ph106482666157877]]></ProductId>"
++"<ProductId><![CDATA[103518878431371129]]></ProductId>"
 +"<TimeStamp>1400126932</TimeStamp>"
 +"<NonceStr><![CDATA[CChC5JQLhRigmGJP]]></NonceStr>"
 +"<AppSignature><![CDATA[13b78571a8262e7cd9fdd90caf7742e1c4023771]]></AppSignature>"
