@@ -26,10 +26,11 @@ import org.dom4j.Element;
 
 public class NetXmlClient {
 
-private static final String POST = "http://www.800pharm.com/shop/pay/weixinPayNotify_m.html";
-	
+private static final String POST = "http://localhost/shop/pay/weixinPayNotify_m.html";
+//	private static final String POST = "http://www.800pharm.com/shop/pay/wxPayNotify.html?notify_id=fRon5-l4lKqNKwCeurlCz3u617mgFhKiuFvwdmnwN53r58yWelLWJMPcqHzCjzvN62AkXb2bdEMBIBmPn9JgWCXwXL69HA56&partner=1219895801&transaction_id=1219895801201408133319316201&sign=7EE3F867643E0C0E0DEF8D51B43B15C0&product_fee=1&total_fee=1&time_end=20140813162348&trade_state=0&out_trade_no=ph106885100534483966&transport_fee=0&fee_type=1&trade_mode=1&sign_type=MD5&input_charset=UTF-8&discount=0&bank_type=0&";	
 	public static void main(String[] args){
-		sendXml();
+		sendXml(pkgReq());
+		//sendXml(retNotify());
 	}
 	
 	public static String createXml() {
@@ -46,8 +47,37 @@ private static final String POST = "http://www.800pharm.com/shop/pay/weixinPayNo
 		return xml;
 	}
 	
+	public static String pkgReq()
+	{
+		return "<xml><OpenId><![CDATA[oTNesjrqNt4ZIZ8zRe2-WVnt98M0]]></OpenId><AppId><![CDATA[wx7179cc98fb47eff5]]></AppId><IsSubscribe>1</IsSubscribe><ProductId><![CDATA[103518878431371129]]></ProductId><TimeStamp>1407983545</TimeStamp><NonceStr><![CDATA[HemIBJpf35e3zk3A]]></NonceStr><AppSignature><![CDATA[88341548a7d35b6889fd708cdc54e98471e2dfa3]]></AppSignature><SignMethod><![CDATA[sha1]]></SignMethod></xml>";
+		
+//		return "<xml>"
+//				+"<OpenId><![CDATA[oUpF8uN95-Ptaags6E_roPHg7AG0]]></OpenId>"
+//				+"<AppId><![CDATA[wx2421b1c4370ec43b]]></AppId>"
+//				+"<IsSubscribe>1</IsSubscribe>"
+//				+"<ProductId><![CDATA[ph31929767347956]]></ProductId>"
+//				+"<TimeStamp>1400126932</TimeStamp>"
+//				+"<NonceStr><![CDATA[CChC5JQLhRigmGJP]]></NonceStr>"
+//				+"<AppSignature><![CDATA[13b78571a8262e7cd9fdd90caf7742e1c4023771]]></AppSignature>"
+//				+"<SignMethod><![CDATA[sha1]]></SignMethod>"
+//				+"</xml>";
+	}
 	
-	public static void sendXml(){
+	public static String retNotify()
+	{
+		return "<xml>"
+				+"<OpenId><![CDATA[111222]]></OpenId>"
+				+"<AppId><![CDATA[wwwwb4f85f3a797777]]></AppId>"
+				+"<IsSubscribe>1</IsSubscribe>"
+				+"<TimeStamp> 1369743511</TimeStamp>"
+				+"<NonceStr><![CDATA[jALldRTHAFd5Tgs5]]></NonceStr>"
+				+"<AppSignature><![CDATA[bafe07f060f22dcda0bfdb4b5ff756f973aecffa]]>"
+				+"</AppSignature>"
+				+"<SignMethod><![CDATA[sha1]]></SignMethod>"
+				+"</xml>";
+	}
+	
+	public static void sendXml(String xmlCt){
 		try {
 			URL url = new URL(POST);
 			//根据Url地址打开一个连接
@@ -61,14 +91,31 @@ private static final String POST = "http://www.800pharm.com/shop/pay/weixinPayNo
 			httpUrlConnection.setUseCaches(false);
 			//请求类型
 			httpUrlConnection.setRequestProperty("Content-Type", "text/html");
+
 			httpUrlConnection.setRequestMethod("POST");
 			//设置连接、读取超时
 			httpUrlConnection.setConnectTimeout(30000);
 			httpUrlConnection.setReadTimeout(30000);
 			httpUrlConnection.connect();
+			
+			
+		        
 			//使用缓冲流将xml字符串发送给服务器
 			BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(httpUrlConnection.getOutputStream()));
-			writer.write(URLEncoder.encode(createXml(),"UTF-8"));
+			
+//			 StringBuffer params = new StringBuffer();
+//		        // 表单参数与get形式一样
+//		        params.append("out_trade_no").append("=").append("1111")
+//		               .append("&")
+//		             .append("out_trade_no").append("=").append("1111")
+//		             .append("transaction_id").append("=").append("1111")
+//		              .append("trade_state").append("=").append("0")
+//		             ;
+//		      //  byte[] bypes = params.toString().getBytes();
+//		        writer.write(params.toString());// 输入参数
+			
+			
+			writer.write(URLEncoder.encode(xmlCt,"UTF-8"));
 			writer.flush();
 			writer.close();
 			writer = null;
