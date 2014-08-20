@@ -149,7 +149,7 @@ public class App818Spider {
 		        	 String num=doc.select(".product_td5 > a").text();
 			           if(url2.contains("DrugList"))
 			           {
-			        	   Thread.sleep(4000);
+			        	   //Thread.sleep(4000);
 				           
 			
 				            // fetch the specified URL and parse to a HTML DOM
@@ -164,7 +164,7 @@ public class App818Spider {
 			                		//+ ","+ num //els.select("#shopCount").text()
 			                		+ ","+els.select("#price_f").text()
 			                		+ ","+els.select("#allSale").text()
-			                		+ ","+els.select("#GeneralName").text()
+			                		+ ","+els.select("#GeneralName").text().replaceAll(",","#")
 			                		+ ","+els.select("#MarkName").text()
 			                		+ ","+els.select("#Spec").text()
 			                		+ ","+pzwh

@@ -26,15 +26,20 @@ import org.dom4j.Element;
 
 public class NetXmlClient {
 
-private static final String POST = "http://localhost/shop/pay/weixinPayNotify_m.html";
+   //private static final String POST = "http://localhost/shop/pay/weixinPayNotify_m.html";
 //	private static final String POST = "http://www.800pharm.com/shop/pay/wxPayNotify.html?notify_id=fRon5-l4lKqNKwCeurlCz3u617mgFhKiuFvwdmnwN53r58yWelLWJMPcqHzCjzvN62AkXb2bdEMBIBmPn9JgWCXwXL69HA56&partner=1219895801&transaction_id=1219895801201408133319316201&sign=7EE3F867643E0C0E0DEF8D51B43B15C0&product_fee=1&total_fee=1&time_end=20140813162348&trade_state=0&out_trade_no=ph106885100534483966&transport_fee=0&fee_type=1&trade_mode=1&sign_type=MD5&input_charset=UTF-8&discount=0&bank_type=0&";	
+	private static final String POST = "http://localhost/shop/pay/weixinPayComp_m.html";
+	
 	public static void main(String[] args){
-		sendXml(pkgReq());
+		//sendXml(pkgReq());
 		//sendXml(retNotify());
+		System.out.println(wiquanReq());
+		sendXml(wiquanReq());
 	}
 	
 	public static String createXml() {
-		String xml = "<xml>"
+		String xml = 
+				"<xml>"
 +"<OpenId><![CDATA[oUpF8uN95-Ptaags6E_roPHg7AG0]]></OpenId>"
 +"<AppId><![CDATA[wx2421b1c4370ec43b]]></AppId>"
 +"<IsSubscribe>1</IsSubscribe>"
@@ -46,7 +51,32 @@ private static final String POST = "http://localhost/shop/pay/weixinPayNotify_m.
 +"</xml>";
 		return xml;
 	}
-	
+	public static String wiquanReq()
+	{
+		return  "<xml>"  +
+				"<OpenId><![CDATA[oDF3iY9P32sK_5GgYiRkjsCo45bk]]></OpenId><AppId><![CDATA[wxf8b4f85f3a794e77]]></AppId>"
+				+"<TimeStamp>1393400471</TimeStamp>"
+				+"<MsgType><![CDATA[request]]></MsgType>"
+				+"<FeedBackId>7197417460812502768</FeedBackId>"
+				+"<TransId><![CDATA[1900000109201402143240185685]]></TransId>"
+				+"<Reason><![CDATA[质量问题]]></Reason>"
+				+"<Solution><![CDATA[换货]]></Solution>"
+				+"<ExtInfo><![CDATA[备注 12435321321]]></ExtInfo>"
+				+"<AppSignature>"
+				+"<![CDATA[d60293982cc7c97a5a9d3383af761db763c07c86]]></AppSignature>"
+				+"<SignMethod>"
+				+"<![CDATA[sha1]]>"
+				+"</SignMethod>"
+				+"<PicInfo>"
+				+"<item><PicUrl><![CDATA[http://mmbiz.qpic.cn/mmbiz/49ogibiahRNtOk37iaztwmdgFbyFS9FUrqfodiaUAmxr4hOP34C6R4nGgebMalKuY3H35riaZ5vtzJh25tp7vBUwWxw/0]]></PicUrl>"
+				+"</item>"
+				+"<item>"
+				+"<PicUrl><![CDATA[http://mmbiz.qpic.cn/mmbiz/49ogibiahRNtOk37iaztwmdgFbyFS9FUrqfn3y72eHKRSAwVz1PyIcUSjBrDzXAibTiaAdrTGb4eBFbib9ibFaSeic3OIg/0]]></PicUrl>"
+				+"</item>"
+				+"<item>"
+				+"<PicUrl><![CDATA[]]></PicUrl></item><item><PicUrl><![CDATA[]]></PicUrl></item><item><PicUrl><![CDATA[]]></PicUrl></item>"
+				+"</PicInfo> </xml>";
+	}
 	public static String pkgReq()
 	{
 		return "<xml><OpenId><![CDATA[oTNesjrqNt4ZIZ8zRe2-WVnt98M0]]></OpenId><AppId><![CDATA[wx7179cc98fb47eff5]]></AppId><IsSubscribe>1</IsSubscribe><ProductId><![CDATA[103518878431371129]]></ProductId><TimeStamp>1407983545</TimeStamp><NonceStr><![CDATA[HemIBJpf35e3zk3A]]></NonceStr><AppSignature><![CDATA[88341548a7d35b6889fd708cdc54e98471e2dfa3]]></AppSignature><SignMethod><![CDATA[sha1]]></SignMethod></xml>";
@@ -90,8 +120,9 @@ private static final String POST = "http://localhost/shop/pay/weixinPayNotify_m.
 			//post方式提交不可以使用缓存
 			httpUrlConnection.setUseCaches(false);
 			//请求类型
-			httpUrlConnection.setRequestProperty("Content-Type", "text/html");
-
+			httpUrlConnection.setRequestProperty("Content-Type", "text/html; charset=UTF-8");
+		   httpUrlConnection.setRequestProperty("Accept-Charset	", "UTF-8");
+		   httpUrlConnection.setRequestProperty("Charset	", "UTF-8");
 			httpUrlConnection.setRequestMethod("POST");
 			//设置连接、读取超时
 			httpUrlConnection.setConnectTimeout(30000);
@@ -101,7 +132,7 @@ private static final String POST = "http://localhost/shop/pay/weixinPayNotify_m.
 			
 		        
 			//使用缓冲流将xml字符串发送给服务器
-			BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(httpUrlConnection.getOutputStream()));
+			BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(httpUrlConnection.getOutputStream(),"UTF-8"));
 			
 //			 StringBuffer params = new StringBuffer();
 //		        // 表单参数与get形式一样
