@@ -169,6 +169,8 @@ public class App818Spider {
 			                		+ ","+els.select("#Spec").text()
 			                		+ ","+pzwh
 			                		+ ","+url2
+			                		
+			                		+","+els.select("#FactoryName").text()
 			                		;
 			                pw.println(data);
 	                System.out.println(data);

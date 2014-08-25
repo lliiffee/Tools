@@ -30,6 +30,7 @@ public class NetXmlClient {
 //	private static final String POST = "http://www.800pharm.com/shop/pay/wxPayNotify.html?notify_id=fRon5-l4lKqNKwCeurlCz3u617mgFhKiuFvwdmnwN53r58yWelLWJMPcqHzCjzvN62AkXb2bdEMBIBmPn9JgWCXwXL69HA56&partner=1219895801&transaction_id=1219895801201408133319316201&sign=7EE3F867643E0C0E0DEF8D51B43B15C0&product_fee=1&total_fee=1&time_end=20140813162348&trade_state=0&out_trade_no=ph106885100534483966&transport_fee=0&fee_type=1&trade_mode=1&sign_type=MD5&input_charset=UTF-8&discount=0&bank_type=0&";	
 	private static final String POST = "http://localhost/shop/pay/weixinPayComp_m.html";
 	
+//	private static final String POST = "http://www.800pharm.com/shop/pay/wftPayNotify.html?transaction_id=dfasdfasdf&outOrder_no=14483368549253&sign=a5becc226bdfff4fe51c311b760dad9d5d26c8c63d84d14294f4bc487139f660";
 	public static void main(String[] args){
 		//sendXml(pkgReq());
 		//sendXml(retNotify());
@@ -56,7 +57,7 @@ public class NetXmlClient {
 		return  "<xml>"  +
 				"<OpenId><![CDATA[oDF3iY9P32sK_5GgYiRkjsCo45bk]]></OpenId><AppId><![CDATA[wxf8b4f85f3a794e77]]></AppId>"
 				+"<TimeStamp>1393400471</TimeStamp>"
-				+"<MsgType><![CDATA[request]]></MsgType>"
+				+"<MsgType><![CDATA[confirm]]></MsgType>"
 				+"<FeedBackId>7197417460812502768</FeedBackId>"
 				+"<TransId><![CDATA[1900000109201402143240185685]]></TransId>"
 				+"<Reason><![CDATA[质量问题]]></Reason>"
