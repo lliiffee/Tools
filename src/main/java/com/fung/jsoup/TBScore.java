@@ -14,13 +14,21 @@ public class TBScore {
 
 	
 	public static void main(String[] args){
-		System.out.println("begin");
-		for(int i=1;i<39;i++)
-		{
-			//http://www.okooo.com/soccer/league/8/schedule/8578/1-36- //西甲 14-15
-			//http://www.okooo.com/soccer/league/17/schedule/8186/1-1- //英超 14-15
-			getHistoryData("http://www.okooo.com/soccer/league/35/schedule/1557/1-42-"+i);
-		}
+//		System.out.println("begin");
+//		for(int i=1;i<39;i++)
+//		{
+//			//http://www.okooo.com/soccer/league/8/schedule/8578/1-36- //西甲 14-15
+//			//http://www.okooo.com/soccer/league/17/schedule/8186/1-1- //英超 14-15
+//			//http://www.okooo.com/soccer/league/40/schedule/11708/1-24- //瑞超
+//			
+//			//http://www.okooo.com/soccer/league/37/schedule/8170/1-39-1///荷甲
+//			getHistoryData("http://www.okooo.com/soccer/league/37/schedule/8170/1-39-"+i);
+//			http://www.okooo.com/soccer/team/500/
+//			
+//				
+//		}
+		
+		getDailyData();
 		
 	}
 	
