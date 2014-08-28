@@ -1,23 +1,23 @@
-package com.fung.httpCon;
+package com.bbf.wxpay;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.ObjectOutputStream;
-import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.List;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.tenpay.RequestHandler;
-import com.tenpay.util.TenpayUtil;
 
-public class TestHttpCon {
+public class NotifyDeliveryAction {
 
 	/**
 	 * @param args
@@ -26,44 +26,62 @@ public class TestHttpCon {
 	public static void main(String[] args)  {
 		// TODO Auto-generated method stub
 		try {
-			sendOrderHandleStatusToWx();
+			//sendOrderHandleStatusToWx();
+			String[] springConfig  = 
+				{	
+					"wxpay_appContext.xml" 
+				};
+	//need spring fastjson mysql_jdbc		 
+			System.out.println("begin.....");
+			String urlToken="https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx7179cc98fb47eff5&secret=823ae7209cb695d4a4a0c71071d6006e";
+			String returnRaw=getInternetContent(urlToken, "UTF-8");
+	 		JSONObject s = JSON.parseObject(returnRaw);	
+	 		
+	 		System.out.println("returnRaw:"+returnRaw);
+	 		String acc_token=s.getString("access_token");
+			
+//	 		System.out.println("token:"+acc_token);
+//			String acc_token="YUJLHySutF0VRtE_psgELAaSspxxYnzewRUX8ZHrqHHEkzDGSSCeG6I0zPpZ9XE6rb-p9TILfGAbXjMPDIwTiA";
+			ApplicationContext ctx = 
+					new ClassPathXmlApplicationContext(springConfig);
+		  
+			WxPayService wxPayService =(WxPayService)ctx.getBean("wxPayService"); 
+			List<WxPayNotify> list =wxPayService.getHandleList();
+			
+			List<WxPayNotify> listSuccess = new ArrayList();
+			//发送通知
+			for(WxPayNotify bean : list)
+			{
+				//System.out.println(bean.getAppId()+"-"+bean.getNotifyId());
+				sendOrderHandleStatusToWx( acc_token, bean, listSuccess);
+			}
+			
+			//更新处理状态
+			if(listSuccess.size()>0)
+			{
+				 wxPayService.batchUpdateByTranId(listSuccess);
+ 
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 	
+	private final static String APPKEY="OlTWpFgG6TJ4cO9luoXq9QpatmoPPzqeaqgOxGVSMVvG8XQR8zPOnpn5sLyPAvGIV8AHrWe17MU3qBGOcEnbO1TZUNm3vjmPR5X5BDaqiSFahAklK7y0F8gGoIWbUDmu";
+	public static void sendOrderHandleStatusToWx(String acc_token,WxPayNotify bean,List<WxPayNotify> listSuccess) throws Exception {
 	
-	public static void sendOrderHandleStatusToWx() throws Exception {
-		String new_batchOId = "108027021870361966";
-		
-		String pyid = "1219895801201408253163215011";
-		//保存订单状态
-		String acc_token="vHRsgTOGSPjwTqUBjBlgDVnFtE09jDnkWa8K12w_6uq8K0xJ_C1leF3H0-slHF3Msqs9IRAyq1G_ZQvvIP7RXA";
-		 
-		 /*
-			String urlToken="https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx7179cc98fb47eff5&secret=823ae7209cb695d4a4a0c71071d6006e";
-			String returnRaw=getInternetContent(urlToken, "UTF-8");
-	 		JSONObject s = JSON.parseObject(returnRaw);	
-	 		
-	 		acc_token=s.getString("access_token");
-	 	
-	 	*/
-		
-		System.out.println(acc_token);
-		
-		
 		String path="https://api.weixin.qq.com/pay/delivernotify?access_token="+acc_token;
  		
 		RequestHandler paySignReqHandler = new RequestHandler();
-		String appId="wx7179cc98fb47eff5";
-		String openid="oTNesjrqNt4ZIZ8zRe2-WVnt98M0";
-		String transid="1219895801201408253163209310";
-		String out_trade_no="105166022949677129";
+		String appId=bean.getAppId();
+		String openid=bean.getOpenId();
+		String transid=bean.getTransactionId();
+		String out_trade_no=bean.getOutTradeNo();
 		String  deliver_timestamp=TenpayUtil.getTimeStamp();
 		String deliver_status="1";
 		String deliver_msg="ok";
-		paySignReqHandler.setParameter("appkey", "OlTWpFgG6TJ4cO9luoXq9QpatmoPPzqeaqgOxGVSMVvG8XQR8zPOnpn5sLyPAvGIV8AHrWe17MU3qBGOcEnbO1TZUNm3vjmPR5X5BDaqiSFahAklK7y0F8gGoIWbUDmu");//公众号appid对应的密钥
+		paySignReqHandler.setParameter("appkey", APPKEY);//公众号appid对应的密钥
 		paySignReqHandler.setParameter("appid", appId);//公众号appid
 		paySignReqHandler.setParameter("openid", openid);//
 		paySignReqHandler.setParameter("transid", transid);
@@ -88,12 +106,11 @@ public class TestHttpCon {
 		obj.put("deliver_msg", "ok");
 		obj.put("app_signature", app_signature);
 		obj.put("sign_method", "sha1");
-System.out.println(path);	
-System.out.println(obj.toJSONString());
-		   URL url = new URL(path);
+	 
+		URL url = new URL(path);
 	        HttpURLConnection httpUrlConnection = (HttpURLConnection) url.openConnection();
 	        httpUrlConnection.setRequestMethod("POST");
-	        httpUrlConnection.setDoOutput(true);// �Ƿ��������
+	        httpUrlConnection.setDoOutput(true); 
 			//允许输出流
 			httpUrlConnection.setDoOutput(true);
 			//允许写入流
@@ -110,36 +127,20 @@ System.out.println(obj.toJSONString());
 			writer.flush();
 			writer.close();
 			writer = null;
-			
-		   // 得到对象输出流
-	       // ObjectOutputStream	objOutputStrm = getObjOutStream(httpUrlConnection);
-	//        objOutputStrm.writeObject(obj.toJSONString());
-	     // 刷新对象输出流，将任何字节都写入潜在的流中（些处为ObjectOutputStream）
-//	       objOutputStrm.flush();
-	     // 关闭流对象。此时，不能再向对象输出流写入任何数据，先前写入的数据存在于内存缓冲区中,
-	     // 在调用下边的getInputStream()函数时才把准备好的http请求正式发送到服务器
-	       
-//	       objOutputStrm.close();
-	 
-	       System.out.println(new String(readInputStream(httpUrlConnection.getInputStream())) );
+           String retMsg=new String(readInputStream(httpUrlConnection.getInputStream()));
+           System.out.println("retMsg="+retMsg+",trans_id="+bean.getTransactionId());
+			JSONObject s = JSON.parseObject(retMsg);	
+	        if("0".equals(s.getString("errcode"))){
+	        	WxPayNotify beanFinished = new WxPayNotify();
+	        	beanFinished.setTransactionId(bean.getTransactionId());
+	        	listSuccess.add(beanFinished);
+	        }
+		  
+		
 		 
 	}
-
 	
-	 private static ObjectOutputStream getObjOutStream(
-			 HttpURLConnection httpUrlConnection) throws IOException
-			 {
-			 OutputStream outStrm;// 得到HttpURLConnection的输出流
-			 ObjectOutputStream objOutputStrm;// 对象输出流
-			 // 此处getOutputStream会隐含的进行connect(即：如同调用上面的connect()方法，
-			 // 所以在开发中不调用上述的connect()也可以)。
-			 outStrm = httpUrlConnection.getOutputStream();
-
-			   // 现在通过输出流对象构建对象输出流对象，以实现输出可序列化的对象。
-			 // 使用JSON传值
-			 objOutputStrm = new ObjectOutputStream(outStrm);
-			 return objOutputStrm;
-			 }
+ 
 	
 	
 	public static String getInternetContent(String urlstr,String enc)
@@ -189,20 +190,7 @@ System.out.println(obj.toJSONString());
 			}
 		  return content;
 	}
-	
-	public static byte[] sendPostRequestByForm(String path, String params) throws Exception{
-        URL url = new URL(path);
-        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-        conn.setRequestMethod("POST");// �ύģʽ
-        // conn.setConnectTimeout(10000);//���ӳ�ʱ ��λ����
-        // conn.setReadTimeout(2000);//��ȡ��ʱ ��λ����
-        conn.setDoOutput(true);// �Ƿ��������
-        byte[] bypes = params.toString().getBytes();
-        conn.getOutputStream().write(bypes);// �������
-        InputStream inStream=conn.getInputStream();
-        return readInputStream(inStream);
-    }
- 
+
  public static byte[] readInputStream(InputStream inStream) throws Exception{
         ByteArrayOutputStream outStream = new ByteArrayOutputStream();
         byte[] buffer = new byte[1024];
@@ -210,11 +198,9 @@ System.out.println(obj.toJSONString());
         while( (len = inStream.read(buffer)) !=-1 ){
             outStream.write(buffer, 0, len);
         }
-        byte[] data = outStream.toByteArray();//��ҳ�Ķ��������
+        byte[] data = outStream.toByteArray();
         outStream.close();
         inStream.close();
         return data;
     }
-	
- 
 }

@@ -1,4 +1,4 @@
-package com.fung.httpCon;
+package com.bbf.wxpay;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -11,11 +11,8 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLEncoder;
 
 import com.alibaba.fastjson.JSONObject;
-import com.tenpay.RequestHandler;
-import com.tenpay.util.TenpayUtil;
 
 public class TestHttpCon {
 

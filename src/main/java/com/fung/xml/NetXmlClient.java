@@ -24,18 +24,31 @@ import org.dom4j.DocumentException;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
 
+import com.tenpay.RequestHandler;
+import com.tenpay.util.TenpayUtil;
+
 public class NetXmlClient {
 
    //private static final String POST = "http://localhost/shop/pay/weixinPayNotify_m.html";
-//	private static final String POST = "http://www.800pharm.com/shop/pay/wxPayNotify.html?notify_id=fRon5-l4lKqNKwCeurlCz3u617mgFhKiuFvwdmnwN53r58yWelLWJMPcqHzCjzvN62AkXb2bdEMBIBmPn9JgWCXwXL69HA56&partner=1219895801&transaction_id=1219895801201408133319316201&sign=7EE3F867643E0C0E0DEF8D51B43B15C0&product_fee=1&total_fee=1&time_end=20140813162348&trade_state=0&out_trade_no=ph106885100534483966&transport_fee=0&fee_type=1&trade_mode=1&sign_type=MD5&input_charset=UTF-8&discount=0&bank_type=0&";	
+//	private static final String POST = "http://localhost/shop/pay/wxPayNotify.html?notify_id=fRon5-l4lKqNKwCeurlCz3u617mgFhKiuFvwdmnwN53r58yWelLWJMPcqHzCjzvN62AkXb2bdEMBIBmPn9JgWCXwXL69HA56&partner=1219895801&transaction_id=1219895801201408133319316201&sign=7EE3F867643E0C0E0DEF8D51B43B15C0&product_fee=1&total_fee=1&time_end=20140813162348&trade_state=0&out_trade_no=309757004432287&transport_fee=0&fee_type=1&trade_mode=1&sign_type=MD5&input_charset=UTF-8&discount=0&bank_type=0&";	
 	private static final String POST = "http://localhost/shop/pay/weixinPayComp_m.html";
+	
+//	private static final String POST = "http://localhost/shop/pay/weixinPayServErr_m.html";
 	
 //	private static final String POST = "http://www.800pharm.com/shop/pay/wftPayNotify.html?transaction_id=dfasdfasdf&outOrder_no=14483368549253&sign=a5becc226bdfff4fe51c311b760dad9d5d26c8c63d84d14294f4bc487139f660";
 	public static void main(String[] args){
 		//sendXml(pkgReq());
 		//sendXml(retNotify());
-		System.out.println(wiquanReq());
+		//System.out.println(wiquanReq());
 		sendXml(wiquanReq());
+		
+//		try {
+//			sendXml( rtWarn());
+//		} catch (Exception e) {
+//		
+//			e.printStackTrace();
+//		}
+		
 	}
 	
 	public static String createXml() {
@@ -50,21 +63,22 @@ public class NetXmlClient {
 +"<AppSignature><![CDATA[13b78571a8262e7cd9fdd90caf7742e1c4023771]]></AppSignature>"
 +"<SignMethod><![CDATA[sha1]]></SignMethod>"
 +"</xml>";
+		
 		return xml;
 	}
 	public static String wiquanReq()
 	{
-		return  "<xml>"  +
+		String xml=  "<xml>"  +
 				"<OpenId><![CDATA[oDF3iY9P32sK_5GgYiRkjsCo45bk]]></OpenId><AppId><![CDATA[wxf8b4f85f3a794e77]]></AppId>"
 				+"<TimeStamp>1393400471</TimeStamp>"
-				+"<MsgType><![CDATA[confirm]]></MsgType>"
+				+"<MsgType><![CDATA[request]]></MsgType>"
 				+"<FeedBackId>7197417460812502768</FeedBackId>"
 				+"<TransId><![CDATA[1900000109201402143240185685]]></TransId>"
 				+"<Reason><![CDATA[质量问题]]></Reason>"
 				+"<Solution><![CDATA[换货]]></Solution>"
 				+"<ExtInfo><![CDATA[备注 12435321321]]></ExtInfo>"
 				+"<AppSignature>"
-				+"<![CDATA[d60293982cc7c97a5a9d3383af761db763c07c86]]></AppSignature>"
+				+"<![CDATA[e3bc0bab6fa9794e949cd17dab420a7668b664e7]]></AppSignature>"
 				+"<SignMethod>"
 				+"<![CDATA[sha1]]>"
 				+"</SignMethod>"
@@ -77,6 +91,9 @@ public class NetXmlClient {
 				+"<item>"
 				+"<PicUrl><![CDATA[]]></PicUrl></item><item><PicUrl><![CDATA[]]></PicUrl></item><item><PicUrl><![CDATA[]]></PicUrl></item>"
 				+"</PicInfo> </xml>";
+		
+		xml="<xml><OpenId><![CDATA[oTNesjrqNt4ZIZ8zRe2-WVnt98M0]]></OpenId><AppId><![CDATA[wx7179cc98fb47eff5]]></AppId><TimeStamp>1409197790</TimeStamp><MsgType><![CDATA[request]]></MsgType><FeedBackId>10280828770999802559</FeedBackId><TransId><![CDATA[1219895801201408283186787487]]></TransId><Reason><![CDATA[Test]]></Reason><Solution><![CDATA[Test]]></Solution><ExtInfo><![CDATA[Test 13333333333]]></ExtInfo><AppSignature><![CDATA[34ec62fff442f91786b6de8baef9c737bb4cbe9c]]></AppSignature><SignMethod><![CDATA[sha1]]></SignMethod></xml>";
+		return xml;
 	}
 	public static String pkgReq()
 	{
@@ -108,6 +125,41 @@ public class NetXmlClient {
 				+"</xml>";
 	}
 	
+	public static String rtWarn()throws Exception
+	{
+		String t= TenpayUtil.getTimeStamp();
+		String sign= getPaySign(t);
+		return "<xml>"
+				+"<AppId><![CDATA[wx7179cc98fb47eff5]]></AppId>"
+				+"<ErrorType>1001</ErrorType>"
+				+"<Description><![CDATA[test]]></Description>"
+				+"<AlarmContent><![CDATA[test]]></AlarmContent>"
+				+"<TimeStamp>"+t+"</TimeStamp>"
+				+"<AppSignature><![CDATA["+sign+"]]></AppSignature>"
+				+"<SignMethod><![CDATA[sha1]]></SignMethod>"
+				+"</xml>";
+	}
+	
+	public static String getPaySign(String t) throws Exception
+	{
+		RequestHandler paySignReqHandler = new RequestHandler();
+		String appId="wx7179cc98fb47eff5";
+		String errortype="1001";
+		String description="test";
+		String alarmcontent="test";
+		String  timestamp=t;
+		 
+		paySignReqHandler.setParameter("appkey", "OlTWpFgG6TJ4cO9luoXq9QpatmoPPzqeaqgOxGVSMVvG8XQR8zPOnpn5sLyPAvGIV8AHrWe17MU3qBGOcEnbO1TZUNm3vjmPR5X5BDaqiSFahAklK7y0F8gGoIWbUDmu");//公众号appid对应的密钥
+		paySignReqHandler.setParameter("appid", appId);//公众号appid
+		paySignReqHandler.setParameter("errortype", errortype);//
+		paySignReqHandler.setParameter("description", description);
+		paySignReqHandler.setParameter("alarmcontent", alarmcontent);
+		paySignReqHandler.setParameter("timestamp", timestamp);
+	 
+		String sign= paySignReqHandler.getPaySign();
+		System.out.println(paySignReqHandler.getDebugInfo());
+		return sign;
+	}
 	public static void sendXml(String xmlCt){
 		try {
 			URL url = new URL(POST);
