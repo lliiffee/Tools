@@ -1,6 +1,8 @@
 package com.fung.jsoup;
 
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,37 +30,13 @@ public class TBScore {
 //				
 //		}
 		
-		getDailyData();
+		//getDailyData();
+		
 		
 	}
 	
 	
-	public static void getHistoryData(String url)
-	{
-		//
-		 // String url="http://www.okooo.com/soccer/league/17/schedule/2/1-1-1/";
-		  Document doc;
-		  
-		  try {
-				doc = Jsoup.connect(url).get();
-				 
-				 Elements table = doc.select("#team_fight_table");  
-				 Elements trs=table.select("tr:not(.LotteryListTitle)");
-				  for(Element eltr:trs)
-				  {
-					  String result="";
-					  for(Element td :eltr.select("td"))
-					  {
-						  result+=","+td.text();
-					  }
-					  System.out.println(result);
-				  }
-		  }catch (IOException e) {
-				// TODO Auto-generated catch block
-				 
-			}
-		  
-	}
+
 	/**
 	 * @param args
 	 */
@@ -168,5 +146,25 @@ public class TBScore {
 				
 			
 	}
+	
+
+	
+	
+    public static void appendFile(String fileName){
+    	PrintWriter	 pw=null;
+		try {
+			
+			pw = new PrintWriter(new FileWriter(fileName,true));
+			
+			pw.println("test");
+			pw.flush();
+			} catch (Exception e) {
+			e.printStackTrace();
+		}finally
+		{
+			pw.close();
+			pw=null;
+		}
+    }
 
 }

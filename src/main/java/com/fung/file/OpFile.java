@@ -4,9 +4,11 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 
 public class OpFile {
 
@@ -266,4 +268,20 @@ public class OpFile {
 		    } 
 
 
+		     public static void appendFile(String fileName){
+		     	PrintWriter	 pw=null;
+		 		try {
+		 			
+		 			pw = new PrintWriter(new FileWriter(fileName,true));
+		 			
+		 			pw.println("test");
+		 			pw.flush();
+		 			} catch (Exception e) {
+		 			e.printStackTrace();
+		 		}finally
+		 		{
+		 			pw.close();
+		 			pw=null;
+		 		}
+		     }
 }
