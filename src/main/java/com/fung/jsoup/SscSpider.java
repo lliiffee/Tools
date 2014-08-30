@@ -1,7 +1,9 @@
 package com.fung.jsoup;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
@@ -42,13 +44,64 @@ public class SscSpider {
 					
 					Set es = map.entrySet();
 					Iterator it = es.iterator();
+					int xs=0,
+					    xd=0,ds=0,dd=0,
+						counter=0;
+					List<String> listXs=new ArrayList<String>();
+					List<String> listXd=new ArrayList<String>();
+					List<String> listds=new ArrayList<String>();
+					List<String> listdd=new ArrayList<String>();
+					
 					while (it.hasNext()) {
+						counter++;
 						Map.Entry entry = (Map.Entry) it.next();
 						String k = (String) entry.getKey();
 						String v = (String) entry.getValue();
-						System.out.println(v);
+						//System.out.println(v);
+					    if(v.contains("小双"))
+					    {
+					    	listXs.add("小双"+(counter-xs));
+					    	xs=counter;	
+					    } 
+					    if(v.contains("小单"))
+					    {
+					    	listXd.add("小单"+(counter-xd));
+					    	xd=counter;
+					    }	
+					    if(v.contains("大单"))
+					    {
+					    	listdd.add("大单"+(counter-dd));
+					    	dd=counter;
+					    }	
+					    if(v.contains("大双"))
+					    {
+					    	listds.add("大双"+(counter-ds));
+					    	ds=counter;
+					    }	
+					     
 					}
-				 
+					
+					for(String str:listXs)
+					{
+						System.out.println(str);
+					}
+					System.out.println("#########################");
+					for(String str:listXd)
+					{
+						System.out.println(str);
+					}
+					System.out.println("#########################");
+					for(String str:listds)
+					{
+						System.out.println(str);
+					}
+					System.out.println("#########################");
+					for(String str:listdd)
+					{
+						System.out.println(str);
+					}
+					
+				
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					 
