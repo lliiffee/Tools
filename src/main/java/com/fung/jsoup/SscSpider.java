@@ -25,6 +25,7 @@ public class SscSpider {
 	        Document doc;
 			 
 			 try {
+				 
 				doc = Jsoup.connect(url).get();
 				Map map=new TreeMap();
 				 //<span class="wf">001 </span> <span class="kjh"> 31312<br /> </span> <span class="h2 red"> 小单小双 </span> <span class="h3 orange"> 312 </span> </td> 
@@ -40,46 +41,80 @@ public class SscSpider {
 				    	   map.put(round, round+","+num+","+ds.substring(0,1)+ds.substring(3,4));
 				       }
 			    		
+				       
 					}
 					
 					Set es = map.entrySet();
 					Iterator it = es.iterator();
 					int xs=0,
 					    xd=0,ds=0,dd=0,
+					    xsNoshow=0,xdNoshow=0,dsNoshow=0,ddNoshow=0,
 						counter=0;
 					List<String> listXs=new ArrayList<String>();
 					List<String> listXd=new ArrayList<String>();
 					List<String> listds=new ArrayList<String>();
 					List<String> listdd=new ArrayList<String>();
-					
+					List<String> listRes=new ArrayList<String>();
 					while (it.hasNext()) {
 						counter++;
 						Map.Entry entry = (Map.Entry) it.next();
 						String k = (String) entry.getKey();
 						String v = (String) entry.getValue();
 						//System.out.println(v);
+						
+						
+						
 					    if(v.contains("小双"))
 					    {
+					    	xdNoshow++;
+					    	xsNoshow=0;
+					    	ddNoshow++;
+					    	dsNoshow++;
 					    	listXs.add("小双"+(counter-xs));
 					    	xs=counter;	
 					    } 
 					    if(v.contains("小单"))
 					    {
+					    	
+					    	xdNoshow=0;
+					    	xsNoshow++;
+					    	ddNoshow++;
+					    	dsNoshow++;
+					    	
 					    	listXd.add("小单"+(counter-xd));
 					    	xd=counter;
 					    }	
 					    if(v.contains("大单"))
 					    {
+					    	xdNoshow++;
+					    	xsNoshow++;
+					    	ddNoshow=0;
+					    	dsNoshow++;
 					    	listdd.add("大单"+(counter-dd));
 					    	dd=counter;
 					    }	
 					    if(v.contains("大双"))
 					    {
+					    	xdNoshow++;
+					    	xsNoshow++;
+					    	ddNoshow++;
+					    	dsNoshow=0;
 					    	listds.add("大双"+(counter-ds));
 					    	ds=counter;
 					    }	
-					     
+					    
+					    System.out.println("NOshow: "+k+"-小单:"+xdNoshow+" 小双:"+xsNoshow+"-大单："+ddNoshow+"－大双："+dsNoshow);
+					    
+					    if(v.length()>4)
+					    {
+					    	listRes.add(v);
+					    }
 					}
+					for(String str:listRes)
+					{
+						System.out.println(str);
+					}
+					System.out.println("88888888888888888888888888888888888");
 					
 					for(String str:listXs)
 					{
