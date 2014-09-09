@@ -11,13 +11,14 @@
 <%@page import="java.io.Reader"%>
 <%@page import="java.security.MessageDigest"%>
 <%@page import="java.util.Arrays"%>
-
-<%
+<%@page import="java.io.UnsupportedEncodingException"%>
+ 
+ <%
 	//WeiXinHandler为内部类不能使用非final类型的对象
 	final String TOKEN="fung51206token";
 	final HttpServletRequest final_request=request; 
 	final HttpServletResponse final_response=response;
-%>
+ %>
 <% 
 class WeiXinHandler{
 	public void valid(){
@@ -34,13 +35,21 @@ class WeiXinHandler{
 	}
 	//自动回复内容
 	public void responseMsg(){
+		try {
+			final_request.setCharacterEncoding("UTF-8");
+			final_response.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+	
 		String postStr=null;
 		try{
 			postStr=this.readStreamParameter(final_request.getInputStream());
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		//System.out.println(postStr);
+		System.out.println("postStr"+postStr);
 		if (null!=postStr&&!postStr.isEmpty()){
 			Document document=null;
 			try{
@@ -58,13 +67,35 @@ class WeiXinHandler{
             String keyword = root.elementTextTrim("Content");
             String time = new Date().getTime()+"";
             String textTpl =  newsTpl();          
-			
+            
+            try {
+				System.out.println("1:"+new String(keyword.getBytes(),"UTF-8")) ;
+				System.out.println("2:"+new String(keyword.getBytes(),"GBK")) ;
+				System.out.println("3:"+new String(keyword.getBytes("GBK"),"UTF-8")) ;
+				System.out.println("4:"+new String(keyword.getBytes("UTF-8"),"GBK")) ;
+				System.out.println("5:"+new String(keyword.getBytes("ISO-8859-1"),"GBK")) ;
+				System.out.println("6:"+new String(keyword.getBytes("ISO-8859-1"),"UTF-8")) ;
+				
+				System.out.println("7:"+new String(java.net.URLDecoder.decode(keyword).getBytes("iso-8859-1"),"utf-8")); 
+				
+			} catch (UnsupportedEncodingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				
+			}
+            
             if(null!=keyword&&!keyword.equals(""))
             {
+            	if(keyword.startsWith("cx"))
+            	{
+            		//System.out.println("1:"+keyword.getBytes(),"UTF-8"));
           		String msgType = "news";
-             
-            	String resultStr = textTpl.format(textTpl, fromUsername, toUsername, time, msgType);
+            	String resultStr = textTpl.format(textTpl, fromUsername, toUsername, time, msgType,keyword);
             	this.print(resultStr);
+            	}else
+            	{
+            		this.print("Input something...");
+            	}
             }else{
             	this.print("Input something...");
             }
@@ -92,22 +123,9 @@ class WeiXinHandler{
 		+"<FromUserName><![CDATA[%2$s]]></FromUserName> "
 		+"<CreateTime>%3$s</CreateTime> "
 		+"<MsgType><![CDATA[%4$s]]></MsgType> "
-		+"<ArticleCount>2</ArticleCount> "
-		+"<Articles> "
-		+"<item> "
-		+"<Title><![CDATA[title1]]></Title>  "
-		+"<Description><![CDATA[description1]]></Description> "
-		+"<PicUrl><![CDATA[http://img.800pharm.com/images/product/base/20101214/EZA022002G1.jpg]]></PicUrl> "
-		+"<Url><![CDATA[http://www.800pharm.com/shop/m/prodDetail.html?prod_id=81963&shop_code=80000&ref=main]]></Url> "
-		+"</item> "
-		+"<item> "
-		+"<Title><![CDATA[title2]]></Title> "
-		+"<Description><![CDATA[description2]]></Description> "
-		+"<PicUrl><![CDATA[http://img.800pharm.com/images/product/99999/20131031/lists_1383186782556.JPG]]></PicUrl> "
-		+"<Url><![CDATA[http://www.800pharm.com/shop/m/prodDetail.html?prod_id=485056&shop_code=99999&ref=main]]></Url> "
-		+"</item> "
-		+"</Articles> "
-		+"</xml>  ";
+		+"<ArticleCount>6</ArticleCount> "
+		+" <ArticleCount>6</ArticleCount> <Articles> <item> <Title><![CDATA[到八百方商城查看更多]]></Title>  <Description><![CDATA[description1]]></Description> <PicUrl><![CDATA[http://test.800pharm.com/shop/m/images/index/logo.png]]></PicUrl> <Url><![CDATA[http://www.800pharm.com/shop/m/prodSearchList.html?search_key=cx清水>]]></Url> </item> <item><Title><![CDATA[百虹水晶清水黑发啫喱(70ml(35ml*2))-广州御采堂化妆品有限公司￥53.90]]></Title> <Description><![CDATA[description2]]></Description> <PicUrl><![CDATA[http://img.800pharm.com/images/product/100119/20131225/1387942716771.jpg]]></PicUrl> <Url><![CDATA[http://www.800pharm.com/shop/m/prodDetail.html?prod_id=508459&shop_code=100119&ref=main]]></Url> </item> <item><Title><![CDATA[【亚宝】 仲景胃灵丸 （12袋装） - 亚宝大同制药(1.2克×12袋 （浓缩丸）)-同药集团大同制药有限公司 ￥19.80]]></Title> <Description><![CDATA[description2]]></Description> <PicUrl><![CDATA[http://img.800pharm.com/images/100146/20140630/20140630135905_673.jpg]]></PicUrl> <Url><![CDATA[http://www.800pharm.com/shop/m/prodDetail.html?prod_id=586861&shop_code=100146&ref=main]]></Url> </item> <item><Title><![CDATA[仲景胃灵丸(1.2克*12袋/盒)-同药集团大同制药有限公司 ￥19.80]]></Title> <Description><![CDATA[description2]]></Description> <PicUrl><![CDATA[http://img.800pharm.com/images/product/99200/20130503/1367544601285.jpg]]></PicUrl> <Url><![CDATA[http://www.800pharm.com/shop/m/prodDetail.html?prod_id=425686&shop_code=99200&ref=main]]></Url> </item> <item><Title><![CDATA[【神光】 仲景胃灵片 （24片装）-深圳中联制药(24片)-深圳市中联制药有限公司 ￥15.80]]></Title> <Description><![CDATA[description2]]></Description> <PicUrl><![CDATA[http://img.800pharm.com/images/product/base/20111231/0104411.jpg]]></PicUrl> <Url><![CDATA[http://www.800pharm.com/shop/m/prodDetail.html?prod_id=503565&shop_code=100103&ref=main]]></Url> </item> <item><Title><![CDATA[【神光】 仲景胃灵片 （24片装）(24片)-深圳市中联制药有限公司 ￥11.80]]></Title> <Description><![CDATA[description2]]></Description> <PicUrl><![CDATA[http://img.800pharm.com/images/product/base/20111231/0104411.jpg]]></PicUrl> <Url><![CDATA[http://www.800pharm.com/shop/m/prodDetail.html?prod_id=390541&shop_code=71000&ref=main]]></Url> </item> </Articles> </xml>  ";
+		
 	}
 	
 	public String txtTpl()
@@ -181,7 +199,7 @@ class WeiXinHandler{
 		StringBuilder buffer = new StringBuilder();
 		BufferedReader reader=null;
 		try{
-			reader = new BufferedReader(new InputStreamReader(in));
+			reader = new BufferedReader(new InputStreamReader(in,"UTF-8"));
 			String line=null;
 			while((line = reader.readLine())!=null){
 				buffer.append(line);
@@ -204,5 +222,6 @@ class WeiXinHandler{
 <%
 	WeiXinHandler handler=new WeiXinHandler();
 	//handler.valid();
-	handler.responseMsg();
+	//handler.responseMsg();
+	out.print(handler.checkSignature());
 %>

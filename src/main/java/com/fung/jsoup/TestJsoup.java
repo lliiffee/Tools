@@ -26,10 +26,10 @@ public class TestJsoup {
 		{
 			//File input = new File("e:\\temp\\input.html");
 			//Document doc = Jsoup.parse(input, "UTF-8", "http://www.kuaidi100.com/kuaidiresult?id=8596331");
-			Document doc = Jsoup.connect("http://www.kuaidi100.com/kuaidiresult?id=8596331").userAgent("Mozilla/5.0 &#40;Windows NT 6.1&#41; AppleWebKit/537.1 &#40;KHTML. like Gecko&#41; Chrome/21.0.1180.89 Safari/537.1")
+			Document doc = Jsoup.connect("http://baike.baidu.com/view/4788470.htm?fr=aladdin").userAgent("Mozilla/5.0 &#40;Windows NT 6.1&#41; AppleWebKit/537.1 &#40;KHTML. like Gecko&#41; Chrome/21.0.1180.89 Safari/537.1")
 					  .timeout(3000)
 					  .get();
-			System.out.println(doc.data());
+			System.out.println(doc.html());
 //			Elements scriptes = doc.select("script"); //带有href属性的a元素
 //			 for(Element sc:scriptes)
 //			 {

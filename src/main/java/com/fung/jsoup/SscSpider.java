@@ -38,7 +38,12 @@ public class SscSpider {
 						String ds=td.select("span.h2.red").text(); 
 				       if(round.length()>2&&num.length()>4)
 				       {
-				    	   map.put(round, round+","+num+","+ds.substring(0,1)+ds.substring(3,4));
+				    	   map.put(round, round+","+num+","+ds.substring(0,1)+ds.substring(3,4)
+				    			   +","+ds.substring(1,2)+ds.substring(2,3)
+				    			   +","+ds.substring(0,1)+ds.substring(2,3)
+				    			     +","+ds.substring(1,2)+ds.substring(3,4)
+				    			     +","+ ( Integer.parseInt(num.substring(2,3))+ Integer.parseInt(num.substring(3,4)) +Integer.parseInt(num.substring(4,5)))
+				    			   );
 				       }
 			    		
 				       

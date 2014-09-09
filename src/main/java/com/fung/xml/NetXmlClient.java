@@ -31,8 +31,8 @@ public class NetXmlClient {
 
    //private static final String POST = "http://localhost/shop/pay/weixinPayNotify_m.html";
 //	private static final String POST = "http://localhost/shop/pay/wxPayNotify.html?notify_id=fRon5-l4lKqNKwCeurlCz3u617mgFhKiuFvwdmnwN53r58yWelLWJMPcqHzCjzvN62AkXb2bdEMBIBmPn9JgWCXwXL69HA56&partner=1219895801&transaction_id=1219895801201408133319316201&sign=7EE3F867643E0C0E0DEF8D51B43B15C0&product_fee=1&total_fee=1&time_end=20140813162348&trade_state=0&out_trade_no=309757004432287&transport_fee=0&fee_type=1&trade_mode=1&sign_type=MD5&input_charset=UTF-8&discount=0&bank_type=0&";	
-	private static final String POST = "http://localhost/shop/pay/weixinPayComp_m.html";
-	
+//	private static final String POST = "http://localhost/shop/pay/weixinPayComp_m.html";
+	private static final String POST = "http://localhost/shop/wx_search.html";
 //	private static final String POST = "http://localhost/shop/pay/weixinPayServErr_m.html";
 	
 //	private static final String POST = "http://www.800pharm.com/shop/pay/wftPayNotify.html?transaction_id=dfasdfasdf&outOrder_no=14483368549253&sign=a5becc226bdfff4fe51c311b760dad9d5d26c8c63d84d14294f4bc487139f660";
@@ -40,8 +40,8 @@ public class NetXmlClient {
 		//sendXml(pkgReq());
 		//sendXml(retNotify());
 		//System.out.println(wiquanReq());
-		sendXml(wiquanReq());
-		
+		//sendXml(wiquanReq());
+		sendXml(wxSeed());
 //		try {
 //			sendXml( rtWarn());
 //		} catch (Exception e) {
@@ -49,6 +49,21 @@ public class NetXmlClient {
 //			e.printStackTrace();
 //		}
 		
+	}
+	
+	public static String wxSeed()
+	{
+		try {
+			return  "<xml>"
+					+"<FromUserName>test1</FromUserName>"
+					+"<ToUserName>test2</ToUserName>"
+					+"<Content>cx清水></Content>"
+					+"</xml>"; 
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return "";
+		}
 	}
 	
 	public static String createXml() {
@@ -199,7 +214,9 @@ public class NetXmlClient {
 //		        writer.write(params.toString());// 输入参数
 			
 			
-			writer.write(URLEncoder.encode(xmlCt,"UTF-8"));
+		//	writer.write(URLEncoder.encode(xmlCt,"UTF-8"));
+		//	System.out.println(xmlCt);
+			writer.write( xmlCt);
 			writer.flush();
 			writer.close();
 			writer = null;
