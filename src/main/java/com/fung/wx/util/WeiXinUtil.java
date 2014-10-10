@@ -138,7 +138,9 @@ public class WeiXinUtil {
 	    // 拼装创建菜单的url   
 	    String url = menu_create_url.replace("ACCESS_TOKEN", accessToken);  
 	    // JSONObject将菜单对象转换成json字符串   
-	    String jsonMenu = JSONObject.toJSONString(menu); 
+	  //  String jsonMenu = JSONObject.toJSONString(menu); 
+	    
+	    String jsonMenu = "{\"button\":"+JSONObject.toJSONString(menu.getButtons().toArray())+"}";
 	    // 调用接口创建菜单   
 	    JSONObject jsonObject = httpsRequest(url, "POST", jsonMenu);  
 	  

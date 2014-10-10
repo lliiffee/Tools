@@ -1,28 +1,28 @@
 package com.fung.wx.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 菜单
 *    
-* 项目名称：WeiChatService   
-* 类名称：Menu   
-* 类描述：   
-* 创建人：zhouling
-* 创建时间：Nov 15, 2013 4:11:19 PM    
-* 修改备注：   
-* @version    
-*
  */
 public class Menu {
 	
-	private Button[] button;
+	
+	public Menu()
+	{
+		this.buttons=new ArrayList();
+	}
+	private List<Button> buttons;
 
-	public Button[] getButton() {
-		return button;
+	public List<Button> getButtons() {
+		return buttons;
 	}
 
-	public void setButton(Button[] button) {
-		this.button = button;
-	}
+	
+
+	 
 	
 	
 	

@@ -3,19 +3,23 @@ package com.fung.wx.model;
 /**
  * 普通按钮(子按钮)
 *    
-* 项目名称：WeiChatService   
-* 类名称：CommonButton   
-* 类描述：   
-* 创建人：zhouling
-* 创建时间：Nov 15, 2013 3:51:39 PM    
-* 修改备注：   
-* @version    
-*
  */
 public class CommonButton extends Button {
 	private String type;
 	
 	private String key;
+	
+	private String url;
+	
+	
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
 
 	public String getType() {
 		return type;

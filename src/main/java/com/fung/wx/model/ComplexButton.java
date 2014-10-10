@@ -1,5 +1,8 @@
 package com.fung.wx.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 复杂按钮（父按钮）
 *    
@@ -14,14 +17,30 @@ package com.fung.wx.model;
  */
 public class ComplexButton extends Button {
 	
-	private Button[] sub_button;
+	
+	
+	private List <Button> sub_button;
+	
+	public ComplexButton(){
+		this.sub_button=new ArrayList<Button>();
+	}
 
-	public Button[] getSub_button() {
+	 
+	
+	public List<Button> getSub_button() {
 		return sub_button;
 	}
 
-	public void setSub_button(Button[] sub_button) {
-		this.sub_button = sub_button;
+
+
+ 
+
+
+	public void addSub_button(Button button)
+	{
+		 
+			this.getSub_button().add(button);
+		 
 	}
 
 }

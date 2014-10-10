@@ -1,11 +1,25 @@
 package  com.fung.wx.service;
 
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+
+import javax.sql.DataSource;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.jdbc.core.JdbcTemplate;
+
+import com.alibaba.fastjson.JSONObject;
 import com.fung.wx.model.AccessToken;
 import com.fung.wx.model.Button;
 import com.fung.wx.model.CommonButton;
 import com.fung.wx.model.ComplexButton;
 import com.fung.wx.model.Menu;
+import com.fung.wx.model.MenuMapper;
+import com.fung.wx.model.WxMenuSetting;
 import com.fung.wx.util.LogUtil;
+import com.fung.wx.util.MessageUtil;
 import com.fung.wx.util.WeiXinUtil;
 
  
@@ -23,99 +37,130 @@ import com.fung.wx.util.WeiXinUtil;
 *
  */
 public class MenuManager {
-	
+	 private DataSource dataSource;
+     /**
+      * spring提供的jdbc操作辅助类
+ */
+     private JdbcTemplate jdbcTemplate;
+ 
+     // 设置数据源
+     public void setDataSource(DataSource dataSource) {
+         this.jdbcTemplate = new JdbcTemplate(dataSource);
+     }
 	private static LogUtil log=new LogUtil(MenuManager.class);
 	
-	 public static void CreateMenu() {  
-		log.debug("------------开始创建菜单--------------------");
-	        // 第三方用户唯一凭证   
-	        String appId = StartOnLoad.TOKEN_APPID;  
-	        // 第三方用户唯一凭证密钥   
-	        String appSecret = StartOnLoad.TOKEN_SECRET;  
-	  
-	        // 调用接口获取access_token   
-	        AccessToken at = WeiXinUtil.getAccessToken(appId, appSecret);  
-	  
-	        if (null != at) {  
-	            // 调用接口创建菜单   
-	            int result = WeiXinUtil.createMenu(getMenu(), at.getToken());  
-	  
-	            // 判断菜单创建结果   
-	            if (0 == result)  
-	                log.info("菜单创建成功！");  
-	            else  
-	                log.info("菜单创建失败，错误码：" + result);  
-	        }  
-	    }  
+ 
 	 
 	  /** 
 	     * 组装菜单数据 
 	     *  
 	     * @return 
 	     */  
-	    private static  Menu getMenu() {  
-	        CommonButton btn11 = new CommonButton();  
-	        btn11.setName("消费明细");  
-	        btn11.setType("click");  
-	        btn11.setKey("11");  
-	  
-	        CommonButton btn12 = new CommonButton();  
-	        btn12.setName("考勤记录");  
-	        btn12.setType("click");  
-	        btn12.setKey("12");  
-	  
-	        CommonButton btn13 = new CommonButton();  
-	        btn13.setName("门禁记录");  
-	        btn13.setType("click");  
-	        btn13.setKey("13");  
-	  
-	     
-	        CommonButton btn21 = new CommonButton();  
-	        btn21.setName("钱包余额");  
-	        btn21.setType("click");  
-	        btn21.setKey("21");  
-	  
-	        CommonButton btn22 = new CommonButton();  
-	        btn22.setName("挂失解挂");  
-	        btn22.setType("click");  
-	        btn22.setKey("22");  
-	
-	  
-	        CommonButton btn31 = new CommonButton();  
-	        btn31.setName("客服电话");  
-	        btn31.setType("click");  
-	        btn31.setKey("31");  
-	  
-	        CommonButton btn32 = new CommonButton();  
-	        btn32.setName("使用帮助");  
-	        btn32.setType("click");  
-	        btn32.setKey("32");  
-	  
-	        CommonButton btn33 = new CommonButton();  
-	        btn33.setName("关于我们");  
-	        btn33.setType("click");  
-	        btn33.setKey("33");  
-	  
-	        ComplexButton mainBtn1 = new ComplexButton();  
-	        mainBtn1.setName("流水明细");  
-	        mainBtn1.setSub_button(new CommonButton[] { btn11, btn12, btn13 });  
-	  
-	        ComplexButton mainBtn2 = new ComplexButton();  
-	        mainBtn2.setName("账务查询");  
-	        mainBtn2.setSub_button(new CommonButton[] { btn21, btn22});  
-	  
-	        ComplexButton mainBtn3 = new ComplexButton();  
-	        mainBtn3.setName("服务帮助");  
-	        mainBtn3.setSub_button(new CommonButton[] { btn31, btn32, btn33 });  
-	  
-	      
+	    private   Menu getMenu() {
+	    	
+	    	List<WxMenuSetting> list = this.jdbcTemplate.query(
+	    			"select * from tb_wx_menuset where menu_type!='hidden' order by parent,sort , id "
+	    			,new Object[]{}
+	    			,new int[]{}
+	    			, new MenuMapper());
+	    	
+	    	Map<Integer,Button> rootMenus=new TreeMap<Integer,Button>();
+	    	for(WxMenuSetting wx :list)
+	    	{
+	    		 
+	    		if(wx.getParent()==0 )
+	    		{
+	    		  if(wx.getMenuType().equals("root"))
+	    		  {
+	    			  ComplexButton mainBtn = new ComplexButton(); 
+		    			mainBtn.setName(wx.getMenuName());
+		    			rootMenus.put(wx.getId(), mainBtn);
+	    		  }else if(wx.getMenuType().equals("view"))
+	    		  {
+	    			  CommonButton btn = new CommonButton(); 
+	    			  btn.setName(wx.getMenuName());
+		    			btn.setType(wx.getMenuType());
+		    			if(MessageUtil.REQ_MESSAGE_TYPE_EVENT.equals(wx.getMenuType()))
+		    			{
+		    			 btn.setKey(wx.getId()+"");
+		    			}else
+		    			{
+		    				btn.setUrl(wx.getUrl());
+		    			}
+		    			rootMenus.put(wx.getId(), btn);
+	    		  }
+	    			
+	    			
+	    		}else
+	    		{
+	    			CommonButton btn = new CommonButton(); 
+	    			btn.setName(wx.getMenuName());
+	    			btn.setType(wx.getMenuType());
+	    			if("click".equals(wx.getMenuType()))
+	    			{
+	    			 btn.setKey(wx.getId()+"");
+	    			}else
+	    			{
+	    				btn.setUrl(wx.getUrl());
+	    			}
+	    			
+	    			ComplexButton mainBtn=(ComplexButton)rootMenus.get(wx.getParent());
+	    			if(mainBtn!=null)
+	    			mainBtn.addSub_button(btn);
+	    		}
+	    	}
+	   
 	        Menu menu = new Menu();  
-	        menu.setButton(new Button[] { mainBtn1, mainBtn2, mainBtn3 });  
-	  
+	        for(Button mbt:rootMenus.values())
+	        {
+	        	 menu.getButtons().add(mbt);
+	        }
+	       
 	        return menu;  
 	    }  
 	  
 
+	    
+	    public static void main(String[] args)
+	    {
+	    	
+	    	
+	    	try {
+				//sendOrderHandleStatusToWx();
+				String[] springConfig  = 
+					{	
+						"wxopenApi_applicatin.xml" 
+					};
+				ApplicationContext ctx = 
+						new ClassPathXmlApplicationContext(springConfig);
+			  
+						MenuManager mm =(MenuManager)ctx.getBean("menuManager"); 
+						System.out.println(JSONObject.toJSONString(mm.getMenu().getButtons().toArray()));
+						
+				    	  AccessToken at = WeiXinUtil.getAccessToken("wx7179cc98fb47eff5", "823ae7209cb695d4a4a0c71071d6006e ");  
+				    	//  String tokey="TRYP5YwmKWU_2J1rKyGoYgPNLfTKGufXk9JXySbHXj9xP8ZNEAREpZaB_yxhgrEv9b2Neqfbx3KStdlbkxXOlA";
+				    	  String  tokey=at.getToken();
+					        if (null != at) {  
+					            // 调用接口创建菜单   
+				    	  
+					            int result = WeiXinUtil.createMenu(mm.getMenu(), tokey);  
+					         
+					            // 判断菜单创建结果   
+					            if (0 == result)  
+					                log.info("菜单创建成功！");  
+					            else  
+					                log.info("菜单创建失败，错误码：" + result);  
+					        }  
+					        
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+	    	 //MenuManager mm=new MenuManager();
+	    	
+
+	    }
 
 
 }

@@ -66,7 +66,7 @@ public class StartOnLoad implements ServletContextListener {
 		System.out.println(isCreateMenu);
 		//判断是否需要调用创建菜单接口
 		if("true".equals(isCreateMenu)){
-			MenuManager.CreateMenu();			
+			//MenuManager.CreateMenu();			
 			
 		}
 		
