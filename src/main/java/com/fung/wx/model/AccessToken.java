@@ -16,6 +16,8 @@ public class AccessToken {
 	
 	//获取到的凭证
 	private String token;
+	
+	private long timeL;
 	//凭证有效时间
 	private String expiresIn;
 	public String getToken() {
@@ -29,6 +31,12 @@ public class AccessToken {
 	}
 	public void setExpiresIn(String expiresIn) {
 		this.expiresIn = expiresIn;
+	}
+	public long getTimeL() {
+		return timeL;
+	}
+	public void setTimeL(long timeL) {
+		this.timeL = timeL;
 	}
 	
 	
