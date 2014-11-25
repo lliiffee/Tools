@@ -10,6 +10,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
 import com.fung.wx.model.AccessToken;
+import com.fung.wx.util.TokenUtil;
 import com.fung.wx.util.WeiXinUtil;
 
 public class CQssSpider {
@@ -18,9 +19,41 @@ public class CQssSpider {
 	 * @param args
 	 */
 	public static void main(String[] args) {
+		getSSQandSdmsg();
+
+	}
+
+	public static void getSSQhis()
+	{
 		CQssSpider cs=new CQssSpider();
 		// TODO Auto-generated method stub
-		//String url="http://data.shishicai.cn/cqssc/haoma/2014-11-05/";
+		String url="http://data.shishicai.cn/handler/kuaikai/data.ashx";
+		//lottery:4
+		//date:2014-11-05
+	//	String url="http://m.hg006.com/ssc/cq/Result_Data.aspx?act=load";
+		  Document doc;
+		  
+		  Map map=new HashMap();
+		    map.put("lottery", "4");
+			 map.put("date", "2014-11-21");
+			try {
+				doc = Jsoup.connect(url).data(map).post();
+				System.out.println(doc.html());
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			 
+	}
+	
+	public static void getSSQandSdmsg()
+	{
+		CQssSpider cs=new CQssSpider();
+		// TODO Auto-generated method stub
+		//String url="http://data.shishicai.cn/handler/kuaikai/data.ashx";
+		//lottery:4
+		//date:2014-11-05
 		String url="http://m.hg006.com/ssc/cq/Result_Data.aspx?act=load";
 		  Document doc;
 			 
@@ -149,14 +182,14 @@ public class CQssSpider {
 					  +"   \"content\":\"CCQ_MSG\""
 					         +"   }"
 					         +"}";
-			cs.setToken();
-			
+			//cs.setToken();
+			TokenUtil tu=new TokenUtil();
 			String fung="otwmFuFWazuAWWP1HrFhJJ3yagIg";
 			String freeman="otwmFuAEiplEh22PryPkTfplIaJw";
-			
+			 
 			String psUrl="https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=ACCESS_TOKEN";
-			WeiXinUtil.httpsRequest(psUrl.replace("ACCESS_TOKEN",cs.getAt().getToken() ) ,"POST", json.replace("TOUSER", fung).replace("CCQ_MSG", result));
-			WeiXinUtil.httpsRequest(psUrl.replace("ACCESS_TOKEN",cs.getAt().getToken() ) ,"POST", json.replace("TOUSER", freeman).replace("CCQ_MSG", result));
+		//	WeiXinUtil.httpsRequest(psUrl.replace("ACCESS_TOKEN",tu.getToken("wxbf261f64e52a3ceb","6ee4bd7cb3c20c5c53a1015f3fc37edf") ) ,"POST", json.replace("TOUSER", fung).replace("CCQ_MSG", result));
+		//	WeiXinUtil.httpsRequest(psUrl.replace("ACCESS_TOKEN",tu.getToken("wxbf261f64e52a3ceb","6ee4bd7cb3c20c5c53a1015f3fc37edf") ) ,"POST", json.replace("TOUSER", freeman).replace("CCQ_MSG", result));
 			
 			
 		}
@@ -169,31 +202,7 @@ public class CQssSpider {
 					// TODO Auto-generated catch block
 					 
 				}
-
 	}
-
-	private AccessToken at;
-	
-	public AccessToken getAt() {
-		return at;
-	}
-
-	public void setToken()
-	{
-		//7200 过期
-		if(this.at==null)
-		{
-			  at = WeiXinUtil.getAccessToken("wxbf261f64e52a3ceb", "6ee4bd7cb3c20c5c53a1015f3fc37edf ");  
-	    	  at.setTimeL(System.currentTimeMillis());
-		}else
-		{
-			if(System.currentTimeMillis()-at.getTimeL()/1000 >7200)
-			{
-				 at = WeiXinUtil.getAccessToken("wxbf261f64e52a3ceb", "6ee4bd7cb3c20c5c53a1015f3fc37edf ");  
-		    	  at.setTimeL(System.currentTimeMillis());
-			}
-		}
-		  
-	}
+	 
 
 }
