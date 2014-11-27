@@ -26,7 +26,11 @@ public class UF {
 	public int find(int p) {
 		return id[p];
 	}
-
+/*The find() operation is certainly quick, as it only accesses the
+id[] array once in order to complete the operation. But quick-find is typically not useful
+for large problems because union() needs to scan through the whole id[] array for
+each input pair.*/
+	
 	public void union(int p, int q) { // Put p and q into the same component.
 		int pID = find(p);
 		int qID = find(q);
@@ -34,7 +38,7 @@ public class UF {
 		// in the same component.
 		if (pID == qID)
 			return;
-		// Rename p’s component to q’s name.
+		// Rename p’s component to q’s name.  ,,将p 和 q 关联。。需要将原来p 关联的元素的值全部 变为 q 的值。。。。
 		for (int i = 0; i < id.length; i++)
 			if (id[i] == pID)
 				id[i] = qID;

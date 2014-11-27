@@ -54,7 +54,9 @@ public class CQssSpider {
 		//String url="http://data.shishicai.cn/handler/kuaikai/data.ashx";
 		//lottery:4
 		//date:2014-11-05
-		String url="http://m.hg006.com/ssc/cq/Result_Data.aspx?act=load";
+		//String url="http://m.hg006.com/ssc/cq/Result_Data.aspx?act=load";
+		String url="http://hg036.com/ssc/cq/Result_Data.aspx?act=load";
+		
 		  Document doc;
 			 
 			 try { 	
@@ -172,7 +174,7 @@ public class CQssSpider {
 					
 				}
 				TokenUtil tu=new TokenUtil();
-				System.out.println(tu.getToken("wxbf261f64e52a3ceb","6ee4bd7cb3c20c5c53a1015f3fc37edf")) ;
+			//	System.out.println(tu.getToken("wxbf261f64e52a3ceb","6ee4bd7cb3c20c5c53a1015f3fc37edf")) ;
 		if(!result.equals(""))		
 		{
 			String json ="{"
@@ -189,8 +191,8 @@ public class CQssSpider {
 			String freeman="otwmFuAEiplEh22PryPkTfplIaJw";
 			
 			String psUrl="https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=ACCESS_TOKEN";
-		//	WeiXinUtil.httpsRequest(psUrl.replace("ACCESS_TOKEN",tu.getToken("wxbf261f64e52a3ceb","6ee4bd7cb3c20c5c53a1015f3fc37edf") ) ,"POST", json.replace("TOUSER", fung).replace("CCQ_MSG", result));
-		//	WeiXinUtil.httpsRequest(psUrl.replace("ACCESS_TOKEN",tu.getToken("wxbf261f64e52a3ceb","6ee4bd7cb3c20c5c53a1015f3fc37edf") ) ,"POST", json.replace("TOUSER", freeman).replace("CCQ_MSG", result));
+			WeiXinUtil.httpsRequest(psUrl.replace("ACCESS_TOKEN",tu.getToken("wxbf261f64e52a3ceb","6ee4bd7cb3c20c5c53a1015f3fc37edf") ) ,"POST", json.replace("TOUSER", fung).replace("CCQ_MSG", result));
+			//WeiXinUtil.httpsRequest(psUrl.replace("ACCESS_TOKEN",tu.getToken("wxbf261f64e52a3ceb","6ee4bd7cb3c20c5c53a1015f3fc37edf") ) ,"POST", json.replace("TOUSER", freeman).replace("CCQ_MSG", result));
 			
 			
 		}
