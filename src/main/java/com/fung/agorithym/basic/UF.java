@@ -1,4 +1,4 @@
-package com.fung.agorithym;
+package com.fung.agorithym.basic;
 
 import com.fung.tool.tookit.StdIn;
 import com.fung.tool.tookit.StdOut;

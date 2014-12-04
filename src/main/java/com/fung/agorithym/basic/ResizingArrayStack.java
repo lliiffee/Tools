@@ -1,4 +1,4 @@
-package com.fung.agorithym;
+package com.fung.agorithym.basic;
 
 import java.util.Iterator;
 
