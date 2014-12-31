@@ -15,6 +15,7 @@ import javax.net.ssl.TrustManager;
 import com.alibaba.fastjson.JSONObject;
 import com.fung.wx.model.AccessToken;
 import com.fung.wx.model.Menu;
+import com.fung.wx.model.WxFans;
 
 
 /**
@@ -29,6 +30,8 @@ public class WeiXinUtil {
 	public final static String access_token_url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET"; 
 	// 菜单创建（POST） 限100（次/天）   
 	public static String menu_create_url = "https://api.weixin.qq.com/cgi-bin/menu/create?access_token=ACCESS_TOKEN";  
+	
+
 	
 	
 	/**
@@ -155,7 +158,40 @@ public class WeiXinUtil {
 	}  
 
 	
-	
+	public static WxFans getWxFans(String requestUrl){
+		WxFans bean=new WxFans();
+		 
+		JSONObject jsonObject=httpsRequest(requestUrl, "GET", null);
+		
+		//如果请求成功
+		if(jsonObject!=null){
+			try{
+				 System.out.println(jsonObject);
+				bean.setOpenid(jsonObject.getString("openid"));
+				bean.setNickname( jsonObject.getString("nickname"));
+			//	bean.setGender( Integer.parseInt(jsonObject.getString("sex")!=null?jsonObject.getString("sex"):""));
+				bean.setCity(jsonObject.getString("city"));
+				bean.setProvince(jsonObject.getString("province"));
+				bean.setCountry(jsonObject.getString("country"));
+				bean.setHeadimgurl(jsonObject.getString("headimgurl"));
+				
+				
+				bean.setSubscribe( Integer.parseInt(jsonObject.getString("subscribe")));
+				bean.setSubscribeTime( Long.parseLong(jsonObject.getString("subscribe_time")));
+				
+				if(jsonObject.getString("unionid")!=null)
+				bean.setUnionid(jsonObject.getString("unionid"));
+				else
+					bean.setUnionid(bean.getOpenid());
+				
+			}catch (Exception e) {
+				e.printStackTrace();
+				 // 获取token失败   
+				 
+			}
+		}
+		return bean;
+	}
 	
     
 	

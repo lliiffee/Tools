@@ -11,11 +11,46 @@ public class WxNotificationAct {
 	public static void main(String[] args) {
 		 
 		
-		sendMsg();
+		sendTemplateNotify();
 			
 			
 			
 		}
+	//oTNesjtcAPC-O19KrsRuOwdemgsQ
+	//oTNesjrqNt4ZIZ8zRe2-WVnt98M0
+	private static void sendTemplateNotify()
+	{
+		String json= 
+				 " {                                                                        "
+						 +"           \"touser\":\"oTNesjrqNt4ZIZ8zRe2-WVnt98M0\",                       "
+						 +"           \"template_id\":\"lNU8tN9x2MpPdrNgTdsJCAJ7vzlVwW54ebY8HU2Rq60\",   "
+						 +"           \"url\":\"http://www.800pharm.com/shop/m/\",             "
+						 +"           \"topcolor\":\"#FF0000\",                                          "
+						 +"           \"data\":{                                                       "
+						 +"                   \"first\": {                                             "
+						 +"                       \"value\":\"恭喜你购买成功！\",                        "
+						 +"                       \"color\":\"#173177\"                                  "
+						 +"                   },                                                     "
+						 +"                   \"orderProductName\":{                                           "
+						 +"                       \"value\":\"巧克力\",                                  "
+						 +"                       \"color\":\"#173177\"                                  "
+						 +"                   },                                                     "
+						 +"                   \"orderMoneySum\": {                                          "
+						 +"                       \"value\":\"39.8元\",                                  "
+						 +"                       \"color\":\"#173177\"                                  "
+						 +"                   },                                                     "
+						 +"                   \"Remark\":{                                             "
+						 +"                       \"value\":\"欢迎再次购买！\",                          "
+						 +"                       \"color\":\"#173177\"                                  "
+						 +"                   }                                                      "
+						 +"           }                                                              "
+						 +"       }                                                                  ";
+		String token="_RFcw7fv2uMzx07OoTo3YvqrcbzPpIjGGFlOYi1I0C1epzdzmQ-l7BYaEKEt7I1n8UfSS735o-uuL5WwGFnijRHcPO-l6H-dWf6eg_Ll3lU";
+		String url="https://api.weixin.qq.com/cgi-bin/message/template/send?access_token="+token;
+		//oTNesjtcAPC-O19KrsRuOwdemgsQ
+		WeiXinUtil.httpsRequest(url ,"POST", json);
+		
+	}
 
 
 	private static void sendMsg()
