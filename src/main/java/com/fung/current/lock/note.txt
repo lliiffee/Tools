@@ -1,0 +1,23 @@
+JDK：http://www.xasxt.com/java/api/java/util/concurrent/locks/ReentrantLock.html
+ 
+ 
+Java代码  收藏代码
+/*构造方法摘要 
+ReentrantLock()  
+          创建一个 ReentrantLock 的实例。 
+ReentrantLock(boolean fair)  
+          创建一个具有给定公平策略的 ReentrantLock。 
+*/  
+  
+Java代码  收藏代码
+/**public void lock() 
+获取锁。 
+如果该锁没有被另一个线程保持，则获取该锁并立即返回，将锁的保持计数设置为 1。 
+如果当前线程已经保持该锁，则将保持计数加 1，并且该方法立即返回。 
+如果该锁被另一个线程保持，则出于线程调度的目的，禁用当前线程，并且在获得锁之前，该线程将一直处于休眠状态，此时锁保持计数被设置为 1。 
+*/  
+  
+ReentrantLock 的lock机制有2种，忽略中断锁和响应中断锁，这给我们带来了很大的灵活性。比如：如果A、B 2个线程去竞争锁，A线程得到了锁，B线程等待，
+但是A线程这个时候实在有太多事情要处理，就是 一直不返回，B线程可能就会等不及了，想中断自己，不再等待这个锁了，转而处理其他事情。这个时候ReentrantLock就提供了2种机制
+，第一，B线程中断自己（或者别的线程中断它），但是ReentrantLock 不去响应，继续让B线程等待，你再怎么中断，我全当耳边风（synchronized原语就是如此）；
+第二，B线程中断自己（或者别的线程中断它），ReentrantLock 处理了这个中断，并且不再等待这个锁的到来，完全放弃。请看例子：
