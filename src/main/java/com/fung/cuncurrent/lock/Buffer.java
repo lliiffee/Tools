@@ -1,13 +1,16 @@
-package com.fung.current.lock;
+package com.fung.cuncurrent.lock;
 
-import java.util.concurrent.locks.ReentrantLock;
-public class BufferInterruptibly implements IBuffer {
 
-	private ReentrantLock lock = new ReentrantLock();
+public class Buffer implements IBuffer {
+
+	private Object lock;
+
+    public Buffer() {
+        lock = this;
+    }
 
     public void write() {
-        lock.lock();
-        try {
+        synchronized (lock) {
             long startTime = System.currentTimeMillis();
             System.out.println("开始往这个buff写入数据…");
             for (;;)// 模拟要处理很长时间
@@ -16,18 +19,14 @@ public class BufferInterruptibly implements IBuffer {
                     break;
             }
             System.out.println("终于写完了");
-        } finally {
-            lock.unlock();
         }
     }
 
-    public void read() throws InterruptedException{
-        lock.lockInterruptibly();// 注意这里，可以响应中断
-        try {
+    public void read() {
+        synchronized (lock) {
             System.out.println("从这个buff读数据");
-        } finally {
-            lock.unlock();
         }
     }
 
 }
+

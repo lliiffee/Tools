@@ -1,4 +1,4 @@
-package com.fung.current.lock;
+package com.fung.cuncurrent.lock;
 
  
 
