@@ -1,4 +1,4 @@
-package com.fung.cuncurrent.lock;
+package com.fung.concurrent.lock;
  
 import java.util.concurrent.locks.ReentrantLock;
 
