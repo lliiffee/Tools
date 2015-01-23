@@ -35,8 +35,8 @@ public class NetXmlClient {
 //	private static final String POST = "http://localhost/shop/wx_search.html";
 	
 //	private static final String POST = "http://test.800pharm.com/shop/wx_search.html";
-	private static final String POST = "http://localhost/shop/wx_search.html";
-	
+//	private static final String POST = "http://localhost/shop/wx_search.html";
+	private static final String POST = "http://www.800pharm.com/shop/synchronizeProduct";
 	
 //	private static final String POST = "http://localhost/shop/pay/weixinPayServErr_m.html";
 	

@@ -4,6 +4,9 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+
+//CountDownLatch最重要的方法是countDown()和await()，前者主要是倒数一次，后者是等待倒数到0，如果没有到达0，就只有阻塞等待了
+
 public class TestCountDownLatch {
 	public static void main(String[] args) throws InterruptedException {
 		// 开始的倒数锁

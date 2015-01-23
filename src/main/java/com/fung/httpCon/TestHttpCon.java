@@ -25,14 +25,60 @@ public class TestHttpCon {
 	 */
 	public static void main(String[] args)  {
 		// TODO Auto-generated method stub
+//		try {
+//			sendOrderHandleStatusToWx();
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		sendP();
+		
+	}
+	
+	
+	public static void sendP()
+	{
+		String path="http://www.800pharm.com/shop/productSyncsetting/synchronizeProduct.html";
+		String params="shopcode=99919&productcode=ZK100285&storage=49&price=43.9000&marketprice=45.0000&alive=1&datetime=2013-07-10%2007:07:50&sign=2c572a11a313d8a855a4945e86fbd9cb&returnurl=http://www.zk100.com/bbf/ProductData.aspx";
+				
 		try {
-			sendOrderHandleStatusToWx();
+			 URL url = new URL(path);
+		        HttpURLConnection httpUrlConnection = (HttpURLConnection) url.openConnection();
+		        httpUrlConnection.setRequestMethod("POST");
+		        httpUrlConnection.setDoOutput(true);// �Ƿ��������
+				//允许输出流
+				httpUrlConnection.setDoOutput(true);
+				//允许写入流
+				httpUrlConnection.setDoInput(true);
+				//post方式提交不可以使用缓存
+				httpUrlConnection.setUseCaches(false);
+				//请求类型
+				httpUrlConnection.connect();
+				
+				
+				BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(httpUrlConnection.getOutputStream(),"UTF-8"));
+			//	 byte[] bypes = params.toString().getBytes();
+				writer.write(params);// �������
+				writer.flush();
+				writer.close();
+				writer = null;
+				
+			   // 得到对象输出流
+		       // ObjectOutputStream	objOutputStrm = getObjOutStream(httpUrlConnection);
+		//        objOutputStrm.writeObject(obj.toJSONString());
+		     // 刷新对象输出流，将任何字节都写入潜在的流中（些处为ObjectOutputStream）
+//		       objOutputStrm.flush();
+		     // 关闭流对象。此时，不能再向对象输出流写入任何数据，先前写入的数据存在于内存缓冲区中,
+		     // 在调用下边的getInputStream()函数时才把准备好的http请求正式发送到服务器
+		       
+//		       objOutputStrm.close();
+		 
+		       System.out.println(new String(readInputStream(httpUrlConnection.getInputStream())) );
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	
 	
 	public static void sendOrderHandleStatusToWx() throws Exception {
 		String new_batchOId = "108027021870361966";
