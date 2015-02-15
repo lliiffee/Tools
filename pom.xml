@@ -158,6 +158,29 @@
       	<artifactId>commons-codec</artifactId>
       	<version>1.10</version>
       </dependency>
+
+      <dependency>
+      	<groupId>org.sitemesh</groupId>
+      	<artifactId>sitemesh</artifactId>
+      	<version>3.0.0</version>
+      </dependency>
+      <dependency>
+      	<groupId>org.objenesis</groupId>
+      	<artifactId>objenesis</artifactId>
+      	<version>2.1</version>
+      </dependency>
+      <dependency>
+      	<groupId>cglib</groupId>
+      	<artifactId>cglib-nodep</artifactId>
+      	<version>2.1_3</version>
+      </dependency>
+
+
+      <dependency>
+      	<groupId>or..m2.repository.javassist</groupId>
+      	<artifactId>javassist</artifactId>
+      	<version>3.11.0.GA</version>
+      </dependency>
   </dependencies>
   
   

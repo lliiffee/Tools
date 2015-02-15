@@ -16,14 +16,14 @@ public class MsgCenter {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+/*
 		 String PostData;
 		try {
 			
-			//for(int i=0 ;i<= 1 ;i++)
+ 
 			{    
-			 // PostData = "sname=dlbbfxx0&spwd=H4b6qGjG&scorpid=&sprdid=1012818&sdst=13544461206&smsg="+java.net.URLEncoder.encode("你的手机注册验证码：381551" ,"utf-8");
-			PostData = "sname=dlbbfxx0&spwd=H4b6qGjG&scorpid=&sprdid=1012808&sdst=13544461206&smsg="+java.net.URLEncoder.encode("testtest 【八百方】","utf-8");
+			  PostData = "sname=dlbbfxx0&spwd=H4b6qGjG&scorpid=&sprdid=1012818&sdst=13544461206&smsg="+java.net.URLEncoder.encode("你的手机注册验证码：381551 【八百方】" ,"utf-8");
+		//	PostData = "sname=dlbbfxx0&spwd=H4b6qGjG&scorpid=&sprdid=1012808&sdst=13544461206&smsg="+java.net.URLEncoder.encode("testtest 【八百方】","utf-8");
 			 //out.println(PostData);
 	         String ret =SMS(PostData, "http://cf.lmobile.cn/submitdata/Service.asmx/g_Submit");
 	         System.out.println(ret);
@@ -42,8 +42,72 @@ public class MsgCenter {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        
+  */
+		
+		singleInfoQuery();
+	//	sm_GetRemain();
+		
 	}
+	
+	
+	public static void singleInfoQuery()
+	{
+		 String PostData;
+			try {
+				
+				/*
+				 * 	    <tag name="sendMsgName" value="dlbbfxx0"/>
+			<tag name="sendMsgPwd" value="H4b6qGjG"/>
+			<tag name="sendMsgChanel" value="1012818"/>
+			<tag name="sendMsgChanel_notify" value="1012808"/>
+			<tag name="sendMsgChanel_promo" value="1012812"/>
+				 */
+				//for(int i=0 ;i<= 1 ;i++)
+				{    
+				  PostData ="accountId=dlbbfxx0&accuntPassWord=H4b6qGjG&productextendId=1012818&mobilePhone=13544461206&startTime=2015-02-09&endTime=2015-02-11&pageSize=10&curPage=0";
+			//	PostData = "sname=dlbbfxx0&spwd=H4b6qGjG&scorpid=&sprdid=1012808&sdst=13544461206&smsg="+java.net.URLEncoder.encode("testtest 【八百方】","utf-8");
+				 //out.println(PostData);
+		         String ret =SMS(PostData, "http://cf.lmobile.cn/submitdata/Service.asmx/SingleInfoQuery");
+		         System.out.println(ret);
+//		         Map map= XMLUtil.doXMLParse(ret);
+//					if(map.get("Reserve").equals("0")){
+//						System.out.println("true");
+//					}else
+//					{ 
+//						System.out.println("false");
+//					}
+		         
+		         //请自己反序列化返回的字符串并实现自己的逻辑
+				}
+			
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	}
+	
+	 
+	public static void sm_GetRemain()
+	{
+		 String PostData;
+			try {
+				
+			 
+				{    
+				  PostData ="sname=dlbbfxx0&spwd=H4b6qGjG&sprdid=1012818&scorpid=";
+		 
+		         String ret =SMS(PostData, "http://cf.lmobile.cn/submitdata/Service.asmx/Sm_GetRemain");
+		         System.out.println(ret);
+ 
+				}
+			
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	}
+	
+	
 	
 	
 	 public static String SMS(String postData, String postUrl) {

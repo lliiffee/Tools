@@ -17,14 +17,9 @@ public class WxCouponService {
 	
 	private static JSONObject couponAction(String postUrl,String json)
 	{
+		String token="";
 		
-		String appid="wxbf261f64e52a3ceb";
-		String secret="6ee4bd7cb3c20c5c53a1015f3fc37edf";
-		 
-		 
-		TokenUtil tk=new TokenUtil();
-		
-		return WeiXinUtil.httpsRequest(postUrl.replace("ACCESS_TOKEN",tk.getToken(appid,secret) ) ,"POST", json);
+		return WeiXinUtil.httpsRequest(postUrl.replace("ACCESS_TOKEN",token ) ,"POST", json);
 	}
 	 
 	

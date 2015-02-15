@@ -36,6 +36,7 @@ public class Main {
         baseInfo.addLocationIdList(5345);
         baseInfo.setUseLimit(5);
         baseInfo.setQuantity(10000000);//上架的数量。(不支持填写0 或      无限大)
+        
         //custom_url //商户自定义url 地址，支持卡券 页内跳转,跳转页面内容需与自      定义cell 名称保持一致
         //source //第三方来源名，例如同程旅游、 格瓦拉。
         //url_name_type 商户自定义cell 名称

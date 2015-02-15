@@ -17,7 +17,7 @@ public class WxNotificationAct {
 			
 		}
 	//oTNesjtcAPC-O19KrsRuOwdemgsQ
-	//oTNesjrqNt4ZIZ8zRe2-WVnt98M0
+	//oTNesjrqNt4ZIZ8zRe2-WVnt98M0   //fung
 	private static void sendTemplateNotify()
 	{
 		String json= 
@@ -45,9 +45,10 @@ public class WxNotificationAct {
 						 +"                   }                                                      "
 						 +"           }                                                              "
 						 +"       }                                                                  ";
-		String token="_RFcw7fv2uMzx07OoTo3YvqrcbzPpIjGGFlOYi1I0C1epzdzmQ-l7BYaEKEt7I1n8UfSS735o-uuL5WwGFnijRHcPO-l6H-dWf6eg_Ll3lU";
+		String token="3myV6fYfz0qJfSlLBShf3AemABmo3BEwBMX_w2UmT7J3vUJy_HAuKRRDJABAyjz4OjQOz8aapeQ5y52CMLaAdScGkfjCxZcRDi_-DfKh6bE";
 		String url="https://api.weixin.qq.com/cgi-bin/message/template/send?access_token="+token;
 		//oTNesjtcAPC-O19KrsRuOwdemgsQ
+		System.out.println("test"); 
 		WeiXinUtil.httpsRequest(url ,"POST", json);
 		
 	}
