@@ -1,66 +1,75 @@
 package tool.fung.reference;
-import  java.lang.ref.ReferenceQueue;
-import  java.lang.ref.SoftReference;
-import  java.util.Hashtable;
+import java.lang.ref.ReferenceQueue;
+import java.lang.ref.SoftReference;
+import java.util.Hashtable;
+public class EmployeeCache {  
+    static private EmployeeCache cache;// ä¸€ä¸ªCacheå®ä¾‹  
+    private Hashtable employeeRefs;// ç”¨äºChcheå†…å®¹çš„å­˜å‚¨  
+    private ReferenceQueue q;// åƒåœ¾Referenceçš„é˜Ÿåˆ—  
+   
+    // ç»§æ‰¿SoftReferenceï¼Œä½¿å¾—æ¯ä¸€ä¸ªå®ä¾‹éƒ½å…·æœ‰å¯è¯†åˆ«çš„æ ‡è¯†ã€‚  
+ // å¹¶ä¸”è¯¥æ ‡è¯†ä¸å…¶åœ¨HashMapå†…çš„keyç›¸åŒã€‚  
+ private class EmployeeRef extends SoftReference {  
+    private String _key = "";  
 
-public   class  EmployeeCache {
+    public EmployeeRef(Employee em, ReferenceQueue q) {  
+        super(em, q);  
+        _key = em.getId();  
+    }  
+ }  
 
-     static  private  EmployeeCache  cache ; // Ò»¸ö CacheÊµÀı
-     private  Hashtable<String, EmployeeRef>  employeeRefs ; // ÓÃÓÚ ChcheÄÚÈİµÄ´æ´¢
-     private  ReferenceQueue<Employee>  q ; // À¬»ø ReferenceµÄ¶ÓÁĞ
-     // ¼Ì³Ğ SoftReference£¬Ê¹µÃÃ¿Ò»¸öÊµÀı¶¼¾ßÓĞ¿ÉÊ¶±ğµÄ±êÊ¶,
-     // ²¢ÇÒ¸Ã±êÊ¶ÓëÆäÔÚ HashMapÄÚµÄ keyÏàÍ¬¡£
-     private class EmployeeRef extends SoftReference<Employee> {
-        private  String  _key  =  "" ;
-        public  EmployeeRef(Employee em, ReferenceQueue<Employee> q) {
-            super (em, q);
-            _key  = em.getId();
-       }
-    }
+ // æ„å»ºä¸€ä¸ªç¼“å­˜å™¨å®ä¾‹  
+ private EmployeeCache() {  
+    employeeRefs = new Hashtable();  
+    q = new ReferenceQueue();  
+ }  
 
-     // ¹¹½¨Ò»¸ö»º´æÆ÷ÊµÀı
+ // å–å¾—ç¼“å­˜å™¨å®ä¾‹  
+ public static EmployeeCache getInstance() {  
+    if (cache == null) {  
+        cache = new EmployeeCache();  
+    }  
+    return cache;  
+ }  
 
-     private  EmployeeCache() {
-        employeeRefs  =  new  Hashtable<String,EmployeeRef>();
-        q  =  new  ReferenceQueue<Employee>();
-    }
-     // È¡µÃ»º´æÆ÷ÊµÀı
-     public   static synchronized EmployeeCache getInstance() {
-       if  (cache == null){
+ // ä»¥è½¯å¼•ç”¨çš„æ–¹å¼å¯¹ä¸€ä¸ªEmployeeå¯¹è±¡çš„å®ä¾‹è¿›è¡Œå¼•ç”¨å¹¶ä¿å­˜è¯¥å¼•ç”¨  
+ private void cacheEmployee(Employee em) {  
+    cleanCache();// æ¸…é™¤åƒåœ¾å¼•ç”¨  
+    EmployeeRef ref = new EmployeeRef(em, q);  
+    employeeRefs.put(em.getId(), ref);  
+ }  
 
-            cache = new EmployeeCache();
-       }
-       return cache ;
-    }
-     // ÒÔÈíÒıÓÃµÄ·½Ê½¶ÔÒ»¸ö Employee¶ÔÏóµÄÊµÀı½øĞĞÒıÓÃ²¢±£´æ¸ÃÒıÓÃ
-     private   void  cacheEmployee(Employee em) {
+ // ä¾æ®æ‰€æŒ‡å®šçš„IDå·ï¼Œé‡æ–°è·å–ç›¸åº”Employeeå¯¹è±¡çš„å®ä¾‹  
+ public Employee getEmployee(String ID) {  
+    Employee em = null;  
+    // ç¼“å­˜ä¸­æ˜¯å¦æœ‰è¯¥Employeeå®ä¾‹çš„è½¯å¼•ç”¨ï¼Œå¦‚æœæœ‰ï¼Œä»è½¯å¼•ç”¨ä¸­å–å¾—ã€‚  
+    if (employeeRefs.containsKey(ID)) {  
+        EmployeeRef ref = (EmployeeRef) employeeRefs.get(ID);  
+        em = (Employee) ref.get();  
+    }  
+    // å¦‚æœæ²¡æœ‰è½¯å¼•ç”¨ï¼Œæˆ–è€…ä»è½¯å¼•ç”¨ä¸­å¾—åˆ°çš„å®ä¾‹æ˜¯nullï¼Œé‡æ–°æ„å»ºä¸€ä¸ªå®ä¾‹ï¼Œ  
+    // å¹¶ä¿å­˜å¯¹è¿™ä¸ªæ–°å»ºå®ä¾‹çš„è½¯å¼•ç”¨  
+    if (em == null) {  
+        em = new Employee(ID);  
+        System.out.println("Retrieve From EmployeeInfoCenter. ID=" + ID);  
+        this.cacheEmployee(em);  
+    }  
+    return em;  
+ }  
 
-       cleanCache(); // Çå³ıÀ¬»øÒıÓÃ
-       EmployeeRef ref =  new  EmployeeRef(em,  q );
-        employeeRefs .put(em.getId(), ref);
-    }
-     // ÒÀ¾İËùÖ¸¶¨µÄ IDºÅ£¬ÖØĞÂ»ñÈ¡ÏàÓ¦ Employee¶ÔÏóµÄÊµÀı
-     public  Employee getEmployee(String ID) {
-       Employee em =  null ;
-        // »º´æÖĞÊÇ·ñÓĞ¸Ã EmployeeÊµÀıµÄÈíÒıÓÃ£¬Èç¹ûÓĞ£¬´ÓÈíÒıÓÃÖĞÈ¡µÃ¡£
-        if  ( employeeRefs .containsKey(ID)) {
-           EmployeeRef ref = (EmployeeRef)  employeeRefs .get(ID);
-           em = (Employee) ref.get();
-       }
-        // Èç¹ûÃ»ÓĞÈíÒıÓÃ£¬»òÕß´ÓÈíÒıÓÃÖĞµÃµ½µÄÊµÀıÊÇ null£¬ÖØĞÂ¹¹½¨Ò»¸öÊµÀı£¬
-        // ²¢±£´æ¶ÔÕâ¸öĞÂ½¨ÊµÀıµÄÈíÒıÓÃ
-        if  (em ==  null ) {
-           em =  new  Employee(ID);
-           System. out .println( "Retrieve From EmployeeInfoCenter. ID="  + ID);
-            this .cacheEmployee(em);
-       }
-        return  em;
-    }
-     // Çå³ıÄÇĞ©ËùÈíÒıÓÃµÄ Employee¶ÔÏóÒÑ¾­±»»ØÊÕµÄ EmployeeRef¶ÔÏó
-     private   void  cleanCache() {
-       EmployeeRef ref =  null ;
-        while  ((ref = (EmployeeRef)  q .poll()) !=  null ) {
-            employeeRefs .remove(ref. _key );
-       }
-    }
-}
+ // æ¸…é™¤é‚£äº›æ‰€è½¯å¼•ç”¨çš„Employeeå¯¹è±¡å·²ç»è¢«å›æ”¶çš„EmployeeRefå¯¹è±¡  
+ private void cleanCache() {  
+    EmployeeRef ref = null;  
+    while ((ref = (EmployeeRef) q.poll()) != null) {  
+        employeeRefs.remove(ref._key);  
+    }  
+ }  
+
+ // æ¸…é™¤Cacheå†…çš„å…¨éƒ¨å†…å®¹  
+ public void clearCache() {  
+    cleanCache();  
+    employeeRefs.clear();  
+    System.gc();  
+    System.runFinalization();  
+ }  
+}  

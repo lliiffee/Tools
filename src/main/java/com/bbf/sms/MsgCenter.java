@@ -16,7 +16,7 @@ public class MsgCenter {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-/*
+
 		 String PostData;
 		try {
 			
@@ -42,9 +42,9 @@ public class MsgCenter {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-  */
+  
 		
-		singleInfoQuery();
+	//	singleInfoQuery();
 	//	sm_GetRemain();
 		
 	}

@@ -175,12 +175,13 @@
       	<version>2.1_3</version>
       </dependency>
 
-
+<!-- 
       <dependency>
-      	<groupId>or..m2.repository.javassist</groupId>
+      	<groupId>org.m2.repository.javassist</groupId>
       	<artifactId>javassist</artifactId>
       	<version>3.11.0.GA</version>
       </dependency>
+       -->
   </dependencies>
   
   

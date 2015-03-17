@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AngularJS Demo</title>
+  <script src="js/angular.min.js"></script>
+  <link type="text/css" rel="stylesheet" href="css/comm.css">
+</head>
+<body >   
+
+<!--
+
+ng-app: 这个指定定义并且关联了使用angularJS的HTML页面部分
+ng-model: 这个指定定义并绑定AngularJS数据和HTML页面中相关输入元素(input,textarea等等)
+ng-bind: 这个指定将AngularJS的数据绑定到页面指定HTML元素上，例如, <p>
+
+-->
+
+
+<div ng-app="">  <!-- 定义 html应用AJ的部分 -->
+  <input type="text" ng-model="website">
+  <p>
+    你好，<span ng-bind="website"></span>
+  </p>
+</div>
+
+</body>
+</html>

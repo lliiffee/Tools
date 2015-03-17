@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AngularJS Demo</title>
+  <script src="js/angular.min.js"></script>
+  <link type="text/css" rel="stylesheet" href="css/comm.css">
+</head>
+<body >   
+
+<!--
+
+ng-app: 这个指定定义并且关联了使用angularJS的HTML页面部分
+ng-model: 这个指定定义并绑定AngularJS数据和HTML页面中相关输入元素(input,textarea等等)
+ng-bind: 这个指定将AngularJS的数据绑定到页面指定HTML元素上，例如, <p>
+
+-->
+<!--
+
+ng-app
+ng-init
+ng-model
+ng-repeat
+
+-->
+
+
+<div ng-app="" ng-init="languages=[{name:'java', learningcurve:'high'},{name:'javascript',learningcurve:'medium'}]">
+  <p>编程语言</p>
+  <ul>
+    <li ng-repeat="language in languages">
+      {{'编程语言：'+ language.name +', 难度：' + language.learningcurve}}
+    </li>
+  </ul>
+</div>
+
+<!--
+ 记住要导入AngularJS的框架类库哦！
+-->
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AngularJS Demo</title>
+  <script src="js/angular.min.js"></script>
+  <link type="text/css" rel="stylesheet" href="css/comm.css">
+</head>
+<body >   
+
+<!--
+
+ng-app: 这个指定定义并且关联了使用angularJS的HTML页面部分
+ng-model: 这个指定定义并绑定AngularJS数据和HTML页面中相关输入元素(input,textarea等等)
+ng-bind: 这个指定将AngularJS的数据绑定到页面指定HTML元素上，例如, <p>
+
+-->
+<!--
+
+AngularJS的表达式使用如下格式：
+
+{{表达式}}
+
+-->
+
+<div ng-app="" ng-init="name='gbtags.com';alexa=60000;courses={libraries:25,topic:'frontend'};userlist=[1,2,3,4,5,6]">
+  <p>
+   网站： {{name}}
+  </p>
+  <p>
+   排名：{{alexa}} 
+  </p>
+  <p>
+   课程：{{courses.topic}} 课程数量：{{courses.libraries*100}}
+  </p>
+  <p>
+   最近访问用户：{{userlist[2]}}
+  </p>
+</div>
+</body>
+</html>
