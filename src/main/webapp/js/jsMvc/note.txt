@@ -1,0 +1,79 @@
+现在，是时候在我们单页应用中使用这个MVC插件。在下一个代码段中，下面这些会实现:
+1)在web页面中引入这个代码
+2）用控制器添加路由信息和视图模板信息
+3）创建控制器功能
+4）最后，初始化lib。
+除了上面我们需要的链接让我们导航到不同的路径外，一个容器元素的视图属性包含着视图模板html。
+
+
+	1. <!DOCTYPE html> 
+	2. <html> 
+	3. <head> 
+	4.     <title>JavaScript Mvc</title> 
+	5.     <script src="jsMvc.js"></script> 
+	6.     <!--[if lt IE 9]> <script src="jsMvc-ie8.js"></script> <![endif]--> 
+	7.        
+	8.     <style type="text/css"> 
+	9.         .NavLinkContainer {  
+	10.             padding: 5px;  
+	11.             background-color: lightyellow;  
+	12.         }  
+	13.    
+	14.         .NavLink {  
+	15.             background-color:black;  
+	16.             color: white;  
+	17.             font-weight:800;  
+	18.             text-decoration:none;  
+	19.             padding:5px;  
+	20.             border-radius:4px;  
+	21.         }  
+	22.             .NavLink:hover {  
+	23.                 background-color:gray;  
+	24.             }  
+	25.     </style> 
+	26. </head> 
+	27. <body> 
+	28.     <h3>Navigation Links</h3> 
+	29.     <div class="NavLinkContainer"> 
+	30.         <a class="NavLink" href="index.html#/home">Home</a>   
+	31.       
+	32.         <a class="NavLink" href="index.html#/contact">Contact</a>   
+	33.    
+	34.         <a class="NavLink" href="index.html#/admin">Admin</a>   
+	35.           
+	36.     </div> 
+	37.     <br /> 
+	38.     <br /> 
+	39.     <h3>View</h3> 
+	40.     <div view></div> 
+	41.     <script> 
+	42.         jsMvc.AddRoute(HomeController, &apos;home&apos;, &apos;Views/home.html&apos;);  
+	43.         jsMvc.AddRoute(ContactController, &apos;contact&apos;, &apos;Views/contact.html&apos;);  
+	44.         jsMvc.AddRoute(AdminController, &apos;admin&apos;, &apos;Views/admin.html&apos;);  
+	45.         jsMvc.Initialize();  
+	46.    
+	47.         function HomeController(model) {  
+	48.             model.Message = &apos;Hello World&apos;;  
+	49.         }  
+	50.    
+	51.         function ContactController(model) {  
+	52.             model.FirstName = "John";  
+	53.             model.LastName = "Doe";  
+	54.             model.Phone = &apos;555-123456&apos;;  
+	55.         }  
+	56.    
+	57.         function AdminController(model) {  
+	58.             model.UserName = "John";  
+	59.             model.Password = "MyPassword";  
+	60.         }  
+	61.     </script> 
+	62. </body> 
+	63. </html> 
+
+上面的代码有一段包含一个为IE的条件注释。
+
+
+	1. <!--[if lt IE 9]> <script src="jsMvc-ie8.js"></script> <![endif]--> 
+
+如果IE的版本低于9，那么function.bind，Object.getOwnPropertyNames和Array.forEach属性将不会被支持。因此我们要通过判断浏览器是否低于IE9来反馈代码是否支持。
+其中的内容有home.html， contact.html 和 admin.html 请看下面：
