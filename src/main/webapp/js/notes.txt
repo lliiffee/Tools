@@ -89,13 +89,21 @@ a.filter(function(x){return x<3;});
 a.every(function(x) {return x<10})  //  如果全部小于10 reutn true ,else return false;
 a.some() ...
 
-reduce()  reduceRight()  使用指定函数将元素组合，生成单个值。 函数式编程称为 注入 和折叠
+reduce()  reduceRight()  使用指定函数将元素组合，生成单个值。 函数式编程称为 注入 和折叠       reduceRight是从右到左。。。执行
 var a=[1,2,3,4,5]
-var sum=a.reduce(function(x,y){return x+y},0);   传入 函数的参数  1=累计值 ，2=元素  3=index 4=数组本身 
+var sum=a.reduce(function(x,y){return x+y},0);   传入 函数的参数  1=累计值 ，2=元素  3=index 4=数组本身    如没有指定初始值，取第一个数组元素为初始值，
+                                               	    那第一次算的时候第一个是数组的第一个元素
 var max=a.reduce(function(x,y){return (x>y)?x:y;});
 
 
-  
+ indexOf()  从头搜索    lastIndexOf()  从尾部开始搜索。。找到为位置 ，找不到返回-1
+ 
+ 
+ Array.isArray()
+ 
+ var a={"0":"a","1":"b","2":"c",length:2} //类数组
+ Array.prototype.join.call(a,"+");
+ 
 
 
 
