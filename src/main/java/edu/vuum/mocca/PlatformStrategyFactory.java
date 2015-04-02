@@ -69,7 +69,7 @@ public class PlatformStrategyFactory
     public PlatformStrategy makePlatformStrategy() 
     {
         String name = System.getProperty("java.specification.vendor");
-
+    
         return mPlatformStrategyMap.get(name).execute();
     }
 }
