@@ -1,0 +1,186 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="description" content="js自定义事件字面量书写风格实现 » 张鑫旭-鑫空间-鑫生活" />
+<meta name="description" content="js自定义事件字面量书写风格实现" />
+<meta name="keywords" content="js, 自定义事件, javascript" />
+<meta name="author" content="张鑫旭, zhangxixnu" />
+<title>js自定义事件字面量书写风格实现</title>
+<link rel="stylesheet" href="js-events.css" type="text/css" />
+</head>
+
+<body>
+<p>点击页面任意空白区域。</p>
+<p>
+    <input type="button" id="button1" value="清除所有alert" />
+    <input type="button" id="button2" value="清除第一个alert" />
+</p>
+
+<div class="code">
+	<div class="left">
+    	<pre>
+var Event = {
+    _listeners: {},    
+    <span class="dred">addEvent</span>: function(type, fn) {
+        if (typeof this._listeners[type] === "undefined") {
+            this._listeners[type] = [];
+        }
+        if (typeof fn === "function") {
+            this._listeners[type].push(fn);
+        }    
+        return this;
+    },
+    <span class="dred">fireEvent</span>: function(type) {
+        var arrayEvent = this._listeners[type];
+        if (arrayEvent instanceof Array) {
+            for (var i=0, length=arrayEvent.length; i&lt;length; i+=1) {
+                if (typeof arrayEvent[i] === "function") {
+                    arrayEvent[i]({
+                        type: type    
+                    });    
+                }
+            }
+        }    
+        return this;
+    },
+    <span class="dred">removeEvent</span>: function(type, fn) {
+        var arrayEvent = this._listeners[type];
+        if (typeof type === "string" && arrayEvent instanceof Array) {
+            if (typeof fn === "function") {
+                for (var i=0, length=arrayEvent.length; i&lt;length; i+=1){
+                    if (arrayEvent[i] === fn){
+                        this._listeners[type].splice(i, 1);
+                        break;
+                    }
+                }
+            } else {
+                delete this._listeners[type];
+            }
+        }
+        return this;
+    }
+};</pre>
+    </div>
+    <div class="right">
+    	<pre><span class="green">//------------- 以下为测试代码 -----------</span>
+
+<span class="green">// 添加自定义事件</span>
+var fnAlert1, fnAlert2;
+Event.<span class="dred">addEvent</span>("alert", fnAlert1 = function() {
+    alert("第一个弹出！");
+}).<span class="dred">addEvent</span>("alert", fnAlert2 = function() {
+    alert("第二个弹出！");
+});
+
+<span class="green">// 按钮绑定事件，用来清除自定义事件</span>
+var elButton1 = document.getElementById("button1"),
+    elButton2 = document.getElementById("button2");
+
+elButton1.onclick = function() {
+    Event.<span class="dred">removeEvent</span>("alert");
+    alert("alert事件清除成功！");
+    
+    <span class="green">// 此时后一个按钮卧底了，故隐藏</span>
+    elButton2.style.display = "none";
+};
+
+elButton2.onclick = function() {
+    Event.<span class="dred">removeEvent</span>("alert", fnAlert1);
+    alert("第一个alert清除成功！");
+};
+
+<span class="green">// 点击文档，触发自定义事件</span>
+document.onclick = function(e) {
+    e = e || window.event;
+    var target = e.target || e.srcElement;
+    
+    <span class="green">// 如果文档点击元素标签名不是input</span>
+    if (!target || !/input|pre/i.test(target.tagName)) {
+        Event.<span class="dred">fireEvent</span>("alert");
+    }
+};
+</pre>
+    </div>
+</div>
+
+
+<script>
+var Event = {
+    _listeners: {},    
+    addEvent: function(type, fn) {
+        if (typeof this._listeners[type] === "undefined") {
+            this._listeners[type] = [];
+        }
+        if (typeof fn === "function") {
+            this._listeners[type].push(fn);
+        }
+        
+        return this;
+    },
+    fireEvent: function(type) {
+        var arrayEvent = this._listeners[type];
+        if (arrayEvent instanceof Array) {
+            for (var i=0, length=arrayEvent.length; i<length; i+=1) {
+                if (typeof arrayEvent[i] === "function") {
+                    arrayEvent[i]({
+                        type: type    
+                    });    
+                }
+            }
+        }
+        
+        return this;
+    },
+    removeEvent: function(type, fn) {
+        var arrayEvent = this._listeners[type];
+        if (typeof type === "string" && arrayEvent instanceof Array) {
+            if (typeof fn === "function") {
+                for (var i=0, length=arrayEvent.length; i<length; i+=1){
+                    if (arrayEvent[i] === fn){
+                        this._listeners[type].splice(i, 1);
+                        break;
+                    }
+                }
+            } else {
+                delete this._listeners[type];
+            }
+        }
+        
+        return this;
+    }
+};
+
+//------------- 以下为测试代码 -----------
+var fnAlert1, fnAlert2;
+Event.addEvent("alert", fnAlert1 = function() {
+    alert("第一个弹出！");
+}).addEvent("alert", fnAlert2 = function() {
+    alert("第二个弹出！");
+});
+
+var elButton1 = document.getElementById("button1"),
+	elButton2 = document.getElementById("button2");
+
+elButton1.onclick = function() {
+    Event.removeEvent("alert");
+    alert("alert事件清除成功！");
+	elButton2.style.display = "none";
+};
+
+elButton2.onclick = function() {
+    Event.removeEvent("alert", fnAlert1);
+    alert("第一个alert清除成功！");
+};
+
+document.onclick = function(e) {
+	e = e || window.event;
+	var target = e.target || e.srcElement;
+	if (!target || !/input|pre/i.test(target.tagName)) {
+    	Event.fireEvent("alert");
+	}
+};
+</script>
+</body>
+</html>

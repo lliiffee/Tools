@@ -21,7 +21,7 @@ att_file3="${dataPath}/product_detail_daily${DDATE}.xls"
 
 mysql_host="192.168.0.32"
 db_username="root"
-password="dcbicc106"
+password="xxxxxxxxx06"
 init_sql_file="${shellPath}/product_insale_daily.sql"
 
 echo "init data"

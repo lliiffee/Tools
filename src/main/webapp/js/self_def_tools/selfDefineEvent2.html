@@ -1,0 +1,225 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="description" content="js自定义事件原型链继承实现 » 张鑫旭-鑫空间-鑫生活" />
+<meta name="description" content="js自定义事件原型链继承实现" />
+<meta name="keywords" content="js, 自定义事件, javascript" />
+<meta name="author" content="张鑫旭, zhangxixnu" />
+<title>js自定义事件原型链继承实现</title>
+<link rel="stylesheet" href="js-events.css" type="text/css" />
+</head>
+
+<body>
+<p>点击页面任意空白区域。</p>
+<div class="code">
+    <div class="left">
+        <pre>var EventTarget = function() {
+    this._listener = {};
+};
+
+EventTarget.prototype = {
+    constructor: this,
+    addEvent: function(type, fn) {
+        if (typeof type === "string" &amp;&amp; typeof fn === "function") {
+            if (typeof this._listener[type] === "undefined") {
+                this._listener[type] = [fn];
+            } else {
+                this._listener[type].push(fn);    
+            }
+        }
+        return this;
+    },
+    addEvents: function(obj) {
+        obj = typeof obj === "object"? obj : {};
+        var type;
+        for (type in obj) {
+            if ( type &amp;&amp; typeof obj[type] === "function") {
+                this.addEvent(type, obj[type]);    
+            }
+        }
+        return this;
+    },
+    fireEvent: function(type) {
+        if (type &amp;&amp; this._listener[type]) {
+            var events = {
+                type: type,
+                target: this    
+            };
+            
+            for (var length = this._listener[type].length, start=0; start&lt;length; start+=1) {
+                this._listener[type][start].call(this, events);
+            }
+        }
+        return this;
+    },
+    fireEvents: function(array) {
+        if (array instanceof Array) {
+            for (var i=0, length = array.length; i&lt;length; i+=1) {
+                this.fireEvent(array[i]);
+            }
+        }
+        return this;
+    },
+    removeEvent: function(type, key) {
+        var listeners = this._listener[type];
+        if (listeners instanceof Array) {
+            if (typeof key === "function") {
+                for (var i=0, length=listeners.length; i&lt;length; i+=1){
+                    if (listeners[i] === listener){
+                        listeners.splice(i, 1);
+                        break;
+                    }
+                }
+            } else if (key instanceof Array) {
+                for (var lis=0, lenkey = key.length; lis&lt;lenkey; lis+=1) {
+                    this.removeEvent(type, key[lenkey]);
+                }
+            } else {
+                delete this._listener[type];
+            }
+        }
+        return this;
+    },
+    removeEvents: function(params) {
+        if (params instanceof Array) {
+            for (var i=0, length = params.length; i&lt;length; i+=1) {
+                this.removeEvent(params[i]);
+            }    
+        } else if (typeof params === "object") {
+            for (var type in params) {
+                this.removeEvent(type, params[type]);    
+            }
+        }
+        return this;    
+    }
+};</pre>
+    </div>
+    <div class="right">
+        <pre><span class="green">//------------- 以下为测试代码 -----------</span>
+
+var myEvents = new EventTarget();
+myEvents.<span class="dred">addEvents</span>({
+    "once": function() {
+        alert("该弹框只会出现一次！");    
+        this.<span class="dred">removeEvent</span>("once");
+    },
+    "infinity": function() {
+        alert("每次点击页面，该弹框都会出现！");    
+    }
+});
+
+document.onclick = function(e) {
+    e = e || window.event;
+    var target = e.target || e.srcElement;
+    if (!target || !/input|pre/i.test(target.tagName)) {
+        myEvents.<span class="dred">fireEvents</span>(["once", "infinity"]);
+    }
+};</pre>
+    </div>
+</div>
+<script>
+var EventTarget = function() {
+    this._listener = {};
+};
+
+EventTarget.prototype = {
+    constructor: this,
+    addEvent: function(type, fn) {
+        if (typeof type === "string" && typeof fn === "function") {
+            if (typeof this._listener[type] === "undefined") {
+                this._listener[type] = [fn];
+            } else {
+                this._listener[type].push(fn);    
+            }
+        }
+        return this;
+    },
+    addEvents: function(obj) {
+        obj = typeof obj === "object"? obj : {};
+        var type;
+        for (type in obj) {
+            if ( type && typeof obj[type] === "function") {
+                this.addEvent(type, obj[type]);    
+            }
+        }
+        return this;
+    },
+    fireEvent: function(type) {
+        if (type && this._listener[type]) {
+            var events = {
+                type: type,
+                target: this    
+            };
+            
+            for (var length = this._listener[type].length, start=0; start<length; start+=1) {
+                this._listener[type][start].call(this, events);
+            }
+        }
+        return this;
+    },
+    fireEvents: function(array) {
+        if (array instanceof Array) {
+            for (var i=0, length = array.length; i<length; i+=1) {
+                this.fireEvent(array[i]);
+            }
+        }
+        return this;
+    },
+    removeEvent: function(type, key) {
+        var listeners = this._listener[type];
+        if (listeners instanceof Array) {
+            if (typeof key === "function") {
+                for (var i=0, length=listeners.length; i<length; i+=1){
+                    if (listeners[i] === listener){
+                        listeners.splice(i, 1);
+                        break;
+                    }
+                }
+            } else if (key instanceof Array) {
+                for (var lis=0, lenkey = key.length; lis<lenkey; lis+=1) {
+                    this.removeEvent(type, key[lenkey]);
+                }
+            } else {
+                delete this._listener[type];
+            }
+        }
+        return this;
+    },
+    removeEvents: function(params) {
+        if (params instanceof Array) {
+            for (var i=0, length = params.length; i<length; i+=1) {
+                this.removeEvent(params[i]);
+            }    
+        } else if (typeof params === "object") {
+            for (var type in params) {
+                this.removeEvent(type, params[type]);    
+            }
+        }
+        
+        return this;    
+    }
+};
+
+var myEvents = new EventTarget();
+myEvents.addEvents({
+    "once": function() {
+        alert("该弹框只会出现一次！");    
+        this.removeEvent("once");
+    },
+    "infinity": function() {
+        alert("每次点击页面，该弹框都会出现！");    
+    }
+});
+
+document.onclick = function(e) {
+    e = e || window.event;
+    var target = e.target || e.srcElement;
+    if (!target || !/pre/i.test(target.tagName)) {
+        myEvents.fireEvents(["once", "infinity"]);
+    }
+};
+</script>
+</body>
+</html>
