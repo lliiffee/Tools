@@ -134,6 +134,8 @@ console.log("navigation init.2..");
 
 
 	function navigate (handler, dragTransition) {
+		
+
 		if (navLock) {
 			navQueue.push(handler);
 			return false;
@@ -181,9 +183,13 @@ console.log("navigation init.2..");
 
 	function loadPage (pageName, args, options, callback, setupPickerMode) {
 		navigate(function (unlock) {
+			console.log("loadPage iavigate...");
+			
+ 
+
 			var oldNode     = currentNode,
 				pageManager = Pages.createManager(false);
-
+				
 			if (setupPickerMode) {
 				setupPickerMode(pageManager);
 			}
@@ -192,12 +198,13 @@ console.log("navigation init.2..");
 				restoreData    = Stack.getCurrent(),
 				restoreNode    = restoreData && restoreData[3],
 				restoreManager = restoreData && restoreData[2];
-
+				console.log("restoreData");
+				console.log(restoreData);
 			if (!options.transition && pageManager.transition) {
 				options.transition = pageManager.transition;
 			}
-
-			Pages.populateBackButton(page, oldNode || restoreNode);
+			
+			Pages.populateBackButton(page, oldNode || restoreNode);  //如果有旧页面，，加入 back button..
 
 			if ( !current ) {
 				App.restore = null;

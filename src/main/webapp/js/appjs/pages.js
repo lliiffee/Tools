@@ -181,19 +181,20 @@ console.log("pages  1");
 	}
 
 	function populatePage (pageName, pageManager, page, args) {
-		var controller = controllers[pageName];
+		var controller = controllers[pageName];//查找对应页面的controller.... (由调调用代码 app.controller(func) 加入的)
 		if ( !controller ) {
 			return;
 		}
-		for (var prop in controller) {
-			pageManager[prop] = controller[prop];
+		for (var prop in controller) {  //controller的属性全部复制给 pageManager
+			pageManager[prop] = controller[prop];   
 		}
-		for (var prop in controller.prototype) {
+		for (var prop in controller.prototype) { //controller  的prototype 属性全部复制给pageManger
 			pageManager[prop] = controller.prototype[prop];
 		}
-		pageManager.page = page; //TODO: getter
-		pageManager.args = args; //TODO: getter (dont want this to hit localStorage)
-		controller.call(pageManager, page, args);
+		pageManager.page = page; //TODO: getter       //为pageManager 配置页面    
+		pageManager.args = args; //TODO: getter (dont want this to hit localStorage ？？)  
+		console.log("回调 contorller 开始");
+		controller.call(pageManager, page, args);   //调用 controller ...
 	}
 
 	function unpopulatePage (pageName, pageManager, page, args) {
@@ -244,7 +245,7 @@ console.log("pages  1");
 				});
 			});
 		};
-
+		 
 		return pageManager;
 	}
 
@@ -264,22 +265,22 @@ console.log("pages  1");
 	}
 
 	function startPageGeneration (pageName, pageManager, args) {
-		var page = clonePage(pageName);
+		var page = clonePage(pageName); //克隆dom...
 
-		var eventNames = [];
+		var eventNames = [];  //讲预定义的事件放进数组。。
 		for (var evt in EVENTS) {
 			eventNames.push( eventTypeToName(EVENTS[evt]) );
-		}
-		Events.init(page, eventNames);
+		} 
+		Events.init(page, eventNames); //为页面初始化事件。
 		Metrics.watchPage(page, pageName, args);
 
-		page[PAGE_MANAGER_VAR] = pageManager;
+		page[PAGE_MANAGER_VAR] = pageManager; //为page 绑定Manager
 
-		fixContentHeight(page);
+		fixContentHeight(page); // 画高度
 
-		Utils.forEach(page.querySelectorAll('.app-button'), attachButtonEvent);
+		Utils.forEach(page.querySelectorAll('.app-button'), attachButtonEvent); //查找所有 按钮， 调用attachButtonEvent..绑定事件。。。
 
-		//Attach click events for buttons added later on
+		//Attach click events for buttons added later on   //为后面新加的button 预备按钮事件绑定。。。
 		page.addEventListener('DOMNodeInserted', function (e) {
 			var element = e.srcElement;
 			if ( element.classList && element.classList.contains('app-button') ) {
@@ -287,11 +288,12 @@ console.log("pages  1");
 			}
 		});
 
-		populatePage(pageName, pageManager, page, args);
+		populatePage(pageName, pageManager, page, args);   //load page 时可以传入参数。。
 
-		page.addEventListener(eventTypeToName(EVENTS.SHOW), function () {
+		page.addEventListener(eventTypeToName(EVENTS.SHOW), function () { //设置page ready show 事件。。
 			setTimeout(function () {
 				if (typeof pageManager[PAGE_READY_VAR] === 'function') {
+					console.log("page ready show....");
 					pageManager[PAGE_READY_VAR]();
 				}
 			}, 0);

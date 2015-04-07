@@ -2,6 +2,8 @@
 <html>
   <head>
     <title>My App</title>
+    <meta http-equiv="Cache-Control" content="no-transform" />
+<meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
     <link rel="stylesheet" href="app.min.css">
     <style>
@@ -11,9 +13,14 @@
 
   <body>
     <div class="app-page" data-page="home">
-      <div class="app-topbar">
-        <div class="app-title">Home page</div>
-      </div>
+    
+    <div class="app-topbar">
+  <div class="app-button left" data-back>Back</div>
+  <div class="app-title">Home page</div>
+  <div class="app-button right">Forward</div>
+</div>
+
+     
       <div class="app-content">
         <div class="app-section">
           <div class="app-button" data-target="page2">Go to Page 2</div>
@@ -27,8 +34,39 @@
         <div class="app-title">Page 2</div>
       </div>
       <div class="app-content">
-        Page 2 is lonely
+         <ul class="app-list">
+			  <li>Item 1.</li>
+			  <li>Item 2</li>
+			  <li>Item 3</li>
+			</ul>
+			
+			<ul class="app-list app-section">
+			  <li>Item 1 <br/><font color="blue">dfasdfasssssssdfasdfasssssssdfasd-</font></li>
+			  <li>Item 2</li>
+			  <li>Item 3</li>
+			</ul>
+			<div class="app-section">
+			  <div class="app-button">Send</div>
+			</div>
+			<div class="app-section">
+			  <input class="app-input">
+			</div>
+			<ul class="app-list">
+			  <li class="app-button">Button item</li>
+			</ul>
+		  
+		      <ul class="app-list">
+				  <label>动物</label>
+				  <li>Dogs狗asdfassssss <br/><font color="blue">dfasdfasssssssdfasdfasssssssdfasd-</font></li>
+				  <li>Cats</li>
+				  <label>Fruits</label>
+				  <li>Apples</li>
+				  <li>Oranges</li>
+				</ul>
       </div>
+    
+    
+
     </div>
 
     <script src="zepto.js"></script>
@@ -52,11 +90,11 @@
     <script>
     console.log("init1");
       App.controller('home', function (page) {
-        // put stuff here
+        console.log("home page is loaded....");
       });
       console.log("init2");
       App.controller('page2', function (page) {
-        // put stuff here
+    	  console.log("2 page is loaded....");
       });
 
       console.log(localStorage['__APP_JS_STACK__' + window.location.pathname]);
