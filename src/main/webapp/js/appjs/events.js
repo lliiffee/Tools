@@ -10,7 +10,7 @@ App._Events = function (Utils) {
 
 
 
-	function supportsCustomEventing () {
+	function supportsCustomEventing () {//检测是否支持标准的 事件注册。。 ie就不支持。。
 		try {
 			var elem = document.createElement('div'),
 				evt  = document.createEvent('CustomEvent');
