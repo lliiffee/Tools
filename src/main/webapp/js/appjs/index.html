@@ -100,11 +100,11 @@
       console.log(localStorage['__APP_JS_STACK__' + window.location.pathname]);
       console.log("init3");
       try {
-        App.restore();
-      } catch (err) {
-    	  console.log(err);
-        App.load('home');
-      }
+          App.restore(); //尝试从localstorae 获得历史访问记录
+        } catch (err) {
+      	  console.log(err);
+          App.load('home');  //得不到历史记录会到这里。。
+        }
     </script>
   </body>
 </html>
