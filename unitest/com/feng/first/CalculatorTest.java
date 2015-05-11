@@ -8,7 +8,7 @@ import org.junit.Test;
 
 
 /*
- * @BeforeClass 全局只会执行一次，而且是第一个运行
+@BeforeClass 全局只会执行一次，而且是第一个运行
 @Before 在测试方法运行之前运行
 @Test 测试方法
 @After 在测试方法运行之后允许
@@ -68,8 +68,6 @@ public class CalculatorTest {
 	    @Test(expected = ArithmeticException.class)
 
 	    public void divideByZero() {
-
-	  calculator.divide(0); 
-
+	     calculator.divide(0); 
 	    }
 }

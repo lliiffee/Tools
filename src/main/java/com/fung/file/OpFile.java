@@ -19,9 +19,9 @@ public class OpFile {
 		// TODO Auto-generated method stub
            OpFile of=new OpFile();
            
-         //  of.deleteFolderByName("E:\\tmp\\test\\bbf_es_index", ".svn");
+          of.deleteFolderByName("F:\\tmp\\TraceLog", ".svn");
            
-           of.deleteFolderByName("F:\\fung\\rapid-framework", ".git");
+         //  of.deleteFolderByName("F:\\fung\\rapid-framework", ".git");
           
           System.out.println(of.getClass().getResource("").getPath()) ;
           System.out.println(of.getClass().getResource("/").getPath()) ;

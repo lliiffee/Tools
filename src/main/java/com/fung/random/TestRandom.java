@@ -1,12 +1,15 @@
 package com.fung.random;
 
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
+
+import sun.misc.BASE64Decoder;
 
 /** 根据概率获取奖品的测试类 */
 public class TestRandom {
@@ -25,6 +28,16 @@ public class TestRandom {
 	    tr.getGumBySet();
 	}
 	System.out.println("set使用时间：" + (System.currentTimeMillis() - begin1));
+	
+	BASE64Decoder decoder = new BASE64Decoder();
+	 
+	try {
+		System.out.println(new String(decoder.decodeBuffer("N3dQT2E3WlBtMlZV") ) );
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
     }
 
     /* Set 获取 */
