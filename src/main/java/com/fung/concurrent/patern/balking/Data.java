@@ -16,12 +16,12 @@ public class Data {
 
 	}
 	 
-	 public synchronized void change(String newContent){
+	 public synchronized void change(String newContent){ //sate changing method
 		 content=newContent;
 		 changed=true;
 	 }
 	 
-	 public synchronized void save()throws IOException{
+	 public synchronized void save()throws IOException{ //gard method
 		 if(!changed){
 			 System.out.println(Thread.currentThread().getName() +" unchanged cancel..");
 			 return;
