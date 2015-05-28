@@ -32,6 +32,7 @@ public class MyProxy {
         IBlind ok = (IBlind)Proxy.newProxyInstance(loader,interfaces,handler);  
            
         ok.blinding();  
+        
   
     }  
 }
