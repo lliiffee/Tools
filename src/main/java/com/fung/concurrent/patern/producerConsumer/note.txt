@@ -1,0 +1,1 @@
+后面接着 throws InterruptedException 的方法，是可能会花点时间，但可以取消的方法。

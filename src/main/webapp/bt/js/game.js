@@ -80,7 +80,7 @@ function L(d) {
 	l.addChild(c);
 	var a = new createjs.Bitmap(ia);
 	return {
-		full: function() {
+		full: function() { 
 			var c = a.getBounds();
 			a.x = d.x - c.width / 2 - 10;
 			a.y = d.y - ea + 34;
