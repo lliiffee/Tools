@@ -1,0 +1,47 @@
+@charset "utf-8";
+/* CSS Document */
+*{padding:0; margin:0; font:13px/25px "宋体",Arial,Helvetica,sans-serif; color:#666;}
+.wrap{margin:20px; min-width:950px;}
+.enter,
+.clear{clear:both; height:0; width:0; display:block;}
+.btn{background:url("publish.png") no-repeat scroll -115px -161px; border:0 none; display:inline-block; height:28px; line-height:28px;  text-align:center; width:87px; cursor:pointer;}
+.longBtn{background:url("publish.png") no-repeat scroll 0 -161px; border:0 none; display:inline-block; height:28px; line-height:28px;  text-align:center; width:103px; cursor:pointer;}
+h1{color:#3f3f3f; font-size:13px; font-weight:700; border-bottom:2px solid #d4d4d4; padding-bottom:5px; margin-bottom:10px;}
+a{text-decoration:none; color:#0f64dc;}
+a:hover{color:#ff4700;}
+.red{color:#ff0000;}
+.alginLeft{text-align:left;}
+.alginRight{text-align:right;}
+.textBox input{width:150px; height:25px;}
+.textBox{width:280px;}
+.dateBox input{width:150px; height:25px; margin:0 5px;}
+.dateBox{width:480px;}
+.selectBox select{width:150px; height:25px;}
+.selectBox{width:280px;}
+.triSelectBox{width:428px;}
+.triSelectBox select{width:90px; height:25px; margin:0 5px;}
+.searchBox{padding-bottom:20px; border-bottom:2px solid #d4d4d4; overflow:hidden; margin-bottom:10px;}
+.searchBox div{margin-top:15px; height:28px; float:left; text-align:right;}
+.searchBox .btn{float:left; margin-top:12px; margin-left:20px;}
+.extraBox{background-color:#f6f6f6; border:1px solid #d4d4d4; min-height:35px; _height:35px; line-height:35px; padding:10px; margin-bottom:10px; overflow:hidden;}
+.extraBox .btn,
+.extraBox .longBtn,
+.extraBox a,
+.extraBox span{margin-right:10px;}
+.extraBox .textBox,
+.extraBox .dateBox,
+.extraBox .selectBox,
+.extraBox .triSelectBox{display:inline-block;}
+.tab{overflow:hidden; list-style:none;}
+.tab li{width:160px; float:left; border:1px solid #d4d4d4; border-bottom:none; height:30px; line-height:30px; margin-right:10px; text-align:center; cursor:pointer; color:#999; background-color:#f4f4f4;}
+.tab .tabActive{ color:#333; background-color:#fff;}
+.mainTable table{width:100%; border-collapse:collapse; border:1px solid #d4d4d4;}
+.mainTable th,
+.mainTable td{padding:10px; border:1px solid #d4d4d4; height:25px; text-align:center;}
+.mainTable th{font-weight:700; background-color:#f6f6f6;}
+.mainTable a{border-right:1px solid #0f64dc; padding-right:8px; margin-left:8px; *border-right:none; _border-right:none;}
+.mainTable a:last-child{border:none; padding-right:0;}
+.popBox{background-color:#fff; border: 1px solid #d4d4d4; position: absolute; top:40%; left:40%; width:300px; z-index:9;}
+.popBox .popTit{background-color:#f6f6f6; font-size:14px; font-weight:700; height:32px; line-height:32px; padding-left:10px; cursor:move;}
+.popBox .popTit .popClose{color:#666; height:32px; width:32px; line-height:32px; text-align:center; display:inline-block; float:right;}
+.popBox .popContent{height:200px; overflow-y:scroll;}

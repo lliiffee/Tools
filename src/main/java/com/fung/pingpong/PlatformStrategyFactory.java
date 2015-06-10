@@ -1,16 +1,73 @@
 package com.fung.pingpong;
 
-import java.io.PrintStream;
+import java.util.HashMap;
+
 
 public class PlatformStrategyFactory {
+	
+	/** 
+     * This interface uses the Strategy pattern to create @a PlatformStrategy
+     * implementations at runtime.
+     */
+    private static interface IPlatformStrategyFactoryStrategy 
+    {
+        public PlatformStrategy execute();
+    }
+    
+    /**
+     * HashMap used to map strings containing the Java platform names
+     * and dispatch the execute() method of the associated @a PlatformStrategy
+     * implementation.
+     */
+    private HashMap<String, IPlatformStrategyFactoryStrategy> mPlatformStrategyMap = 
+        new HashMap<String, IPlatformStrategyFactoryStrategy>();
+    
+    /** 
+     * Ctor that stores the objects that perform output for a
+     * particular platform, such as ConsolePlatformStrategy or the
+     * AndroidPlatformStrategy.
+     */
+    public PlatformStrategyFactory(final Object output,
+                                   final Object activity) 
+    {
+    	/** 
+         * The "Sun Microsystems Inc." string maps to a command object
+         * that creates an @a ConsolePlatformStrategy implementation.
+         */
+        mPlatformStrategyMap.put("Sun Microsystems Inc.",
+                                 new IPlatformStrategyFactoryStrategy() 
+                                 {
+                                     public PlatformStrategy execute() 
+                                     {
+                                         return new ConsolePlatformStrategy(output);
+                                     }
+                                 });
 
-	public PlatformStrategyFactory(PrintStream out, Object object) {
-		// TODO Auto-generated constructor stub
-	}
+    	/** 
+         * The "Oracle Corporation" string maps to a command object
+         * that creates an @a ConsolePlatformStrategy implementation.
+         */
+        mPlatformStrategyMap.put("Oracle Corporation", 
+                                 new IPlatformStrategyFactoryStrategy() 
+                                 {
+                                     public PlatformStrategy execute() 
+                                     {
+                                         return new ConsolePlatformStrategy(output);
+                                     }
+                                 });
+    }
 
-	public Object makePlatformStrategy() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
+
+	/** 
+     * Create a new @a PlatformStrategy object based on underlying Java
+     * platform.
+     */
+    public PlatformStrategy makePlatformStrategy() 
+    {
+        String name = System.getProperty("java.specification.vendor");
+
+        return mPlatformStrategyMap.get(name).execute();
+    }
 
 }

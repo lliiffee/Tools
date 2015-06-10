@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link href="public.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+	<div class="wrap">
+    	<h1>新的页面</h1>
+        <form class="searchBox">
+        	<div class="textBox">选项内容：<input type="text" value="" /></div>
+            <div class="textBox">选项内容最长八字：<input type="text" value="" /></div>
+            <div class="dateBox">选择时间：<input type="text" value="" />至<input type="text" value="" /></div>
+            <div class="enter"></div>
+            <div class="selectBox">选择内容最长八字：<select></select></div>
+            <div class="triSelectBox">三重选择：<select></select><select></select><select></select></div>
+            <input type="button" class="btn" value="按钮" />
+        </form>
+        <ul class="tab">
+        	<li class="tabActive">页1</li>
+            <li>页2</li>
+        </ul>
+        <div class="extraBox">
+        	这里是额外区域
+        	<input type="button" class="btn" value="按钮" />
+            <input type="button" class="longBtn" value="长按钮" />
+            <a href="#">我是链接</a>
+        </div>
+        <div class="mainTable">
+        	<table>
+            	<thead>
+                	<tr>
+                    	<th width="20%">列1</th>
+                        <th width="16%">列2</th>
+                        <th width="16%">列3</th>
+                        <th width="16%">列4</th>
+                        <th width="16%">列5</th>
+                        <th width="16%">列6</th>
+                    </tr>
+                </thead>
+                <tbody>
+                	<tr>
+                    	<td width="20%" class="tableLeft">123456</td>
+                        <td width="16%"><a href="#">我是链接</a></td>
+                        <td width="16%"><a href="#">www.800pharm.com</a></td>
+                        <td width="16%">广州好信大药房</td>
+                        <td width="16%">2015-03-29</td>
+                        <td width="16%"><a href="#">我是链接</a><a href="#">我是链接</a></td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                	<tr>
+                    	<td colspan="6">
+                        	总记录数：8  每页显示：
+							<select onchange="chgSize(this.value)" name="pageSizeSelect">
+							页数：1/1   
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        <div class="popBox">
+        	<div class="popTit">名称名称名称<a class="popClose" href="javascript:;">×</a></div>
+            <div class="popContent">
+            </div>
+        </div>
+        <div class="popBox">
+        	<div class="popTit">名2称名称名称<a class="popClose" href="javascript:;">×</a></div>
+            <div class="popContent">
+            </div>
+        </div>
+        <div class="popBox">
+        	<div class="popTit">名2称名称名称<a class="popClose" href="javascript:;">×</a></div>
+            <div class="popContent">
+            </div>
+        </div>
+    </div>
+</body>
+<script src="jquery-1.7.2_min.js"></script>
+<script>
+	jQuery(".popTit").each(function() {
+        var move=false;//移动标记
+		var _x,_y;//鼠标离控件左上角的相对位置 
+		jQuery(this).on("mousedown",function(e){
+			move=true;
+			_x=e.pageX-parseInt(jQuery(this).parent().css("left")); 
+			_y=e.pageY-parseInt(jQuery(this).parent().css("top")); 
+		});
+		var $popBox = jQuery(this);
+		jQuery(document).on("mousemove",function(e){ 
+			if(move){
+				var x=e.pageX-_x;//控件左上角到屏幕左上角的相对位置 
+				var y=e.pageY-_y; 
+				$popBox.parent().css({"top":y,"left":x}); 
+			}
+		}).mouseup(function(){
+			move=false; 
+		}); 
+    });
+	jQuery(".popClose").on("click",function(){
+		$(this).parents(".popBox").hide();
+	});
+</script>
+</html>

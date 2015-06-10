@@ -25,12 +25,13 @@ public class Main {
         PlayPingPong pingPong=new PlayPingPong(PlatformStrategy.instance(),
         		Options.instance().maxIterations(),
         		Options.instance().maxTurns(),
-        		Options.instance().synMechanism());
+        		Options.instance().syncMechanism());
         
         /**
          * Start a thread to play ping-pong.
          */
         new Thread (pingPong).start();
+        System.out.println("main done...");
         
 	}
 
