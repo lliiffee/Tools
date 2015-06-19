@@ -1,0 +1,182 @@
+组合模式主要是应对这样的问题：一类具有“容器特征”的对象 —— 即他们在充当对象的同时，又是其他对象的容器的情况。将对象组合成树形结构以表示“部分-整体”的层次结构。组合模式使得客户对单个对象和组合对象的使用具有一致性。
+ 
+想到Composite就应该想到树形结构图。
+ 
+将“客户代码与复杂的对象容器结构”解耦是组合模式的核心思想，解耦之后，客户代码将与纯粹的对象接口（而非对象容器的复杂内部实现结构）发生依赖关系，从而更能“应对变化”。
+
+11、组合模式（Composite）
+组合模式有时又叫部分-整体模式在处理类似树形结构的问题时比较方便，看看关系图：
+
+直接来看代码：
+[java] view plaincopy
+public class TreeNode {  
+      
+    private String name;  
+    private TreeNode parent;  
+    private Vector<TreeNode> children = new Vector<TreeNode>();  
+      
+    public TreeNode(String name){  
+        this.name = name;  
+    }  
+  
+    public String getName() {  
+        return name;  
+    }  
+  
+    public void setName(String name) {  
+        this.name = name;  
+    }  
+  
+    public TreeNode getParent() {  
+        return parent;  
+    }  
+  
+    public void setParent(TreeNode parent) {  
+        this.parent = parent;  
+    }  
+      
+    //添加孩子节点  
+    public void add(TreeNode node){  
+        children.add(node);  
+    }  
+      
+    //删除孩子节点  
+    public void remove(TreeNode node){  
+        children.remove(node);  
+    }  
+      
+    //取得孩子节点  
+    public Enumeration<TreeNode> getChildren(){  
+        return children.elements();  
+    }  
+}  
+[java] view plaincopy
+public class Tree {  
+  
+    TreeNode root = null;  
+  
+    public Tree(String name) {  
+        root = new TreeNode(name);  
+    }  
+  
+    public static void main(String[] args) {  
+        Tree tree = new Tree("A");  
+        TreeNode nodeB = new TreeNode("B");  
+        TreeNode nodeC = new TreeNode("C");  
+          
+        nodeB.add(nodeC);  
+        tree.root.add(nodeB);  
+        System.out.println("build the tree finished!");  
+    }  
+}  
+使用场景：将多个对象组合在一起进行操作，常用于表示树形结构中，例如二叉树，数等。
+
+
+
+
+
+
+Component类源码：
+Java代码  收藏代码
+public interface Component {  
+    public void operation();  
+  
+    public boolean add(Component o);  
+  
+    public boolean remove(Component o);  
+  
+    public List getChildren();  
+}  
+ 
+Composite类源码：
+Java代码  收藏代码
+public class Composite implements Component {  
+    private String name;  
+    private List children = new ArrayList();  
+      
+    public Composite(String name){  
+        this.name = name;  
+    }  
+      
+    public void operation(){  
+        System.out.println(name);  
+    }  
+  
+    public boolean add(Component o){  
+        if(!children.contains(o)){  
+            children.add(o);  
+        }  
+        return true;  
+    }  
+  
+    public boolean remove(Component o){  
+        children.remove(o);  
+        return true;  
+    }  
+  
+    public List getChildren(){  
+        return children;  
+    }  
+}  
+ 
+Leaf类源码：
+Java代码  收藏代码
+public class Leaf implements Component {  
+    private String name;  
+      
+    public Leaf(String name){  
+        this.name = name;  
+    }  
+      
+    public void operation(){  
+        System.out.println(name);  
+    }  
+  
+    public boolean add(Component o){  
+        return false;  
+    }  
+  
+    public boolean remove(Component o){  
+        return false;  
+    }  
+  
+    public List getChildren(){  
+        return null;  
+    }  
+}  
+ 
+Client类源码：
+Java代码  收藏代码
+public class Client {  
+    private static void doCircle(Component o){  
+        List list = o.getChildren();  
+        if(list!=null && list.size()>0){  
+            for(int i=0;i<list.size();i++){  
+                Component sub = (Component)list.get(i);  
+                sub.operation();  
+                  
+                //递归执行  
+                doCircle(sub);  
+            }  
+        }  
+    }  
+      
+    public static void main(String[] args) {  
+        Component root = new Composite("树干");  
+          
+        Component comp1 = new Composite("树枝一");  
+        Component comp2 = new Composite("树枝二");  
+        root.add(comp1);  
+        root.add(comp2);  
+          
+        Component leaf1 = new Leaf("叶一");  
+        Component leaf2 = new Leaf("叶二");  
+        comp1.add(leaf1);  
+        comp1.add(leaf2);  
+          
+        doCircle(root);  
+          
+    }  
+}  
+ 
+ 
