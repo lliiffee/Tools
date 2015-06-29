@@ -1,6 +1,8 @@
-package com.bbf.sms;
+package com.bbf.sms.processor;
 
 import java.util.List;
+
+import com.bbf.sms.rule.Rule;
 
 public class DefaultNoteProcessor extends AbstractNoteProcessor {  
     private List checkRules;  

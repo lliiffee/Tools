@@ -1,4 +1,4 @@
-package com.bbf.sms;
+package com.bbf.sms.processor;
 
 public class NumActiveNoteProcessor extends DefaultNoteProcessor {  
     protected void proceed() {  

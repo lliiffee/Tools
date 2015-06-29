@@ -1,4 +1,4 @@
-package com.bbf.sms;
+package com.bbf.sms.processor;
 
 public abstract  class AbstractNoteProcessor {
 	    private String prefix;  

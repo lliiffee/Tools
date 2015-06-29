@@ -1,4 +1,4 @@
-package com.bbf.sms;
+package com.bbf.sms.advice;
 
 import java.lang.reflect.Method;
 

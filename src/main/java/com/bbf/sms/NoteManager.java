@@ -6,6 +6,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import com.bbf.sms.processor.AbstractNoteProcessor;
+
 /** 
  * 短信管理器类 
  */  

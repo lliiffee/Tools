@@ -1,4 +1,6 @@
-package com.bbf.sms;
+package com.bbf.sms.rule;
+
+import com.bbf.sms.processor.AbstractNoteProcessor;
 
 /** 
  * 短信格式规则验证类 

@@ -1,4 +1,4 @@
-package com.bbf.sms;
+package com.bbf.sms.processor;
 
 public class CardSalesNoteProcessor extends DefaultNoteProcessor {  
     protected void proceed() {  
