@@ -1,5 +1,7 @@
 package com.fung.concurrent.future;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.concurrent.Callable;
 import java.util.concurrent.CompletionService;
@@ -51,6 +53,38 @@ public class CallableAndFuture {
 				}
 			}
 		}
+		
+		private ExecutorService  threadPool = Executors.newFixedThreadPool(8);
+
+		//final List<T> batches = new ArrayList<T>();
+
+		public <T> void test() throws InterruptedException, ExecutionException{
+			final List<T> batches = new ArrayList<T>();
+			Callable<T> t = new Callable<T>() { 
+
+			  
+
+				@Override
+				public T call() throws Exception {
+					 synchronized(batches) { 
+				            Object msg=null;
+							T result = callDatabase(msg); 
+						 //return new Random().nextInt(100);
+				            batches.add(result);
+				            return result;
+				        }
+				}
+
+				private T callDatabase(Object msg) {
+					// TODO Auto-generated method stub
+					return null;
+				}
+			};
+
+			Future<T> f = threadPool.submit(t); 
+			T result = f.get(); 
+		}
+		
 	
 }
 
