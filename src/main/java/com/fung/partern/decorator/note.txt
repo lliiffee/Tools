@@ -78,3 +78,120 @@ before decorator! the original method! after decorator!
 1、需要扩展一个类的功能。
 2、动态的为一个对象增加功能，而且还能动态撤销。（继承不能做到这一点，继承的功能是静态的，不能动态增删。）
 缺点：产生过多相似的对象，不易排错！
+
+
+
+############2
+decorator pattern demo
+ 
+ 
+public class DB implements DBinterface;  
+public interface DBinterface {  
+    public DBTable getTable(String name);  
+  
+    public void createTable(String name, int columns);  
+  
+    public void insert(String tableName, String[] row);  
+  
+    public DBTable select(String tabName, int col, String selector);  
+  
+    public DBTable join(String tab1Name, String tab2Name, int tab1Col,  
+            int tab2Col);  
+}  
+  
+public abstract class DBDecoratorAbstract implements DBinterface {  
+    DBinterface dbi;  
+  
+    public DBDecoratorAbstract(DBinterface dbi) {  
+        this.dbi = dbi;  
+    }  
+  
+    public abstract DBTable getTable(String name);  
+  
+    public abstract void createTable(String name, int columns);  
+  
+    public abstract void insert(String tableName, String[] row);  
+  
+    public abstract DBTable select(String tabName, int col, String selector);  
+  
+    public abstract DBTable join(String tab1Name, String tab2Name, int tab1Col,  
+            int tab2Col);  
+}  
+  
+import java.io.FileWriter;  
+import java.io.IOException;  
+  
+public class DBDecorator001 extends DBDecoratorAbstract {  
+    private String orignallog = "";  
+    public String getOrignalLogAfterSave() {  
+        FileWriter fwriter = null;  
+        try {  
+            fwriter = new FileWriter("DatabaseOrignal.log");  
+            fwriter.write(orignallog);  
+        } catch (IOException ex) {  
+            System.out.println("BE CAREFUL:SAVE FAILURE!"+ex.getMessage());  
+        } finally {  
+            try {  
+                fwriter.flush();  
+                fwriter.close();  
+            } catch (IOException ex) {  
+                ex.printStackTrace();  
+            }  
+        }  
+        return orignallog;  
+    }  
+  
+    public DBDecorator001(DBinterface dbi) {  
+        super(dbi);  
+    }  
+  
+    @Override  
+    public DBTable getTable(String name) {  
+        System.out.println("getTable(" + name + ")");  
+        orignallog += "getTable(" + name + ")";  
+        orignallog += "\n";  
+        return dbi.getTable(name);  
+    }  
+  
+    @Override  
+    public void createTable(String name, int columns) {  
+        System.out.println("createTable(" + name + "," + columns + ")");  
+        orignallog += "createTable(" + name + "," + columns + ")";  
+        orignallog += "\n";  
+        dbi.createTable(name, columns);  
+    }  
+  
+    @Override  
+    public void insert(String tableName, String[] row) {  
+        String row_context = "";  
+        for (int i = 0; i < row.length; i++) {  
+            row_context += row[i];  
+            row_context += ",";  
+        }  
+        System.out.println("insert(" + tableName + "," + row_context + ")");  
+        orignallog += "insert(" + tableName + "," + row_context + ")";  
+        orignallog += "\n";  
+        dbi.insert(tableName, row);  
+  
+    }  
+  
+    @Override  
+    public DBTable select(String tabName, int col, String selector) {  
+        System.out.println("select(" + tabName + "," + col + "," + selector  
+                + ")");  
+        orignallog += "select(" + tabName + "," + col + "," + selector + ")";  
+        orignallog += "\n";  
+        return dbi.select(tabName, col, selector);  
+    }  
+  
+    @Override  
+    public DBTable join(String tab1Name, String tab2Name, int tab1Col,  
+            int tab2Col) {  
+        System.out.println("join(" + tab1Name + "," + tab2Name + "," + tab1Col  
+                + ")");  
+        orignallog += "join(" + tab1Name + "," + tab2Name + "," + tab1Col + ")";  
+        orignallog += "\n";  
+        return dbi.join(tab1Name, tab2Name, tab1Col, tab2Col);  
+    }  
+  
+}  

@@ -29,7 +29,7 @@ public class Main {
         baseInfo.setColor("Color010"); //券颜色。按色彩规范标注填写 Color010-Color100
         baseInfo.setDescription("desc");//使用说明。长文本描述，可以分行，上限为1000 个汉字。
         baseInfo.setGetLimit(3);//每人最大领取次数，不填写默认 等于quantity。
-        baseInfo.setUseCustomCode(false);//是否自定义code 码。填写true 或false，不填代表默认为 false。（该权限申请及说明详   见Q&A)
+        baseInfo.setUseCustomCode(true);//是否自定义code 码。填写true 或false，不填代表默认为 false。（该权限申请及说明详   见Q&A)
         baseInfo.setNotice("notice");//使用提醒，字数上限为9 个汉 字。（一句话描述，展示在首页，    示例：请出示二维码核销卡券）
         baseInfo.setServicePhone("phone");//客服电话
         baseInfo.addLocationIdList(123123); //门店位置ID。商户需在mp 平   台上录入门店信息或调用批量  导入门店信息接口获取门店位    置ID。
