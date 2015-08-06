@@ -47,18 +47,18 @@ public class WxCardBaseInfo
         return this.m_data.getString("logo_url");
     }
 
-    static int CODE_TYPE_TEXT = 0;
-    static int CODE_TYPE_BARCODE = 1;
-    static int CODE_TYPE_QRCODE = 2;
+    public static int CODE_TYPE_TEXT = 0;
+    public static int CODE_TYPE_BARCODE = 1;
+    public static int CODE_TYPE_QRCODE = 2;
 
-    public void setCodeType(int code)
+    public void setCodeType(String code)
     {
         m_data.put("code_type", code);
     }
 
-    public int getCodeType()
+    public String getCodeType()
     {
-        return m_data.getIntValue("code_type");
+        return m_data.getString("code_type");
     }
 
     public void setBrandName(String name)
@@ -113,6 +113,34 @@ public class WxCardBaseInfo
         getDateInfo().put("type", 2);
         getDateInfo().put("fixed_term", fixedTerm);
         getDateInfo().put("fixed_begin_term", fixedBeginTerm);
+    }
+    
+    public String getCustomUrlName()
+    {
+        return m_data.getString("custom_url_name");
+    }
+    public String getCustomUrlSubTitle()
+    {
+        return m_data.getString("custom_url_sub_title");
+    }
+    
+    public String getCustomUrl()
+    {
+        return m_data.getString("custom_url");
+    }
+    
+    
+    public void setCustomUrlName(String customUrlName)
+    {
+          m_data.put("custom_url_name",customUrlName);
+    }
+    public  void setCustomUrl(String customUrl)
+    {
+          m_data.put("custom_url",customUrl);
+    }
+    public void setCustomUrlSubTitle(String stitle)
+    {
+    	 m_data.put("custom_url_sub_title",stitle);
     }
 
     public JSONObject getDateInfo()

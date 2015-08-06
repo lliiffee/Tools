@@ -19,7 +19,7 @@ public class OpFile {
 		// TODO Auto-generated method stub
            OpFile of=new OpFile();
            
-         // of.deleteFolderByName("F:\\tmp\\TraceLog", ".svn");
+          of.deleteFolderByName("F:\\fung\\201506\\TraceLog", ".svn");
            
          //  of.deleteFolderByName("F:\\fung\\rapid-framework", ".git");
           

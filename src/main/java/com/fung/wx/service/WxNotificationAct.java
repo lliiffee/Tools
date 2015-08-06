@@ -45,7 +45,7 @@ public class WxNotificationAct {
 						 +"                   }                                                      "
 						 +"           }                                                              "
 						 +"       }                                                                  ";
-		String token="3myV6fYfz0qJfSlLBShf3AemABmo3BEwBMX_w2UmT7J3vUJy_HAuKRRDJABAyjz4OjQOz8aapeQ5y52CMLaAdScGkfjCxZcRDi_-DfKh6bE";
+		String token="YUJLHySutF0VRtE_psgELN1TuOhZEPYf9rPPVw0zf6jjCKHdADAOJv4RuR7BDUrQvIkTRQzAmOPQzk8VmwjS1Kq2wHmsfCpttytkwE9rcQM";
 		String url="https://api.weixin.qq.com/cgi-bin/message/template/send?access_token="+token;
 		//oTNesjtcAPC-O19KrsRuOwdemgsQ
 		System.out.println("test"); 
@@ -69,14 +69,14 @@ public class WxNotificationAct {
 	//	String key="wxbf261f64e52a3ceb";
 	//	String sec="6ee4bd7cb3c20c5c53a1015f3fc37edf";
 		
-	//	String key="wx7179cc98fb47eff5";
-	//	String sec="823ae7209cb695d4a4a0c71071d6006e";
-		String key = "wx3d2a1aed54bca0e5";
-		String sec = "ba3b4085713a09ea86f52f5b7d8e7b9e";
+		String key="wx7179cc98fb47eff5";
+		String sec="823ae7209cb695d4a4a0c71071d6006e";
+	//	String key = "wx3d2a1aed54bca0e5";
+	//	String sec = "ba3b4085713a09ea86f52f5b7d8e7b9e";
 		
-		String fung="otwmFuFWazuAWWP1HrFhJJ3yagIg";
-		String freeman="otwmFuAEiplEh22PryPkTfplIaJw";
-		//String fung="oTNesjrqNt4ZIZ8zRe2-WVnt98M0";
+	//	String fung="otwmFuFWazuAWWP1HrFhJJ3yagIg";
+	//	String freeman="otwmFuAEiplEh22PryPkTfplIaJw";
+		String fung="oTNesjrqNt4ZIZ8zRe2-WVnt98M0";
 		//o69Ras_or-q5yt03qtFNWUhzCWHI
 		//o69Ras_or-q5yt03qtFNWUhzCWHI
 		System.out.println(tk.getToken(key,sec));

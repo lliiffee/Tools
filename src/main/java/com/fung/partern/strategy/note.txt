@@ -63,3 +63,490 @@ public class StrategyTest {
 策略模式的决定权在用户，系统本身提供不同算法的实现，新增或者删除算法，对各种算法做封装。
 因此，策略模式多用在算法决策系统中，外部用户只需要决定用哪个算法即可。
 
+
+
+ 
+
+##############2
+strategy design pattern and composite design pattern
+ 
+package logistics;  
+  
+import java.util.HashMap;  
+  
+import ordermanagement.Order;  
+import ordermanagement.OrderLine;  
+  
+public class LogisticsProvider {  
+    private float risk;  
+    private float kilogram;  
+    private float price;  
+    private String name;  
+    private static HashMap<String, float[]> providers;  
+    static {  
+        float[] ems = { 0.01f, 10, 25 };  
+        float[] ups = { 0.08f, 8, 16 };  
+        providers.put("EMS", ems);  
+        providers.put("UPS", ups);  
+    }  
+  
+    public LogisticsProvider(String name) {  
+        if (!providers.containsKey(name.toUpperCase())) {  
+            name = "EMS";  
+        }  
+        float[] property = providers.get(name.toUpperCase());  
+        this.name = name.toUpperCase();  
+        this.risk = property[0];  
+        this.kilogram = property[1];  
+        this.price = property[2];  
+        // using database to search is better  
+    }  
+  
+    public LogisticsProvider(String name, float risk, float kilogram,  
+            float price) {  
+        this.name = name;  
+        this.risk = risk;  
+        this.kilogram = kilogram;  
+        this.price = price;  
+    }  
+  
+    public void shipOrder(Order order) {  
+        System.out.println("LogisticsProvider: " + this.name);  
+        for (OrderLine orderline : order.getOrderLines()) {  
+            System.out.println(orderline.toString());  
+        }  
+        System.out.print("Weight:" + order.getWeight() + "\tPrice:"  
+                + order.getBasePrice() + "\tInsurance:"  
+                + this.calculateInsurance(order) + "\tFreight:"  
+                + this.calculateInsurance(order) + "\tShipment:"  
+                + this.calculateShipment(order));  
+    }  
+  
+    public float calculateShipment(Order order) {  
+        return calculateInsurance(order) + calculateFreight(order);  
+    }  
+  
+    public float calculateInsurance(Order order) {  
+        return order.getBasePrice() * risk;  
+    }  
+  
+    public float calculateFreight(Order order) {  
+        int weigthRoundedUp = Math.round(order.getWeight() + 0.49999f);  
+        return (weigthRoundedUp * kilogram) + price;  
+    }  
+  
+    public String toString() {  
+        StringBuffer result = new StringBuffer();  
+        result.append("LogisticsProvider: ");  
+        result.append(name);  
+        result.append(", type = ");  
+        result.append(this.getClass().getName());  
+        result.append(".");  
+        return result.toString();  
+    }  
+}  
+  
+package ordermanagement;  
+  
+import java.util.List;  
+import java.util.ArrayList;  
+import java.util.Collections;  
+  
+public class Order {  
+    private boolean taxFree;  
+    private List<OrderLine> orderLines;  
+  
+    public Order() {  
+        this(false); // by default orders are not tax free  
+    }  
+  
+    public Order(boolean taxFree) {  
+        this.taxFree = taxFree;  
+        orderLines = new ArrayList<OrderLine>();  
+    }  
+  
+    public float getPrice() {  
+        float price = 0;  
+        for (OrderLine line : orderLines) {  
+            price += line.getPrice(taxFree);  
+        }  
+        return price;  
+    }  
+  
+    public float getBasePrice() {  
+        float basePrice = 0;  
+        for (OrderLine line : orderLines) {  
+            basePrice += line.getBasePrice();  
+        }  
+        return basePrice;  
+    }  
+  
+    public float getTax() {  
+        if (!taxFree) {  
+            float tax = 0;  
+            for (OrderLine line : orderLines) {  
+                tax += line.getTax();  
+            }  
+            return tax;  
+        } else  
+            return 0f;  
+    }  
+  
+    public float getWeight() {  
+        float weight = 0;  
+        for (OrderLine line : orderLines) {  
+            weight += line.getWeight();  
+        }  
+        return weight;  
+    }  
+  
+    public void addOrderLine(OrderLine orderLine) {  
+        orderLines.add(orderLine);  
+    }  
+  
+    public void removeOrderLine(OrderLine orderLine) {  
+        orderLines.remove(orderLine);  
+    }  
+  
+    public int getOrderLineCount() {  
+        return orderLines.size();  
+    }  
+  
+    public OrderLine getOrderLine(int item) {  
+        if (item < 0)  
+            throw new IndexOutOfBoundsException("Invalid OrderLine number!");  
+        if (item >= orderLines.size())  
+            throw new IndexOutOfBoundsException(  
+                    "There are not that many OrderLines!");  
+        return orderLines.get(item);  
+    }  
+  
+    public List<OrderLine> getOrderLines() {  
+        return Collections.unmodifiableList(orderLines);  
+    }  
+  
+}  
+  
+package ordermanagement;  
+  
+import products.Product;  
+  
+public class OrderLine {  
+    private Product product;  
+    private int amount;  
+  
+    public OrderLine(Product product, int amount) {  
+        if (product == null)  
+            throw new NullPointerException("Product must not be null!");  
+        if (amount < 0)  
+            throw new IllegalArgumentException("Amount must not be negative!");  
+        this.product = product;  
+        this.amount = amount;  
+    }  
+  
+    public float getPrice(boolean taxFree) {  
+        return product.calculatePrice(taxFree) * amount;  
+    }  
+  
+    public float getBasePrice() {  
+        return product.getBasePrice() * amount;  
+    }  
+  
+    public float getTax() {  
+        return product.performCalculateTax() * amount;  
+    }  
+  
+    public float getWeight() {  
+        return product.getWeight() * amount;  
+    }  
+  
+    public Product getProduct() {  
+        return product;  
+    }  
+  
+    public int getAmount() {  
+        return amount;  
+    }  
+  
+    public void setAmount(int amount) {  
+        if (amount < 0)  
+            throw new IllegalArgumentException("Amount must not be negative!");  
+        this.amount = amount;  
+    }  
+  
+    public String toString() {  
+        StringBuffer result = new StringBuffer();  
+        result.append("OrderLine: ");  
+        result.append("product = ");  
+        result.append(product.getName());  
+        result.append(", amount = ");  
+        result.append(amount);  
+        result.append(".");  
+        return result.toString();  
+    }  
+  
+}  
+  
+package products;  
+  
+import TaxBehavior.SharedTaxCalculator;  
+  
+public class Electronics extends Product {  
+  
+    public Electronics(String name, String description, float weight,  
+            float basePrice) {  
+        super(name, description, weight, basePrice);  
+        calculateTaxBehavior = new SharedTaxCalculator();  
+    }  
+  
+    public Electronics(String name, float weight, float basePrice) {  
+        this(name, "", weight, basePrice);  
+    }  
+}  
+  
+package products;  
+  
+import java.util.ArrayList;  
+  
+public class PackageDeal extends Product {  
+    ArrayList<Product> packagedeal = new ArrayList<Product>();  
+  
+    private float discount;  
+  
+    public float getDiscount() {  
+        return discount;  
+    }  
+  
+    public void setDiscount(float discount) {  
+        this.discount = discount;  
+    }  
+  
+    public PackageDeal(String name, float discount) {  
+        super(name, "PackageDeal", 0, 0);  
+        this.discount = discount;  
+    }  
+  
+    public void addProduct(Product product) {  
+        packagedeal.add(product);  
+    }  
+  
+    public void removeProduct(Product product) {  
+        packagedeal.remove(product);  
+    }  
+  
+    @Override  
+    public float performCalculateTax() {  
+        float tax = 0;  
+        for (Product product : packagedeal) {  
+            tax += product.performCalculateTax();  
+        }  
+        return tax * discount;  
+    }  
+  
+    @Override  
+    public float getWeight() {  
+        float weight = 0;  
+        for (Product product : packagedeal) {  
+            weight += product.getWeight();  
+        }  
+        this.setWeight(weight);  
+        return weight;  
+    }  
+  
+    @Override  
+    public float getBasePrice() {  
+        float price = 0;  
+        for (Product product : packagedeal) {  
+            price += product.getBasePrice();  
+        }  
+        this.setBasePrice(price * discount);  
+        return price * discount;  
+    }  
+  
+    @Override  
+    public String toString() {  
+        StringBuffer result = new StringBuffer();  
+        result.append("PackageDeal starts >>");  
+        for (Product product : packagedeal) {  
+            result.append(product.toString());  
+        }  
+        result.append("PackageDeal ends >>");  
+        return result.toString();  
+    }  
+  
+}  
+  
+package products;  
+  
+import TaxBehavior.ProductTaxBehavior;  
+  
+public abstract class Product {  
+  
+    protected ProductTaxBehavior calculateTaxBehavior;  
+  
+    private String name;  
+    private String description;  
+    private float weight;  
+    private float basePrice;  
+  
+    public void addProduct(Product product) {  
+        throw new UnsupportedOperationException();  
+    }  
+  
+    public void removeProduct(Product product) {  
+        throw new UnsupportedOperationException();  
+    }  
+  
+    public Product(String name, String description, float weight,  
+            float basePrice) {  
+        super();  
+        if (name == null)  
+            throw new NullPointerException("Name must not be null!");  
+        if (description == null)  
+            throw new NullPointerException("Description must not be null!");  
+        if (weight < 0)  
+            throw new IllegalArgumentException("Weight must not be negative!");  
+        if (basePrice < 0)  
+            throw new IllegalArgumentException(  
+                    "BasePrice must not be negative!");  
+        this.name = name;  
+        this.description = description;  
+        this.weight = weight;  
+        this.basePrice = basePrice;  
+    }  
+  
+    public Product(String name, float weight, float basePrice) {  
+        this(name, "", weight, basePrice);  
+    }  
+  
+    public String getName() {  
+        return name;  
+    }  
+  
+    public void setName(String name) {  
+        if (name == null)  
+            throw new NullPointerException("Name must not be null!");  
+        this.name = name;  
+    }  
+  
+    public String getDescription() {  
+        return description;  
+    }  
+  
+    public void setDescription(String description) {  
+        if (description == null)  
+            throw new NullPointerException("Description must not be null!");  
+        this.description = description;  
+    }  
+  
+    public float getWeight() {  
+        return weight;  
+    }  
+  
+    public void setWeight(float weight) {  
+        if (weight < 0)  
+            throw new IllegalArgumentException("Weight must not be negative!");  
+        this.weight = weight;  
+    }  
+  
+    public float getBasePrice() {  
+        return basePrice;  
+    }  
+  
+    public void setBasePrice(float basePrice) {  
+        if (basePrice < 0)  
+            throw new IllegalArgumentException(  
+                    "BasePrice must not be negative!");  
+        this.basePrice = basePrice;  
+    }  
+  
+    public float performCalculateTax() {  
+        return calculateTaxBehavior.calculateTax(this.basePrice);  
+    }  
+  
+    public float calculatePrice(boolean taxFree) {  
+        if (taxFree)  
+            return getBasePrice();  
+        else  
+            return getBasePrice() + performCalculateTax();  
+    }  
+  
+    public String toString() {  
+        StringBuffer result = new StringBuffer();  
+        result.append("Product: ");  
+        result.append(name);  
+        if (!description.equals("")) {  
+            result.append(" [");  
+            result.append(description);  
+            result.append("]");  
+        }  
+        result.append(", type = ");  
+        result.append(this.getClass().getName());  
+        result.append(", base price = ");  
+        result.append(basePrice);  
+        result.append(", weight = ");  
+        result.append(weight);  
+        result.append(".");  
+  
+        return result.toString();  
+    }  
+}  
+  
+package products;  
+  
+import TaxBehavior.SoftwareTaxCalculator;  
+  
+public class Software extends Product {  
+  
+    public Software(String name, String description, float weight,  
+            float basePrice) {  
+        super(name, description, weight, basePrice);  
+        calculateTaxBehavior = new SoftwareTaxCalculator();  
+    }  
+  
+    public Software(String name, float weight, float basePrice) {  
+        this(name, "", weight, basePrice);  
+    }  
+}  
+package products;  
+  
+import TaxBehavior.SharedTaxCalculator;  
+  
+public class Tool extends Product {  
+  
+    public Tool(String name, String description, float weight, float basePrice) {  
+        super(name, description, weight, basePrice);  
+        calculateTaxBehavior = new SharedTaxCalculator();  
+    }  
+  
+    public Tool(String name, float weight, float basePrice) {  
+        this(name, "", weight, basePrice);  
+    }  
+}  
+package TaxBehavior;  
+  
+public interface ProductTaxBehavior {  
+    public float calculateTax(float price);  
+}  
+  
+package TaxBehavior;  
+  
+public class SharedTaxCalculator implements ProductTaxBehavior {  
+    private static final float TAX_RATE_ELECTRONICS = 0.21f;  
+  
+    public float calculateTax(float price) {  
+        return price * TAX_RATE_ELECTRONICS;  
+    }  
+  
+}  
+  
+package TaxBehavior;  
+  
+public class SoftwareTaxCalculator implements ProductTaxBehavior {  
+    private static final float TAX_RATE_SHARE = 0.06f;  
+  
+    public float calculateTax(float price) {  
+        return price * TAX_RATE_SHARE;  
+    }  
+  
+}  

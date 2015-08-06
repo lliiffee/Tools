@@ -137,10 +137,10 @@ public class MenuManager {
 						MenuManager mm =(MenuManager)ctx.getBean("menuManager"); 
 						System.out.println(JSONObject.toJSONString(mm.getMenu().getButtons().toArray()));
 						
-				    	  AccessToken at = WeiXinUtil.getAccessToken("wx7179cc98fb47eff5", "823ae7209cb695d4a4a0c71071d6006e ");  
-				    	//  String tokey="TRYP5YwmKWU_2J1rKyGoYgPNLfTKGufXk9JXySbHXj9xP8ZNEAREpZaB_yxhgrEv9b2Neqfbx3KStdlbkxXOlA";
-				    	  String  tokey=at.getToken();
-					        if (null != at) {  
+				    	//  AccessToken at = WeiXinUtil.getAccessToken("wx7179cc98fb47eff5", "823ae7209cb695d4a4a0c71071d6006e ");  
+				    	  String tokey="eTnm8gnI1bavits4hJEsovZQ0uDNopboXFo3G-8ntFoVdJ-p7ZoX8y3YdKXykeSEG7Ec57nET0YrSA1sRm5jqkXOLNZo9CZApSI4sqGnrO4";
+				    	 // String  tokey=at.getToken();
+					     //   if (null != at) {  
 					            // 调用接口创建菜单   
 				    	  
 					            int result = WeiXinUtil.createMenu(mm.getMenu(), tokey);  
@@ -150,7 +150,7 @@ public class MenuManager {
 					                log.info("菜单创建成功！");  
 					            else  
 					                log.info("菜单创建失败，错误码：" + result);  
-					        }  
+					     //   }  
 					        
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
