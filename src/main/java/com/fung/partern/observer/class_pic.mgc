@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ClassDiagram>
+    <Class name="com.fung.partern.observer.WeatherStation" x="351" y="6">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Communication destinationClassName="com.fung.partern.observer.WeatherData"/>
+    </Class>
+    <Class name="com.fung.partern.observer.CurrentConditionsDisplay"
+        x="334" y="416">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.fung.partern.observer.Observer"/>
+        <Extension destinationClassName="com.fung.partern.observer.DisplayElement"/>
+        <Association
+            destinationClassName="com.fung.partern.observer.Subject"
+            endpointName="weatherData" kind="Simple"/>
+        <Communication destinationClassName="com.fung.partern.observer.Subject"/>
+    </Class>
+    <Class name="com.fung.partern.observer.ForecastDisplay" x="717" y="419">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.fung.partern.observer.Observer"/>
+        <Extension destinationClassName="com.fung.partern.observer.DisplayElement"/>
+        <Association
+            destinationClassName="com.fung.partern.observer.Subject"
+            endpointName="weatherData" kind="Simple"/>
+        <Communication destinationClassName="com.fung.partern.observer.WeatherData"/>
+    </Class>
+    <Class name="com.fung.partern.observer.WeatherData" x="105" y="456">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.fung.partern.observer.Subject"/>
+        <Communication destinationClassName="com.fung.partern.observer.Observer"/>
+    </Class>
+    <Class name="com.fung.partern.observer.StatisticsDisplay" x="525" y="415">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.fung.partern.observer.DisplayElement"/>
+        <Extension destinationClassName="com.fung.partern.observer.Observer"/>
+        <Association
+            destinationClassName="com.fung.partern.observer.Subject"
+            endpointName="weatherData" kind="Simple"/>
+        <Communication destinationClassName="com.fung.partern.observer.WeatherData"/>
+    </Class>
+    <Class name="com.fung.partern.observer.Observer" x="428" y="118">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="com.fung.partern.observer.DisplayElement" x="698" y="136">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="com.fung.partern.observer.Subject" x="94" y="132">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+</ClassDiagram>

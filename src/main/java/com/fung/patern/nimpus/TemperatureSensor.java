@@ -10,7 +10,7 @@ public abstract class TemperatureSensor extends Observable {
 	
 	public TemperatureSensor(AlarmClock alarmClock){
 		this.alarmClock=alarmClock;
-		alarmClock.wakeUp(10000, new AlarmListener(){
+		alarmClock.register(10000, new AlarmListener(){
 			public void wakeup(){
 				check();
 			}
