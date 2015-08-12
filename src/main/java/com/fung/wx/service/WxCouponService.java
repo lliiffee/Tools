@@ -172,7 +172,7 @@ public class WxCouponService {
 			// baseInfo.setSubTitle("满388减20");//券名的副标题，字数上限为18个汉字。
 			 
 			    baseInfo.setBindOpenid(false);//是否指定用户领取，填写true 或false。不填代表默认为否。
-		        baseInfo.setCanGiveFriend(false);//卡券是否可转赠，填写true 或 false,true 代表可转赠。默认可 转赠。
+		        baseInfo.setCanGiveFriend(true);//卡券是否可转赠，填写true 或 false,true 代表可转赠。默认可 转赠。
 		        baseInfo.setCanShare(true);//领取卡券原生页面是否可分享， 填写true 或false，true 代表 可分享。默认可分享。
 		       // baseInfo.setCodeType(WxCardBaseInfo.CODE_TYPE_QRCODE);  //code 码展示类型
 		       baseInfo.setBrandName("八百方"); //商户名字,字数上限为12个汉字。

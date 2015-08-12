@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ClassDiagram>
+    <Class name="com.fung.partern.memento.InsertMode" x="497" y="451">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.fung.partern.memento.StateDependedAction"/>
+        <Communication destinationClassName="com.fung.partern.memento.TextState"/>
+    </Class>
+    <Class name="com.fung.partern.memento.WriteFileMode" x="720" y="449">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.fung.partern.memento.StateDependedAction"/>
+    </Class>
+    <Class name="com.fung.partern.memento.StateDependedAction" x="620" y="290">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="com.fung.partern.memento.CmdHandler" x="497" y="24">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association
+            destinationClassName="com.fung.partern.memento.CareTaker"
+            endpointName="caretaker" kind="Simple"/>
+        <Association
+            destinationClassName="com.fung.partern.memento.StateDependedAction"
+            endpointName="state" kind="Simple"/>
+        <Association
+            destinationClassName="com.fung.partern.memento.TextMemento"
+            endpointName="justModified" kind="Simple"/>
+        <Communication destinationClassName="com.fung.partern.memento.StateDependedAction"/>
+        <Communication destinationClassName="com.fung.partern.memento.TextState"/>
+        <Communication destinationClassName="com.fung.partern.memento.CareTaker"/>
+    </Class>
+    <Class name="com.fung.partern.memento.TextState" x="133" y="169">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="com.fung.partern.memento.CareTaker" x="344" y="294">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association
+            destinationClassName="com.fung.partern.memento.TextMemento"
+            endpointName="mementos" kind="Simple"/>
+    </Class>
+    <Class name="com.fung.partern.memento.ListMode" x="295" y="453">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.fung.partern.memento.StateDependedAction"/>
+        <Communication destinationClassName="com.fung.partern.memento.TextState"/>
+    </Class>
+    <Class name="com.fung.partern.memento.TextMemento" x="308" y="182">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association
+            destinationClassName="com.fung.partern.memento.TextState"
+            endpointName="text" kind="Simple"/>
+    </Class>
+    <Class name="com.fung.partern.memento.EditorApp" x="113" y="23">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association
+            destinationClassName="com.fung.partern.memento.CmdHandler"
+            endpointName="handler" kind="Simple"/>
+        <Association
+            destinationClassName="com.fung.partern.memento.TextState"
+            endpointName="textPane" kind="Simple"/>
+    </Class>
+    <Class name="com.fung.partern.memento.ReplaceMode" x="72" y="448">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.fung.partern.memento.StateDependedAction"/>
+        <Communication destinationClassName="com.fung.partern.memento.TextState"/>
+    </Class>
+</ClassDiagram>

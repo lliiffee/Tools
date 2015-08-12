@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ClassDiagram>
+    <Class name="com.fung.partern.strategy2.LogisticsProvider" x="747" y="197">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Communication destinationClassName="com.fung.partern.strategy2.Order"/>
+    </Class>
+    <Class name="com.fung.partern.strategy2.PackageDeal" x="225" y="-150">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.fung.partern.strategy2.Product"/>
+        <Association
+            destinationClassName="com.fung.partern.strategy2.Product"
+            endpointName="packagedeal" kind="Simple"/>
+        <Communication destinationClassName="com.fung.partern.strategy2.Product"/>
+    </Class>
+    <Class name="com.fung.partern.strategy2.Tool" x="5" y="38">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.fung.partern.strategy2.Product"/>
+    </Class>
+    <Class name="com.fung.partern.strategy2.Software" x="39" y="-40">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.fung.partern.strategy2.Product"/>
+    </Class>
+    <Class name="com.fung.partern.strategy2.SharedTaxCalculator" x="768" y="18">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.fung.partern.strategy2.ProductTaxBehavior"/>
+    </Class>
+    <Class name="com.fung.partern.strategy2.OrderLine" x="588" y="286">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association
+            destinationClassName="com.fung.partern.strategy2.Product"
+            endpointName="product" kind="Simple"/>
+        <Communication destinationClassName="com.fung.partern.strategy2.Product"/>
+    </Class>
+    <Class name="com.fung.partern.strategy2.Electronics" x="36" y="-125">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.fung.partern.strategy2.Product"/>
+    </Class>
+    <Class name="com.fung.partern.strategy2.Product" x="162" y="17">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association
+            destinationClassName="com.fung.partern.strategy2.ProductTaxBehavior"
+            endpointName="calculateTaxBehavior" kind="Simple"/>
+        <Communication destinationClassName="com.fung.partern.strategy2.ProductTaxBehavior"/>
+    </Class>
+    <Class name="com.fung.partern.strategy2.SoftwareTaxCalculator"
+        x="651" y="111">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="com.fung.partern.strategy2.ProductTaxBehavior"/>
+    </Class>
+    <Class name="com.fung.partern.strategy2.ProductTaxBehavior" x="538" y="20">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="com.fung.partern.strategy2.Order" x="203" y="291">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association
+            destinationClassName="com.fung.partern.strategy2.OrderLine"
+            endpointName="orderLines" kind="Simple"/>
+        <Communication destinationClassName="com.fung.partern.strategy2.OrderLine"/>
+    </Class>
+</ClassDiagram>
