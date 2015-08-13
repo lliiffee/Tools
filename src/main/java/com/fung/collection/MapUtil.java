@@ -3,6 +3,7 @@ package com.fung.collection;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
@@ -12,6 +13,8 @@ import java.util.Map.Entry;
 import java.util.TreeMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import com.tenpay.util.HttpClientUtil;
 
 public class MapUtil {
 		public static <K, V extends Comparable<? super V>> Map<K, V>   
@@ -97,4 +100,33 @@ public class MapUtil {
 		    }  
 		    return i;  
 		}  
+		
+		
+		
+		private  Map queryString2Map(String queryString) {
+			if(null == queryString || "".equals(queryString)) {
+				return null;
+			}
+			
+			Map m = new HashMap();
+			String[] strArray = queryString.split("&");
+			for(int index = 0; index < strArray.length; index++) {
+				String pair = strArray[index];
+				HttpClientUtil.putMapByPair(pair, m);
+			}
+			
+			return m;
+			
+		}
+		
+		private  String mapToMsgString(Map<String , String> map){
+			StringBuffer sb=new StringBuffer();
+			for (Entry<String, String> entry: map.entrySet()) {
+				
+				String k = (String)entry.getKey();
+				String value = entry.getValue();
+					sb.append(k + "=" +value + "&");
+			}
+			return sb.toString();
+		}
 }
