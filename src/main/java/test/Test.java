@@ -10,6 +10,11 @@ public class Test {
 	
 	public static void main(String[] args)
 	{
+		//25.12321312
+		long lt=2512321312l;
+		int	n=-8;
+        System.out.println("out="+lt  * Math.pow(10,-8));
+				
 		Integer supportCodId=2;
 		System.out.println(supportCodId.compareTo(2));
 		String str="cx中文";
