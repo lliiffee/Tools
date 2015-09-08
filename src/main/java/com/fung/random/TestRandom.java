@@ -1,6 +1,7 @@
 package com.fung.random;
 
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -8,6 +9,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
+
+import javax.activation.MimetypesFileTypeMap;
 
 import sun.misc.BASE64Decoder;
 
@@ -37,6 +40,11 @@ public class TestRandom {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
+	
+	 File f = new File("gumby.gif");  
+	    System.out.println("Mime Type of " + f.getName() + " is " +  
+	                         new MimetypesFileTypeMap().getContentType(f)); 
+	    
 	
     }
 
