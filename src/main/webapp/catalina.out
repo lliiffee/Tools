@@ -1,0 +1,908 @@
+postStr<xml><ToUserName><![CDATA[gh_3bbc9e468ddb]]></ToUserName><FromUserName><![CDATA[otwmFuFWazuAWWP1HrFhJJ3yagIg]]></FromUserName><CreateTime>1409819081</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[cx ?????????11]]></Content><MsgId>6055126846375480271</MsgId></xml>
+1:cx ?????????11
+2:cx ?????????11
+3:cx ?????????11
+4:cx ??????????????1
+postStr<xml><ToUserName><![CDATA[gh_3bbc9e468ddb]]></ToUserName><FromUserName><![CDATA[otwmFuFWazuAWWP1HrFhJJ3yagIg]]></FromUserName><CreateTime>1409819699</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[cx ?????????z]]></Content><MsgId>6055129500665269407</MsgId></xml>
+1:cx ?????????z
+2:cx ?????????z
+3:cx ?????????z
+4:cx ??????????????
+5:cx ?????????z
+6:cx ?????????z
+postStr<xml><ToUserName><![CDATA[gh_3bbc9e468ddb]]></ToUserName><FromUserName><![CDATA[otwmFuFWazuAWWP1HrFhJJ3yagIg]]></FromUserName><CreateTime>1409819781</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[cx??????]]></Content><MsgId>6055129852852587700</MsgId></xml>
+1:cx??????
+2:cx??????
+3:cx??????
+4:cx?????????
+5:cx??????
+6:cx??????
+postStr<xml><ToUserName><![CDATA[gh_3bbc9e468ddb]]></ToUserName><FromUserName><![CDATA[otwmFuFWazuAWWP1HrFhJJ3yagIg]]></FromUserName><CreateTime>1409819798</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[cx ??????]]></Content><MsgId>6055129925867031740</MsgId></xml>
+1:cx ??????
+2:cx ??????
+3:cx ??????
+4:cx ?????????
+5:cx ??????
+6:cx ??????
+postStr
+postStr<xml><ToUserName><![CDATA[gh_3bbc9e468ddb]]></ToUserName><FromUserName><![CDATA[otwmFuFWazuAWWP1HrFhJJ3yagIg]]></FromUserName><CreateTime>1409820586</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[cx ?????????]]></Content><MsgId>6055133310301261251</MsgId></xml>
+1:cx ?????????
+2:cx ?????????
+3:cx ?????????
+4:cx ??????????????
+5:cx ?????????
+6:cx ?????????
+7:cx ?????????
+postStr<xml><ToUserName><![CDATA[gh_3bbc9e468ddb]]></ToUserName><FromUserName><![CDATA[otwmFuFWazuAWWP1HrFhJJ3yagIg]]></FromUserName><CreateTime>1409821341</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[cx ???]]></Content><MsgId>6055136553001570014</MsgId></xml>
+1:cx ???
+2:cx ???
+3:cx ?????
+4:cx ?????
+5:cx ???
+6:cx ???
+7:cx ???
+postStr<xml><ToUserName><![CDATA[gh_3bbc9e468ddb]]></ToUserName><FromUserName><![CDATA[otwmFuFWazuAWWP1HrFhJJ3yagIg]]></FromUserName><CreateTime>1409822980</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[cx ???]]></Content><MsgId>6055143592452968702</MsgId></xml>
+1:cx ???
+2:cx ???
+3:cx ?????
+4:cx ?????
+5:cx ???
+6:cx ???
+7:cx ???
+postStr
+postStr<xml><ToUserName><![CDATA[gh_3bbc9e468ddb]]></ToUserName><FromUserName><![CDATA[otwmFuFWazuAWWP1HrFhJJ3yagIg]]></FromUserName><CreateTime>1409823003</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[cx ???]]></Content><MsgId>6055143691237216515</MsgId></xml>
+1:cx ???
+2:cx ???
+3:cx ?????
+4:cx ?????
+5:cx ???
+6:cx ???
+7:cx ???
+postStr
+postStr<xml><ToUserName><![CDATA[gh_3bbc9e468ddb]]></ToUserName><FromUserName><![CDATA[otwmFuFWazuAWWP1HrFhJJ3yagIg]]></FromUserName><CreateTime>1409823493</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[cx ???]]></Content><MsgId>6055145795771191643</MsgId></xml>
+1:cx ???
+2:cx ???
+3:cx ?????
+4:cx ?????
+5:cx ???
+6:cx ???
+7:cx ???
+postStr
+Sep 6, 2014 11:33:19 AM org.apache.jk.core.MsgContext action
+WARNING: Error sending end packet
+java.net.SocketException: Broken pipe
+	at java.net.SocketOutputStream.socketWrite0(Native Method)
+	at java.net.SocketOutputStream.socketWrite(SocketOutputStream.java:92)
+	at java.net.SocketOutputStream.write(SocketOutputStream.java:136)
+	at org.apache.jk.common.ChannelSocket.send(ChannelSocket.java:531)
+	at org.apache.jk.common.JkInputStream.endMessage(JkInputStream.java:112)
+	at org.apache.jk.core.MsgContext.action(MsgContext.java:293)
+	at org.apache.coyote.Response.action(Response.java:182)
+	at org.apache.coyote.Response.finish(Response.java:304)
+	at org.apache.catalina.connector.OutputBuffer.close(OutputBuffer.java:281)
+	at org.apache.catalina.connector.Response.finishResponse(Response.java:476)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:151)
+	at org.apache.jk.server.JkCoyoteHandler.invoke(JkCoyoteHandler.java:199)
+	at org.apache.jk.common.HandlerRequest.invoke(HandlerRequest.java:282)
+	at org.apache.jk.common.ChannelSocket.invoke(ChannelSocket.java:767)
+	at org.apache.jk.common.ChannelSocket.processConnection(ChannelSocket.java:697)
+	at org.apache.jk.common.ChannelSocket$SocketConnection.runIt(ChannelSocket.java:889)
+	at org.apache.tomcat.util.threads.ThreadPool$ControlRunnable.run(ThreadPool.java:684)
+	at java.lang.Thread.run(Thread.java:662)
+Sep 6, 2014 11:33:19 AM org.apache.jk.common.ChannelSocket processConnection
+WARNING: processCallbacks status 2
+Sep 7, 2014 10:14:11 PM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Sep 7, 2014 10:14:11 PM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Sep 7, 2014 10:14:11 PM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Sep 7, 2014 10:14:11 PM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+postStr
+postStr<xml><ToUserName><![CDATA[gh_3bbc9e468ddb]]></ToUserName><FromUserName><![CDATA[otwmFuFWazuAWWP1HrFhJJ3yagIg]]></FromUserName><CreateTime>1410418150</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[cx ???]]></Content><MsgId>6057699828138664360</MsgId></xml>
+1:cx ???
+2:cx ???
+3:cx ?????
+4:cx ?????
+5:cx ???
+6:cx ???
+7:cx ???
+postStr<xml><ToUserName><![CDATA[gh_3bbc9e468ddb]]></ToUserName><FromUserName><![CDATA[otwmFuFWazuAWWP1HrFhJJ3yagIg]]></FromUserName><CreateTime>1410426689</CreateTime><MsgType><![CDATA[event]]></MsgType><Event><![CDATA[unsubscribe]]></Event><EventKey><![CDATA[]]></EventKey></xml>
+postStr<xml><ToUserName><![CDATA[gh_3bbc9e468ddb]]></ToUserName><FromUserName><![CDATA[otwmFuFWazuAWWP1HrFhJJ3yagIg]]></FromUserName><CreateTime>1410426720</CreateTime><MsgType><![CDATA[event]]></MsgType><Event><![CDATA[subscribe]]></Event><EventKey><![CDATA[]]></EventKey></xml>
+postStr<xml><ToUserName><![CDATA[gh_3bbc9e468ddb]]></ToUserName><FromUserName><![CDATA[otwmFuFWazuAWWP1HrFhJJ3yagIg]]></FromUserName><CreateTime>1410426851</CreateTime><MsgType><![CDATA[event]]></MsgType><Event><![CDATA[CLICK]]></Event><EventKey><![CDATA[5]]></EventKey></xml>
+postStr<xml><ToUserName><![CDATA[gh_3bbc9e468ddb]]></ToUserName><FromUserName><![CDATA[otwmFuFWazuAWWP1HrFhJJ3yagIg]]></FromUserName><CreateTime>1410426871</CreateTime><MsgType><![CDATA[event]]></MsgType><Event><![CDATA[VIEW]]></Event><EventKey><![CDATA[http://www.800pharm.com/shop/m/memberHome.html?v=1.1&from_url=wechat]]></EventKey></xml>
+postStr<xml><ToUserName><![CDATA[gh_3bbc9e468ddb]]></ToUserName><FromUserName><![CDATA[otwmFuFWazuAWWP1HrFhJJ3yagIg]]></FromUserName><CreateTime>1410426890</CreateTime><MsgType><![CDATA[event]]></MsgType><Event><![CDATA[CLICK]]></Event><EventKey><![CDATA[7]]></EventKey></xml>
+postStr<xml><ToUserName><![CDATA[gh_3bbc9e468ddb]]></ToUserName><FromUserName><![CDATA[otwmFuFWazuAWWP1HrFhJJ3yagIg]]></FromUserName><CreateTime>1410427105</CreateTime><MsgType><![CDATA[event]]></MsgType><Event><![CDATA[VIEW]]></Event><EventKey><![CDATA[http://www.800pharm.com/shop/m/memberHome.html?v=1.1&from_url=wechat]]></EventKey></xml>
+postStr<xml><ToUserName><![CDATA[gh_3bbc9e468ddb]]></ToUserName><FromUserName><![CDATA[otwmFuFWazuAWWP1HrFhJJ3yagIg]]></FromUserName><CreateTime>1410427110</CreateTime><MsgType><![CDATA[event]]></MsgType><Event><![CDATA[CLICK]]></Event><EventKey><![CDATA[5]]></EventKey></xml>
+Sep 11, 2014 9:33:04 PM org.apache.jk.core.MsgContext action
+WARNING: Error sending end packet
+java.net.SocketException: Connection reset
+	at java.net.SocketOutputStream.socketWrite(SocketOutputStream.java:96)
+	at java.net.SocketOutputStream.write(SocketOutputStream.java:136)
+	at org.apache.jk.common.ChannelSocket.send(ChannelSocket.java:531)
+	at org.apache.jk.common.JkInputStream.endMessage(JkInputStream.java:112)
+	at org.apache.jk.core.MsgContext.action(MsgContext.java:293)
+	at org.apache.coyote.Response.action(Response.java:182)
+	at org.apache.coyote.Response.finish(Response.java:304)
+	at org.apache.catalina.connector.OutputBuffer.close(OutputBuffer.java:281)
+	at org.apache.catalina.connector.Response.finishResponse(Response.java:476)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:151)
+	at org.apache.jk.server.JkCoyoteHandler.invoke(JkCoyoteHandler.java:199)
+	at org.apache.jk.common.HandlerRequest.invoke(HandlerRequest.java:282)
+	at org.apache.jk.common.ChannelSocket.invoke(ChannelSocket.java:767)
+	at org.apache.jk.common.ChannelSocket.processConnection(ChannelSocket.java:697)
+	at org.apache.jk.common.ChannelSocket$SocketConnection.runIt(ChannelSocket.java:889)
+	at org.apache.tomcat.util.threads.ThreadPool$ControlRunnable.run(ThreadPool.java:684)
+	at java.lang.Thread.run(Thread.java:662)
+Sep 11, 2014 9:33:04 PM org.apache.jk.common.ChannelSocket processConnection
+WARNING: processCallbacks status 2
+Sep 13, 2014 12:55:19 PM org.apache.jk.core.MsgContext action
+WARNING: Error sending end packet
+java.net.SocketException: Broken pipe
+	at java.net.SocketOutputStream.socketWrite0(Native Method)
+	at java.net.SocketOutputStream.socketWrite(SocketOutputStream.java:92)
+	at java.net.SocketOutputStream.write(SocketOutputStream.java:136)
+	at org.apache.jk.common.ChannelSocket.send(ChannelSocket.java:531)
+	at org.apache.jk.common.JkInputStream.endMessage(JkInputStream.java:112)
+	at org.apache.jk.core.MsgContext.action(MsgContext.java:293)
+	at org.apache.coyote.Response.action(Response.java:182)
+	at org.apache.coyote.Response.finish(Response.java:304)
+	at org.apache.catalina.connector.OutputBuffer.close(OutputBuffer.java:281)
+	at org.apache.catalina.connector.Response.finishResponse(Response.java:476)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:151)
+	at org.apache.jk.server.JkCoyoteHandler.invoke(JkCoyoteHandler.java:199)
+	at org.apache.jk.common.HandlerRequest.invoke(HandlerRequest.java:282)
+	at org.apache.jk.common.ChannelSocket.invoke(ChannelSocket.java:767)
+	at org.apache.jk.common.ChannelSocket.processConnection(ChannelSocket.java:697)
+	at org.apache.jk.common.ChannelSocket$SocketConnection.runIt(ChannelSocket.java:889)
+	at org.apache.tomcat.util.threads.ThreadPool$ControlRunnable.run(ThreadPool.java:684)
+	at java.lang.Thread.run(Thread.java:662)
+Sep 13, 2014 12:55:19 PM org.apache.jk.common.ChannelSocket processConnection
+WARNING: processCallbacks status 2
+Sep 18, 2014 1:02:34 PM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Sep 18, 2014 1:02:34 PM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Sep 19, 2014 3:14:15 PM org.apache.jk.core.MsgContext action
+WARNING: Error sending end packet
+java.net.SocketException: Broken pipe
+	at java.net.SocketOutputStream.socketWrite0(Native Method)
+	at java.net.SocketOutputStream.socketWrite(SocketOutputStream.java:92)
+	at java.net.SocketOutputStream.write(SocketOutputStream.java:136)
+	at org.apache.jk.common.ChannelSocket.send(ChannelSocket.java:531)
+	at org.apache.jk.common.JkInputStream.endMessage(JkInputStream.java:112)
+	at org.apache.jk.core.MsgContext.action(MsgContext.java:293)
+	at org.apache.coyote.Response.action(Response.java:182)
+	at org.apache.coyote.Response.finish(Response.java:304)
+	at org.apache.catalina.connector.OutputBuffer.close(OutputBuffer.java:281)
+	at org.apache.catalina.connector.Response.finishResponse(Response.java:476)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:151)
+	at org.apache.jk.server.JkCoyoteHandler.invoke(JkCoyoteHandler.java:199)
+	at org.apache.jk.common.HandlerRequest.invoke(HandlerRequest.java:282)
+	at org.apache.jk.common.ChannelSocket.invoke(ChannelSocket.java:767)
+	at org.apache.jk.common.ChannelSocket.processConnection(ChannelSocket.java:697)
+	at org.apache.jk.common.ChannelSocket$SocketConnection.runIt(ChannelSocket.java:889)
+	at org.apache.tomcat.util.threads.ThreadPool$ControlRunnable.run(ThreadPool.java:684)
+	at java.lang.Thread.run(Thread.java:662)
+Sep 19, 2014 3:14:15 PM org.apache.jk.common.ChannelSocket processConnection
+WARNING: processCallbacks status 2
+Sep 20, 2014 6:24:47 PM org.apache.jk.core.MsgContext action
+WARNING: Error sending end packet
+java.net.SocketException: Broken pipe
+	at java.net.SocketOutputStream.socketWrite0(Native Method)
+	at java.net.SocketOutputStream.socketWrite(SocketOutputStream.java:92)
+	at java.net.SocketOutputStream.write(SocketOutputStream.java:136)
+	at org.apache.jk.common.ChannelSocket.send(ChannelSocket.java:531)
+	at org.apache.jk.common.JkInputStream.endMessage(JkInputStream.java:112)
+	at org.apache.jk.core.MsgContext.action(MsgContext.java:293)
+	at org.apache.coyote.Response.action(Response.java:182)
+	at org.apache.coyote.Response.finish(Response.java:304)
+	at org.apache.catalina.connector.OutputBuffer.close(OutputBuffer.java:281)
+	at org.apache.catalina.connector.Response.finishResponse(Response.java:476)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:151)
+	at org.apache.jk.server.JkCoyoteHandler.invoke(JkCoyoteHandler.java:199)
+	at org.apache.jk.common.HandlerRequest.invoke(HandlerRequest.java:282)
+	at org.apache.jk.common.ChannelSocket.invoke(ChannelSocket.java:767)
+	at org.apache.jk.common.ChannelSocket.processConnection(ChannelSocket.java:697)
+	at org.apache.jk.common.ChannelSocket$SocketConnection.runIt(ChannelSocket.java:889)
+	at org.apache.tomcat.util.threads.ThreadPool$ControlRunnable.run(ThreadPool.java:684)
+	at java.lang.Thread.run(Thread.java:662)
+Sep 20, 2014 6:24:47 PM org.apache.jk.common.ChannelSocket processConnection
+WARNING: processCallbacks status 2
+Sep 22, 2014 1:50:17 PM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Sep 22, 2014 1:50:17 PM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Sep 22, 2014 3:43:02 PM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Sep 22, 2014 3:43:04 PM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Sep 22, 2014 3:43:07 PM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Oct 23, 2014 9:25:11 AM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Oct 23, 2014 9:25:12 AM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Oct 23, 2014 9:25:12 AM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Oct 24, 2014 9:15:07 PM org.apache.jk.core.MsgContext action
+WARNING: Error sending end packet
+java.net.SocketException: Broken pipe
+	at java.net.SocketOutputStream.socketWrite0(Native Method)
+	at java.net.SocketOutputStream.socketWrite(SocketOutputStream.java:92)
+	at java.net.SocketOutputStream.write(SocketOutputStream.java:136)
+	at org.apache.jk.common.ChannelSocket.send(ChannelSocket.java:531)
+	at org.apache.jk.common.JkInputStream.endMessage(JkInputStream.java:112)
+	at org.apache.jk.core.MsgContext.action(MsgContext.java:293)
+	at org.apache.coyote.Response.action(Response.java:182)
+	at org.apache.coyote.Response.finish(Response.java:304)
+	at org.apache.jk.server.JkCoyoteHandler.invoke(JkCoyoteHandler.java:204)
+	at org.apache.jk.common.HandlerRequest.invoke(HandlerRequest.java:282)
+	at org.apache.jk.common.ChannelSocket.invoke(ChannelSocket.java:767)
+	at org.apache.jk.common.ChannelSocket.processConnection(ChannelSocket.java:697)
+	at org.apache.jk.common.ChannelSocket$SocketConnection.runIt(ChannelSocket.java:889)
+	at org.apache.tomcat.util.threads.ThreadPool$ControlRunnable.run(ThreadPool.java:684)
+	at java.lang.Thread.run(Thread.java:662)
+Oct 24, 2014 9:15:07 PM org.apache.jk.common.ChannelSocket processConnection
+WARNING: processCallbacks status 2
+Oct 27, 2014 1:10:25 PM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Oct 27, 2014 1:10:25 PM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Oct 27, 2014 1:10:25 PM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Oct 28, 2014 2:56:31 AM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Oct 28, 2014 2:56:33 AM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Oct 28, 2014 2:56:34 AM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Nov 4, 2014 7:09:26 PM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Nov 4, 2014 7:09:26 PM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Nov 4, 2014 9:00:10 PM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Nov 4, 2014 9:00:13 PM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Nov 4, 2014 9:31:41 PM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Nov 4, 2014 9:31:41 PM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Nov 4, 2014 10:07:46 PM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Nov 4, 2014 10:07:46 PM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Nov 7, 2014 2:33:56 AM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Nov 7, 2014 2:33:56 AM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Nov 7, 2014 2:33:56 AM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Nov 7, 2014 10:40:28 AM org.apache.jk.core.MsgContext action
+WARNING: Error sending end packet
+java.net.SocketException: Broken pipe
+	at java.net.SocketOutputStream.socketWrite0(Native Method)
+	at java.net.SocketOutputStream.socketWrite(SocketOutputStream.java:92)
+	at java.net.SocketOutputStream.write(SocketOutputStream.java:136)
+	at org.apache.jk.common.ChannelSocket.send(ChannelSocket.java:531)
+	at org.apache.jk.common.JkInputStream.endMessage(JkInputStream.java:112)
+	at org.apache.jk.core.MsgContext.action(MsgContext.java:293)
+	at org.apache.coyote.Response.action(Response.java:182)
+	at org.apache.coyote.Response.finish(Response.java:304)
+	at org.apache.catalina.connector.OutputBuffer.close(OutputBuffer.java:281)
+	at org.apache.catalina.connector.Response.finishResponse(Response.java:476)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:151)
+	at org.apache.jk.server.JkCoyoteHandler.invoke(JkCoyoteHandler.java:199)
+	at org.apache.jk.common.HandlerRequest.invoke(HandlerRequest.java:282)
+	at org.apache.jk.common.ChannelSocket.invoke(ChannelSocket.java:767)
+	at org.apache.jk.common.ChannelSocket.processConnection(ChannelSocket.java:697)
+	at org.apache.jk.common.ChannelSocket$SocketConnection.runIt(ChannelSocket.java:889)
+	at org.apache.tomcat.util.threads.ThreadPool$ControlRunnable.run(ThreadPool.java:684)
+	at java.lang.Thread.run(Thread.java:662)
+Nov 7, 2014 10:40:28 AM org.apache.jk.common.ChannelSocket processConnection
+WARNING: processCallbacks status 2
+Nov 7, 2014 2:40:03 PM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Nov 7, 2014 2:40:03 PM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Nov 7, 2014 2:40:03 PM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Nov 10, 2014 6:25:58 AM org.apache.jk.core.MsgContext action
+WARNING: Error sending end packet
+java.net.SocketException: Broken pipe
+	at java.net.SocketOutputStream.socketWrite0(Native Method)
+	at java.net.SocketOutputStream.socketWrite(SocketOutputStream.java:92)
+	at java.net.SocketOutputStream.write(SocketOutputStream.java:136)
+	at org.apache.jk.common.ChannelSocket.send(ChannelSocket.java:531)
+	at org.apache.jk.common.JkInputStream.endMessage(JkInputStream.java:112)
+	at org.apache.jk.core.MsgContext.action(MsgContext.java:293)
+	at org.apache.coyote.Response.action(Response.java:182)
+	at org.apache.coyote.Response.finish(Response.java:304)
+	at org.apache.catalina.connector.OutputBuffer.close(OutputBuffer.java:281)
+	at org.apache.catalina.connector.Response.finishResponse(Response.java:476)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:151)
+	at org.apache.jk.server.JkCoyoteHandler.invoke(JkCoyoteHandler.java:199)
+	at org.apache.jk.common.HandlerRequest.invoke(HandlerRequest.java:282)
+	at org.apache.jk.common.ChannelSocket.invoke(ChannelSocket.java:767)
+	at org.apache.jk.common.ChannelSocket.processConnection(ChannelSocket.java:697)
+	at org.apache.jk.common.ChannelSocket$SocketConnection.runIt(ChannelSocket.java:889)
+	at org.apache.tomcat.util.threads.ThreadPool$ControlRunnable.run(ThreadPool.java:684)
+	at java.lang.Thread.run(Thread.java:662)
+Nov 10, 2014 6:25:58 AM org.apache.jk.common.ChannelSocket processConnection
+WARNING: processCallbacks status 2
+Nov 17, 2014 2:59:59 AM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Nov 17, 2014 3:00:00 AM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Nov 17, 2014 3:00:00 AM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Nov 29, 2014 8:01:00 PM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Nov 29, 2014 8:01:00 PM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Nov 29, 2014 8:01:01 PM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Dec 1, 2014 5:08:16 AM org.apache.jk.core.MsgContext action
+WARNING: Error sending end packet
+java.net.SocketException: Broken pipe
+	at java.net.SocketOutputStream.socketWrite0(Native Method)
+	at java.net.SocketOutputStream.socketWrite(SocketOutputStream.java:92)
+	at java.net.SocketOutputStream.write(SocketOutputStream.java:136)
+	at org.apache.jk.common.ChannelSocket.send(ChannelSocket.java:531)
+	at org.apache.jk.common.JkInputStream.endMessage(JkInputStream.java:112)
+	at org.apache.jk.core.MsgContext.action(MsgContext.java:293)
+	at org.apache.coyote.Response.action(Response.java:182)
+	at org.apache.coyote.Response.finish(Response.java:304)
+	at org.apache.jk.server.JkCoyoteHandler.invoke(JkCoyoteHandler.java:204)
+	at org.apache.jk.common.HandlerRequest.invoke(HandlerRequest.java:282)
+	at org.apache.jk.common.ChannelSocket.invoke(ChannelSocket.java:767)
+	at org.apache.jk.common.ChannelSocket.processConnection(ChannelSocket.java:697)
+	at org.apache.jk.common.ChannelSocket$SocketConnection.runIt(ChannelSocket.java:889)
+	at org.apache.tomcat.util.threads.ThreadPool$ControlRunnable.run(ThreadPool.java:684)
+	at java.lang.Thread.run(Thread.java:662)
+Dec 1, 2014 5:08:16 AM org.apache.jk.common.ChannelSocket processConnection
+WARNING: processCallbacks status 2
+Dec 6, 2014 5:08:00 PM org.apache.catalina.core.AprLifecycleListener lifecycleEvent
+INFO: The Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /usr/local/jdk1.6.0_45/jre/lib/i386/server:/usr/local/jdk1.6.0_45/jre/lib/i386:/usr/local/jdk1.6.0_45/jre/../lib/i386:/usr/java/packages/lib/i386:/lib:/usr/lib
+Dec 6, 2014 5:08:01 PM org.apache.coyote.http11.Http11BaseProtocol init
+INFO: Initializing Coyote HTTP/1.1 on http-11019
+Dec 6, 2014 5:08:01 PM org.apache.catalina.startup.Catalina load
+INFO: Initialization processed in 5876 ms
+Dec 6, 2014 5:08:02 PM org.apache.catalina.core.StandardService start
+INFO: Starting service Catalina
+Dec 6, 2014 5:08:02 PM org.apache.catalina.core.StandardEngine start
+INFO: Starting Servlet Engine: Apache Tomcat/5.5.20
+Dec 6, 2014 5:08:02 PM org.apache.catalina.core.StandardHost start
+INFO: XML validation disabled
+Dec 6, 2014 5:08:08 PM org.apache.coyote.http11.Http11BaseProtocol start
+INFO: Starting Coyote HTTP/1.1 on http-11019
+Dec 6, 2014 5:08:08 PM org.apache.jk.common.ChannelSocket init
+INFO: JK: ajp13 listening on /0.0.0.0:12019
+Dec 6, 2014 5:08:08 PM org.apache.jk.server.JkMain start
+INFO: Jk running ID=0 time=0/116  config=null
+Dec 6, 2014 5:08:08 PM org.apache.catalina.storeconfig.StoreLoader load
+INFO: Find registry server-registry.xml at classpath resource
+Dec 6, 2014 5:08:08 PM org.apache.catalina.startup.Catalina start
+INFO: Server startup in 6536 ms
+Dec 18, 2014 2:14:57 PM org.apache.jk.core.MsgContext action
+WARNING: Error sending end packet
+java.net.SocketException: Broken pipe
+	at java.net.SocketOutputStream.socketWrite0(Native Method)
+	at java.net.SocketOutputStream.socketWrite(SocketOutputStream.java:92)
+	at java.net.SocketOutputStream.write(SocketOutputStream.java:136)
+	at org.apache.jk.common.ChannelSocket.send(ChannelSocket.java:531)
+	at org.apache.jk.common.JkInputStream.endMessage(JkInputStream.java:112)
+	at org.apache.jk.core.MsgContext.action(MsgContext.java:293)
+	at org.apache.coyote.Response.action(Response.java:182)
+	at org.apache.coyote.Response.finish(Response.java:304)
+	at org.apache.catalina.connector.OutputBuffer.close(OutputBuffer.java:281)
+	at org.apache.catalina.connector.Response.finishResponse(Response.java:476)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:151)
+	at org.apache.jk.server.JkCoyoteHandler.invoke(JkCoyoteHandler.java:199)
+	at org.apache.jk.common.HandlerRequest.invoke(HandlerRequest.java:282)
+	at org.apache.jk.common.ChannelSocket.invoke(ChannelSocket.java:767)
+	at org.apache.jk.common.ChannelSocket.processConnection(ChannelSocket.java:697)
+	at org.apache.jk.common.ChannelSocket$SocketConnection.runIt(ChannelSocket.java:889)
+	at org.apache.tomcat.util.threads.ThreadPool$ControlRunnable.run(ThreadPool.java:684)
+	at java.lang.Thread.run(Thread.java:662)
+Dec 18, 2014 2:14:57 PM org.apache.jk.common.ChannelSocket processConnection
+WARNING: processCallbacks status 2
+Jan 12, 2015 11:51:25 PM org.apache.jk.core.MsgContext action
+WARNING: Error sending end packet
+java.net.SocketException: Broken pipe
+	at java.net.SocketOutputStream.socketWrite0(Native Method)
+	at java.net.SocketOutputStream.socketWrite(SocketOutputStream.java:92)
+	at java.net.SocketOutputStream.write(SocketOutputStream.java:136)
+	at org.apache.jk.common.ChannelSocket.send(ChannelSocket.java:531)
+	at org.apache.jk.common.JkInputStream.endMessage(JkInputStream.java:112)
+	at org.apache.jk.core.MsgContext.action(MsgContext.java:293)
+	at org.apache.coyote.Response.action(Response.java:182)
+	at org.apache.coyote.Response.finish(Response.java:304)
+	at org.apache.catalina.connector.OutputBuffer.close(OutputBuffer.java:281)
+	at org.apache.catalina.connector.Response.finishResponse(Response.java:476)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:151)
+	at org.apache.jk.server.JkCoyoteHandler.invoke(JkCoyoteHandler.java:199)
+	at org.apache.jk.common.HandlerRequest.invoke(HandlerRequest.java:282)
+	at org.apache.jk.common.ChannelSocket.invoke(ChannelSocket.java:767)
+	at org.apache.jk.common.ChannelSocket.processConnection(ChannelSocket.java:697)
+	at org.apache.jk.common.ChannelSocket$SocketConnection.runIt(ChannelSocket.java:889)
+	at org.apache.tomcat.util.threads.ThreadPool$ControlRunnable.run(ThreadPool.java:684)
+	at java.lang.Thread.run(Thread.java:662)
+Jan 12, 2015 11:51:25 PM org.apache.jk.common.ChannelSocket processConnection
+WARNING: processCallbacks status 2
+Jan 24, 2015 2:56:50 PM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Jan 24, 2015 2:56:50 PM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Jan 24, 2015 2:57:00 PM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Jan 30, 2015 8:17:01 PM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Feb 5, 2015 12:35:08 PM org.apache.jk.core.MsgContext action
+WARNING: Error sending end packet
+java.net.SocketException: Broken pipe
+	at java.net.SocketOutputStream.socketWrite0(Native Method)
+	at java.net.SocketOutputStream.socketWrite(SocketOutputStream.java:92)
+	at java.net.SocketOutputStream.write(SocketOutputStream.java:136)
+	at org.apache.jk.common.ChannelSocket.send(ChannelSocket.java:531)
+	at org.apache.jk.common.JkInputStream.endMessage(JkInputStream.java:112)
+	at org.apache.jk.core.MsgContext.action(MsgContext.java:293)
+	at org.apache.coyote.Response.action(Response.java:182)
+	at org.apache.coyote.Response.finish(Response.java:304)
+	at org.apache.catalina.connector.OutputBuffer.close(OutputBuffer.java:281)
+	at org.apache.catalina.connector.Response.finishResponse(Response.java:476)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:151)
+	at org.apache.jk.server.JkCoyoteHandler.invoke(JkCoyoteHandler.java:199)
+	at org.apache.jk.common.HandlerRequest.invoke(HandlerRequest.java:282)
+	at org.apache.jk.common.ChannelSocket.invoke(ChannelSocket.java:767)
+	at org.apache.jk.common.ChannelSocket.processConnection(ChannelSocket.java:697)
+	at org.apache.jk.common.ChannelSocket$SocketConnection.runIt(ChannelSocket.java:889)
+	at org.apache.tomcat.util.threads.ThreadPool$ControlRunnable.run(ThreadPool.java:684)
+	at java.lang.Thread.run(Thread.java:662)
+Feb 5, 2015 12:35:08 PM org.apache.jk.common.ChannelSocket processConnection
+WARNING: processCallbacks status 2
+Feb 5, 2015 12:37:07 PM org.apache.jk.core.MsgContext action
+WARNING: Error sending end packet
+java.net.SocketException: Broken pipe
+	at java.net.SocketOutputStream.socketWrite0(Native Method)
+	at java.net.SocketOutputStream.socketWrite(SocketOutputStream.java:92)
+	at java.net.SocketOutputStream.write(SocketOutputStream.java:136)
+	at org.apache.jk.common.ChannelSocket.send(ChannelSocket.java:531)
+	at org.apache.jk.common.JkInputStream.endMessage(JkInputStream.java:112)
+	at org.apache.jk.core.MsgContext.action(MsgContext.java:293)
+	at org.apache.coyote.Response.action(Response.java:182)
+	at org.apache.coyote.Response.finish(Response.java:304)
+	at org.apache.catalina.connector.OutputBuffer.close(OutputBuffer.java:281)
+	at org.apache.catalina.connector.Response.finishResponse(Response.java:476)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:151)
+	at org.apache.jk.server.JkCoyoteHandler.invoke(JkCoyoteHandler.java:199)
+	at org.apache.jk.common.HandlerRequest.invoke(HandlerRequest.java:282)
+	at org.apache.jk.common.ChannelSocket.invoke(ChannelSocket.java:767)
+	at org.apache.jk.common.ChannelSocket.processConnection(ChannelSocket.java:697)
+	at org.apache.jk.common.ChannelSocket$SocketConnection.runIt(ChannelSocket.java:889)
+	at org.apache.tomcat.util.threads.ThreadPool$ControlRunnable.run(ThreadPool.java:684)
+	at java.lang.Thread.run(Thread.java:662)
+Feb 5, 2015 12:37:07 PM org.apache.jk.common.ChannelSocket processConnection
+WARNING: processCallbacks status 2
+Feb 5, 2015 7:15:17 PM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Feb 20, 2015 3:27:53 PM org.apache.jk.core.MsgContext action
+WARNING: Error sending end packet
+java.net.SocketException: Broken pipe
+	at java.net.SocketOutputStream.socketWrite0(Native Method)
+	at java.net.SocketOutputStream.socketWrite(SocketOutputStream.java:92)
+	at java.net.SocketOutputStream.write(SocketOutputStream.java:136)
+	at org.apache.jk.common.ChannelSocket.send(ChannelSocket.java:531)
+	at org.apache.jk.common.JkInputStream.endMessage(JkInputStream.java:112)
+	at org.apache.jk.core.MsgContext.action(MsgContext.java:293)
+	at org.apache.coyote.Response.action(Response.java:182)
+	at org.apache.coyote.Response.finish(Response.java:304)
+	at org.apache.catalina.connector.OutputBuffer.close(OutputBuffer.java:281)
+	at org.apache.catalina.connector.Response.finishResponse(Response.java:476)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:151)
+	at org.apache.jk.server.JkCoyoteHandler.invoke(JkCoyoteHandler.java:199)
+	at org.apache.jk.common.HandlerRequest.invoke(HandlerRequest.java:282)
+	at org.apache.jk.common.ChannelSocket.invoke(ChannelSocket.java:767)
+	at org.apache.jk.common.ChannelSocket.processConnection(ChannelSocket.java:697)
+	at org.apache.jk.common.ChannelSocket$SocketConnection.runIt(ChannelSocket.java:889)
+	at org.apache.tomcat.util.threads.ThreadPool$ControlRunnable.run(ThreadPool.java:684)
+	at java.lang.Thread.run(Thread.java:662)
+Feb 20, 2015 3:27:53 PM org.apache.jk.common.ChannelSocket processConnection
+WARNING: processCallbacks status 2
+Mar 18, 2015 7:01:50 PM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Mar 18, 2015 7:01:50 PM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Mar 19, 2015 7:31:14 AM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Mar 19, 2015 7:31:14 AM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Apr 1, 2015 8:01:12 AM org.apache.jk.core.MsgContext action
+WARNING: Error sending end packet
+java.net.SocketException: Broken pipe
+	at java.net.SocketOutputStream.socketWrite0(Native Method)
+	at java.net.SocketOutputStream.socketWrite(SocketOutputStream.java:92)
+	at java.net.SocketOutputStream.write(SocketOutputStream.java:136)
+	at org.apache.jk.common.ChannelSocket.send(ChannelSocket.java:531)
+	at org.apache.jk.common.JkInputStream.endMessage(JkInputStream.java:112)
+	at org.apache.jk.core.MsgContext.action(MsgContext.java:293)
+	at org.apache.coyote.Response.action(Response.java:182)
+	at org.apache.coyote.Response.finish(Response.java:304)
+	at org.apache.catalina.connector.OutputBuffer.close(OutputBuffer.java:281)
+	at org.apache.catalina.connector.Response.finishResponse(Response.java:476)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:151)
+	at org.apache.jk.server.JkCoyoteHandler.invoke(JkCoyoteHandler.java:199)
+	at org.apache.jk.common.HandlerRequest.invoke(HandlerRequest.java:282)
+	at org.apache.jk.common.ChannelSocket.invoke(ChannelSocket.java:767)
+	at org.apache.jk.common.ChannelSocket.processConnection(ChannelSocket.java:697)
+	at org.apache.jk.common.ChannelSocket$SocketConnection.runIt(ChannelSocket.java:889)
+	at org.apache.tomcat.util.threads.ThreadPool$ControlRunnable.run(ThreadPool.java:684)
+	at java.lang.Thread.run(Thread.java:662)
+Apr 1, 2015 8:01:12 AM org.apache.jk.common.ChannelSocket processConnection
+WARNING: processCallbacks status 2
+Apr 8, 2015 7:49:54 AM org.apache.jk.core.MsgContext action
+WARNING: Error sending end packet
+java.net.SocketException: Broken pipe
+	at java.net.SocketOutputStream.socketWrite0(Native Method)
+	at java.net.SocketOutputStream.socketWrite(SocketOutputStream.java:92)
+	at java.net.SocketOutputStream.write(SocketOutputStream.java:136)
+	at org.apache.jk.common.ChannelSocket.send(ChannelSocket.java:531)
+	at org.apache.jk.common.JkInputStream.endMessage(JkInputStream.java:112)
+	at org.apache.jk.core.MsgContext.action(MsgContext.java:293)
+	at org.apache.coyote.Response.action(Response.java:182)
+	at org.apache.coyote.Response.finish(Response.java:304)
+	at org.apache.catalina.connector.OutputBuffer.close(OutputBuffer.java:281)
+	at org.apache.catalina.connector.Response.finishResponse(Response.java:476)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:151)
+	at org.apache.jk.server.JkCoyoteHandler.invoke(JkCoyoteHandler.java:199)
+	at org.apache.jk.common.HandlerRequest.invoke(HandlerRequest.java:282)
+	at org.apache.jk.common.ChannelSocket.invoke(ChannelSocket.java:767)
+	at org.apache.jk.common.ChannelSocket.processConnection(ChannelSocket.java:697)
+	at org.apache.jk.common.ChannelSocket$SocketConnection.runIt(ChannelSocket.java:889)
+	at org.apache.tomcat.util.threads.ThreadPool$ControlRunnable.run(ThreadPool.java:684)
+	at java.lang.Thread.run(Thread.java:662)
+Apr 8, 2015 7:49:54 AM org.apache.jk.common.ChannelSocket processConnection
+WARNING: processCallbacks status 2
+Apr 18, 2015 8:29:35 PM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Apr 18, 2015 8:29:44 PM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Apr 18, 2015 8:29:45 PM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Apr 18, 2015 8:29:46 PM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Apr 18, 2015 8:30:11 PM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Apr 18, 2015 8:30:14 PM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Apr 18, 2015 8:30:27 PM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Apr 18, 2015 8:30:30 PM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Apr 24, 2015 3:04:31 AM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Apr 24, 2015 3:04:31 AM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+May 1, 2015 2:16:01 AM org.apache.jk.core.MsgContext action
+WARNING: Error sending end packet
+java.net.SocketException: Broken pipe
+	at java.net.SocketOutputStream.socketWrite0(Native Method)
+	at java.net.SocketOutputStream.socketWrite(SocketOutputStream.java:92)
+	at java.net.SocketOutputStream.write(SocketOutputStream.java:136)
+	at org.apache.jk.common.ChannelSocket.send(ChannelSocket.java:531)
+	at org.apache.jk.common.JkInputStream.endMessage(JkInputStream.java:112)
+	at org.apache.jk.core.MsgContext.action(MsgContext.java:293)
+	at org.apache.coyote.Response.action(Response.java:182)
+	at org.apache.coyote.Response.finish(Response.java:304)
+	at org.apache.jk.server.JkCoyoteHandler.invoke(JkCoyoteHandler.java:204)
+	at org.apache.jk.common.HandlerRequest.invoke(HandlerRequest.java:282)
+	at org.apache.jk.common.ChannelSocket.invoke(ChannelSocket.java:767)
+	at org.apache.jk.common.ChannelSocket.processConnection(ChannelSocket.java:697)
+	at org.apache.jk.common.ChannelSocket$SocketConnection.runIt(ChannelSocket.java:889)
+	at org.apache.tomcat.util.threads.ThreadPool$ControlRunnable.run(ThreadPool.java:684)
+	at java.lang.Thread.run(Thread.java:662)
+May 1, 2015 2:16:01 AM org.apache.jk.common.ChannelSocket processConnection
+WARNING: processCallbacks status 2
+May 3, 2015 1:34:18 PM org.apache.jk.core.MsgContext action
+WARNING: Error sending end packet
+java.net.SocketException: Broken pipe
+	at java.net.SocketOutputStream.socketWrite0(Native Method)
+	at java.net.SocketOutputStream.socketWrite(SocketOutputStream.java:92)
+	at java.net.SocketOutputStream.write(SocketOutputStream.java:136)
+	at org.apache.jk.common.ChannelSocket.send(ChannelSocket.java:531)
+	at org.apache.jk.common.JkInputStream.endMessage(JkInputStream.java:112)
+	at org.apache.jk.core.MsgContext.action(MsgContext.java:293)
+	at org.apache.coyote.Response.action(Response.java:182)
+	at org.apache.coyote.Response.finish(Response.java:304)
+	at org.apache.jk.server.JkCoyoteHandler.invoke(JkCoyoteHandler.java:204)
+	at org.apache.jk.common.HandlerRequest.invoke(HandlerRequest.java:282)
+	at org.apache.jk.common.ChannelSocket.invoke(ChannelSocket.java:767)
+	at org.apache.jk.common.ChannelSocket.processConnection(ChannelSocket.java:697)
+	at org.apache.jk.common.ChannelSocket$SocketConnection.runIt(ChannelSocket.java:889)
+	at org.apache.tomcat.util.threads.ThreadPool$ControlRunnable.run(ThreadPool.java:684)
+	at java.lang.Thread.run(Thread.java:662)
+May 3, 2015 1:34:18 PM org.apache.jk.common.ChannelSocket processConnection
+WARNING: processCallbacks status 2
+May 13, 2015 9:24:09 AM org.apache.catalina.core.AprLifecycleListener lifecycleEvent
+INFO: The Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /usr/local/jdk1.6.0_45/jre/lib/i386/server:/usr/local/jdk1.6.0_45/jre/lib/i386:/usr/local/jdk1.6.0_45/jre/../lib/i386:/usr/java/packages/lib/i386:/lib:/usr/lib
+May 13, 2015 9:24:10 AM org.apache.coyote.http11.Http11BaseProtocol init
+INFO: Initializing Coyote HTTP/1.1 on http-11019
+May 13, 2015 9:24:11 AM org.apache.catalina.startup.Catalina load
+INFO: Initialization processed in 3395 ms
+May 13, 2015 9:24:11 AM org.apache.catalina.core.StandardService start
+INFO: Starting service Catalina
+May 13, 2015 9:24:11 AM org.apache.catalina.core.StandardEngine start
+INFO: Starting Servlet Engine: Apache Tomcat/5.5.20
+May 13, 2015 9:24:11 AM org.apache.catalina.core.StandardHost start
+INFO: XML validation disabled
+May 13, 2015 9:24:23 AM org.apache.coyote.http11.Http11BaseProtocol start
+INFO: Starting Coyote HTTP/1.1 on http-11019
+May 13, 2015 9:24:23 AM org.apache.jk.common.ChannelSocket init
+INFO: JK: ajp13 listening on /0.0.0.0:12019
+May 13, 2015 9:24:23 AM org.apache.jk.server.JkMain start
+INFO: Jk running ID=0 time=0/36  config=null
+May 13, 2015 9:24:23 AM org.apache.catalina.storeconfig.StoreLoader load
+INFO: Find registry server-registry.xml at classpath resource
+May 13, 2015 9:24:23 AM org.apache.catalina.startup.Catalina start
+INFO: Server startup in 12589 ms
+May 15, 2015 12:55:08 AM org.apache.catalina.core.AprLifecycleListener lifecycleEvent
+INFO: The Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /usr/local/jdk1.6.0_45/jre/lib/i386/server:/usr/local/jdk1.6.0_45/jre/lib/i386:/usr/local/jdk1.6.0_45/jre/../lib/i386:/usr/java/packages/lib/i386:/lib:/usr/lib
+May 15, 2015 12:55:08 AM org.apache.coyote.http11.Http11BaseProtocol init
+INFO: Initializing Coyote HTTP/1.1 on http-11019
+May 15, 2015 12:55:08 AM org.apache.catalina.startup.Catalina load
+INFO: Initialization processed in 674 ms
+May 15, 2015 12:55:09 AM org.apache.catalina.core.StandardService start
+INFO: Starting service Catalina
+May 15, 2015 12:55:09 AM org.apache.catalina.core.StandardEngine start
+INFO: Starting Servlet Engine: Apache Tomcat/5.5.20
+May 15, 2015 12:55:09 AM org.apache.catalina.core.StandardHost start
+INFO: XML validation disabled
+May 15, 2015 12:55:10 AM org.apache.coyote.http11.Http11BaseProtocol start
+INFO: Starting Coyote HTTP/1.1 on http-11019
+May 15, 2015 12:55:10 AM org.apache.jk.common.ChannelSocket init
+INFO: JK: ajp13 listening on /0.0.0.0:12019
+May 15, 2015 12:55:10 AM org.apache.jk.server.JkMain start
+INFO: Jk running ID=0 time=0/19  config=null
+May 15, 2015 12:55:10 AM org.apache.catalina.storeconfig.StoreLoader load
+INFO: Find registry server-registry.xml at classpath resource
+May 15, 2015 12:55:10 AM org.apache.catalina.startup.Catalina start
+INFO: Server startup in 1735 ms
+May 15, 2015 1:10:09 AM org.apache.catalina.core.AprLifecycleListener lifecycleEvent
+INFO: The Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /usr/local/jdk1.6.0_45/jre/lib/i386/server:/usr/local/jdk1.6.0_45/jre/lib/i386:/usr/local/jdk1.6.0_45/jre/../lib/i386:/usr/java/packages/lib/i386:/lib:/usr/lib
+May 15, 2015 1:10:09 AM org.apache.coyote.http11.Http11BaseProtocol init
+INFO: Initializing Coyote HTTP/1.1 on http-11019
+May 15, 2015 1:10:09 AM org.apache.catalina.startup.Catalina load
+INFO: Initialization processed in 627 ms
+May 15, 2015 1:10:09 AM org.apache.catalina.core.StandardService start
+INFO: Starting service Catalina
+May 15, 2015 1:10:09 AM org.apache.catalina.core.StandardEngine start
+INFO: Starting Servlet Engine: Apache Tomcat/5.5.20
+May 15, 2015 1:10:09 AM org.apache.catalina.core.StandardHost start
+INFO: XML validation disabled
+May 15, 2015 1:10:10 AM org.apache.coyote.http11.Http11BaseProtocol start
+INFO: Starting Coyote HTTP/1.1 on http-11019
+May 15, 2015 1:10:11 AM org.apache.jk.common.ChannelSocket init
+INFO: JK: ajp13 listening on /0.0.0.0:12019
+May 15, 2015 1:10:11 AM org.apache.jk.server.JkMain start
+INFO: Jk running ID=0 time=0/25  config=null
+May 15, 2015 1:10:11 AM org.apache.catalina.storeconfig.StoreLoader load
+INFO: Find registry server-registry.xml at classpath resource
+May 15, 2015 1:10:11 AM org.apache.catalina.startup.Catalina start
+INFO: Server startup in 1560 ms
+May 15, 2015 1:24:16 AM org.apache.catalina.core.AprLifecycleListener lifecycleEvent
+INFO: The Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /usr/local/jdk1.6.0_45/jre/lib/i386/server:/usr/local/jdk1.6.0_45/jre/lib/i386:/usr/local/jdk1.6.0_45/jre/../lib/i386:/usr/java/packages/lib/i386:/lib:/usr/lib
+May 15, 2015 1:24:16 AM org.apache.coyote.http11.Http11BaseProtocol init
+INFO: Initializing Coyote HTTP/1.1 on http-11019
+May 15, 2015 1:24:16 AM org.apache.catalina.startup.Catalina load
+INFO: Initialization processed in 1895 ms
+May 15, 2015 1:24:17 AM org.apache.catalina.core.StandardService start
+INFO: Starting service Catalina
+May 15, 2015 1:24:17 AM org.apache.catalina.core.StandardEngine start
+INFO: Starting Servlet Engine: Apache Tomcat/5.5.20
+May 15, 2015 1:24:17 AM org.apache.catalina.core.StandardHost start
+INFO: XML validation disabled
+May 15, 2015 1:24:25 AM org.apache.coyote.http11.Http11BaseProtocol start
+INFO: Starting Coyote HTTP/1.1 on http-11019
+May 15, 2015 1:24:25 AM org.apache.jk.common.ChannelSocket init
+INFO: JK: ajp13 listening on /0.0.0.0:12019
+May 15, 2015 1:24:25 AM org.apache.jk.server.JkMain start
+INFO: Jk running ID=0 time=0/232  config=null
+May 15, 2015 1:24:25 AM org.apache.catalina.storeconfig.StoreLoader load
+INFO: Find registry server-registry.xml at classpath resource
+May 15, 2015 1:24:25 AM org.apache.catalina.startup.Catalina start
+INFO: Server startup in 8924 ms
+May 15, 2015 1:25:16 AM org.apache.catalina.core.AprLifecycleListener lifecycleEvent
+INFO: The Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /usr/local/jdk1.6.0_45/jre/lib/i386/server:/usr/local/jdk1.6.0_45/jre/lib/i386:/usr/local/jdk1.6.0_45/jre/../lib/i386:/usr/java/packages/lib/i386:/lib:/usr/lib
+May 15, 2015 1:25:16 AM org.apache.coyote.http11.Http11BaseProtocol init
+INFO: Initializing Coyote HTTP/1.1 on http-11019
+May 15, 2015 1:25:16 AM org.apache.catalina.startup.Catalina load
+INFO: Initialization processed in 2797 ms
+May 15, 2015 1:25:17 AM org.apache.catalina.core.StandardService start
+INFO: Starting service Catalina
+May 15, 2015 1:25:17 AM org.apache.catalina.core.StandardEngine start
+INFO: Starting Servlet Engine: Apache Tomcat/5.5.20
+May 15, 2015 1:25:17 AM org.apache.catalina.core.StandardHost start
+INFO: XML validation disabled
+May 15, 2015 1:25:18 AM org.apache.coyote.http11.Http11BaseProtocol start
+INFO: Starting Coyote HTTP/1.1 on http-11019
+May 15, 2015 1:25:18 AM org.apache.jk.common.ChannelSocket init
+INFO: JK: ajp13 listening on /0.0.0.0:12019
+May 15, 2015 1:25:19 AM org.apache.jk.server.JkMain start
+INFO: Jk running ID=0 time=0/101  config=null
+May 15, 2015 1:25:19 AM org.apache.catalina.storeconfig.StoreLoader load
+INFO: Find registry server-registry.xml at classpath resource
+May 15, 2015 1:25:19 AM org.apache.catalina.startup.Catalina start
+INFO: Server startup in 2370 ms
+May 25, 2015 7:05:29 AM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+May 30, 2015 8:36:58 AM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+May 30, 2015 8:36:58 AM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+May 30, 2015 8:36:59 AM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+May 30, 2015 8:37:08 AM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Jun 4, 2015 6:53:35 PM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Jun 4, 2015 6:53:35 PM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Jun 4, 2015 6:53:36 PM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Jun 4, 2015 6:53:36 PM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Jun 5, 2015 7:34:27 PM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Jun 5, 2015 7:34:31 PM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Jun 5, 2015 7:35:41 PM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Jun 5, 2015 7:35:48 PM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Jun 15, 2015 11:36:02 PM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Jun 15, 2015 11:36:02 PM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Jun 15, 2015 11:36:03 PM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Jun 15, 2015 11:36:03 PM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Jun 16, 2015 10:06:13 AM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Jun 17, 2015 3:05:43 AM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Jun 18, 2015 3:03:24 PM org.apache.jk.core.MsgContext action
+WARNING: Error sending end packet
+java.net.SocketException: Broken pipe
+	at java.net.SocketOutputStream.socketWrite0(Native Method)
+	at java.net.SocketOutputStream.socketWrite(SocketOutputStream.java:92)
+	at java.net.SocketOutputStream.write(SocketOutputStream.java:136)
+	at org.apache.jk.common.ChannelSocket.send(ChannelSocket.java:531)
+	at org.apache.jk.common.JkInputStream.endMessage(JkInputStream.java:112)
+	at org.apache.jk.core.MsgContext.action(MsgContext.java:293)
+	at org.apache.coyote.Response.action(Response.java:182)
+	at org.apache.coyote.Response.finish(Response.java:304)
+	at org.apache.catalina.connector.OutputBuffer.close(OutputBuffer.java:281)
+	at org.apache.catalina.connector.Response.finishResponse(Response.java:476)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:151)
+	at org.apache.jk.server.JkCoyoteHandler.invoke(JkCoyoteHandler.java:199)
+	at org.apache.jk.common.HandlerRequest.invoke(HandlerRequest.java:282)
+	at org.apache.jk.common.ChannelSocket.invoke(ChannelSocket.java:767)
+	at org.apache.jk.common.ChannelSocket.processConnection(ChannelSocket.java:697)
+	at org.apache.jk.common.ChannelSocket$SocketConnection.runIt(ChannelSocket.java:889)
+	at org.apache.tomcat.util.threads.ThreadPool$ControlRunnable.run(ThreadPool.java:684)
+	at java.lang.Thread.run(Thread.java:662)
+Jun 18, 2015 3:03:24 PM org.apache.jk.common.ChannelSocket processConnection
+WARNING: processCallbacks status 2
+Jun 30, 2015 2:22:56 PM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Jun 30, 2015 2:22:56 PM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Jun 30, 2015 2:23:00 PM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Jun 30, 2015 2:23:00 PM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Jul 2, 2015 6:20:37 PM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Jul 2, 2015 6:20:37 PM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Jul 2, 2015 6:20:38 PM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Jul 2, 2015 6:20:38 PM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Jul 5, 2015 4:24:24 PM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Jul 5, 2015 4:24:24 PM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Jul 5, 2015 6:30:40 PM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Jul 5, 2015 6:30:41 PM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Jul 5, 2015 6:31:01 PM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Jul 5, 2015 6:31:04 PM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Jul 6, 2015 8:58:48 AM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Jul 6, 2015 8:58:49 AM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Jul 6, 2015 8:58:50 AM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Jul 6, 2015 8:58:50 AM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Jul 16, 2015 11:51:50 PM org.apache.jk.core.MsgContext action
+WARNING: Error sending end packet
+java.net.SocketException: Broken pipe
+	at java.net.SocketOutputStream.socketWrite0(Native Method)
+	at java.net.SocketOutputStream.socketWrite(SocketOutputStream.java:92)
+	at java.net.SocketOutputStream.write(SocketOutputStream.java:136)
+	at org.apache.jk.common.ChannelSocket.send(ChannelSocket.java:531)
+	at org.apache.jk.common.JkInputStream.endMessage(JkInputStream.java:112)
+	at org.apache.jk.core.MsgContext.action(MsgContext.java:293)
+	at org.apache.coyote.Response.action(Response.java:182)
+	at org.apache.coyote.Response.finish(Response.java:304)
+	at org.apache.catalina.connector.OutputBuffer.close(OutputBuffer.java:281)
+	at org.apache.catalina.connector.Response.finishResponse(Response.java:476)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:151)
+	at org.apache.jk.server.JkCoyoteHandler.invoke(JkCoyoteHandler.java:199)
+	at org.apache.jk.common.HandlerRequest.invoke(HandlerRequest.java:282)
+	at org.apache.jk.common.ChannelSocket.invoke(ChannelSocket.java:767)
+	at org.apache.jk.common.ChannelSocket.processConnection(ChannelSocket.java:697)
+	at org.apache.jk.common.ChannelSocket$SocketConnection.runIt(ChannelSocket.java:889)
+	at org.apache.tomcat.util.threads.ThreadPool$ControlRunnable.run(ThreadPool.java:684)
+	at java.lang.Thread.run(Thread.java:662)
+Jul 16, 2015 11:51:50 PM org.apache.jk.common.ChannelSocket processConnection
+WARNING: processCallbacks status 2
+Jul 18, 2015 4:30:30 AM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Jul 18, 2015 4:30:30 AM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Jul 18, 2015 4:30:35 AM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Jul 18, 2015 4:30:35 AM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Jul 21, 2015 5:42:07 AM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Jul 21, 2015 5:42:07 AM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Jul 21, 2015 5:42:09 AM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+Jul 21, 2015 5:42:09 AM org.apache.struts.action.RequestProcessor processMapping
+SEVERE: Invalid path /login was requested
+postStr
+postStr
+Sep 9, 2015 3:26:51 PM org.apache.catalina.core.AprLifecycleListener lifecycleEvent
+INFO: The Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /usr/local/jdk1.6.0_45/jre/lib/i386/server:/usr/local/jdk1.6.0_45/jre/lib/i386:/usr/local/jdk1.6.0_45/jre/../lib/i386:/usr/java/packages/lib/i386:/lib:/usr/lib
+Sep 9, 2015 3:26:51 PM org.apache.coyote.http11.Http11BaseProtocol init
+INFO: Initializing Coyote HTTP/1.1 on http-11019
+Sep 9, 2015 3:26:51 PM org.apache.catalina.startup.Catalina load
+INFO: Initialization processed in 630 ms
+Sep 9, 2015 3:26:51 PM org.apache.catalina.core.StandardService start
+INFO: Starting service Catalina
+Sep 9, 2015 3:26:51 PM org.apache.catalina.core.StandardEngine start
+INFO: Starting Servlet Engine: Apache Tomcat/5.5.20
+Sep 9, 2015 3:26:51 PM org.apache.catalina.core.StandardHost start
+INFO: XML validation disabled
+Sep 9, 2015 3:26:52 PM org.apache.coyote.http11.Http11BaseProtocol start
+INFO: Starting Coyote HTTP/1.1 on http-11019
+Sep 9, 2015 3:26:52 PM org.apache.jk.common.ChannelSocket init
+INFO: JK: ajp13 listening on /0.0.0.0:12019
+Sep 9, 2015 3:26:52 PM org.apache.jk.server.JkMain start
+INFO: Jk running ID=0 time=0/21  config=null
+Sep 9, 2015 3:26:52 PM org.apache.catalina.storeconfig.StoreLoader load
+INFO: Find registry server-registry.xml at classpath resource
+Sep 9, 2015 3:26:52 PM org.apache.catalina.startup.Catalina start
+INFO: Server startup in 1151 ms
+postStr
+postStr
+postStr<xml><ToUserName><![CDATA[gh_3bbc9e468ddb]]></ToUserName><FromUserName><![CDATA[otwmFuFWazuAWWP1HrFhJJ3yagIg]]></FromUserName><CreateTime>1441784874</CreateTime><MsgType><![CDATA[event]]></MsgType><Event><![CDATA[SCAN]]></Event><EventKey><![CDATA[funt]]></EventKey><Ticket><![CDATA[gQGv8DoAAAAAAAAAASxodHRwOi8vd2VpeGluLnFxLmNvbS9xLzIwTUhCXzdsQ3dKeUY5b2dKV3R6AAIEG_PvVQMEAAAAAA==]]></Ticket></xml>
+postStr<xml><ToUserName><![CDATA[gh_3bbc9e468ddb]]></ToUserName><FromUserName><![CDATA[otwmFuFWazuAWWP1HrFhJJ3yagIg]]></FromUserName><CreateTime>1441785091</CreateTime><MsgType><![CDATA[event]]></MsgType><Event><![CDATA[unsubscribe]]></Event><EventKey><![CDATA[]]></EventKey></xml>
+postStr<xml><ToUserName><![CDATA[gh_3bbc9e468ddb]]></ToUserName><FromUserName><![CDATA[otwmFuFWazuAWWP1HrFhJJ3yagIg]]></FromUserName><CreateTime>1441785118</CreateTime><MsgType><![CDATA[event]]></MsgType><Event><![CDATA[subscribe]]></Event><EventKey><![CDATA[qrscene_funt]]></EventKey><Ticket><![CDATA[gQGv8DoAAAAAAAAAASxodHRwOi8vd2VpeGluLnFxLmNvbS9xLzIwTUhCXzdsQ3dKeUY5b2dKV3R6AAIEG_PvVQMEAAAAAA==]]></Ticket></xml>
+postStr<xml><ToUserName><![CDATA[gh_3bbc9e468ddb]]></ToUserName><FromUserName><![CDATA[otwmFuFWazuAWWP1HrFhJJ3yagIg]]></FromUserName><CreateTime>1441786267</CreateTime><MsgType><![CDATA[event]]></MsgType><Event><![CDATA[SCAN]]></Event><EventKey><![CDATA[CS@]]></EventKey><Ticket><![CDATA[gQHf7zoAAAAAAAAAASxodHRwOi8vd2VpeGluLnFxLmNvbS9xLzVVTndMZERsYVFJUVBlUWZVbXR6AAIEaunvVQMEAAAAAA==]]></Ticket></xml>
+postStr<xml><ToUserName><![CDATA[gh_3bbc9e468ddb]]></ToUserName><FromUserName><![CDATA[otwmFuFWazuAWWP1HrFhJJ3yagIg]]></FromUserName><CreateTime>1441786276</CreateTime><MsgType><![CDATA[event]]></MsgType><Event><![CDATA[unsubscribe]]></Event><EventKey><![CDATA[]]></EventKey></xml>
+postStr<xml><ToUserName><![CDATA[gh_3bbc9e468ddb]]></ToUserName><FromUserName><![CDATA[otwmFuFWazuAWWP1HrFhJJ3yagIg]]></FromUserName><CreateTime>1441786293</CreateTime><MsgType><![CDATA[event]]></MsgType><Event><![CDATA[subscribe]]></Event><EventKey><![CDATA[qrscene_CS@]]></EventKey><Ticket><![CDATA[gQHf7zoAAAAAAAAAASxodHRwOi8vd2VpeGluLnFxLmNvbS9xLzVVTndMZERsYVFJUVBlUWZVbXR6AAIEaunvVQMEAAAAAA==]]></Ticket></xml>
+postStr<xml><ToUserName><![CDATA[gh_3bbc9e468ddb]]></ToUserName><FromUserName><![CDATA[otwmFuFWazuAWWP1HrFhJJ3yagIg]]></FromUserName><CreateTime>1441786531</CreateTime><MsgType><![CDATA[event]]></MsgType><Event><![CDATA[unsubscribe]]></Event><EventKey><![CDATA[]]></EventKey></xml>
+postStr<xml><ToUserName><![CDATA[gh_3bbc9e468ddb]]></ToUserName><FromUserName><![CDATA[otwmFuFWazuAWWP1HrFhJJ3yagIg]]></FromUserName><CreateTime>1441786541</CreateTime><MsgType><![CDATA[event]]></MsgType><Event><![CDATA[subscribe]]></Event><EventKey><![CDATA[qrscene_CS@fung]]></EventKey><Ticket><![CDATA[gQEX8ToAAAAAAAAAASxodHRwOi8vd2VpeGluLnFxLmNvbS9xL0pFTWVYaExsRVFKb1RTVjZQR3R6AAIEiOrvVQMEAAAAAA==]]></Ticket></xml>
+postStr<xml><ToUserName><![CDATA[gh_3bbc9e468ddb]]></ToUserName><FromUserName><![CDATA[otwmFuFWazuAWWP1HrFhJJ3yagIg]]></FromUserName><CreateTime>1441786554</CreateTime><MsgType><![CDATA[event]]></MsgType><Event><![CDATA[SCAN]]></Event><EventKey><![CDATA[CS@fung]]></EventKey><Ticket><![CDATA[gQEX8ToAAAAAAAAAASxodHRwOi8vd2VpeGluLnFxLmNvbS9xL0pFTWVYaExsRVFKb1RTVjZQR3R6AAIEiOrvVQMEAAAAAA==]]></Ticket></xml>

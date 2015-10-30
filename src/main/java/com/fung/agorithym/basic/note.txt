@@ -1,1 +1,220 @@
 books 216...
+
+
+
+
+package BiTree_5;  
+/**  
+ * @author MoonMonster 
+ * @date 2015-9-21 下午09:46:48   
+ */  
+//节点  
+public class Node {  
+    Node leftChild;  
+    Node rightChild;  
+    Object element;  
+      
+    public Node(Object obj){  
+        this.element = obj;  
+        this.leftChild = null;  
+        this.rightChild = null;  
+    }  
+      
+    public Node(){  
+        this.leftChild = null;  
+        this.rightChild = null;  
+    }  
+}  
+  
+  
+package BiTree_5;  
+import java.util.Scanner;  
+import java.util.Stack;  
+/** 
+ * @author MoonMonster 
+ * @date 2015-9-22 下午06:28:19 
+ */  
+public class Tree {  
+    // 根节点  
+    Node root;  
+    public Tree() {  
+        root = null;  
+    }  
+    // 层序创建树  
+    public void builderTree() {  
+        Node[] tree = new Node[100];  
+        Scanner sc = new Scanner(System.in);  
+        String str = "";  
+        int index = 0;  
+        while (true) {  
+            Node temp = null;  
+            str = sc.next();  
+            if (str.equals("quit")) {  
+                break;  
+            }  
+            if (root == null) {  
+                root = new Node(str);  
+            } else if (root.equals("null")) {  
+                temp = null;  
+            } else {  
+                temp = new Node(str);  
+            }  
+            if (index == 0) {  
+                tree[index] = root;  
+            } else {  
+                tree[index] = temp;  
+                if (index % 2 == 0) {  
+                    tree[index / 2 - 1].rightChild = temp;  
+                } else {  
+                    tree[index / 2].leftChild = temp;  
+                }  
+            }  
+            index++;  
+        }  
+    }  
+    // 前序递归输出  
+    public void print(Node temp) {  
+        if (temp != null) {  
+            System.out.print(temp.element + " ");  
+            print(temp.leftChild);  
+            print(temp.rightChild);  
+        }  
+    }  
+    // 数叶节点数量  
+    public int countLeaves(Node temp) {  
+        int count = 0;  
+        if (temp != null) {  
+            if (temp.leftChild == null && temp.rightChild == null) {  
+                count++;  
+            }  
+            count += countLeaves(temp.leftChild);  
+            count += countLeaves(temp.rightChild);  
+        }  
+        return count;  
+    }  
+    // 数节点数目  
+    public int countNode(Node temp) {  
+        int count = 0;  
+        if (temp != null) {  
+            count++;  
+            count += countNode(temp.leftChild);  
+            count += countNode(temp.rightChild);  
+        }  
+        return count;  
+    }  
+    // 非递归前序遍历--1  
+    public void preTraverse(Node temp) {  
+        Stack<Node> stack = new Stack<Node>();  
+          
+        if(temp != null){  
+            stack.push(temp);  
+            while(!stack.empty()){  
+                temp = stack.pop();  
+                System.out.print(temp.element);  
+                if(temp.rightChild != null){  
+                    stack.push(temp.rightChild);  
+                }  
+                if(temp.leftChild != null){  
+                    stack.push(temp.leftChild);  
+                }  
+            }  
+        }  
+        System.out.println();  
+    }  
+      
+    //非递归前序遍历--2  
+    public void preTraverse_2(Node temp){  
+        Stack<Node> stack = new Stack<Node>();  
+        if(temp == null){  
+            System.out.println("空树");  
+            return ;  
+        }  
+          
+        while(temp != null || !stack.empty()){  
+              
+            while(temp != null){  
+                System.out.print(temp.element);  
+                stack.push(temp);  
+                temp = temp.leftChild;  
+            }  
+              
+            temp = stack.pop();  
+            temp = temp.rightChild;  
+        }  
+    }  
+      
+    //中序非递归遍历  
+    public void inTraverse(Node temp){  
+        Stack<Node> stack = new Stack<Node>();  
+          
+        if(temp == null){  
+            System.out.println("空树。");  
+            return ;  
+        }  
+          
+        while(temp!=null || !stack.empty()){  
+            while(temp != null){  
+                stack.push(temp);  
+                temp = temp.leftChild;  
+            }  
+              
+            temp = stack.pop();  
+            System.out.print(temp.element);  
+            temp = temp.rightChild;  
+        }  
+    }  
+      
+    //判断树中是否存在某个元素  
+    public boolean indexOf(Node temp,Object obj){  
+        boolean result = false;  
+          
+        if(temp != null){  
+            if(temp.element.equals(obj)){  
+                result = true;  
+                return result;  
+            }  
+            result = indexOf(temp.leftChild,obj);  
+            if(result == true){  
+                return result;  
+            }  
+            result = indexOf(temp.rightChild,obj);  
+        }  
+          
+        return result;  
+    }  
+      
+    //判断树中有多少个指定数据  
+    public int countObject(Node temp, Object obj){  
+        int count = 0;  
+        if(temp != null){  
+            if(temp.element.equals(obj)){  
+                count ++;  
+            }  
+            count += countObject(temp.leftChild,obj);  
+            count += countObject(temp.rightChild,obj);  
+        }  
+          
+        return count;  
+    }  
+}  
+  
+  
+package BiTree_5;  
+/**  
+ * @author MoonMonster 
+ * @date 2015-9-22 下午06:43:08   
+ */  
+public class TreeTest {  
+    public static void main(String[] args) {  
+        Tree tree = new Tree();  
+        tree.builderTree();  
+//      System.out.println(tree.root.element);  
+//      tree.preTraverse(tree.root);  
+//      System.out.println(tree.countLeaves(tree.root));  
+//      System.out.println(tree.countNode(tree.root));  
+//      tree.preTraverse_2(tree.root);  
+//      tree.inTraverse(tree.root);  
+//      System.out.println(tree.indexOf(tree.root, "A"));  
+//      System.out.println(tree.countObject(tree.root, "A"));  
+    }  
+}  

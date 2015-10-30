@@ -49,7 +49,7 @@ class WeiXinHandler{
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		System.out.println("postStr="+postStr);
+		System.out.println("postStr"+postStr);
 		if (null!=postStr&&!postStr.isEmpty()){
 			Document document=null;
 			try{
@@ -67,7 +67,8 @@ class WeiXinHandler{
             String keyword = root.elementTextTrim("Content");
             String time = new Date().getTime()+"";
             String textTpl =  newsTpl();          
-            
+            String eventKey=root.elementText("EventKey");
+			System.out.println("eventKey:"+eventKey);
             try {
 				System.out.println("1:"+new String(keyword.getBytes(),"UTF-8")) ;
 				System.out.println("2:"+new String(keyword.getBytes(),"GBK")) ;
@@ -124,8 +125,8 @@ class WeiXinHandler{
 		+"<CreateTime>%3$s</CreateTime> "
 		+"<MsgType><![CDATA[%4$s]]></MsgType> "
 		
-		//+" <ArticleCount>6</ArticleCount> <Articles> <item> <Title><![CDATA[到八百方商城查看更多]]></Title>  <Description><![CDATA[description1]]></Description> <PicUrl><![CDATA[http://test.800pharm.com/shop/m/images/index/logo.png]]></PicUrl> <Url><![CDATA[http://www.800pharm.com/shop/m/prodSearchList.html?search_key=cx清水>]]></Url> </item> <item><Title><![CDATA[百虹水晶清水黑发啫喱(70ml(35ml*2))-广州御采堂化妆品有限公司￥53.90]]></Title> <Description><![CDATA[description2]]></Description> <PicUrl><![CDATA[http://img.800pharm.com/images/product/100119/20131225/1387942716771.jpg]]></PicUrl> <Url><![CDATA[http://www.800pharm.com/shop/m/prodDetail.html?prod_id=508459&shop_code=100119&ref=main]]></Url> </item> <item><Title><![CDATA[【亚宝】 仲景胃灵丸 （12袋装） - 亚宝大同制药(1.2克×12袋 （浓缩丸）)-同药集团大同制药有限公司 ￥19.80]]></Title> <Description><![CDATA[description2]]></Description> <PicUrl><![CDATA[http://img.800pharm.com/images/100146/20140630/20140630135905_673.jpg]]></PicUrl> <Url><![CDATA[http://www.800pharm.com/shop/m/prodDetail.html?prod_id=586861&shop_code=100146&ref=main]]></Url> </item> <item><Title><![CDATA[仲景胃灵丸(1.2克*12袋/盒)-同药集团大同制药有限公司 ￥19.80]]></Title> <Description><![CDATA[description2]]></Description> <PicUrl><![CDATA[http://img.800pharm.com/images/product/99200/20130503/1367544601285.jpg]]></PicUrl> <Url><![CDATA[http://www.800pharm.com/shop/m/prodDetail.html?prod_id=425686&shop_code=99200&ref=main]]></Url> </item> <item><Title><![CDATA[【神光】 仲景胃灵片 （24片装）-深圳中联制药(24片)-深圳市中联制药有限公司 ￥15.80]]></Title> <Description><![CDATA[description2]]></Description> <PicUrl><![CDATA[http://img.800pharm.com/images/product/base/20111231/0104411.jpg]]></PicUrl> <Url><![CDATA[http://www.800pharm.com/shop/m/prodDetail.html?prod_id=503565&shop_code=100103&ref=main]]></Url> </item> <item><Title><![CDATA[【神光】 仲景胃灵片 （24片装）(24片)-深圳市中联制药有限公司 ￥11.80]]></Title> <Description><![CDATA[description2]]></Description> <PicUrl><![CDATA[http://img.800pharm.com/images/product/base/20111231/0104411.jpg]]></PicUrl> <Url><![CDATA[http://www.800pharm.com/shop/m/prodDetail.html?prod_id=390541&shop_code=71000&ref=main]]></Url> </item> </Articles> </xml>  ";
-		+ "<ArticleCount><![CDATA[1]]></ArticleCount>  <Articles>    <item>      <Title><![CDATA[更多产品最低4折起]]></Title>      <Description><![CDATA[每逢佳节倍思亲，在这个欢聚一堂的时刻，或许你会回家陪伴父母过一个幸福的节日；或许你由于工作繁忙而不能陪伴在父母的身边，此时此刻，一份祝福父母永远年轻健康的礼物是那么的必要和珍贵。9月1日到10月7日，八百方联合各大商家举办欢度中秋，喜迎国庆活动，更多产品4折起。更有满就送，领红包，领取商家优惠券等活动。]]></Description>      <PicUrl><![CDATA[https://mmbiz.qlogo.cn/mmbiz/WvhJQP4W7VK7w1NllicynibqWSWTpIkZ9emxKybeEtEK2t8pxv0GnyaIlvUXDSlWvJ7QqpJZw9Bhkj4G5SLChZFg/0]]></PicUrl>      <Url><![CDATA[http://mp.weixin.qq.com/s?__biz=MjM5MzY5MTk4MA==&mid=202328760&idx=1&sn=9fdf58ea5250455ea04a09f307780123#rd]]></Url>    </item>  </Articles></xml>";
+
+		+ "<ArticleCount><![CDATA[1]]></ArticleCount>  <Articles>    <item>      <Title><![CDATA[test]]></Title>      <Description><![CDATA[test]]></Description>      <PicUrl><![CDATA[test]]></Url>    </item>  </Articles></xml>";
 	}
 	
 	public String txtTpl()

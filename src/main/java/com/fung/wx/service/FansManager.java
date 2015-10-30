@@ -15,10 +15,10 @@ public class FansManager {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		 String token="pOyJWXVOixYa1s-GnAu-Dy_tVoYVt1THblSAUf5KsqSJFttmIej3wJN96bYDbsESpUmeHvC5MhJnLgm4hlLJ5AdfDz72ir2h_caxDCSJsw4";
+		 String token="kx_qEX0lbLCT6FnRyGB1nOzrUmVPzBBVxaOuQIMXiGerBvsxnB-ttKb0Xft12t6DySPsVwkZ1sex7u4O8VrCRiIgV3eoFCbkiP7TWWi7Xy0";
 		 String url="https://api.weixin.qq.com/cgi-bin/user/get?access_token="+token;
 		 JSONObject jsonObject = WeiXinUtil.httpsRequest(url, "GET", "");
-		 getData(jsonObject,"e:\\temp\\fans.txt",token);
+		 getData(jsonObject,"e:\\temp\\fans2.txt",token);
 	}
 	
 	//生产	

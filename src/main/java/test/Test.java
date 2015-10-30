@@ -21,6 +21,7 @@ public class Test {
 		System.out.println(str.startsWith("cx"));
 		System.out.println(str.substring(2));
 		
+		 
 		
 		String code = "Z3o3LU9xcVotUkZxYy15RHFt";
 		if(code!=null){

@@ -33,8 +33,8 @@ public class NetXmlClient {
 //	private static final String POST = "http://localhost/shop/pay/wxPayNotify.html?notify_id=fRon5-l4lKqNKwCeurlCz3u617mgFhKiuFvwdmnwN53r58yWelLWJMPcqHzCjzvN62AkXb2bdEMBIBmPn9JgWCXwXL69HA56&partner=1219895801&transaction_id=1219895801201408133319316201&sign=7EE3F867643E0C0E0DEF8D51B43B15C0&product_fee=1&total_fee=1&time_end=20140813162348&trade_state=0&out_trade_no=309757004432287&transport_fee=0&fee_type=1&trade_mode=1&sign_type=MD5&input_charset=UTF-8&discount=0&bank_type=0&";	
 //	private static final String POST = "http://localhost/shop/pay/weixinPayComp_m.html";
 //	private static final String POST = "http://localhost/shop/wx_search.html";
-//	private static final String POST = "http://www.800pharm.com/shop/wx_search.html";
-	private static final String POST = "http://192.168.0.51/shop/wx_search.html";
+	private static final String POST = "http://www.800pharm.com/shop/wx_search.html";
+//	private static final String POST = "http://192.168.0.51/shop/wx_search.html";
 //	private static final String POST = "http://localhost/shop/wx_search.html";
 //	private static final String POST = "http://www.800pharm.com/shop/synchronizeProduct";
 	
@@ -46,13 +46,31 @@ public class NetXmlClient {
 	//	sendXml(retNotify());
 		//System.out.println(wiquanReq());
 		//sendXml(wiquanReq());
-		sendXml(wxSeed());
+		sendXml(wxSubscribe());
+		
+		
+	//	sendXml(wxSeed());
 //		try {
 //			sendXml( rtWarn());
 //		} catch (Exception e) {
 //		
 //			e.printStackTrace();
 //		}
+		
+	}
+	//subscribe
+	
+	public static String wxSubscribe()
+	{
+		
+			return  "<xml>"
+					+"<FromUserName>oTNesjko8qLIb5sCQTNahtT3Rkf2</FromUserName>"
+					+"<ToUserName>test3</ToUserName>"
+					+"<Content>感冒</Content>"
+				+"<MsgType>event</MsgType>"
+				 +"<Event>subscribe</Event>"
+				 +"<EventKey>qrscene_CS@fung3</EventKey>"
+					+"</xml>"; 
 		
 	}
 	
