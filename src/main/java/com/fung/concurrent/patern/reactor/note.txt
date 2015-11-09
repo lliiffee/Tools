@@ -1,0 +1,4 @@
+http://www.cnblogs.com/xuekyo/archive/2013/01/20/2868547.html
+http://developer.51cto.com/art/201112/306462.htm
+http://ifeve.com/netty-reactor-4/
+http://www.oschina.net/question/45224_10360
