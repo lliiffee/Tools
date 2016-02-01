@@ -1,6 +1,8 @@
 package test;
 
 import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import sun.misc.BASE64Decoder;
 
@@ -36,6 +38,12 @@ public class Test {
 			}
 		}
 		
+		
+		 Pattern pattern = Pattern.compile("^[0-9]*$");
+		  Matcher matcher = pattern.matcher("86744a");
+		  boolean b= matcher.matches();
+		  
+		  System.out.println(b);
 	}
 
 }

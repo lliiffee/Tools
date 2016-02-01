@@ -32,10 +32,13 @@ public class NetXmlClient {
    //private static final String POST = "http://localhost/shop/pay/weixinPayNotify_m.html";
 //	private static final String POST = "http://localhost/shop/pay/wxPayNotify.html?notify_id=fRon5-l4lKqNKwCeurlCz3u617mgFhKiuFvwdmnwN53r58yWelLWJMPcqHzCjzvN62AkXb2bdEMBIBmPn9JgWCXwXL69HA56&partner=1219895801&transaction_id=1219895801201408133319316201&sign=7EE3F867643E0C0E0DEF8D51B43B15C0&product_fee=1&total_fee=1&time_end=20140813162348&trade_state=0&out_trade_no=309757004432287&transport_fee=0&fee_type=1&trade_mode=1&sign_type=MD5&input_charset=UTF-8&discount=0&bank_type=0&";	
 //	private static final String POST = "http://localhost/shop/pay/weixinPayComp_m.html";
-//	private static final String POST = "http://localhost/shop/wx_search.html";
-	private static final String POST = "http://www.800pharm.com/shop/wx_search.html";
+//	private static final String POST = "http://192.168.0.3:8080/shop/wx_search.html";
+//private static final String POST = "http://www.800pharm.com/shop/wx_search.html";
+//	private static final String POST = "http://test.800pharm.com/shop/xiaoneng/putMsg.html";
+	private static final String POST = "http://wx.ntalker.com/agent/weixin?token=ntalker_123456";
+//	private static final String POST = "http://113.31.17.243/agent/weixin?token=ntalker_123456";
 //	private static final String POST = "http://192.168.0.51/shop/wx_search.html";
-//	private static final String POST = "http://localhost/shop/wx_search.html";
+//	private static final String POST = "http://www.800pharm.com/shop/wx_search.html";
 //	private static final String POST = "http://www.800pharm.com/shop/synchronizeProduct";
 	
 //	private static final String POST = "http://localhost/shop/pay/weixinPayServErr_m.html";
@@ -46,10 +49,14 @@ public class NetXmlClient {
 	//	sendXml(retNotify());
 		//System.out.println(wiquanReq());
 		//sendXml(wiquanReq());
-		sendXml(wxSubscribe());
+		//sendXml(ntalker());
+	//	sendXml(ntalkerPUT());
+	//	sendXml(wxSubscribe());
 		
-		
-	//	sendXml(wxSeed());
+	//	sendXml(ntalker());
+		sendXml(ntalkerImg());
+		 
+//		sendXml(wxSeed());
 //		try {
 //			sendXml( rtWarn());
 //		} catch (Exception e) {
@@ -58,18 +65,67 @@ public class NetXmlClient {
 //		}
 		
 	}
+	
+
+	public static String ntalker()
+	{
+		
+			return "<xml>                                                  "
+					+" <ToUserName><![CDATA[wx7179cc98fb47eff5]]></ToUserName>           "
+					+" <FromUserName><![CDATA[oTNesjrqNt4ZIZ8zRe2-WVnt98M0]]></FromUserName>     "
+					+" <CreateTime>1468831860</CreateTime>                   "
+					+" <MsgType><![CDATA[text]]></MsgType>                   "
+					+" <Content><![CDATA[八百方测试12]]></Content>         "
+					+" <MsgId>1234567890123416</MsgId>                       "
+					+"<SettingId>bf_1000_1453284708159</SettingId >         "
+					+" </xml>"; 
+		
+	}
+	
+	public static String ntalkerImg()
+	{
+		
+			return "<xml>                                                  "
+					+" <ToUserName><![CDATA[wx7179cc98fb47eff5]]></ToUserName>           "
+					+" <FromUserName><![CDATA[oTNesjrqNt4ZIZ8zRe2-WVnt98M0]]></FromUserName>     "
+					+" <CreateTime>1468831860</CreateTime>                   "
+					+" <MsgType><![CDATA[image]]></MsgType>                   "
+					+" <PicUrl><![CDATA[http://mmbiz.qpic.cn/mmbiz/HIW0iaGKxt6icxq9aLZjG7EATfoNnzibAasXoJtFzWp3Wz0Fd7RibdaNgFL0WjIngia3ia26sQ3aXK1EoiaqCd0WHN4dw/0]]></PicUrl>"
+					+" <MsgId>1234567890123416</MsgId>"
+					+" <MediaId>7KAZt0s-h66giHYAS62FuNPR9Y_BVNdQEHRBFCOeayqTU8Fj3F1ZuFCnz5JvtL_q</MediaId>"
+					+"<SettingId>bf_1000_1453284708159</SettingId >         "
+					+" </xml>"; 
+		
+			
+	}
+	
+	public static String ntalkerPUT()
+	{
+		
+			return "{"
+					+"\"touser\":\"oTNesjrqNt4ZIZ8zRe2-WVnt98M0\","
+					+"\"msgtype\":\"text\","
+					+" \"text\":"
+					+"{"
+					+"\"content\":\"Hello World\""
+					+"}"
+					+"}";                                    
+		
+	}
+	
+	
 	//subscribe
 	
 	public static String wxSubscribe()
 	{
 		
 			return  "<xml>"
-					+"<FromUserName>oTNesjko8qLIb5sCQTNahtT3Rkf2</FromUserName>"
-					+"<ToUserName>test3</ToUserName>"
+					+"<FromUserName>test5</FromUserName>"
+					+"<ToUserName>test5</ToUserName>"
 					+"<Content>感冒</Content>"
 				+"<MsgType>event</MsgType>"
 				 +"<Event>subscribe</Event>"
-				 +"<EventKey>qrscene_CS@fung3</EventKey>"
+				 +"<EventKey>qrscene_CS@dxll</EventKey>"
 					+"</xml>"; 
 		
 	}
@@ -78,8 +134,8 @@ public class NetXmlClient {
 	{
 		try {
 			return  "<xml>"
-					+"<FromUserName>test1</FromUserName>"
-					+"<ToUserName>test3</ToUserName>"
+					+" <ToUserName><![CDATA[wx7179cc98fb47eff5]]></ToUserName>           "
+					+" <FromUserName><![CDATA[oTNesjrqNt4ZIZ8zRe2-WVnt98M0]]></FromUserName>     "
 					+"<Content>感冒</Content>"
 					+"<MsgType>text</MsgType>"
 				//+"<MsgType>event</MsgType>"
@@ -202,8 +258,9 @@ public class NetXmlClient {
 		System.out.println(paySignReqHandler.getDebugInfo());
 		return sign;
 	}
-	public static void sendXml(String xmlCt){
+	public static void sendXml(String ct){
 		try {
+			System.out.println(ct);
 			URL url = new URL(POST);
 			//根据Url地址打开一个连接
 			URLConnection urlConnection = url.openConnection();
@@ -223,27 +280,9 @@ public class NetXmlClient {
 			httpUrlConnection.setConnectTimeout(30000);
 			httpUrlConnection.setReadTimeout(30000);
 			httpUrlConnection.connect();
-			
-			
-		        
 			//使用缓冲流将xml字符串发送给服务器
 			BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(httpUrlConnection.getOutputStream(),"UTF-8"));
-			
-//			 StringBuffer params = new StringBuffer();
-//		        // 表单参数与get形式一样
-//		        params.append("out_trade_no").append("=").append("1111")
-//		               .append("&")
-//		             .append("out_trade_no").append("=").append("1111")
-//		             .append("transaction_id").append("=").append("1111")
-//		              .append("trade_state").append("=").append("0")
-//		             ;
-//		      //  byte[] bypes = params.toString().getBytes();
-//		        writer.write(params.toString());// 输入参数
-			
-			
-		//	writer.write(URLEncoder.encode(xmlCt,"UTF-8"));
-		//	System.out.println(xmlCt);
-			writer.write( xmlCt);
+			writer.write( ct);
 			writer.flush();
 			writer.close();
 			writer = null;

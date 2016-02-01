@@ -1,22 +1,15 @@
 package com.fung.wx.util;
 
 import java.io.BufferedReader;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.io.UnsupportedEncodingException;
 import java.net.ConnectException;
-import java.net.MalformedURLException;
+import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.Iterator;
-import java.util.Map;
 
-import javax.activation.MimetypesFileTypeMap;
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSocketFactory;
@@ -206,6 +199,84 @@ public class WeiXinUtil {
 	}
 	
     
+	public static void saveImageToDisk(String mediaId, String token) throws Exception {
+		InputStream inputStream = getInputStream(mediaId, token);
+		byte[] data = new byte[1024];
+		int len = 0;
+		FileOutputStream fileOutputStream = null;
+		try {
+			fileOutputStream = new FileOutputStream("e://test1.jpg");
+			while ((len = inputStream.read(data)) != -1) {
+				fileOutputStream.write(data, 0, len);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if (inputStream != null) {
+				try {
+					inputStream.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+			if (fileOutputStream != null) {
+				try {
+					fileOutputStream.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+	
+	public static void main(String args[])
+	{
+		String mediaId="H8HFKM89rdvgUrf4Aqe9jucznQNLOBm4M1wyGQFfM7Fay3nUW6zeWfocah0iW48T";
+		String token="-aoeUCXZ7yrNw7tiKPw0ua-_URknBh-M0tSmqRXGZNkMxJXd0ZTfZ7zKhKhG2mryi2rxbMpv4s_t-A6jA7gV23ZckOSYpMIlCQZOOHraJFcENQfAJAJSV";
+		try {
+			saveImageToDisk(mediaId,token);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * 
+	 * 根据文件id下载文件
+	 * 
+	 * 
+	 * 
+	 * @param mediaId    媒体id
+	 * 
+	 * @throws Exception
+	 */
+
+	public static  InputStream getInputStream(String mediaId, String accessToken) {
+		InputStream is = null;
+		String url = "https://api.weixin.qq.com/cgi-bin/media/get?access_token=" // "http://file.api.weixin.qq.com/cgi-bin/media/get?access_token="
+				+ accessToken + "&media_id=" + mediaId;
+
+		try {
+
+			URL urlGet = new URL(url);
+			HttpURLConnection http = (HttpURLConnection) urlGet
+			.openConnection();
+			http.setRequestMethod("GET"); // 必须是get方式请求
+			http.setRequestProperty("Content-Type",
+			"application/x-www-form-urlencoded");
+			http.setDoOutput(true);
+			http.setDoInput(true);
+			System.setProperty("sun.net.client.defaultConnectTimeout", "30000");// 连接超时30秒
+			System.setProperty("sun.net.client.defaultReadTimeout", "30000"); // 读取超时30秒
+			http.connect();
+			// 获取文件转化为byte流
+			is = http.getInputStream();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return is;
+	}
 	
 
 }

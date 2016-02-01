@@ -1,5 +1,16 @@
 package com.fung.wx.service;
 
+import java.io.BufferedReader;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
 import com.alibaba.fastjson.JSONObject;
 import com.fung.wx.util.WeiXinUtil;
 
@@ -133,6 +144,18 @@ POST数据例子：
 	}	
 	
 	
+	//多媒体文件下载
+	//https://api.weixin.qq.com/cgi-bin/media/get?access_token=ACCESS_TOKEN&media_id=MEDIA_ID
 		
+	private static  JSONObject  getMediaFile(){
+		return null;
+		
+	}	
+	
+	
+	
+	
+	
+	
 	
 }

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta
+	content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"
+	name="viewport">
+<meta content="YES" name="apple-touch-fullscreen">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="telephone=no" name="format-detection">
+<link type="text/css" rel="stylesheet" href="css/normalize.css">
+<link type="text/css" rel="stylesheet"
+	href="css/innerPage/innerPage.css?v=3.2.0" />
+<link rel="apple-touch-icon" href="images/common/quick_Logo.png" />
+<link rel="apple-touch-icon-precomposed"
+	href="images/common/quick_Logo.png">
+<title>八百方网上药店触屏版</title>
+</head>
+<body>
+	<p id="demo">点击这个按钮，获得您的坐标：</p>
+	<button onclick="javascript:getLocation();">试一下</button>
+	
+	<script type="text/javascript" src="js/jquery-1.9.1.min.js?v=3.11"></script>
+	
+	<script>
+		var x = document.getElementById("demo");
+		function getLocation() {
+
+			if (navigator.geolocation) {
+				var config = {
+					enableHighAccuracy : true,
+					timeout : 5000,
+					maximumAge : 30000
+				};
+				navigator.geolocation.getCurrentPosition(showPosition,
+						showError, config);
+				// navigator.geolocation.getCurrentPosition(showPosition);
+
+			} else {
+				alert("Geolocation is not supported by this browser.");
+			}
+
+		}
+		/*		
+		 function showPosition(position) {
+		 alert("Latitude: " + position.coords.latitude + "--Longitude: "
+		 + position.coords.longitude);
+
+		 }
+		 */
+
+		/** 
+		 * 获取地址位置成功 
+		 */
+		function showPosition(position) {
+			 alert("Latitude: " + position.coords.latitude + "--Longitude: "
+					 + position.coords.longitude);
+			 
+			//获得经度纬度 
+			var x = position.coords.latitude;
+			var y = position.coords.longitude;
+			//配置Baidu Geocoding API 
+			var url = "http://api.map.baidu.com/geocoder/v2/?ak=C93b5178d7a8ebdb830b9b557abce78b"
+					+ "&callback=renderReverse"
+					+ "&location="
+					+ x
+					+ ","
+					+ y
+					+ "&output=json" + "&pois=0";
+			$.ajax({
+				type : "GET",
+				dataType : "jsonp",
+				url : url,
+				success : function(json) {
+					if (json == null || typeof (json) == "undefined") {
+						return;
+					}
+					if (json.status != "0") {
+						return;
+					}
+				//	alert("json:"+JSON.stringify(json));
+					setAddress(json.result.addressComponent);
+				},
+				error : function(XMLHttpRequest, textStatus, errorThrown) {
+					alert("[x:" + x + ",y:" + y + "]地址位置获取失败,请手动选择地址");
+				}
+			});
+		}
+
+		/** 
+		 * 设置地址 
+		 */
+		function setAddress(json) {
+		//	var position = document.getElementById("txtPosition");
+			//省 
+			var province = json.province;
+			//市 
+			var city = json.city;
+			//区 
+			var district = json.district;
+			province = province.replace('市', '');
+		//	position.value = province + "," + city + "," + district;
+		//	position.style.color = 'black';
+			
+			alert(province + "," + city + "," + district);
+		}
+
+		/** 
+		 * 获取地址位置失败[暂不处理] 
+		 */
+		function showError(error) {
+			switch (error.code) {
+			case error.PERMISSION_DENIED:
+				alert("定位失败,用户拒绝请求地理定位");
+				//x.innerHTML = "User denied the request for Geolocation.[用户拒绝请求地理定位]" 
+				break;
+			case error.POSITION_UNAVAILABLE:
+				alert("定位失败,位置信息是不可用");
+				//x.innerHTML = "Location information is unavailable.[位置信息是不可用]" 
+				break;
+			case error.TIMEOUT:
+				alert("定位失败,请求获取用户位置超时");
+				//x.innerHTML = "The request to get user location timed out.[请求获取用户位置超时]" 
+				break;
+			case error.UNKNOWN_ERROR:
+				alert("定位失败,定位系统失效");
+				//x.innerHTML = "An unknown error occurred.[未知错误]" 
+				break;
+			}
+		}
+	</script>
+</body>
+</html>
