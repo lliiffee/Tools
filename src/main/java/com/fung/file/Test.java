@@ -20,6 +20,8 @@ public class Test {
 	}
 
 	 public   static  void read(String fileName, String encoding) { 
+		 
+		 
 	        StringBuffer fileContent  =   new  StringBuffer(); 
 	        String line  =   null ; 
 	         try  { 

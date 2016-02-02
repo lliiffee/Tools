@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+  <bean id="u" class="com.fung.springuse.UserDAOImpl" />
+  <bean id="userService" class="com.fung.springuse.UserService" >
+    <property name="userDAO" bean="u"/>
+  </bean>
+</beans>

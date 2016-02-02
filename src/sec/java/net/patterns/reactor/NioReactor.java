@@ -1,11 +1,13 @@
 package net.patterns.reactor;
 
 import java.io.IOException;
+import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 /**异步时间多路复用器， 1 . 初始化 Dispatcher.  2 .多个句柄(handles)可以被注册到reactor ，
  * 且他为所有这些句柄事件而阻塞，当任何这些注册了的句柄发生事件，它就会通过disbatcher 发布事件。
@@ -57,6 +59,78 @@ public class NioReactor {
 	{
 		this.dispatcher=dispatcher;
 		this.selector=Selector.open();
+	}
+	
+	/**
+	   * Starts the reactor event loop in a new thread.
+	   * 
+	   * @throws IOException
+	   *           if any I/O error occurs.
+	   */
+	public void start() throws IOException{
+		reactorMain.execute(new Runnable(){
+			public void run() {
+				 try {
+				        System.out.println("Reactor started, waiting for events...");
+				        eventLoop();
+				      } catch (IOException e) {
+				        e.printStackTrace();
+				      }
+			}
+	
+		});
+	}
+	
+	  /**
+	   * Stops the reactor and related resources such as dispatcher.
+	   * 
+	   * @throws InterruptedException
+	   *           if interrupted while stopping the reactor.
+	   * @throws IOException
+	   *           if any I/O error occurs.
+	   */
+	public void stop()throws InterruptedException, IOException{
+		reactorMain.shutdownNow();
+		selector.wakeup();
+		reactorMain.awaitTermination(4, TimeUnit.SECONDS);
+		selector.close();
+	}
+	
+	/**
+	   * Registers a new channel (handle) with this reactor. Reactor will start waiting for events on this channel and
+	   * notify of any events. While registering the channel the reactor uses {@link AbstractNioChannel#getInterestedOps()}
+	   * to know about the interested operation of this channel.
+	   * 
+	   * @param channel
+	   *          a new channel on which reactor will wait for events. The channel must be bound prior to being registered.
+	   * @return this
+	   * @throws IOException
+	   *           if any I/O error occurs.
+	   */
+	
+	public NioReactor registerChannel(AbstractNioChannel channel) throws IOException {
+	 
+		SelectionKey key =channel.getJavaChannel().register(this.selector, channel.getInterestedOps()); //getInterestedOps 由实现者实现自己感兴趣的渠道
+		 key.attach(channel);
+/*
+* SelectionKey对象是用来跟踪注册事件的句柄。
+在SelectionKey对象的有效期间，Selector会一直监控与SelectionKey对象相关的事件，如果事件发生，就会把SelectionKey对象加入到selected-keys集合中。
+在以下情况下，SelectionKey对象会失效，这意味着Selector再也不会监控与它相关的事件：
+程序调用SelectionKey的cancel()方法
+关闭与SelectionKey关联的Channel
+与SelectionKey关联的Selector被关闭
+***SelectionKey中定义的4中事件 ***
+SelectionKey.OP_ACCEPT —— 接收连接继续事件，表示服务器监听到了客户连接，服务器可以接收这个连接了
+SelectionKey.OP_CONNECT —— 连接就绪事件，表示客户与服务器的连接已经建立成功
+SelectionKey.OP_READ —— 读就绪事件，表示通道中已经有了可读的数据，可以执行读操作了（通道目前有数据，可以进行读操作了）
+SelectionKey.OP_WRITE —— 写就绪事件，表示已经可以向通道写数据了（通道目前可以用于写操作）
+ */
+		return this;
+	}
+	
+	private void eventLoop() throws IOException{
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

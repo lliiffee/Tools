@@ -1,6 +1,7 @@
 package test;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -37,6 +38,9 @@ public class Test {
 				e.printStackTrace();
 			}
 		}
+		 
+		System.out.println(getResourcePath());
+		System.out.println(Test.class.getClass().getResource("/").getPath() );
 		
 		
 		 Pattern pattern = Pattern.compile("^[0-9]*$");
@@ -46,4 +50,14 @@ public class Test {
 		  System.out.println(b);
 	}
 
+	
+	private static String getResourcePath() {
+        String className = Test.class.getName();
+        String classNamePath = className.replace(".", "/") + ".class";
+        URL is = Test.class.getClassLoader().getResource(classNamePath);
+        String path = is.getFile();
+        
+ 
+        return path;
+    }
 }
