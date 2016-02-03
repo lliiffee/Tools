@@ -39,7 +39,20 @@ public class OpFile {
 		boolean flag = false;
 		File file;
 		
-		
+		public void opFileByCallback(File file,IFileOperatiron callback){
+			 
+					if(file.isFile()){
+						callback.opFile(file);
+					}else
+					{
+						for (File f:file.listFiles()){
+							if(f.isFile())
+								callback.opFile(f);
+							else
+								opFileByCallback(f,callback);
+						}
+					}
+		}
 		public boolean deleteFolderByName(String deletePath,String name)
 		{
 			flag=false;
