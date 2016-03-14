@@ -4,9 +4,9 @@
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -20,6 +20,7 @@ package com.dangdang.ddframe.rdb.sharding.parser.visitor;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 
 import com.alibaba.druid.sql.ast.SQLExpr;
@@ -42,9 +43,8 @@ import com.dangdang.ddframe.rdb.sharding.parser.result.router.Condition.BinaryOp
 import com.dangdang.ddframe.rdb.sharding.parser.result.router.Condition.Column;
 import com.dangdang.ddframe.rdb.sharding.parser.result.router.ConditionContext;
 import com.dangdang.ddframe.rdb.sharding.parser.result.router.Table;
-import com.google.common.base.CharMatcher;
+import com.dangdang.ddframe.rdb.sharding.util.SQLUtil;
 import com.google.common.base.Optional;
-
 import lombok.Getter;
 import lombok.Setter;
 
@@ -72,6 +72,10 @@ public final class ParseContext {
     
     private int selectItemsCount;
     
+    private final Collection<String> selectItems = new HashSet<>();
+    
+    private boolean hasAllColumn;
+    
     /**
      * 设置当前正在访问的表.
      * 
@@ -79,7 +83,7 @@ public final class ParseContext {
      * @param currentAlias 表别名
      */
     public void setCurrentTable(final String currentTableName, final Optional<String> currentAlias) {
-        Table table = new Table(getExactlyValue(currentTableName), currentAlias.isPresent() ? Optional.of(getExactlyValue(currentAlias.get())) : currentAlias);
+        Table table = new Table(SQLUtil.getExactlyValue(currentTableName), currentAlias.isPresent() ? Optional.of(SQLUtil.getExactlyValue(currentAlias.get())) : currentAlias);
         parsedResult.getRouteContext().getTables().add(table);
         currentTable = table;
     }
@@ -90,7 +94,7 @@ public final class ParseContext {
      * @param x 表名表达式, 来源于FROM, INSERT ,UPDATE, DELETE等语句
      */
     public Table addTable(final SQLExprTableSource x) {
-        Table result = new Table(getExactlyValue(x.getExpr().toString()), getExactlyValue(x.getAlias()));
+        Table result = new Table(SQLUtil.getExactlyValue(x.getExpr().toString()), SQLUtil.getExactlyValue(x.getAlias()));
         parsedResult.getRouteContext().getTables().add(result);
         return result;
     }
@@ -125,7 +129,8 @@ public final class ParseContext {
     /**
      * 将条件对象加入解析上下文.
      * 
-     * @param columnName 列名
+     * @param columnName 列名称
+     * @param tableName 表名称
      * @param operator 操作符
      * @param valueExpr 值对象表达式
      * @param databaseType 数据库类型
@@ -190,7 +195,7 @@ public final class ParseContext {
     }
     
     private Column createColumn(final String columName, final String tableName) {
-        return new Column(getExactlyValue(columName), getExactlyValue(tableName));
+        return new Column(SQLUtil.getExactlyValue(columName), SQLUtil.getExactlyValue(tableName));
     }
     
     private Optional<Table> findTable(final String tableNameOrAlias) {
@@ -206,12 +211,12 @@ public final class ParseContext {
      * @return 是否为二元操作且带有别名
      */
     public boolean isBinaryOperateWithAlias(final SQLPropertyExpr x, final String tableOrAliasName) {
-        return x.getParent() instanceof SQLBinaryOpExpr && findTableFromAlias(getExactlyValue(tableOrAliasName)).isPresent();
+        return x.getParent() instanceof SQLBinaryOpExpr && findTableFromAlias(SQLUtil.getExactlyValue(tableOrAliasName)).isPresent();
     }
     
     private Optional<Table> findTableFromName(final String name) {
         for (Table each : parsedResult.getRouteContext().getTables()) {
-            if (each.getName().equalsIgnoreCase(getExactlyValue(name))) {
+            if (each.getName().equalsIgnoreCase(SQLUtil.getExactlyValue(name))) {
                 return Optional.of(each);
             }
         }
@@ -220,7 +225,7 @@ public final class ParseContext {
     
     private Optional<Table> findTableFromAlias(final String alias) {
         for (Table each : parsedResult.getRouteContext().getTables()) {
-            if (each.getAlias().isPresent() && each.getAlias().get().equalsIgnoreCase(getExactlyValue(alias))) {
+            if (each.getAlias().isPresent() && each.getAlias().get().equalsIgnoreCase(SQLUtil.getExactlyValue(alias))) {
                 return Optional.of(each);
             }
         }
@@ -272,7 +277,16 @@ public final class ParseContext {
      * @param orderByType 排序类型
      */
     public void addOrderByColumn(final String name, final OrderByType orderByType) {
-        parsedResult.getMergeContext().getOrderByColumns().add(new OrderByColumn(getExactlyValue(name), orderByType));
+        String rawName = SQLUtil.getExactlyValue(name);
+        String alias = null;
+        if (!containsSelectItem(rawName)) {
+            alias = generateDerivedColumnAlias();
+        }
+        parsedResult.getMergeContext().getOrderByColumns().add(new OrderByColumn(rawName, alias, orderByType));
+    }
+    
+    private boolean containsSelectItem(final String selectItem) {
+        return hasAllColumn || selectItems.contains(selectItem);
     }
     
     /**
@@ -283,7 +297,7 @@ public final class ParseContext {
      * @param orderByType 排序类型
      */
     public void addGroupByColumns(final String name, final String alias, final OrderByType orderByType) {
-        parsedResult.getMergeContext().getGroupByColumns().add(new GroupByColumn(getExactlyValue(name), alias, orderByType));
+        parsedResult.getMergeContext().getGroupByColumns().add(new GroupByColumn(SQLUtil.getExactlyValue(name), alias, orderByType));
     }
     
     /**
@@ -296,19 +310,24 @@ public final class ParseContext {
     }
     
     /**
-     * 去掉SQL表达式的特殊字符.
-     * 
-     * @param value SQL表达式
-     * @return 去掉SQL特殊字符的表达式
-     */
-    public String getExactlyValue(final String value) {
-        return null == value ? null : CharMatcher.anyOf("[]`'\"").removeFrom(value);
-    }
-    
-    /**
      * 将当前解析的条件对象归并入解析结果.
      */
     public void mergeCurrentConditionContext() {
         parsedResult.getConditionContexts().add(currentConditionContext);
     }
+    
+    /**
+     * 注册SELECT语句中声明的列名称或别名.
+     *
+     * @param selectItem SELECT语句中声明的列名称或别名
+     */
+    public void registerSelectItem(final String selectItem) {
+        String rawItemExpr = SQLUtil.getExactlyValue(selectItem);
+        if ("*".equals(rawItemExpr)) {
+            hasAllColumn = true;
+            return;
+        }
+        selectItems.add(rawItemExpr);
+    }
+    
 }

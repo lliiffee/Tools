@@ -15,26 +15,27 @@
  * </p>
  */
 
-package com.dangdang.ddframe.rdb.sharding.exception;
+package com.dangdang.ddframe.rdb.sharding.util;
+
+import com.google.common.base.CharMatcher;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 
 /**
- * JDBC分片抛出的异常基类.
+ * SQL工具类.
  * 
- * @author zhangliang
+ * @author gaohongtao
  */
-public class ShardingJdbcException extends RuntimeException {
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
+public class SQLUtil {
     
-    private static final long serialVersionUID = -1343739516839252250L;
-    
-    public ShardingJdbcException(final String errorMessage, final Object... args) {
-        super(String.format(errorMessage, args));
-    }
-
-    public ShardingJdbcException(final String message, final Exception cause) {
-        super(message, cause);
-    }
-    
-    public ShardingJdbcException(final Exception cause) {
-        super(cause);
+    /**
+     * 去掉SQL表达式的特殊字符.
+     * 
+     * @param value SQL表达式
+     * @return 去掉SQL特殊字符的表达式
+     */
+    public static String getExactlyValue(final String value) {
+        return null == value ? null : CharMatcher.anyOf("[]`'\"").removeFrom(value);
     }
 }

@@ -138,7 +138,7 @@ public class MenuManager {
 						System.out.println(JSONObject.toJSONString(mm.getMenu().getButtons().toArray()));
 						
 				    	//  AccessToken at = WeiXinUtil.getAccessToken("wx7179cc98fb47eff5", "823ae7209cb695d4a4a0c71071d6006e ");  
-				    	  String tokey="_RFcw7fv2uMzx07OoTo3YvaoUOUBgjmM7G6-0EAUTJmM6Ffh9Zves4UeMYK0DE_CQvlHpITMnGsQshX_7YLpyKJK__XXHq2hFcZhBNJvL6kGCScAAAQMC";
+				    	  String tokey="YpaVMJzujtoQv2qYpWv97IaZjL-AjuA8ruyMsJWVHBAg1wqbZabPyfUAh502PFqS05fzbxTRlbwodLNXKrfB6qyV37R7xeEuDnlDaavfzR8BorM7rKrz_28BEImx3t_jUOEdAHAGAQ";
 				    	 // String  tokey=at.getToken();
 					     //   if (null != at) {  
 					            // 调用接口创建菜单   

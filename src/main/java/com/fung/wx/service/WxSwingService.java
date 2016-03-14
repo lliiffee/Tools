@@ -21,8 +21,11 @@ public class WxSwingService {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		
+		//getPoiList();  //step 1
+		
 		applyDevice();
-		//getPoiList();
+		
 		//submitPage();
 		//getImgList();
 		//System.out.println(getPageList());
@@ -53,16 +56,25 @@ POST数据例子：
 	
 	//1.获得 门店poi_id:292897619
 	//2.为门店申请设备数量。
-	static String token="YpaVMJzujtoQv2qYpWv97G4CO8Gg_Ku7qnhopwgVtvUbV0v3fMtLJwgnq5LN7Zj_trDuhnDosz3hLucg1SKghbO3xX_Y4K-Ip7TZ-I86M4o";
+	static String token="etW0qAiW4wDRubCrcteoNx9ppmzGo2Yr6wa_Kmxu-ZLIZ3ZXJ0_MzzGfXrUw3MU0bOTzT59edNSUbMLfE6FFBEtw6WbsIeuA9uwRJm_oIQGWxa0gUgQdYf7qRm4iAZX-PUZiACAKPU";
 	private static void  applyDevice(){
 		String postUrl="https://api.weixin.qq.com/shakearound/device/applyid?access_token=ACCESS_TOKEN";
-
+/*
 		String json="{"
-				+"\"quantity\":1,"	
+				+"\"quantity\":10,"	
 				+"\"apply_reason\":\"博爱逸景店\","	
 				+"\"comment\":\"博爱逸景店\","
-				+"\"poi_id\":294745041"	
+				+"\"poi_id\":213285126"	
 				+"}";
+				*/
+		
+		String json="{"
+				+"\"quantity\":10,"	
+				+"\"apply_reason\":\"天悦酒店\","	
+				+"\"comment\":\"天悦酒店\","
+				+"\"poi_id\":213285126"	
+				+"}";
+		
 		 System.out.println( WeiXinUtil.httpsRequest(postUrl.replace("ACCESS_TOKEN",token ) ,"POST", json) );
 		//{"business_list":[{"base_info":{"address":"广东省广州市海珠区赤岗北路118号四季天地广场3楼(近珠江帝景正门)","available_state":3,"avg_price":0,"branch_name":"","business_name":"八百方网上药店","categories":["医疗保健,药房药店"],"city":"广州市","district":"海珠区","introduction":"","latitude":23.0996131897,"longitude":113.327552795,"offset_type":1,"open_time":"","photo_list":[],"poi_id":"292897619","province":"广东省","recommend":"","sid":"","special":"","telephone":"","update_status":0}},{"base_info":{"address":"江南西","available_state":2,"avg_price":0,"branch_name":"","business_name":"报刊亭","categories":["美食,江浙菜"],"city":"广州市","district":"海珠区","introduction":"","latitude":23.0971450806,"longitude":113.27520752,"offset_type":1,"open_time":"","photo_list":[],"poi_id":"292893556","province":"广东省","recommend":"","sid":"","special":"","telephone":"020-37886976","update_status":0}},{"base_info":{"address":"赤岗北路34-44号","available_state":3,"avg_price":0,"branch_name":"赤岗北路","business_name":"金康药房","categories":["美食,江浙菜"],"city":"广州市","district":"海珠区","introduction":"","latitude":23.0978736877,"longitude":113.327667236,"offset_type":1,"open_time":"8:30-22:00","photo_list":[],"poi_id":"212994529","province":"广东省","recommend":"专业药师咨询","sid":"","special":"可用医保卡,送货上门,免费WIFI,中药打粉代煎","telephone":"020-89663365","update_status":0}},{"base_info":{"address":"赤岗北路18号四季天地广场","available_state":4,"avg_price":200,"branch_name":"","business_name":"四季天地","categories":["医疗保健,药房药店"],"city":"广州市","district":"海珠区","introduction":"八百方医药健康网购商城（www.babaifang.com）是全国第二家第三方药品网上零售试点平台。通过聚集全国主流药店，为广大消费者提供“百家药店，全国比价，放心买药、买放心药”的第三方医药网购平台。","latitude":23.10039711,"longitude":113.327919006,"offset_type":1,"open_time":"9:00-21:00","photo_list":[],"poi_id":"278354754","province":"广东省","recommend":"网上买药","sid":"","special":"实惠网上买药","telephone":"020-37886986","update_status":0}}],"errcode":0,"errmsg":"ok","total_count":4}
 	//{"data":{"apply_id":74965,"audit_comment":"审核中","audit_status":1},"errcode":0,"errmsg":"success."}

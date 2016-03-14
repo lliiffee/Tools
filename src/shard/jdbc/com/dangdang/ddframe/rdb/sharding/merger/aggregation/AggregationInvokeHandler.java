@@ -24,6 +24,7 @@ import java.sql.SQLException;
 import com.dangdang.ddframe.rdb.sharding.merger.common.AbstractMergerInvokeHandler;
 import com.dangdang.ddframe.rdb.sharding.merger.common.ResultSetQueryIndex;
 import com.dangdang.ddframe.rdb.sharding.parser.result.merger.AggregationColumn;
+import com.dangdang.ddframe.rdb.sharding.util.SQLUtil;
 import com.google.common.base.Optional;
 
 /**
@@ -51,6 +52,8 @@ public final class AggregationInvokeHandler extends AbstractMergerInvokeHandler<
             if (resultSetQueryIndex.isQueryBySequence() && each.getIndex() == resultSetQueryIndex.getQueryIndex()) {
                 return Optional.of(each);
             } else if (each.getAlias().isPresent() && each.getAlias().get().equals(resultSetQueryIndex.getQueryName())) {
+                return Optional.of(each);
+            } else if (SQLUtil.getExactlyValue(each.getExpression()).equalsIgnoreCase(SQLUtil.getExactlyValue(resultSetQueryIndex.getQueryName()))) {
                 return Optional.of(each);
             }
         }

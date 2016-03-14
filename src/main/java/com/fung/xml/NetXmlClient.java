@@ -32,10 +32,10 @@ public class NetXmlClient {
    //private static final String POST = "http://localhost/shop/pay/weixinPayNotify_m.html";
 //	private static final String POST = "http://localhost/shop/pay/wxPayNotify.html?notify_id=fRon5-l4lKqNKwCeurlCz3u617mgFhKiuFvwdmnwN53r58yWelLWJMPcqHzCjzvN62AkXb2bdEMBIBmPn9JgWCXwXL69HA56&partner=1219895801&transaction_id=1219895801201408133319316201&sign=7EE3F867643E0C0E0DEF8D51B43B15C0&product_fee=1&total_fee=1&time_end=20140813162348&trade_state=0&out_trade_no=309757004432287&transport_fee=0&fee_type=1&trade_mode=1&sign_type=MD5&input_charset=UTF-8&discount=0&bank_type=0&";	
 //	private static final String POST = "http://localhost/shop/pay/weixinPayComp_m.html";
-//	private static final String POST = "http://192.168.0.3:8080/shop/wx_search.html";
+	private static final String POST = "http://192.168.0.3:8081/shop/wx_search.html";
 //private static final String POST = "http://www.800pharm.com/shop/wx_search.html";
 //	private static final String POST = "http://test.800pharm.com/shop/xiaoneng/putMsg.html";
-	private static final String POST = "http://wx.ntalker.com/agent/weixin?token=ntalker_123456";
+//	private static final String POST = "http://wx.ntalker.com/agent/weixin?token=ntalker_123456";
 //	private static final String POST = "http://113.31.17.243/agent/weixin?token=ntalker_123456";
 //	private static final String POST = "http://192.168.0.51/shop/wx_search.html";
 //	private static final String POST = "http://www.800pharm.com/shop/wx_search.html";
@@ -54,9 +54,9 @@ public class NetXmlClient {
 	//	sendXml(wxSubscribe());
 		
 	//	sendXml(ntalker());
-		sendXml(ntalkerImg());
-		 
-//		sendXml(wxSeed());
+	//	sendXml(ntalkerImg());
+		 System.out.println("@@@@@@@@@@@@@@@@@2"); 
+		sendXml(wxSeed());
 //		try {
 //			sendXml( rtWarn());
 //		} catch (Exception e) {
@@ -136,7 +136,7 @@ public class NetXmlClient {
 			return  "<xml>"
 					+" <ToUserName><![CDATA[wx7179cc98fb47eff5]]></ToUserName>           "
 					+" <FromUserName><![CDATA[oTNesjrqNt4ZIZ8zRe2-WVnt98M0]]></FromUserName>     "
-					+"<Content>感冒</Content>"
+					+"<Content>S+优甲乐</Content>"
 					+"<MsgType>text</MsgType>"
 				//+"<MsgType>event</MsgType>"
 				// +"<Event>CLICK</Event>"
@@ -262,6 +262,8 @@ public class NetXmlClient {
 		try {
 			System.out.println(ct);
 			URL url = new URL(POST);
+			System.out.println("#######");
+			System.out.println(POST);
 			//根据Url地址打开一个连接
 			URLConnection urlConnection = url.openConnection();
 			HttpURLConnection httpUrlConnection = (HttpURLConnection)urlConnection;
@@ -286,7 +288,7 @@ public class NetXmlClient {
 			writer.flush();
 			writer.close();
 			writer = null;
-			System.out.println("done");
+			System.out.println("done111");
 			//关闭连接
 			 
 			 BufferedReader reader = new BufferedReader(new InputStreamReader(httpUrlConnection.getInputStream()));

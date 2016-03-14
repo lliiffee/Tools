@@ -4,7 +4,7 @@
 */
 var keyMgr = keyManage();
  
-keyMgr.listen( ''change', function( keyCode ){
+keyMgr.listen( 'change', function( keyCode ){
  
    console.log( keyCode );
  
@@ -22,4 +22,5 @@ keyMgr.listen( 'change', proxy( function( keyCode ){
    console.log( keyCode );  //前下前+拳
  
 )} );
+
 
